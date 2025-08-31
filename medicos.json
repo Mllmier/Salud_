@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Carlos",
+    "apellido": "Marrugo",
+    "correo": "carlos@gmail.com",
+    "cedula": "1137524433",
+    "telefono": "3242076388",
+    "especialidad": "Medico General"
+  },
+  {
+    "name": "Luz Dari",
+    "apellido": "Crespo Gomez",
+    "correo": "luz@gmail.com",
+    "cedula": "1212345654",
+    "telefono": "1234432234",
+    "especialidad": "Mototaxi"
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "especialidad": "Cardilogo",
+    "fechaContratacion": "2025-05-08",
+    "horario": "Martes-jueves-sabado",
+    "numeroDocumento": "63525192",
+    "nombres": "Haider",
+    "apellidos": "Stiven",
+    "fechaNacimiento": "2001-05-21",
+    "sexo": "F",
+    "email": "thejh0nl3n0n@gmail.com",
+    "celular": "3001164785",
+    "contraseña": ".P}z7Q]@3a"
+  },
+  {
+    "especialidad": "Medico general",
+    "fechaContratacion": "2025-05-08",
+    "horario": "Sabado-domingo",
+    "numeroDocumento": "1048456789",
+    "nombres": "ronaldo",
+    "apellidos": "cano",
+    "fechaNacimiento": "2004-05-19",
+    "sexo": "M",
+    "email": "ronaldocanomorales54@gmail.com",
+    "celular": "310554789",
+    "contraseña": "37df269a8871a82e38db39193fadf285fbeb429b481c6a7f516dbd9a207a7ca1"
+  }
+]

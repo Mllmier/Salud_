@@ -1,0 +1,30 @@
+[
+  {
+    "codigoEmpleado": "REC001",
+    "fechaContratacion": "2025-05-16",
+    "horario": "TARDE",
+    "numeroDocumento": "8527419635",
+    "nombres": "dfghjk",
+    "apellidos": "hgfds",
+    "fechaNacimiento": "1998-05-01",
+    "sexo": "FEMENINO",
+    "eps": "EPS SANITAS",
+    "email": "ahhahah@gmail.com",
+    "celular": "123548745",
+    "contraseña": "60758f6090bfb3868e2012abcf7fa07bf5edec3a7ea56d35622e2ec4d899a966"
+  },
+  {
+    "codigoEmpleado": "REC002",
+    "fechaContratacion": "2025-05-19",
+    "horario": "NOCHE",
+    "numeroDocumento": "1597532546",
+    "nombres": "sharlok",
+    "apellidos": "maia",
+    "fechaNacimiento": "2001-05-21",
+    "sexo": "FEMENINO",
+    "eps": "SALUD TOTAL",
+    "email": "leonmiermarializ@gmail.com",
+    "celular": "3001147856",
+    "contraseña": "7efcbb34fd5eb744de596eb093556e9acc64dd59814fcc7627a20d1de58c00bc"
+  }
+]

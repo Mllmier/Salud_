@@ -1,0 +1,1404 @@
+{
+  "enfermedades": [
+    {
+      "id_enfermedad": 1,
+      "nombre": "Diabetes tipo 1",
+      "tipo": "Metabólica",
+      "sintomas": ["Sed excesiva", "Pérdida de peso", "Visión borrosa"],
+      "causas": ["Autoinmunidad", "Factores genéticos"]
+    },
+    {
+      "id_enfermedad": 2,
+      "nombre": "Diabetes tipo 2",
+      "tipo": "Metabólica",
+      "sintomas": ["Fatiga", "Hambre constante", "Infecciones recurrentes"],
+      "causas": ["Obesidad", "Resistencia a la insulina"]
+    },
+    {
+      "id_enfermedad": 3,
+      "nombre": "Hipertensión arterial",
+      "tipo": "Cardiovascular",
+      "sintomas": ["Dolor de cabeza", "Mareos", "Sangrado nasal"],
+      "causas": ["Dieta alta en sodio", "Estrés", "Genética"]
+    },
+    {
+      "id_enfermedad": 4,
+      "nombre": "Asma",
+      "tipo": "Respiratoria",
+      "sintomas": ["Silbidos al respirar", "Tos seca", "Opresión en el pecho"],
+      "causas": ["Alergenos", "Contaminación ambiental"]
+    },
+    {
+      "id_enfermedad": 5,
+      "nombre": "Artritis reumatoide",
+      "tipo": "Autoinmune",
+      "sintomas": ["Dolor articular", "Rigidez matutina", "Hinchazón"],
+      "causas": ["Factores genéticos", "Infecciones"]
+    },
+    {
+      "id_enfermedad": 6,
+      "nombre": "Alzhéimer",
+      "tipo": "Neurológica",
+      "sintomas": ["Pérdida de memoria", "Desorientación", "Cambios de personalidad"],
+      "causas": ["Acumulación de proteína beta-amiloide", "Edad avanzada"]
+    },
+    {
+      "id_enfermedad": 7,
+      "nombre": "Parkinson",
+      "tipo": "Neurológica",
+      "sintomas": ["Temblores", "Rigidez muscular", "Lentitud de movimientos"],
+      "causas": ["Degeneración neuronal", "Factores ambientales"]
+    },
+    {
+      "id_enfermedad": 8,
+      "nombre": "VIH/SIDA",
+      "tipo": "Infecciosa",
+      "sintomas": ["Fiebre recurrente", "Pérdida de peso", "Ganglios inflamados"],
+      "causas": ["Virus de inmunodeficiencia humana (VIH)"]
+    },
+    {
+      "id_enfermedad": 9,
+      "nombre": "Hepatitis B",
+      "tipo": "Infecciosa",
+      "sintomas": ["Ictericia", "Fatiga", "Dolor abdominal"],
+      "causas": ["Virus de la hepatitis B (VHB)"]
+    },
+    {
+      "id_enfermedad": 10,
+      "nombre": "Hepatitis C",
+      "tipo": "Infecciosa",
+      "sintomas": ["Ictericia", "Náuseas", "Orina oscura"],
+      "causas": ["Virus de la hepatitis C (VHC)"]
+    },
+    {
+      "id_enfermedad": 11,
+      "nombre": "Tuberculosis",
+      "tipo": "Infecciosa",
+      "sintomas": ["Tos con sangre", "Sudores nocturnos", "Pérdida de peso"],
+      "causas": ["Mycobacterium tuberculosis"]
+    },
+    {
+      "id_enfermedad": 12,
+      "nombre": "Malaria",
+      "tipo": "Infecciosa",
+      "sintomas": ["Fiebre alta", "Escalofríos", "Dolor muscular"],
+      "causas": ["Parásito Plasmodium (picadura de mosquito)"]
+    },
+    {
+      "id_enfermedad": 13,
+      "nombre": "Cáncer de pulmón",
+      "tipo": "Oncológica",
+      "sintomas": ["Tos persistente", "Dolor torácico", "Pérdida de peso"],
+      "causas": ["Tabaquismo", "Exposición a carcinógenos"]
+    },
+    {
+      "id_enfermedad": 14,
+      "nombre": "Cáncer de mama",
+      "tipo": "Oncológica",
+      "sintomas": ["Bulto en el seno", "Secreción del pezón", "Hinchazón"],
+      "causas": ["Mutaciones genéticas (BRCA1/2)", "Hormonales"]
+    },
+    {
+      "id_enfermedad": 15,
+      "nombre": "Lupus eritematoso sistémico",
+      "tipo": "Autoinmune",
+      "sintomas": ["Erupción en mariposa", "Dolor articular", "Fotosensibilidad"],
+      "causas": ["Factores genéticos y ambientales"]
+    },
+    {
+      "id_enfermedad": 16,
+      "nombre": "Esclerosis múltiple",
+      "tipo": "Neurológica",
+      "sintomas": ["Debilidad muscular", "Problemas de visión", "Fatiga extrema"],
+      "causas": ["Daño a la mielina (autoinmune)"]
+    },
+    {
+      "id_enfermedad": 17,
+      "nombre": "Epilepsia",
+      "tipo": "Neurológica",
+      "sintomas": ["Convulsiones", "Pérdida de conciencia", "Confusión temporal"],
+      "causas": ["Desbalances eléctricos cerebrales", "Traumas"]
+    },
+    {
+      "id_enfermedad": 18,
+      "nombre": "Enfermedad de Crohn",
+      "tipo": "Digestiva",
+      "sintomas": ["Dolor abdominal", "Diarrea crónica", "Pérdida de peso"],
+      "causas": ["Autoinmunidad", "Factores genéticos"]
+    },
+    {
+      "id_enfermedad": 19,
+      "nombre": "Colitis ulcerosa",
+      "tipo": "Digestiva",
+      "sintomas": ["Diarrea con sangre", "Dolor rectal", "Urgencia para defecar"],
+      "causas": ["Inflamación intestinal crónica"]
+    },
+    {
+      "id_enfermedad": 20,
+      "nombre": "Gastritis",
+      "tipo": "Digestiva",
+      "sintomas": ["Dolor estomacal", "Acidez", "Náuseas"],
+      "causas": ["Infección por H. pylori", "Abuso de alcohol"]
+    },
+    {
+      "id_enfermedad": 21,
+      "nombre": "Anemia ferropénica",
+      "tipo": "Hematológica",
+      "sintomas": ["Fatiga", "Piel pálida", "Uñas quebradizas"],
+      "causas": ["Deficiencia de hierro", "Pérdida de sangre"]
+    },
+    {
+      "id_enfermedad": 22,
+      "nombre": "Leucemia",
+      "tipo": "Hematológica",
+      "sintomas": ["Fiebre persistente", "Sangrado fácil", "Infecciones frecuentes"],
+      "causas": ["Mutaciones en células sanguíneas"]
+    },
+    {
+      "id_enfermedad": 23,
+      "nombre": "Neumonía",
+      "tipo": "Respiratoria",
+      "sintomas": ["Fiebre alta", "Tos con flema", "Dificultad para respirar"],
+      "causas": ["Bacterias, virus u hongos"]
+    },
+    {
+      "id_enfermedad": 24,
+      "nombre": "Bronquitis crónica",
+      "tipo": "Respiratoria",
+      "sintomas": ["Tos con flema", "Silbidos al respirar", "Infecciones recurrentes"],
+      "causas": ["Tabaquismo", "Contaminación"]
+    },
+    {
+      "id_enfermedad": 25,
+      "nombre": "Enfisema pulmonar",
+      "tipo": "Respiratoria",
+      "sintomas": ["Falta de aire", "Tos crónica", "Cansancio"],
+      "causas": ["Tabaquismo", "Déficit de alfa-1 antitripsina"]
+    },
+    {
+      "id_enfermedad": 26,
+      "nombre": "Fibromialgia",
+      "tipo": "Reumatológica",
+      "sintomas": ["Dolor muscular generalizado", "Fatiga", "Problemas de sueño"],
+      "causas": ["Origen desconocido", "Posible desbalance neuroquímico"]
+    },
+    {
+      "id_enfermedad": 27,
+      "nombre": "Gota",
+      "tipo": "Reumatológica",
+      "sintomas": ["Dolor intenso en articulaciones", "Hinchazón", "Enrojecimiento"],
+      "causas": ["Exceso de ácido úrico"]
+    },
+    {
+      "id_enfermedad": 28,
+      "nombre": "Osteoporosis",
+      "tipo": "Ósea",
+      "sintomas": ["Fracturas frecuentes", "Dolor de espalda", "Pérdida de estatura"],
+      "causas": ["Envejecimiento", "Deficiencia de calcio"]
+    },
+    {
+      "id_enfermedad": 29,
+      "nombre": "Meningitis",
+      "tipo": "Infecciosa",
+      "sintomas": ["Fiebre alta", "Dolor de cabeza intenso", "Rigidez de cuello"],
+      "causas": ["Bacterias, virus u hongos"]
+    },
+    {
+      "id_enfermedad": 30,
+      "nombre": "Dengue",
+      "tipo": "Infecciosa",
+      "sintomas": ["Fiebre alta", "Dolor detrás de los ojos", "Erupción cutánea"],
+      "causas": ["Virus del dengue (picadura de mosquito)"]
+    },
+    {
+      "id_enfermedad": 31,
+      "nombre": "Zika",
+      "tipo": "Infecciosa",
+      "sintomas": ["Fiebre leve", "Erupción cutánea", "Conjuntivitis"],
+      "causas": ["Virus Zika (picadura de mosquito)"]
+    },
+    {
+      "id_enfermedad": 32,
+      "nombre": "Chikunguña",
+      "tipo": "Infecciosa",
+      "sintomas": ["Dolor articular severo", "Fiebre", "Erupción"],
+      "causas": ["Virus Chikunguña (picadura de mosquito)"]
+    },
+    {
+      "id_enfermedad": 33,
+      "nombre": "Ébola",
+      "tipo": "Infecciosa",
+      "sintomas": ["Fiebre hemorrágica", "Vómitos", "Diarrea severa"],
+      "causas": ["Virus Ébola (contacto con fluidos infectados)"]
+    },
+    {
+      "id_enfermedad": 34,
+      "nombre": "COVID-19",
+      "tipo": "Infecciosa",
+      "sintomas": ["Fiebre", "Tos seca", "Pérdida del olfato/gusto"],
+      "causas": ["SARS-CoV-2"]
+    },
+    {
+      "id_enfermedad": 35,
+      "nombre": "Sífilis",
+      "tipo": "Infecciosa",
+      "sintomas": ["Úlceras genitales", "Erupción cutánea", "Fiebre"],
+      "causas": ["Bacteria Treponema pallidum"]
+    },
+    {
+      "id_enfermedad": 36,
+      "nombre": "Gonorrea",
+      "tipo": "Infecciosa",
+      "sintomas": ["Secreción genital", "Dolor al orinar", "Dolor pélvico"],
+      "causas": ["Bacteria Neisseria gonorrhoeae"]
+    },
+    {
+      "id_enfermedad": 37,
+      "nombre": "Clamidia",
+      "tipo": "Infecciosa",
+      "sintomas": ["Secreción vaginal/uretral", "Dolor al orinar", "Dolor testicular"],
+      "causas": ["Bacteria Chlamydia trachomatis"]
+    },
+    {
+      "id_enfermedad": 38,
+      "nombre": "Herpes genital",
+      "tipo": "Infecciosa",
+      "sintomas": ["Ampollas dolorosas", "Picazón", "Úlceras"],
+      "causas": ["Virus del herpes simple (VHS-2)"]
+    },
+    {
+      "id_enfermedad": 39,
+      "nombre": "Varicela",
+      "tipo": "Infecciosa",
+      "sintomas": ["Erupción con ampollas", "Fiebre", "Picazón"],
+      "causas": ["Virus varicela-zóster"]
+    },
+    {
+      "id_enfermedad": 40,
+      "nombre": "Sarampión",
+      "tipo": "Infecciosa",
+      "sintomas": ["Fiebre alta", "Erupción cutánea", "Manchas de Koplik"],
+      "causas": ["Virus del sarampión"]
+    },
+    {
+      "id_enfermedad": 41,
+      "nombre": "Paperas",
+      "tipo": "Infecciosa",
+      "sintomas": ["Hinchazón de glándulas salivales", "Fiebre", "Dolor al masticar"],
+      "causas": ["Virus de las paperas"]
+    },
+    {
+      "id_enfermedad": 42,
+      "nombre": "Rubéola",
+      "tipo": "Infecciosa",
+      "sintomas": ["Erupción rosada", "Ganglios inflamados", "Fiebre leve"],
+      "causas": ["Virus de la rubéola"]
+    },
+    {
+      "id_enfermedad": 43,
+      "nombre": "Tétanos",
+      "tipo": "Infecciosa",
+      "sintomas": ["Espasmos musculares", "Rigidez en la mandíbula", "Fiebre"],
+      "causas": ["Bacteria Clostridium tetani"]
+    },
+    {
+      "id_enfermedad": 44,
+      "nombre": "Tifoidea",
+      "tipo": "Infecciosa",
+      "sintomas": ["Fiebre prolongada", "Dolor abdominal", "Diarrea o estreñimiento"],
+      "causas": ["Bacteria Salmonella typhi"]
+    },
+    {
+      "id_enfermedad": 45,
+      "nombre": "Cólera",
+      "tipo": "Infecciosa",
+      "sintomas": ["Diarrea acuosa severa", "Deshidratación", "Vómitos"],
+      "causas": ["Bacteria Vibrio cholerae"]
+    },
+    {
+      "id_enfermedad": 46,
+      "nombre": "Enfermedad de Lyme",
+      "tipo": "Infecciosa",
+      "sintomas": ["Erupción en diana", "Fiebre", "Dolor articular"],
+      "causas": ["Bacteria Borrelia burgdorferi (picadura de garrapata)"]
+    },
+    {
+      "id_enfermedad": 47,
+      "nombre": "Psoriasis",
+      "tipo": "Dermatológica",
+      "sintomas": ["Manchas rojas con escamas", "Picazón", "Dolor articular"],
+      "causas": ["Autoinmunidad", "Factores genéticos"]
+    },
+    {
+      "id_enfermedad": 48,
+      "nombre": "Eczema",
+      "tipo": "Dermatológica",
+      "sintomas": ["Piel seca y escamosa", "Picazón intensa", "Enrojecimiento"],
+      "causas": ["Alergias", "Irritantes cutáneos"]
+    },
+    {
+      "id_enfermedad": 49,
+      "nombre": "Acné severo",
+      "tipo": "Dermatológica",
+      "sintomas": ["Quistes dolorosos", "Espinillas", "Inflamación"],
+      "causas": ["Exceso de sebo", "Bacterias Cutibacterium acnes"]
+    },
+    {
+      "id_enfermedad": 50,
+      "nombre": "Melanoma",
+      "tipo": "Oncológica",
+      "sintomas": ["Lunar que cambia de forma/color", "Picazón", "Sangrado"],
+      "causas": ["Exposición a UV", "Factores genéticos"]
+    },
+    {
+      "id_enfermedad": 51,
+      "nombre": "Esquizofrenia",
+      "tipo": "Psiquiátrica",
+      "sintomas": ["Alucinaciones", "Delirios", "Aislamiento social"],
+      "causas": ["Desbalance químico cerebral", "Factores genéticos"]
+    },
+    {
+      "id_enfermedad": 52,
+      "nombre": "Depresión mayor",
+      "tipo": "Psiquiátrica",
+      "sintomas": ["Tristeza persistente", "Pérdida de interés", "Ideación suicida"],
+      "causas": ["Factores biológicos y psicosociales"]
+    },
+    {
+      "id_enfermedad": 53,
+      "nombre": "Trastorno bipolar",
+      "tipo": "Psiquiátrica",
+      "sintomas": ["Episodios maníacos/depresivos", "Cambios de humor extremos"],
+      "causas": ["Genética", "Alteraciones neuroquímicas"]
+    },
+    {
+      "id_enfermedad": 54,
+      "nombre": "Trastorno de ansiedad generalizada",
+      "tipo": "Psiquiátrica",
+      "sintomas": ["Preocupación excesiva", "Inquietud", "Fatiga"],
+      "causas": ["Factores ambientales y genéticos"]
+    },
+    {
+      "id_enfermedad": 55,
+      "nombre": "TDAH",
+      "tipo": "Psiquiátrica",
+      "sintomas": ["Falta de atención", "Hiperactividad", "Impulsividad"],
+      "causas": ["Factores genéticos y ambientales"]
+    },
+    {
+      "id_enfermedad": 56,
+      "nombre": "Autismo",
+      "tipo": "Neurodesarrollo",
+      "sintomas": ["Dificultad en interacción social", "Comportamientos repetitivos"],
+      "causas": ["Factores genéticos y ambientales"]
+    },
+    {
+      "id_enfermedad": 57,
+      "nombre": "Anorexia nerviosa",
+      "tipo": "Psiquiátrica",
+      "sintomas": ["Pérdida de peso extrema", "Miedo a engordar", "Distorsión corporal"],
+      "causas": ["Presión social", "Factores psicológicos"]
+    },
+    {
+      "id_enfermedad": 58,
+      "nombre": "Bulimia nerviosa",
+      "tipo": "Psiquiátrica",
+      "sintomas": ["Atracones", "Vómitos autoinducidos", "Uso de laxantes"],
+      "causas": ["Presión social", "Baja autoestima"]
+    },
+    {
+      "id_enfermedad": 59,
+      "nombre": "Trastorno obsesivo-compulsivo (TOC)",
+      "tipo": "Psiquiátrica",
+      "sintomas": ["Pensamientos intrusivos", "Comportamientos repetitivos"],
+      "causas": ["Disfunción serotoninérgica", "Genética"]
+    },
+    {
+      "id_enfermedad": 60,
+      "nombre": "Trastorno de estrés postraumático (TEPT)",
+      "tipo": "Psiquiátrica",
+      "sintomas": ["Flashbacks", "Hipervigilancia", "Evitación"],
+      "causas": ["Experiencias traumáticas"]
+    },
+    {
+      "id_enfermedad": 61,
+      "nombre": "Insomnio crónico",
+      "tipo": "Neurológica",
+      "sintomas": ["Dificultad para dormir", "Fatiga diurna", "Irritabilidad"],
+      "causas": ["Estrés", "Hábitos de sueño inadecuados"]
+    },
+    {
+      "id_enfermedad": 62,
+      "nombre": "Narcolepsia",
+      "tipo": "Neurológica",
+      "sintomas": ["Somnolencia diurna excesiva", "Cataplejía", "Parálisis del sueño"],
+      "causas": ["Déficit de hipocretina"]
+    },
+    {
+      "id_enfermedad": 63,
+      "nombre": "Migraña",
+      "tipo": "Neurológica",
+      "sintomas": ["Dolor de cabeza pulsátil", "Náuseas", "Fotofobia"],
+      "causas": ["Activación anormal de vías neuronales"]
+    },
+    {
+      "id_enfermedad": 64,
+      "nombre": "Síndrome del túnel carpiano",
+      "tipo": "Musculoesquelética",
+      "sintomas": ["Hormigueo en manos", "Debilidad", "Dolor nocturno"],
+      "causas": ["Compresión del nervio mediano"]
+    },
+    {
+      "id_enfermedad": 65,
+      "nombre": "Osteoartritis",
+      "tipo": "Reumatológica",
+      "sintomas": ["Dolor articular", "Rigidez", "Hinchazón"],
+      "causas": ["Degeneración del cartílago"]
+    },
+    {
+      "id_enfermedad": 66,
+      "nombre": "Síndrome de fatiga crónica",
+      "tipo": "Sistémica",
+      "sintomas": ["Agotamiento prolongado", "Dolor muscular", "Problemas de concentración"],
+      "causas": ["Origen desconocido", "Posible disfunción inmunológica"]
+    },
+    {
+      "id_enfermedad": 67,
+      "nombre": "Fibrosis quística",
+      "tipo": "Genética",
+      "sintomas": ["Infecciones pulmonares recurrentes", "Dificultad para respirar", "Problemas digestivos"],
+      "causas": ["Mutación en el gen CFTR"]
+    },
+    {
+      "id_enfermedad": 68,
+      "nombre": "Síndrome de Down",
+      "tipo": "Genética",
+      "sintomas": ["Discapacidad intelectual", "Rasgos faciales característicos", "Problemas cardíacos"],
+      "causas": ["Trisomía del cromosoma 21"]
+    },
+    {
+      "id_enfermedad": 69,
+      "nombre": "Hemofilia",
+      "tipo": "Hematológica",
+      "sintomas": ["Sangrado prolongado", "Hemorragias espontáneas"],
+      "causas": ["Deficiencia de factores de coagulación"]
+    },
+    {
+      "id_enfermedad": 70,
+      "nombre": "Anemia de células falciformes",
+      "tipo": "Hematológica",
+      "sintomas": ["Dolor óseo", "Fatiga", "Infecciones recurrentes"],
+      "causas": ["Mutación en el gen de la hemoglobina"]
+    },
+    {
+      "id_enfermedad": 71,
+      "nombre": "Glaucoma",
+      "tipo": "Oftalmológica",
+      "sintomas": ["Pérdida de visión periférica", "Dolor ocular"],
+      "causas": ["Aumento de la presión intraocular"]
+    },
+    {
+      "id_enfermedad": 72,
+      "nombre": "Cataratas",
+      "tipo": "Oftalmológica",
+      "sintomas": ["Visión nublada", "Sensibilidad a la luz"],
+      "causas": ["Envejecimiento", "Diabetes"]
+    },
+    {
+      "id_enfermedad": 73,
+      "nombre": "Síndrome de Sjögren",
+      "tipo": "Autoinmune",
+      "sintomas": ["Sequedad ocular/bucal", "Fatiga", "Dolor articular"],
+      "causas": ["Ataque autoinmune a glándulas exocrinas"]
+    },
+    {
+      "id_enfermedad": 74,
+      "nombre": "Esclerodermia",
+      "tipo": "Autoinmune",
+      "sintomas": ["Endurecimiento de la piel", "Problemas circulatorios"],
+      "causas": ["Sobreproducción de colágeno"]
+    },
+    {
+      "id_enfermedad": 75,
+      "nombre": "Miastenia gravis",
+      "tipo": "Neuromuscular",
+      "sintomas": ["Debilidad muscular fluctuante", "Ptosis palpebral"],
+      "causas": ["Ataque autoinmune a receptores de acetilcolina"]
+    },
+    {
+      "id_enfermedad": 76,
+      "nombre": "Distrofia muscular de Duchenne",
+      "tipo": "Neuromuscular",
+      "sintomas": ["Debilidad muscular progresiva", "Dificultad para caminar"],
+      "causas": ["Mutación en el gen de la distrofina"]
+    },
+    {
+      "id_enfermedad": 77,
+      "nombre": "Enfermedad de Huntington",
+      "tipo": "Neurológica",
+      "sintomas": ["Movimientos involuntarios", "Demencia"],
+      "causas": ["Mutación en el gen HTT"]
+    },
+    {
+      "id_enfermedad": 78,
+      "nombre": "Síndrome de Tourette",
+      "tipo": "Neurológica",
+      "sintomas": ["Tics motores y vocales"],
+      "causas": ["Disfunción en ganglios basales"]
+    },
+    {
+      "id_enfermedad": 79,
+      "nombre": "Enfermedad de Graves",
+      "tipo": "Endocrina",
+      "sintomas": ["Bocio", "Pérdida de peso", "Ojos saltones"],
+      "causas": ["Autoinmunidad contra la tiroides"]
+    },
+    {
+      "id_enfermedad": 80,
+      "nombre": "Tiroiditis de Hashimoto",
+      "tipo": "Endocrina",
+      "sintomas": ["Fatiga", "Aumento de peso", "Piel seca"],
+      "causas": ["Destrucción autoinmune de la tiroides"]
+    },
+    {
+      "id_enfermedad": 81,
+      "nombre": "Enfermedad de Addison",
+      "tipo": "Endocrina",
+      "sintomas": ["Fatiga", "Hiperpigmentación", "Hipotensión"],
+      "causas": ["Destrucción de las glándulas suprarrenales"]
+    },
+    {
+      "id_enfermedad": 82,
+      "nombre": "Síndrome de Cushing",
+      "tipo": "Endocrina",
+      "sintomas": ["Obesidad central", "Cara de luna llena", "Estrías moradas"],
+      "causas": ["Exceso de cortisol"]
+    },
+    {
+      "id_enfermedad": 83,
+      "nombre": "Acromegalia",
+      "tipo": "Endocrina",
+      "sintomas": ["Crecimiento excesivo de huesos", "Rasgos faciales toscos"],
+      "causas": ["Exceso de hormona de crecimiento"]
+    },
+    {
+      "id_enfermedad": 84,
+      "nombre": "Enfermedad de Paget",
+      "tipo": "Ósea",
+      "sintomas": ["Dolor óseo", "Deformidades", "Fracturas"],
+      "causas": ["Trastorno en la remodelación ósea"]
+    },
+    {
+      "id_enfermedad": 85,
+      "nombre": "Síndrome de Marfan",
+      "tipo": "Genética",
+      "sintomas": ["Altura excesiva", "Problemas cardíacos", "Aracnodactilia"],
+      "causas": ["Mutación en el gen FBN1"]
+    },
+    {
+      "id_enfermedad": 86,
+      "nombre": "Enfermedad celíaca",
+      "tipo": "Autoinmune",
+      "sintomas": ["Diarrea", "Pérdida de peso", "Distensión abdominal"],
+      "causas": ["Intolerancia al gluten"]
+    },
+    {
+      "id_enfermedad": 87,
+      "nombre": "Diverticulitis",
+      "tipo": "Digestiva",
+      "sintomas": ["Dolor abdominal", "Fiebre", "Cambios en el ritmo intestinal"],
+      "causas": ["Inflamación de divertículos"]
+    },
+    {
+      "id_enfermedad": 88,
+      "nombre": "Cirrosis hepática",
+      "tipo": "Hepática",
+      "sintomas": ["Ictericia", "Ascitis", "Confusión"],
+      "causas": ["Alcoholismo", "Hepatitis crónica"]
+    },
+    {
+      "id_enfermedad": 89,
+      "nombre": "Pancreatitis crónica",
+      "tipo": "Digestiva",
+      "sintomas": ["Dolor abdominal intenso", "Esteatorrea", "Pérdida de peso"],
+      "causas": ["Alcoholismo", "Cálculos biliares"]
+    },
+    {
+      "id_enfermedad": 90,
+      "nombre": "Síndrome del intestino irritable",
+      "tipo": "Digestiva",
+      "sintomas": ["Dolor abdominal", "Diarrea/estreñimiento", "Distensión"],
+      "causas": ["Origen multifactorial"]
+    },
+    {
+      "id_enfermedad": 91,
+      "nombre": "Endometriosis",
+      "tipo": "Ginecológica",
+      "sintomas": ["Dolor pélvico", "Dismenorrea", "Infertilidad"],
+      "causas": ["Implante de tejido endometrial fuera del útero"]
+    },
+    {
+      "id_enfermedad": 92,
+      "nombre": "Síndrome de ovario poliquístico",
+      "tipo": "Endocrina",
+      "sintomas": ["Menstruación irregular", "Hirsutismo", "Acné"],
+      "causas": ["Desequilibrio hormonal"]
+    },
+    {
+      "id_enfermedad": 93,
+      "nombre": "Enfermedad inflamatoria pélvica",
+      "tipo": "Infecciosa",
+      "sintomas": ["Dolor pélvico", "Fiebre", "Flujo vaginal anormal"],
+      "causas": ["Infecciones bacterianas"]
+    },
+    {
+      "id_enfermedad": 94,
+      "nombre": "Cistitis intersticial",
+      "tipo": "Urológica",
+      "sintomas": ["Dolor vesical", "Urgencia urinaria"],
+      "causas": ["Origen desconocido"]
+    },
+    {
+      "id_enfermedad": 95,
+      "nombre": "Litiasis renal",
+      "tipo": "Urológica",
+      "sintomas": ["Dolor lumbar intenso", "Hematuria", "Náuseas"],
+      "causas": ["Cristalización de minerales"]
+    },
+    {
+      "id_enfermedad": 96,
+      "nombre": "Insuficiencia renal crónica",
+      "tipo": "Renal",
+      "sintomas": ["Fatiga", "Edema", "Hipertensión"],
+      "causas": ["Diabetes", "Hipertensión no controlada"]
+    },
+    {
+      "id_enfermedad": 97,
+      "nombre": "Enfermedad de Ménière",
+      "tipo": "Otorrinolaringológica",
+      "sintomas": ["Vértigo", "Acúfenos", "Pérdida auditiva"],
+      "causas": ["Acumulación de líquido en el oído interno"]
+    },
+    {
+      "id_enfermedad": 98,
+      "nombre": "Sinusitis crónica",
+      "tipo": "Otorrinolaringológica",
+      "sintomas": ["Congestión nasal", "Dolor facial", "Secreción"],
+      "causas": ["Infecciones recurrentes", "Alergias"]
+    },
+    {
+      "id_enfermedad": 99,
+      "nombre": "Apnea del sueño",
+      "tipo": "Respiratoria",
+      "sintomas": ["Ronquidos", "Somnolencia diurna", "Pausas respiratorias"],
+      "causas": ["Obstrucción de vías respiratorias"]
+    },
+    {
+      "id_enfermedad": 100,
+      "nombre": "Enfermedad pulmonar obstructiva crónica (EPOC)",
+      "tipo": "Respiratoria",
+      "sintomas": ["Tos crónica", "Disnea", "Producción de flema"],
+      "causas": ["Tabaquismo", "Contaminación"]
+    },
+    {
+      "id_enfermedad": 101,
+      "nombre": "Síndrome de Guillain-Barré",
+      "tipo": "Neurológica",
+      "sintomas": ["Debilidad muscular ascendente", "Hormigueo en extremidades", "Parálisis"],
+      "causas": ["Respuesta autoinmune postinfecciosa"]
+    },
+    {
+      "id_enfermedad": 102,
+      "nombre": "Enfermedad de Kawasaki",
+      "tipo": "Vasculitis",
+      "sintomas": ["Fiebre prolongada", "Erupción cutánea", "Inflamación de ganglios"],
+      "causas": ["Origen desconocido (posible infección + predisposición genética)"]
+    },
+    {
+      "id_enfermedad": 103,
+      "nombre": "Síndrome de Behçet",
+      "tipo": "Autoinmune",
+      "sintomas": ["Úlceras bucales/genitales", "Uveítis", "Lesiones cutáneas"],
+      "causas": ["Factores genéticos (HLA-B51) y ambientales"]
+    },
+    {
+      "id_enfermedad": 104,
+      "nombre": "Porfiria aguda intermitente",
+      "tipo": "Metabólica",
+      "sintomas": ["Dolor abdominal severo", "Neuropatía", "Orina oscura"],
+      "causas": ["Deficiencia enzimática (porfobilinógeno deaminasa)"]
+    },
+    {
+      "id_enfermedad": 105,
+      "nombre": "Enfermedad de Wilson",
+      "tipo": "Genética",
+      "sintomas": ["Ictericia", "Temblores", "Anillos de Kayser-Fleischer"],
+      "causas": ["Acumulación de cobre (mutación en gen ATP7B)"]
+    },
+    {
+      "id_enfermedad": 106,
+      "nombre": "Síndrome de Ehlers-Danlos",
+      "tipo": "Genética",
+      "sintomas": ["Hiperlaxitud articular", "Piel hiperextensible", "Fragilidad capilar"],
+      "causas": ["Defectos en síntesis de colágeno"]
+    },
+    {
+      "id_enfermedad": 107,
+      "nombre": "Enfermedad de Gaucher",
+      "tipo": "Lisosomal",
+      "sintomas": ["Hepatomegalia", "Anemia", "Dolor óseo"],
+      "causas": ["Deficiencia de glucocerebrosidasa"]
+    },
+    {
+      "id_enfermedad": 108,
+      "nombre": "Síndrome de Prader-Willi",
+      "tipo": "Genética",
+      "sintomas": ["Hipotonía neonatal", "Hiperfagia", "Obesidad"],
+      "causas": ["Defecto en cromosoma 15 (región q11-q13)"]
+    },
+    {
+      "id_enfermedad": 109,
+      "nombre": "Síndrome de Angelman",
+      "tipo": "Genética",
+      "sintomas": ["Retraso severo", "Risa inmotivada", "Ataxia"],
+      "causas": ["Deleción en cromosoma 15 (herencia materna)"]
+    },
+    {
+      "id_enfermedad": 110,
+      "nombre": "Enfermedad de Niemann-Pick",
+      "tipo": "Lisosomal",
+      "sintomas": ["Hepatomegalia", "Retraso psicomotor", "Mancha rojo-cereza en retina"],
+      "causas": ["Acumulación de esfingomielina"]
+    },
+    {
+      "id_enfermedad": 111,
+      "nombre": "Síndrome de Rett",
+      "tipo": "Neurológica",
+      "sintomas": ["Pérdida de habilidades", "Movimientos repetitivos", "Microcefalia"],
+      "causas": ["Mutación en gen MECP2"]
+    },
+    {
+      "id_enfermedad": 112,
+      "nombre": "Leucodistrofia metacromática",
+      "tipo": "Neurológica",
+      "sintomas": ["Degeneración motora", "Demencia", "Ceguera"],
+      "causas": ["Deficiencia de arilsulfatasa A"]
+    },
+    {
+      "id_enfermedad": 113,
+      "nombre": "Síndrome de Sturge-Weber",
+      "tipo": "Neurocutánea",
+      "sintomas": ["Mancha facial en vino de Oporto", "Convulsiones", "Glaucoma"],
+      "causas": ["Mutación somática en gen GNAQ"]
+    },
+    {
+      "id_enfermedad": 114,
+      "nombre": "Esclerosis tuberosa",
+      "tipo": "Genética",
+      "sintomas": ["Tumores benignos en múltiples órganos", "Convulsiones", "Angiofibromas faciales"],
+      "causas": ["Mutaciones en TSC1 o TSC2"]
+    },
+    {
+      "id_enfermedad": 115,
+      "nombre": "Síndrome de Noonan",
+      "tipo": "Genética",
+      "sintomas": ["Baja estatura", "Cardiopatía congénita", "Cuello alado"],
+      "causas": ["Mutaciones en RAS/MAPK"]
+    },
+    {
+      "id_enfermedad": 116,
+      "nombre": "Síndrome de Turner",
+      "tipo": "Cromosómica",
+      "sintomas": ["Baja estatura", "Disgenesia gonadal", "Cuello alado"],
+      "causas": ["Monosomía X (45,X)"]
+    },
+    {
+      "id_enfermedad": 117,
+      "nombre": "Síndrome de Klinefelter",
+      "tipo": "Cromosómica",
+      "sintomas": ["Ginecomastia", "Infertilidad", "Hipogonadismo"],
+      "causas": ["47,XXY"]
+    },
+    {
+      "id_enfermedad": 118,
+      "nombre": "Síndrome de Edwards",
+      "tipo": "Cromosómica",
+      "sintomas": ["Retraso grave", "Malformaciones cardíacas", "Cráneo alargado"],
+      "causas": ["Trisomía 18"]
+    },
+    {
+      "id_enfermedad": 119,
+      "nombre": "Síndrome de Patau",
+      "tipo": "Cromosómica",
+      "sintomas": ["Labio leporino", "Polidactilia", "Holoprosencefalia"],
+      "causas": ["Trisomía 13"]
+    },
+    {
+      "id_enfermedad": 120,
+      "nombre": "Síndrome de Cri du Chat",
+      "tipo": "Cromosómica",
+      "sintomas": ["Llanto agudo (como gato)", "Microcefalia", "Retraso severo"],
+      "causas": ["Deleción en brazo corto cromosoma 5"]
+    },
+    {
+      "id_enfermedad": 121,
+      "nombre": "Enfermedad de Pompe",
+      "tipo": "Metabólica",
+      "sintomas": ["Cardiomegalia", "Hipotonía", "Debilidad muscular"],
+      "causas": ["Deficiencia de alfa-glucosidasa"]
+    },
+    {
+      "id_enfermedad": 122,
+      "nombre": "Síndrome de Crigler-Najjar",
+      "tipo": "Metabólica",
+      "sintomas": ["Ictericia severa", "Kernicterus"],
+      "causas": ["Deficiencia de UDP-glucuronosiltransferasa"]
+    },
+    {
+      "id_enfermedad": 123,
+      "nombre": "Síndrome de Gilbert",
+      "tipo": "Metabólica",
+      "sintomas": ["Ictericia intermitente"],
+      "causas": ["Defecto leve en conjugación de bilirrubina"]
+    },
+    {
+      "id_enfermedad": 124,
+      "nombre": "Síndrome de Budd-Chiari",
+      "tipo": "Hepática",
+      "sintomas": ["Dolor abdominal", "Ascitis", "Hepatomegalia"],
+      "causas": ["Trombosis de venas hepáticas"]
+    },
+    {
+      "id_enfermedad": 125,
+      "nombre": "Enfermedad de Whipple",
+      "tipo": "Infecciosa",
+      "sintomas": ["Diarrea crónica", "Artralgias", "Pérdida de peso"],
+      "causas": ["Infección por Tropheryma whipplei"]
+    },
+    {
+      "id_enfermedad": 126,
+      "nombre": "Síndrome de Goodpasture",
+      "tipo": "Autoinmune",
+      "sintomas": ["Hemoptisis", "Insuficiencia renal"],
+      "causas": ["Autoanticuerpos contra colágeno tipo IV"]
+    },
+    {
+      "id_enfermedad": 127,
+      "nombre": "Granulomatosis con poliangitis",
+      "tipo": "Vasculitis",
+      "sintomas": ["Sinusitis crónica", "Hemoptisis", "Glomerulonefritis"],
+      "causas": ["Autoinmunidad (ANCA positivos)"]
+    },
+    {
+      "id_enfermedad": 128,
+      "nombre": "Síndrome de Churg-Strauss",
+      "tipo": "Vasculitis",
+      "sintomas": ["Asma", "Neuropatía", "Eosinofilia"],
+      "causas": ["Inflamación eosinofílica"]
+    },
+    {
+      "id_enfermedad": 129,
+      "nombre": "Poliarteritis nodosa",
+      "tipo": "Vasculitis",
+      "sintomas": ["Fiebre", "Dolor abdominal", "Neuropatía"],
+      "causas": ["Inflamación de arterias medianas"]
+    },
+    {
+      "id_enfermedad": 130,
+      "nombre": "Síndrome de Sweet",
+      "tipo": "Dermatológica",
+      "sintomas": ["Lesiones cutáneas dolorosas", "Fiebre"],
+      "causas": ["Reacción de hipersensibilidad"]
+    },
+    {
+      "id_enfermedad": 131,
+      "nombre": "Pénfigo vulgar",
+      "tipo": "Dermatológica",
+      "sintomas": ["Ampollas frágiles", "Dolor", "Erosiones"],
+      "causas": ["Autoanticuerpos contra desmogleína 3"]
+    },
+    {
+      "id_enfermedad": 132,
+      "nombre": "Penfigoide ampolloso",
+      "tipo": "Dermatológica",
+      "sintomas": ["Ampollas tensas", "Prurito"],
+      "causas": ["Autoanticuerpos contra BP180"]
+    },
+    {
+      "id_enfermedad": 133,
+      "nombre": "Dermatomiositis",
+      "tipo": "Autoinmune",
+      "sintomas": ["Debilidad muscular proximal", "Erupción en heliotropo"],
+      "causas": ["Miositis autoinmune"]
+    },
+    {
+      "id_enfermedad": 134,
+      "nombre": "Polimiositis",
+      "tipo": "Autoinmune",
+      "sintomas": ["Debilidad muscular", "Dificultad para tragar"],
+      "causas": ["Inflamación muscular idiopática"]
+    },
+    {
+      "id_enfermedad": 135,
+      "nombre": "Síndrome de Sjögren secundario",
+      "tipo": "Autoinmune",
+      "sintomas": ["Sequedad ocular/bucal", "Artritis"],
+      "causas": ["Asociado a lupus o artritis reumatoide"]
+    },
+    {
+      "id_enfermedad": 136,
+      "nombre": "Síndrome de Evans",
+      "tipo": "Hematológica",
+      "sintomas": ["Anemia hemolítica", "Trombocitopenia"],
+      "causas": ["Autoanticuerpos contra eritrocitos y plaquetas"]
+    },
+    {
+      "id_enfermedad": 137,
+      "nombre": "Púrpura trombocitopénica trombótica",
+      "tipo": "Hematológica",
+      "sintomas": ["Púrpura", "Fiebre", "Insuficiencia renal"],
+      "causas": ["Deficiencia de ADAMTS13"]
+    },
+    {
+      "id_enfermedad": 138,
+      "nombre": "Síndrome hemolítico-urémico",
+      "tipo": "Hematológica",
+      "sintomas": ["Anemia hemolítica", "Trombocitopenia", "Fallo renal"],
+      "causas": ["Toxina Shiga (E. coli O157:H7)"]
+    },
+    {
+      "id_enfermedad": 139,
+      "nombre": "Enfermedad de Castleman",
+      "tipo": "Linfoproliferativa",
+      "sintomas": ["Adenopatías", "Fiebre", "Hepatomegalia"],
+      "causas": ["Hiperplasia linfoide"]
+    },
+    {
+      "id_enfermedad": 140,
+      "nombre": "Síndrome de POEMS",
+      "tipo": "Hematológica",
+      "sintomas": ["Polineuropatía", "Organomegalia", "Endocrinopatía"],
+      "causas": ["Trastorno plasmocitario"]
+    },
+    {
+      "id_enfermedad": 141,
+      "nombre": "Amiloidosis",
+      "tipo": "Sistémica",
+      "sintomas": ["Proteinuria", "Cardiomegalia", "Neuropatía"],
+      "causas": ["Depósito de proteínas amiloides"]
+    },
+    {
+      "id_enfermedad": 142,
+      "nombre": "Sarcoidosis",
+      "tipo": "Sistémica",
+      "sintomas": ["Adenopatías hiliares", "Eritema nodoso", "Uveítis"],
+      "causas": ["Granulomas no caseificantes"]
+    },
+    {
+      "id_enfermedad": 143,
+      "nombre": "Histiocitosis de células de Langerhans",
+      "tipo": "Oncológica",
+      "sintomas": ["Lesiones óseas líticas", "Exoftalmos", "Diabetes insípida"],
+      "causas": ["Proliferación de células dendríticas"]
+    },
+    {
+      "id_enfermedad": 144,
+      "nombre": "Mastocitosis sistémica",
+      "tipo": "Hematológica",
+      "sintomas": ["Prurito", "Diarrea", "Hipotensión"],
+      "causas": ["Acumulación de mastocitos"]
+    },
+    {
+      "id_enfermedad": 145,
+      "nombre": "Síndrome carcinoide",
+      "tipo": "Oncológica",
+      "sintomas": ["Flushing", "Diarrea", "Valvulopatía cardíaca"],
+      "causas": ["Secreción de serotonina por tumor"]
+    },
+    {
+      "id_enfermedad": 146,
+      "nombre": "Feocromocitoma",
+      "tipo": "Endocrina",
+      "sintomas": ["Hipertensión paroxística", "Cefalea", "Sudoración"],
+      "causas": ["Tumor de médula suprarrenal"]
+    },
+    {
+      "id_enfermedad": 147,
+      "nombre": "Síndrome de Zollinger-Ellison",
+      "tipo": "Endocrina",
+      "sintomas": ["Úlceras pépticas recurrentes", "Diarrea"],
+      "causas": ["Gastrinoma (tumor productor de gastrina)"]
+    },
+    {
+      "id_enfermedad": 148,
+      "nombre": "Insulinoma",
+      "tipo": "Endocrina",
+      "sintomas": ["Hipoglucemia", "Confusión", "Sudoración"],
+      "causas": ["Tumor pancreático productor de insulina"]
+    },
+    {
+      "id_enfermedad": 149,
+      "nombre": "Enfermedad de Hirschsprung",
+      "tipo": "Digestiva",
+      "sintomas": ["Estreñimiento neonatal", "Distensión abdominal"],
+      "causas": ["Aganglionosis del colon"]
+    },
+    {
+      "id_enfermedad": 150,
+      "nombre": "Síndrome de Mallory-Weiss",
+      "tipo": "Digestiva",
+      "sintomas": ["Hematemesis", "Dolor epigástrico"],
+      "causas": ["Desgarro esofágico por vómitos"]
+    },
+    {
+      "id_enfermedad": 151,
+      "nombre": "Enfermedad de Menkes",
+      "tipo": "Genética",
+      "sintomas": ["Cabello ensortijado y frágil", "Hipotonía", "Convulsiones"],
+      "causas": ["Defecto en transporte de cobre"]
+    },
+    {
+      "id_enfermedad": 152,
+      "nombre": "Síndrome de Lesch-Nyhan",
+      "tipo": "Genética",
+      "sintomas": ["Retraso psicomotor", "Autolesiones", "Gota"],
+      "causas": ["Deficiencia de HPRT"]
+    },
+    {
+      "id_enfermedad": 153,
+      "nombre": "Síndrome de Wernicke-Korsakoff",
+      "tipo": "Neurológica",
+      "sintomas": ["Confusión", "Ataxia", "Amnesia"],
+      "causas": ["Deficiencia de tiamina (alcoholismo)"]
+    },
+    {
+      "id_enfermedad": 154,
+      "nombre": "Encefalopatía hepática",
+      "tipo": "Neurológica",
+      "sintomas": ["Confusión", "Asterixis", "Coma"],
+      "causas": ["Acumulación de amonio"]
+    },
+    {
+      "id_enfermedad": 155,
+      "nombre": "Síndrome de Reye",
+      "tipo": "Metabólica",
+      "sintomas": ["Vómitos", "Letargia", "Hepatomegalia"],
+      "causas": ["Daño mitocondrial (asociado a aspirina)"]
+    },
+    {
+      "id_enfermedad": 156,
+      "nombre": "Enfermedad de Creutzfeldt-Jakob",
+      "tipo": "Neurológica",
+      "sintomas": ["Demencia rápidamente progresiva", "Mioclonías"],
+      "causas": ["Priones"]
+    },
+    {
+      "id_enfermedad": 157,
+      "nombre": "Síndrome de Gerstmann-Sträussler-Scheinker",
+      "tipo": "Neurológica",
+      "sintomas": ["Ataxia", "Demencia"],
+      "causas": ["Priones (mutación en gen PRNP)"]
+    },
+    {
+      "id_enfermedad": 158,
+      "nombre": "Kuru",
+      "tipo": "Neurológica",
+      "sintomas": ["Ataxia", "Temblores", "Demencia"],
+      "causas": ["Canibalismo ritual (transmisión de priones)"]
+    },
+    {
+      "id_enfermedad": 159,
+      "nombre": "Enfermedad de Pick",
+      "tipo": "Neurológica",
+      "sintomas": ["Demencia frontotemporal", "Cambios de personalidad"],
+      "causas": ["Degeneración lobar frontotemporal"]
+    },
+    {
+      "id_enfermedad": 160,
+      "nombre": "Síndrome de Fahr",
+      "tipo": "Neurológica",
+      "sintomas": ["Calcificaciones cerebrales", "Trastornos psiquiátricos", "Parkinsonismo"],
+      "causas": ["Trastornos del metabolismo del calcio"]
+    },
+    {
+      "id_enfermedad": 161,
+      "nombre": "Síndrome de Ramsay Hunt",
+      "tipo": "Neurológica",
+      "sintomas": ["Parálisis facial", "Vesículas en oído", "Acúfenos"],
+      "causas": ["Reactivación de VZV en ganglio geniculado"]
+    },
+    {
+      "id_enfermedad": 162,
+      "nombre": "Síndrome de Brown-Séquard",
+      "tipo": "Neurológica",
+      "sintomas": ["Hemisíndrome motor ipsilateral", "Pérdida sensorial contralateral"],
+      "causas": ["Hemiscción medular"]
+    },
+    {
+      "id_enfermedad": 163,
+      "nombre": "Síndrome de Horner",
+      "tipo": "Neurológica",
+      "sintomas": ["Ptosis", "Miosis", "Anhidrosis"],
+      "causas": ["Interrupción de vía simpática"]
+    },
+    {
+      "id_enfermedad": 164,
+      "nombre": "Síndrome de Waardenburg",
+      "tipo": "Genética",
+      "sintomas": ["Sordera", "Heterocromía del iris", "Mechón blanco"],
+      "causas": ["Mutaciones en genes PAX3 o MITF"]
+    },
+    {
+      "id_enfermedad": 165,
+      "nombre": "Síndrome de Alport",
+      "tipo": "Genética",
+      "sintomas": ["Hematuria", "Pérdida auditiva", "Insuficiencia renal"],
+      "causas": ["Mutación en colágeno tipo IV"]
+    },
+    {
+      "id_enfermedad": 166,
+      "nombre": "Síndrome de Bartter",
+      "tipo": "Renal",
+      "sintomas": ["Hipokalemia", "Alcalosis metabólica", "Poliuria"],
+      "causas": ["Defecto en asa de Henle"]
+    },
+    {
+      "id_enfermedad": 167,
+      "nombre": "Síndrome de Gitelman",
+      "tipo": "Renal",
+      "sintomas": ["Hipokalemia", "Hipomagnesemia", "Tetania"],
+      "causas": ["Defecto en túbulo distal"]
+    },
+    {
+      "id_enfermedad": 168,
+      "nombre": "Síndrome de Fanconi",
+      "tipo": "Renal",
+      "sintomas": ["Poliuria", "Raquitismo", "Acidosis tubular"],
+      "causas": ["Disfunción del túbulo proximal"]
+    },
+    {
+      "id_enfermedad": 169,
+      "nombre": "Enfermedad de Fabry",
+      "tipo": "Lisosomal",
+      "sintomas": ["Dolor en extremidades", "Angioqueratomas", "Insuficiencia renal"],
+      "causas": ["Deficiencia de alfa-galactosidasa"]
+    },
+    {
+      "id_enfermedad": 170,
+      "nombre": "Síndrome de Brugada",
+      "tipo": "Cardiovascular",
+      "sintomas": ["Síncope", "Arritmia ventricular", "Muerte súbita"],
+      "causas": ["Mutación en canal de sodio cardíaco"]
+    },
+    {
+      "id_enfermedad": 171,
+      "nombre": "Síndrome de Wolff-Parkinson-White",
+      "tipo": "Cardiovascular",
+      "sintomas": ["Palpitaciones", "Taquicardia", "Síncope"],
+      "causas": ["Vía accesoria (haz de Kent)"]
+    },
+    {
+      "id_enfermedad": 172,
+      "nombre": "Miocardiopatía hipertrófica",
+      "tipo": "Cardiovascular",
+      "sintomas": ["Disnea", "Dolor torácico", "Síncope"],
+      "causas": ["Mutaciones en proteínas sarcoméricas"]
+    },
+    {
+      "id_enfermedad": 173,
+      "nombre": "Síndrome de Eisenmenger",
+      "tipo": "Cardiovascular",
+      "sintomas": ["Cianosis", "Disnea", "Hipocratismo digital"],
+      "causas": ["Hipertensión pulmonar secundaria a cardiopatía congénita"]
+    },
+    {
+      "id_enfermedad": 174,
+      "nombre": "Síndrome de Maroteaux-Lamy",
+      "tipo": "Lisosomal",
+      "sintomas": ["Disfostosis múltiple", "Hepatomegalia", "Opacidad corneal"],
+      "causas": ["Deficiencia de arilsulfatasa B"]
+    },
+    {
+      "id_enfermedad": 175,
+      "nombre": "Síndrome de Hurler",
+      "tipo": "Lisosomal",
+      "sintomas": ["Facies tosca", "Retraso psicomotor", "Hernias"],
+      "causas": ["Deficiencia de alfa-L-iduronidasa"]
+    },
+    {
+      "id_enfermedad": 176,
+      "nombre": "Síndrome de Hunter",
+      "tipo": "Lisosomal",
+      "sintomas": ["Rasgos faciales toscos", "Sordera", "Retraso mental"],
+      "causas": ["Deficiencia de iduronato-2-sulfatasa"]
+    },
+    {
+      "id_enfermedad": 177,
+      "nombre": "Síndrome de Sanfilippo",
+      "tipo": "Lisosomal",
+      "sintomas": ["Hiperactividad", "Deterioro cognitivo", "Rasgos faciales toscos"],
+      "causas": ["Deficiencia en degradación de heparán sulfato"]
+    },
+    {
+      "id_enfermedad": 178,
+      "nombre": "Síndrome de Morquio",
+      "tipo": "Lisosomal",
+      "sintomas": ["Enanismo", "Inestabilidad atlantoaxial", "Opacidad corneal"],
+      "causas": ["Deficiencia de galactosamina-6-sulfatasa"]
+    },
+    {
+      "id_enfermedad": 179,
+      "nombre": "Síndrome de Scheie",
+      "tipo": "Lisosomal",
+      "sintomas": ["Opacidad corneal", "Síndrome del túnel carpiano", "Valvulopatía aórtica"],
+      "causas": ["Deficiencia leve de alfa-L-iduronidasa"]
+    },
+    {
+      "id_enfermedad": 180,
+      "nombre": "Síndrome de Stickler",
+      "tipo": "Genética",
+      "sintomas": ["Artropatía precoz", "Miopía", "Paladar hendido"],
+      "causas": ["Mutación en colágeno tipo II o XI"]
+    },
+    {
+      "id_enfermedad": 181,
+      "nombre": "Síndrome de Usher",
+      "tipo": "Genética",
+      "sintomas": ["Sordera congénita", "Retinitis pigmentaria"],
+      "causas": ["Mutaciones en genes MYO7A o CDH23"]
+    },
+    {
+      "id_enfermedad": 182,
+      "nombre": "Síndrome de Pendred",
+      "tipo": "Genética",
+      "sintomas": ["Hipoacusia", "Bocio"],
+      "causas": ["Mutación en gen SLC26A4"]
+    },
+    {
+      "id_enfermedad": 183,
+      "nombre": "Síndrome de CHARGE",
+      "tipo": "Genética",
+      "sintomas": ["Coloboma", "Cardiopatía", "Atresia coanal"],
+      "causas": ["Mutación en gen CHD7"]
+    },
+    {
+      "id_enfermedad": 184,
+      "nombre": "Síndrome de VACTERL",
+      "tipo": "Genética",
+      "sintomas": ["Malformaciones vertebrales", "Atresia anal", "Cardiopatía"],
+      "causas": ["Origen multifactorial"]
+    },
+    {
+      "id_enfermedad": 185,
+      "nombre": "Síndrome de Holt-Oram",
+      "tipo": "Genética",
+      "sintomas": ["Cardiopatía congénita", "Anomalías radiales"],
+      "causas": ["Mutación en gen TBX5"]
+    },
+    {
+      "id_enfermedad": 186,
+      "nombre": "Síndrome de DiGeorge",
+      "tipo": "Genética",
+      "sintomas": ["Hipocalcemia", "Cardiopatía", "Inmunodeficiencia"],
+      "causas": ["Deleción 22q11.2"]
+    },
+    {
+      "id_enfermedad": 187,
+      "nombre": "Síndrome de Williams",
+      "tipo": "Genética",
+      "sintomas": ["Rasgos faciales característicos", "Estenosis aórtica", "Hipercalcemia"],
+      "causas": ["Deleción en cromosoma 7"]
+    },
+    {
+      "id_enfermedad": 188,
+      "nombre": "Síndrome de Rubinstein-Taybi",
+      "tipo": "Genética",
+      "sintomas": ["Pulgares anchos", "Retraso mental", "Rasgos faciales distintivos"],
+      "causas": ["Mutación en gen CREBBP"]
+    },
+    {
+      "id_enfermedad": 189,
+      "nombre": "Síndrome de Apert",
+      "tipo": "Genética",
+      "sintomas": ["Craneosinostosis", "Sindactilia", "Retraso mental"],
+      "causas": ["Mutación en gen FGFR2"]
+    },
+    {
+      "id_enfermedad": 190,
+      "nombre": "Síndrome de Treacher Collins",
+      "tipo": "Genética",
+      "sintomas": ["Hipoplasia facial", "Malformaciones de oídos", "Pérdida auditiva"],
+      "causas": ["Mutación en gen TCOF1"]
+    },
+    {
+      "id_enfermedad": 191,
+      "nombre": "Síndrome de Pierre Robin",
+      "tipo": "Genética",
+      "sintomas": ["Micrognatia", "Glosoptosis", "Paladar hendido"],
+      "causas": ["Origen multifactorial"]
+    },
+    {
+      "id_enfermedad": 192,
+      "nombre": "Síndrome de Goldenhar",
+      "tipo": "Genética",
+      "sintomas": ["Microtia", "Epibulbar dermoide", "Asimetría facial"],
+      "causas": ["Desarrollo anormal de 1° y 2° arcos branquiales"]
+    },
+    {
+      "id_enfermedad": 193,
+      "nombre": "Síndrome de Moebius",
+      "tipo": "Neurológica",
+      "sintomas": ["Parálisis facial bilateral", "Ausencia de movimientos oculares laterales"],
+      "causas": ["Agenesia de núcleos de pares craneales"]
+    },
+    {
+      "id_enfermedad": 194,
+      "nombre": "Síndrome de Poland",
+      "tipo": "Genética",
+      "sintomas": ["Aplasia de músculo pectoral", "Sindactilia"],
+      "causas": ["Interrupción del flujo sanguíneo embrionario"]
+    },
+    {
+      "id_enfermedad": 195,
+      "nombre": "Síndrome de Proteus",
+      "tipo": "Genética",
+      "sintomas": ["Crecimiento asimétrico", "Tumores subcutáneos"],
+      "causas": ["Mutación somática en gen AKT1"]
+    },
+    {
+      "id_enfermedad": 196,
+      "nombre": "Síndrome de Klippel-Trenaunay",
+      "tipo": "Genética",
+      "sintomas": ["Manchas en vino de Oporto", "Hipertrofia de extremidades", "Malformaciones venosas"],
+      "causas": ["Mutación somática en PIK3CA"]
+    },
+    {
+      "id_enfermedad": 197,
+      "nombre": "Síndrome de Peutz-Jeghers",
+      "tipo": "Genética",
+      "sintomas": ["Pólipos hamartomatosos", "Pigmentación mucocutánea"],
+      "causas": ["Mutación en gen STK11"]
+    },
+    {
+      "id_enfermedad": 198,
+      "nombre": "Síndrome de Gardner",
+      "tipo": "Genética",
+      "sintomas": ["Pólipos colónicos", "Osteomas", "Tumores desmoides"],
+      "causas": ["Variante de poliposis adenomatosa familiar"]
+    },
+    {
+      "id_enfermedad": 199,
+      "nombre": "Síndrome de Lynch",
+      "tipo": "Genética",
+      "sintomas": ["Cáncer colorrectal", "Endometrio", "Ovario"],
+      "causas": ["Mutación en genes de reparación del ADN"]
+    },
+    {
+      "id_enfermedad": 200,
+      "nombre": "Síndrome de Cowden",
+      "tipo": "Genética",
+      "sintomas": ["Hamartomas múltiples", "Cáncer de mama", "Macrocefalia"],
+      "causas": ["Mutación en gen PTEN"]
+    }
+  ]
+}
