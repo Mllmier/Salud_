@@ -270,7 +270,6 @@ public class admin extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         Panel_doctor1 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         Paneles_jtablepane = new javax.swing.JTabbedPane();
@@ -294,14 +293,11 @@ public class admin extends javax.swing.JFrame {
         jSeparator6 = new javax.swing.JSeparator();
         jPanel5 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel46 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         cbSexo2 = new javax.swing.JComboBox<>();
         cbEspecialidad = new javax.swing.JComboBox<>();
@@ -725,9 +721,6 @@ public class admin extends javax.swing.JFrame {
 
         jPanel2.add(Panel_doctor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 320, -1));
 
-        jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Logo Medicina Salud Minimalista Corporativo Azul  (3).jpg"))); // NOI18N
-        jPanel2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 240, 160));
-
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 770));
 
         jPanel3.setBackground(new java.awt.Color(10, 92, 184));
@@ -741,7 +734,7 @@ public class admin extends javax.swing.JFrame {
         });
         jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 20, -1, 40));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 1020, 80));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 1020, 40));
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -851,9 +844,6 @@ public class admin extends javax.swing.JFrame {
         jLabel15.setText("AGREGAR DOCTOR");
         jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 190, 50));
 
-        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add-button (1).png"))); // NOI18N
-        jPanel5.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 70, 70));
-
         jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 370, 70));
 
         jPanel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -871,9 +861,6 @@ public class admin extends javax.swing.JFrame {
         jLabel16.setText("MODIFICAR DOCTOR");
         jPanel6.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 220, 50));
 
-        jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/pen.png"))); // NOI18N
-        jPanel6.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 80, 70));
-
         jPanel4.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 370, 70));
 
         jPanel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -887,9 +874,6 @@ public class admin extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel13.setText("ELIMINAR DOCTOR");
         jPanel9.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 190, 50));
-
-        jLabel46.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/delete_1.png"))); // NOI18N
-        jPanel9.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 80, 70));
 
         jPanel4.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 370, 70));
 
@@ -2601,17 +2585,13 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel5;
