@@ -1024,7 +1024,7 @@ public void cargarCitasPorMedicoYFecha(String nombreApellido, Date fechaSeleccio
         return;
     }
 
-    tableModelConsultarMedico.setRowCount(0); // Limpiar tabla
+    tableModelConsultarMedico.setRowCount(0); 
 
     LocalDate fechaLocal = fechaSeleccionada.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     List<Cita> todasCitas = ControllerCitas.getInstance().obtenerTodasLasCitas();
@@ -1035,7 +1035,6 @@ public void cargarCitasPorMedicoYFecha(String nombreApellido, Date fechaSeleccio
         Medico medico = medicoDAO.buscarPorDocumentoMedico(cita.getDocumentoMedico());
 
         if (medico != null) {
-            // Comparación flexible de nombre o apellido
             String nombreCompleto = (medico.getNombres() + " " + medico.getApellidos()).toLowerCase();
             String[] partes = nombreApellido.trim().toLowerCase().split("\\s+");
 
@@ -1085,6 +1084,7 @@ LocalDate fechaCita = cita.getFechaCita();
             JOptionPane.INFORMATION_MESSAGE);
     }
 }
+
  public String generarCodigoUnico() {
     List<Cita> citas = citasDAO.cargarTodos();
     int maxNumero = 0;

@@ -186,7 +186,7 @@ private void configurarCitas(){
      cboEstadoCita2.removeAllItems();
     cboEstadoCita2.addItem("PROGRAMADA");
     cboEstadoCita2.addItem("CANCELADA");
-    cboEstadoCita2.setSelectedIndex(0); // Selecciona por defecto PROGRAMADA
+    cboEstadoCita2.setSelectedIndex(0);
     cboEstadoCita2.setEnabled(true);  
     controllerCitas.cargarSalasEnComboBox(cboConsultorio2);
     controllerCitas.setLblNombreMedico(lblNombreMedico); 
@@ -713,7 +713,7 @@ public void verificarDisponibilidadHoraActualizacion() {
         jLabel77.setText("CITAS ");
         jPanel9.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 530, 40));
 
-        jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 1000, 190));
+        jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 1000, 110));
 
         TabbetCitas.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -2084,6 +2084,8 @@ for (int i = 0; i < TabbetCitas.getTabCount(); i++) {
     tableModelConsultarMedico.setRowCount(0);
 
     controllerCitas.cargarCitasPorMedicoYFecha(nombreApellido, fechaSeleccionada);
+
+
 
     }//GEN-LAST:event_btnConsultarCitaMedicoActionPerformed
 
