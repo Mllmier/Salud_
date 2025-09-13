@@ -1024,9 +1024,12 @@ public void cargarCitasPorMedicoYFecha(String nombreApellido, Date fechaSeleccio
         return;
     }
 
-    tableModelConsultarMedico.setRowCount(0); 
+    tableModelConsultarMedico.setRowCount(0); // Limpiar tabla
 
-    LocalDate fechaLocal = fechaSeleccionada.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    LocalDate fechaLocal = fechaSeleccionada.toInstant()
+            .atZone(ZoneId.systemDefault())
+            .toLocalDate();
+
     List<Cita> todasCitas = ControllerCitas.getInstance().obtenerTodasLasCitas();
 
     boolean encontroCita = false;
@@ -1046,7 +1049,9 @@ public void cargarCitasPorMedicoYFecha(String nombreApellido, Date fechaSeleccio
                 }
             }
 
-LocalDate fechaCita = cita.getFechaCita();
+ 
+            LocalDate fechaCita = cita.getFechaCita(); 
+
             boolean coincideFecha = fechaCita.equals(fechaLocal);
 
             if (coincideNombre && coincideFecha) {
