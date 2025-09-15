@@ -95,6 +95,7 @@ public class ControllerCitasPaciente {
     private JComboBox<String> lblEstadoCita2;
     private JComboBox<String> cboConsultorio2;
     private JComboBox<String> cboSede2;
+ 
     private JComboBox<String> cboMedico2;
     private JLabel lblEspecialidadMedico2;
     private JLabel lblNombrePaciente2;

@@ -405,8 +405,24 @@
     "hora": "07:00",
     "tipoCita": "Regular",
     "motivo": "Seguimiento",
-    "estado": "PROGRAMADA",
+    "estado": "COMPLETADA",
     "documentoPaciente": "2134567890",
+    "paciente": {
+      "tipoSangre": "O-",
+      "tipoDocumento": "TI",
+      "antecedentes": "dufre de alergias a las abejas",
+      "peso": 24,
+      "altura": 35.0,
+      "numeroDocumento": "2134567890",
+      "nombres": "araima",
+      "apellidos": "davila",
+      "fechaNacimiento": "2025-05-08",
+      "sexo": "F",
+      "eps": "Comfamiliar",
+      "email": "arai@gmail.com",
+      "celular": "1234567890",
+      "contraseña": "455789"
+    },
     "medico": {
       "especialidad": "Cardilogo",
       "fechaContratacion": "2025-05-08",
@@ -491,6 +507,76 @@
       "contraseña": ".P}z7Q]@3a"
     },
     "documentoMedico": "63525192",
+    "sala": {
+      "nombreSala": "quirofano",
+      "codigoSala": "SAL.002",
+      "tipoSala": "Sala de Urgencias",
+      "capacidadSala": "8"
+    },
+    "sede": {
+      "idSede": "SEDE002",
+      "nombreSede": "Sede Norte",
+      "direccion": "Avenida 5 #23-45, Barrio Norte",
+      "horarioFuncionamiento": "Lunes-Sabado 9:00-17:00"
+    }
+  },
+  {
+    "IdCita": "Med.006",
+    "fechaCita": "2025-09-25",
+    "hora": "\u003cSeleccione\u003e",
+    "tipoCita": "Regular",
+    "motivo": "Seguimiento",
+    "estado": "PROGRAMADA",
+    "documentoPaciente": "2871528484",
+    "medico": {
+      "especialidad": "Medico general",
+      "fechaContratacion": "2025-09-25",
+      "horario": "Martes-jueves-sabado",
+      "numeroDocumento": "0987654321",
+      "nombres": "sofia",
+      "apellidos": "carson",
+      "fechaNacimiento": "2025-09-19",
+      "sexo": "F",
+      "email": "sofia@clinica.com",
+      "celular": "1234567890",
+      "contraseña": ":g-PAS_1Bq"
+    },
+    "documentoMedico": "0987654321",
+    "sala": {
+      "nombreSala": "quirofano",
+      "codigoSala": "SAL.002",
+      "tipoSala": "Sala de Urgencias",
+      "capacidadSala": "8"
+    },
+    "sede": {
+      "idSede": "SEDE002",
+      "nombreSede": "Sede Norte",
+      "direccion": "Avenida 5 #23-45, Barrio Norte",
+      "horarioFuncionamiento": "Lunes-Sabado 9:00-17:00"
+    }
+  },
+  {
+    "IdCita": "Med.007",
+    "fechaCita": "2025-09-26",
+    "hora": "08:00am",
+    "tipoCita": "Regular",
+    "motivo": "Prevencion",
+    "estado": "PROGRAMADA",
+    "documentoPaciente": "123456789",
+    "medico": {
+      "especialidad": "Medico general",
+      "fechaContratacion": "2025-09-25",
+      "horario": "Martes-jueves-sabado",
+      "numeroDocumento": "0987654321",
+      "nombres": "sofia",
+      "apellidos": "carson",
+      "fechaNacimiento": "2025-09-19",
+      "sexo": "F",
+      "email": "sofia@clinica.com",
+      "celular": "1234567890",
+      "contraseña": ":g-PAS_1Bq"
+    },
+    "documentoMedico": "0987654321",
     "sala": {
       "nombreSala": "quirofano",
       "codigoSala": "SAL.002",
