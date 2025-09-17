@@ -23,6 +23,135 @@ public class CredencialesPanel {
     }
 
     public void mostrarPanel() {
+        // Primero mostrar diálogo de verificación de contraseña
+        mostrarDialogoVerificacion();
+    }
+
+    private void mostrarDialogoVerificacion() {
+        // Configuración de colores y fuentes
+        Color primaryColor = new Color(0, 102, 204);
+        Color backgroundColor = new Color(248, 249, 250);
+        Font labelFont = new Font("Segoe UI", Font.BOLD, 13);
+        Font buttonFont = new Font("Segoe UI", Font.BOLD, 12);
+
+        // Crear panel de verificación
+        JPanel panelVerificacion = new JPanel(new BorderLayout(10, 10));
+        panelVerificacion.setBorder(new EmptyBorder(20, 20, 20, 20));
+        panelVerificacion.setBackground(backgroundColor);
+
+        // Título
+        JLabel titleLabel = new JLabel("Verificación de Seguridad");
+        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        titleLabel.setForeground(primaryColor);
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        titleLabel.setBorder(new EmptyBorder(0, 0, 15, 0));
+        panelVerificacion.add(titleLabel, BorderLayout.NORTH);
+
+        // Panel de contenido
+        JPanel contentPanel = new JPanel(new GridBagLayout());
+        contentPanel.setBackground(Color.WHITE);
+        contentPanel.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(200, 200, 200)),
+            new EmptyBorder(15, 15, 15, 15)
+        ));
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(8, 8, 8, 8);
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+
+        // Mensaje
+        JLabel lblMensaje = new JLabel("<html><div style='width: 250px; text-align: justify;'>"
+                + "Para acceder a tus credenciales, por favor ingresa tu contraseña actual:"
+                + "</div></html>");
+        lblMensaje.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 2;
+        contentPanel.add(lblMensaje, gbc);
+
+        // Campo de contraseña
+        JLabel lblPass = new JLabel("Contraseña:");
+        lblPass.setFont(labelFont);
+        JPasswordField txtPass = new JPasswordField(20);
+        txtPass.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        txtPass.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(200, 200, 200)),
+            BorderFactory.createEmptyBorder(5, 8, 5, 8)
+        ));
+
+        gbc.gridy = 1;
+        gbc.gridwidth = 1;
+        contentPanel.add(lblPass, gbc);
+        
+        gbc.gridx = 1;
+        contentPanel.add(txtPass, gbc);
+
+        panelVerificacion.add(contentPanel, BorderLayout.CENTER);
+
+        // Panel de botones
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 10));
+        buttonPanel.setBackground(backgroundColor);
+        
+        JButton btnCancelar = new JButton("Cancelar");
+        styleButton(btnCancelar, new Color(108, 117, 125), buttonFont);
+        JButton btnVerificar = new JButton("Verificar");
+        styleButton(btnVerificar, primaryColor, buttonFont);
+
+        buttonPanel.add(btnCancelar);
+        buttonPanel.add(btnVerificar);
+
+        panelVerificacion.add(buttonPanel, BorderLayout.SOUTH);
+
+        // Configurar diálogo de verificación
+        JDialog dialogVerificacion = new JDialog(parentFrame, "Verificación Requerida", true);
+        dialogVerificacion.setContentPane(panelVerificacion);
+        dialogVerificacion.pack();
+        dialogVerificacion.setResizable(false);
+        dialogVerificacion.setLocationRelativeTo(parentFrame);
+
+        // Acción del botón Verificar
+        btnVerificar.addActionListener(e -> {
+            String password = new String(txtPass.getPassword());
+            if (password.isEmpty()) {
+                JOptionPane.showMessageDialog(dialogVerificacion, 
+                    "Por favor ingresa tu contraseña", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            try {
+                // Verificar credenciales
+                boolean credencialesValidas = adminDAO.verificarCredenciales(emailAdmin, password);
+                
+                if (credencialesValidas) {
+                    dialogVerificacion.dispose();
+                    mostrarCredenciales(); // Mostrar el panel de credenciales
+                } else {
+                    JOptionPane.showMessageDialog(dialogVerificacion, 
+                        "Contraseña incorrecta", 
+                        "Error", 
+                        JOptionPane.ERROR_MESSAGE);
+                    txtPass.setText("");
+                }
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(dialogVerificacion, 
+                    "Error al verificar credenciales: " + ex.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        });
+
+        // Acción del botón Cancelar
+        btnCancelar.addActionListener(e -> dialogVerificacion.dispose());
+
+        // Hacer visible el diálogo
+        dialogVerificacion.setVisible(true);
+    }
+
+    private void mostrarCredenciales() {
         try {
             // Obtener datos del administrador
             JsonObject admin = adminDAO.obtenerAdministradorPorEmail(emailAdmin);

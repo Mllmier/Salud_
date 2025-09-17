@@ -17,5 +17,6 @@ public interface AdminDAO {
     boolean actualizarCredenciales(String emailActual, String nuevoEmail, String nuevaContraseña) throws IOException;
     boolean existeEmail(String email) throws IOException;
     boolean actualizarDatosAdministrador(String emailOriginal, JsonObject nuevosDatos) throws IOException;
+    boolean verificarCredenciales(String email, String password) throws IOException;
 
 }
