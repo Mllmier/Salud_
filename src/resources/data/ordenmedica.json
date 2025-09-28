@@ -747,5 +747,32 @@
     "motivo": "Sede Norte",
     "sede": "Seguimiento",
     "estado": "COMPLETADA"
+  },
+  {
+    "idCita": "NOASISTIO",
+    "nombre": "pedro",
+    "apellido": "leon",
+    "email": "pedro@gmail.com",
+    "altura": "2",
+    "peso": "65",
+    "fechaNacimiento": "13/05/2009",
+    "tipoSangre": "B-",
+    "antecedentes": "sufre de alergias constantes",
+    "celular": "3114221897",
+    "sexo": "M",
+    "eps": "Nueva Eps",
+    "diagnostico": "Enfermedad: Artritis reumatoide\nSíntomas: Dolor articular, Rigidez matutina, Hinchazón",
+    "receta": "nnnnn",
+    "areamedicamentos": [
+      "Clonazepam"
+    ],
+    "fecha": "2025-05-22",
+    "hora": "08:00am",
+    "nombreMedico": "Haider",
+    "apellidoMedico": "Stiven",
+    "especialidadMedico": "Cardilogo",
+    "motivo": "Sede Norte",
+    "sede": "Seguimiento",
+    "estado": "NOASISTIO"
   }
 ]

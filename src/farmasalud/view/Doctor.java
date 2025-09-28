@@ -11,6 +11,8 @@ import Controller.ControllerPaciente;
 import DAOImpl.MedicoDAOImpl;
 import dao.MedicoDAO;
 import dao.PacienteDAO;
+import java.time.ZoneId;
+import java.text.SimpleDateFormat;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -86,6 +88,7 @@ cita.setPaciente(paciente);
 
         Object valorFecha = tableCitasPorMedico.getValueAt(filaSeleccionada, 8);
         Object valorHora = tableCitasPorMedico.getValueAt(filaSeleccionada, 6);
+        Object IdCita = tableCitasPorMedico.getValueAt(filaSeleccionada, 5);
         Object valorMotivo = tableCitasPorMedico.getValueAt(filaSeleccionada, 15);
         Object valorEstado = tableCitasPorMedico.getValueAt(filaSeleccionada, 11);
         Object valorSede = tableCitasPorMedico.getValueAt(filaSeleccionada, 7);
@@ -97,7 +100,7 @@ cita.setPaciente(paciente);
             String estado = valorEstado != null ? valorEstado.toString() : "";
             String sede = valorSede != null ? valorSede.toString() : "";
             String documento = valorDocumento.toString();
-
+           
             DialogAtender dialog = new DialogAtender(null, true);
             dialog.setCita(cita);
             dialog.setCitaSeleccionada(cita);
@@ -182,7 +185,7 @@ cita.setPaciente(paciente);
 
    
      public void inicializarConDoctor(String documento) {
-         MedicoDAO medicodao = new MedicoDAOImpl();
+        MedicoDAO medicodao = new MedicoDAOImpl();
          this.medicoLogueado = medicodao.buscarMedicoPorIdentificacion(documento);
         this.documentoDoctor = documento;
         actualizarInterfaz();
@@ -200,6 +203,7 @@ cita.setPaciente(paciente);
                 }
             }
         });
+ 
  
 
     }
@@ -238,11 +242,7 @@ cita.setPaciente(paciente);
             }
         }
     }
-
-   
-  
-
-   
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -504,19 +504,25 @@ cita.setPaciente(paciente);
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     private void dateChooserFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateChooserFechaActionPerformed
-        Date fecha = dateChooserF.getDate();
+     Date fecha = dateChooserF.getDate();
         if (fecha == null) {
             JOptionPane.showMessageDialog(this, "Seleccione una fecha.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }
         Date fechaSeleccionada = dateChooserF.getDate();
 
-        // Validación 2: Fecha futura
-        if (fechaSeleccionada.before(new Date())) {
-            JOptionPane.showMessageDialog(this, "No puede seleccionar fechas pasadas.", "Error", JOptionPane.ERROR_MESSAGE);
-            dateChooserF.setDate(null);
-            return;
-        }
+        Calendar calHoy = Calendar.getInstance();
+calHoy.set(Calendar.HOUR_OF_DAY, 0);
+calHoy.set(Calendar.MINUTE, 0);
+calHoy.set(Calendar.SECOND, 0);
+calHoy.set(Calendar.MILLISECOND, 0);
+Date hoySinHora = calHoy.getTime();
+
+if (fechaSeleccionada.before(hoySinHora)) {
+    JOptionPane.showMessageDialog(this, "No puede seleccionar fechas pasadas.", "Error", JOptionPane.ERROR_MESSAGE);
+    dateChooserF.setDate(null);
+    return;
+}
         dateChooserF.setDateFormatString("dd/MM/yyyy"); 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(fechaSeleccionada);
