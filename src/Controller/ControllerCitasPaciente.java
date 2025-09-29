@@ -1064,6 +1064,18 @@ public boolean cancelarCitaPorId(String idCita) {
     }
     return false;
 }
+public List<Cita> obtenerCitasPorMedico(String documentoMedico) {
+    List<Cita> todasLasCitas = citasDAO.cargarTodos();
+    List<Cita> citasMedico = new ArrayList<>();
+    
+    for (Cita cita : todasLasCitas) {
+        if (cita.getDocumentoMedico() != null && 
+            cita.getDocumentoMedico().equals(documentoMedico)) {
+            citasMedico.add(cita);
+        }
+    }
+    return citasMedico;
+}
 
 
 

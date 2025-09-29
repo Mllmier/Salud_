@@ -36,6 +36,17 @@
     "sexo": "F",
     "email": "sofia@clinica.com",
     "celular": "1234567890",
-    "contraseña": ":g-PAS_1Bq"
+    "contraseña": ":g-PAS_1Bq",
+    "especialidad": "terapeusta",
+    "fechaContratacion": "2025-09-17",
+    "horario": "Martes-jueves-sabado",
+    "numeroDocumento": "123456789",
+    "nombres": "sharlok",
+    "apellidos": "alcazar",
+    "fechaNacimiento": "2000-05-16",
+    "sexo": "F",
+    "email": "haider.pabonmejia@unicolombo.edu.co",
+    "celular": "3044451166",
+    "contraseña": "63K1Hx,OjW"
   }
 ]

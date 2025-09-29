@@ -71,6 +71,7 @@ public void setDocumentoPaciente(String documentoPaciente) {
     public void setFechaYHora(String fecha, String hora,String idCita,String estado,String motivo,String sede,String documento) {
     
     lblFechaCita.setText(fecha);  
+    lblIdCita.setText(idCita);
     lblHoraCita.setText(hora);  
     lblEstado.setText(estado);
     lblMotivo.setText(motivo);
@@ -214,6 +215,7 @@ public void setFilaSeleccionada(int fila) {
         lblAltura.setText("");
         txtPeso.setText("");
         txtAntecedentes.setText("");
+        lblIdCita.setText("");
         lblFechaCita.setText("");
         lblHoraCita.setText("");
     }
@@ -290,6 +292,9 @@ public void setFilaSeleccionada(int fila) {
         jLabel10 = new javax.swing.JLabel();
         lblMotivo = new javax.swing.JLabel();
         jSeparator16 = new javax.swing.JSeparator();
+        lblIdCita = new javax.swing.JLabel();
+        jSeparator17 = new javax.swing.JSeparator();
+        jLabel22 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         txtDocumento = new javax.swing.JTextField();
@@ -438,8 +443,8 @@ public void setFilaSeleccionada(int fila) {
         jPanel2.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 130, 130, 10));
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel21.setText("Antendentes");
-        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, -1, -1));
+        jLabel21.setText("Id Cita");
+        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, -1, -1));
 
         jSeparator11.setBackground(new java.awt.Color(28, 43, 110));
         jSeparator11.setForeground(new java.awt.Color(28, 43, 110));
@@ -509,6 +514,16 @@ public void setFilaSeleccionada(int fila) {
         jSeparator16.setBackground(new java.awt.Color(28, 43, 110));
         jSeparator16.setForeground(new java.awt.Color(28, 43, 110));
         jPanel2.add(jSeparator16, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 260, 100, -1));
+
+        lblIdCita.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(lblIdCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, 160, 20));
+
+        jSeparator17.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 160, 10));
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel22.setText("Antendentes");
+        jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 860, 280));
 
@@ -904,6 +919,7 @@ java.awt.Window parentWindow = SwingUtilities.getWindowAncestor(this);
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
@@ -929,6 +945,7 @@ java.awt.Window parentWindow = SwingUtilities.getWindowAncestor(this);
     private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator15;
     private javax.swing.JSeparator jSeparator16;
+    private javax.swing.JSeparator jSeparator17;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -947,6 +964,7 @@ java.awt.Window parentWindow = SwingUtilities.getWindowAncestor(this);
     private javax.swing.JLabel lblFechaCita;
     private javax.swing.JLabel lblFechaNacimiento;
     private javax.swing.JLabel lblHoraCita;
+    private javax.swing.JLabel lblIdCita;
     private javax.swing.JLabel lblMotivo;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblSede;
