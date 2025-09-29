@@ -113,4 +113,17 @@ public class AdminDAOImpl implements AdminDAO {
             gson.toJson(usuarios, writer);
         }
     }
+    @Override
+    public boolean verificarCredenciales(String email, String password) throws IOException {
+    try {
+        JsonObject admin = obtenerAdministradorPorEmail(email);
+        if (admin != null) {
+            String contraseñaAlmacenada = admin.get("contraseña").getAsString();
+            return contraseñaAlmacenada.equals(password);
+        }
+        return false;
+    } catch (Exception e) {
+        throw new IOException("Error al verificar credenciales: " + e.getMessage(), e);
+    }
+}
 }
