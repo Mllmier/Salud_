@@ -323,6 +323,22 @@
     "motivo": "Seguimiento",
     "estado": "NOASISTIO",
     "documentoPaciente": "1102222265",
+    "paciente": {
+      "tipoSangre": "B-",
+      "tipoDocumento": "CC",
+      "antecedentes": "sufre de alergias constantes",
+      "peso": 0,
+      "altura": 0.0,
+      "numeroDocumento": "1102222265",
+      "nombres": "pedro",
+      "apellidos": "leon",
+      "fechaNacimiento": "2009-05-13",
+      "sexo": "M",
+      "eps": "Nueva Eps",
+      "email": "pedro@gmail.com",
+      "celular": "3114221897",
+      "contraseña": "348"
+    },
     "medico": {
       "especialidad": "Cardilogo",
       "fechaContratacion": "2025-05-08",
