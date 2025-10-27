@@ -48,9 +48,9 @@ public class login_ extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 30)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 30)); // NOI18N
         jLabel1.setText("INICIAR SESION");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 29, 291, 61));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 291, 61));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel2.setText("Usuario *");
@@ -162,21 +162,20 @@ public class login_ extends javax.swing.JFrame {
     }
 
     try {
-        // Instanciar el DAO
+        
         usuarioDAO usuarioDAO = new usuarioDAO();
         
-        // Validar credenciales
+
         Object usuario = usuarioDAO.validarCredenciales(email, contraseña, rolSeleccionado);
 
         if (usuario == null) {
             JOptionPane.showMessageDialog(this, 
-                "Credenciales incorrectas o usuario no existe", 
+                "Contraseña o Usuario incorrecta", 
                 "Error", 
                 JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Redirigir según el tipo de usuario
         switch(rolSeleccionado) {
             case "Administrador":
                 abrirVista(new admin(), "Bienvenido Administrador");
@@ -197,7 +196,6 @@ public class login_ extends javax.swing.JFrame {
     farmasalud.view.Paciente framePaciente = new farmasalud.view.Paciente();
     framePaciente.inicializarConPaciente(pacienteLogueado.getNumeroDocumento());
     framePaciente.setVisible(true);
-   // ¡Importante! Cierra la ventana de login.
     break;     }
         
     } catch (Exception e) {
@@ -209,11 +207,9 @@ public class login_ extends javax.swing.JFrame {
     }
 }
 
-// Método auxiliar para abrir vistas
 private void abrirVista(JFrame vista, String mensajeBienvenida) {
     try {
         vista.setVisible(true);
-        this.dispose(); // Cierra la ventana de login
         JOptionPane.showMessageDialog(this, 
             mensajeBienvenida, 
             "Login Exitoso", 

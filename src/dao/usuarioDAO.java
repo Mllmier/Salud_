@@ -11,7 +11,7 @@ import model.*;
 
 public class usuarioDAO {
 
-   private static final String JSON_BASE_PATH = System.getProperty("user.dir") + "/src/resources/data/";
+    private static final String JSON_BASE_PATH = System.getProperty("user.dir") + "/src/resources/data/";
     private static final String ADMINISTRADORES_JSON = JSON_BASE_PATH + "usuarios.json";
     private static final String MEDICOS_JSON = JSON_BASE_PATH + "medico.json";
     private static final String RECEPCIONISTAS_JSON = JSON_BASE_PATH + "recepcionista.json";
@@ -28,18 +28,19 @@ public class usuarioDAO {
      */
     public Object validarCredenciales(String email, String contraseña, String rol) {
         try {
-            switch(rol) {
+            switch (rol) {
                 case "Administrador":
                     return buscarAdministrador(email, contraseña);
 
-
                 case "Doctor":
-
                     return buscarMedico(email, contraseña);
+
                 case "Recepcionista":
                     return buscarRecepcionista(email, contraseña);
+
                 case "Paciente":
                     return buscarPaciente(email, contraseña);
+
                 default:
                     System.err.println("Rol no reconocido: " + rol);
                     return null;
@@ -56,14 +57,14 @@ public class usuarioDAO {
         try (FileReader reader = new FileReader(ADMINISTRADORES_JSON)) {
             JsonArray array = JsonParser.parseReader(reader).getAsJsonArray();
             System.out.println("Número de administradores en archivo: " + array.size());
-            
+
             for (int i = 0; i < array.size(); i++) {
                 JsonObject json = array.get(i).getAsJsonObject();
                 System.out.println("Comparando con: " + json.get("email").getAsString());
-                
-                if (json.get("email").getAsString().equalsIgnoreCase(email) && 
+
+                if (json.get("email").getAsString().equalsIgnoreCase(email) &&
                     json.get("contraseña").getAsString().equals(contraseña)) {
-                    
+
                     System.out.println("Administrador encontrado!");
                     return new Administrador(
                         json.get("numeroDocumento").getAsString(),
@@ -89,15 +90,22 @@ public class usuarioDAO {
         try (FileReader reader = new FileReader(MEDICOS_JSON)) {
             JsonArray array = JsonParser.parseReader(reader).getAsJsonArray();
             System.out.println("Número de médicos en archivo: " + array.size());
-            
+
             for (int i = 0; i < array.size(); i++) {
                 JsonObject json = array.get(i).getAsJsonObject();
                 System.out.println("Comparando con: " + json.get("email").getAsString());
-                
-                if (json.get("email").getAsString().equalsIgnoreCase(email) && 
+
+                if (json.get("email").getAsString().equalsIgnoreCase(email) &&
                     json.get("contraseña").getAsString().equals(contraseña)) {
-                    
+
                     System.out.println("Médico encontrado!");
+
+                    // Leer el campo 'estado' si existe, si no, por defecto "Activo"
+                    String estado = "Activo";
+                    if (json.has("estado") && !json.get("estado").isJsonNull()) {
+                        estado = json.get("estado").getAsString();
+                    }
+
                     return new Medico(
                         json.get("numeroDocumento").getAsString(),
                         json.get("nombres").getAsString(),
@@ -109,7 +117,8 @@ public class usuarioDAO {
                         json.get("contraseña").getAsString(),
                         json.get("especialidad").getAsString(),
                         LocalDate.parse(json.get("fechaContratacion").getAsString(), DATE_FORMATTER),
-                        json.get("horario").getAsString()
+                        json.get("horario").getAsString(),
+                        estado // <-- ahora se pasa estado al constructor
                     );
                 }
             }
@@ -119,72 +128,72 @@ public class usuarioDAO {
     }
 
     private Recepcionista buscarRecepcionista(String email, String contraseña) throws Exception {
-    // Obtener la ruta absoluta del archivo
-    String filePath = new File(RECEPCIONISTAS_JSON).getAbsolutePath();
-    System.out.println("Buscando recepcionista en: " + filePath);
-    
-    // Verificar si el archivo existe
-    File file = new File(filePath);
-    if (!file.exists()) {
-        System.err.println("ERROR: El archivo no existe en: " + filePath);
-        return null;
-    }
-    
-    try (FileReader reader = new FileReader(file)) {
-        JsonArray array = JsonParser.parseReader(reader).getAsJsonArray();
-        System.out.println("Número de recepcionistas: " + array.size());
-        
-        for (int i = 0; i < array.size(); i++) {
-            JsonObject json = array.get(i).getAsJsonObject();
-            String jsonEmail = json.get("email").getAsString().toLowerCase();
-            
-            if (jsonEmail.equals(email.toLowerCase())) {
-                System.out.println("Usuario encontrado, verificando contraseña...");
-                String jsonPassword = json.get("contraseña").getAsString();
-                
-                // Comparación segura de contraseñas (en tu caso son hashes)
-                if (jsonPassword.equals(contraseña)) {
-                    System.out.println("Autenticación exitosa!");
-                    return new Recepcionista(
-                        json.get("numeroDocumento").getAsString(),
-                        json.get("nombres").getAsString(),
-                        json.get("apellidos").getAsString(),
-                        LocalDate.parse(json.get("fechaNacimiento").getAsString(), DATE_FORMATTER),
-                        json.get("sexo").getAsString(),
-                        json.get("eps").getAsString(),
-                        json.get("email").getAsString(),
-                        json.get("celular").getAsString(),
-                        json.get("contraseña").getAsString(),
-                        json.get("codigoEmpleado").getAsString(),
-                        LocalDate.parse(json.get("fechaContratacion").getAsString(), DATE_FORMATTER),
-                        json.get("horario").getAsString()
-                    );
-                } else {
-                    System.out.println("Contraseña incorrecta para: " + email);
+        // Obtener la ruta absoluta del archivo
+        String filePath = new File(RECEPCIONISTAS_JSON).getAbsolutePath();
+        System.out.println("Buscando recepcionista en: " + filePath);
+
+        // Verificar si el archivo existe
+        File file = new File(filePath);
+        if (!file.exists()) {
+            System.err.println("ERROR: El archivo no existe en: " + filePath);
+            return null;
+        }
+
+        try (FileReader reader = new FileReader(file)) {
+            JsonArray array = JsonParser.parseReader(reader).getAsJsonArray();
+            System.out.println("Número de recepcionistas: " + array.size());
+
+            for (int i = 0; i < array.size(); i++) {
+                JsonObject json = array.get(i).getAsJsonObject();
+                String jsonEmail = json.get("email").getAsString().toLowerCase();
+
+                if (jsonEmail.equals(email.toLowerCase())) {
+                    System.out.println("Usuario encontrado, verificando contraseña...");
+                    String jsonPassword = json.get("contraseña").getAsString();
+
+                    // Comparación segura de contraseñas (en tu caso son hashes)
+                    if (jsonPassword.equals(contraseña)) {
+                        System.out.println("Autenticación exitosa!");
+                        return new Recepcionista(
+                            json.get("numeroDocumento").getAsString(),
+                            json.get("nombres").getAsString(),
+                            json.get("apellidos").getAsString(),
+                            LocalDate.parse(json.get("fechaNacimiento").getAsString(), DATE_FORMATTER),
+                            json.get("sexo").getAsString(),
+                            json.get("eps").getAsString(),
+                            json.get("email").getAsString(),
+                            json.get("celular").getAsString(),
+                            json.get("contraseña").getAsString(),
+                            json.get("codigoEmpleado").getAsString(),
+                            LocalDate.parse(json.get("fechaContratacion").getAsString(), DATE_FORMATTER),
+                            json.get("horario").getAsString()
+                        );
+                    } else {
+                        System.out.println("Contraseña incorrecta para: " + email);
+                    }
                 }
             }
         }
+        System.out.println("Usuario no encontrado: " + email);
+        return null;
     }
-    System.out.println("Usuario no encontrado: " + email);
-    return null;
-}
 
     private Paciente buscarPaciente(String email, String contraseña) throws Exception {
         System.out.println("Buscando paciente en: " + PACIENTES_JSON);
         try (FileReader reader = new FileReader(PACIENTES_JSON)) {
             JsonArray array = JsonParser.parseReader(reader).getAsJsonArray();
             System.out.println("Número de pacientes en archivo: " + array.size());
-            
+
             for (int i = 0; i < array.size(); i++) {
                 JsonObject json = array.get(i).getAsJsonObject();
                 System.out.println("Comparando con: " + json.get("email").getAsString());
-                
-                if (json.get("email").getAsString().equalsIgnoreCase(email) && 
+
+                if (json.get("email").getAsString().equalsIgnoreCase(email) &&
                     json.get("contraseña").getAsString().equals(contraseña)) {
-                    
+
                     System.out.println("Paciente encontrado!");
                     int peso = json.has("Peso") && !json.get("Peso").isJsonNull() ? json.get("Peso").getAsInt() : 0;
-                   double altura = json.has("Altura") && !json.get("Altura").isJsonNull() ? json.get("Altura").getAsDouble() : 0.0;
+                    double altura = json.has("Altura") && !json.get("Altura").isJsonNull() ? json.get("Altura").getAsDouble() : 0.0;
 
                     return new Paciente(
                         json.get("numeroDocumento").getAsString(),
@@ -199,8 +208,8 @@ public class usuarioDAO {
                         json.get("tipoDocumento").getAsString(),
                         json.get("tipoSangre").getAsString(),
                         json.get("antecedentes").getAsString(),
-                          peso,
-                          altura
+                        peso,
+                        altura
                     );
                 }
             }
@@ -213,15 +222,15 @@ public class usuarioDAO {
     public boolean esAdministrador(Object usuario) {
         return usuario instanceof Administrador;
     }
-    
+
     public boolean esMedico(Object usuario) {
         return usuario instanceof Medico;
     }
-    
+
     public boolean esRecepcionista(Object usuario) {
         return usuario instanceof Recepcionista;
     }
-    
+
     public boolean esPaciente(Object usuario) {
         return usuario instanceof Paciente;
     }

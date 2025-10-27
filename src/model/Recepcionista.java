@@ -1,108 +1,78 @@
 package model;
 
+import com.google.gson.annotations.SerializedName;
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class Recepcionista extends Persona {
+
+    @SerializedName("codigoEmpleado")
     private String codigoEmpleado;
+
+    @SerializedName("fechaContratacion")
     private LocalDate fechaContratacion;
+
+    @SerializedName("horario")
     private String horario;
 
-    public Recepcionista(
-        String numeroDocumento, 
-        String nombres, 
-        String apellidos, 
-        LocalDate fechaNacimiento, 
-        String sexo, 
-        String eps, 
-        String email, 
-        String celular,
-        String contraseña,
-        String codigoEmpleado,
-        LocalDate fechaContratacion,
-        String horario
-    ) {
-        super(
-            validarNoNulo(numeroDocumento, "Número de documento"),
-            validarNoNulo(nombres, "Nombres"),
-            validarNoNulo(apellidos, "Apellidos"),
-            validarNoNulo(fechaNacimiento, "Fecha de nacimiento"),
-            validarNoNulo(sexo, "Sexo"),
-            validarNoNulo(eps, "EPS"),
-            validarNoNulo(email, "Email"),
-            validarNoNulo(celular, "Celular"),
-            validarNoNulo(contraseña, "Contraseña")
-        );
-        
-        setCodigoEmpleado(codigoEmpleado);
-        setFechaContratacion(fechaContratacion);
-        setHorario(horario);
+    @SerializedName("estado")
+    private String estado; // Nuevo campo: "Activo" o "Deshabilitado"
+
+    // 🔹 Constructor con estado (para nuevos o actualizados)
+    public Recepcionista(String numeroDocumento, String nombres, String apellidos,
+                         LocalDate fechaNacimiento, String sexo, String eps,
+                         String email, String celular, String contraseña,
+                         String codigoEmpleado, LocalDate fechaContratacion,
+                         String horario, String estado) {
+
+        super(numeroDocumento, nombres, apellidos, fechaNacimiento, sexo, null, email, celular, contraseña);
+        this.codigoEmpleado = codigoEmpleado;
+        this.fechaContratacion = fechaContratacion;
+        this.horario = horario;
+        this.estado = estado;
     }
 
-    // Método auxiliar para validación
-    private static <T> T validarNoNulo(T valor, String nombreCampo) {
-        if (valor == null) {
-            throw new IllegalArgumentException(nombreCampo + " no puede ser nulo");
-        }
-        if (valor instanceof String && ((String) valor).trim().isEmpty()) {
-            throw new IllegalArgumentException(nombreCampo + " no puede estar vacío");
-        }
-        return valor;
+    // 🔹 Constructor antiguo (por compatibilidad, estado por defecto "Activo")
+    public Recepcionista(String numeroDocumento, String nombres, String apellidos,
+                         LocalDate fechaNacimiento, String sexo, String eps,
+                         String email, String celular, String contraseña,
+                         String codigoEmpleado, LocalDate fechaContratacion,
+                         String horario) {
+
+        this(numeroDocumento, nombres, apellidos, fechaNacimiento, sexo, eps,
+             email, celular, contraseña, codigoEmpleado, fechaContratacion, horario, "Activo");
     }
 
-    // Getters y setters mejorados
+    // --- Getters y Setters ---
     public String getCodigoEmpleado() {
-        return this.codigoEmpleado;
+        return codigoEmpleado;
     }
 
-    public final void setCodigoEmpleado(String codigoEmpleado) {
-        this.codigoEmpleado = validarNoNulo(codigoEmpleado, "Código de empleado");
+    public void setCodigoEmpleado(String codigoEmpleado) {
+        this.codigoEmpleado = codigoEmpleado;
     }
 
     public LocalDate getFechaContratacion() {
-        return this.fechaContratacion;
+        return fechaContratacion;
     }
 
-    public final void setFechaContratacion(LocalDate fechaContratacion) {
-        this.fechaContratacion = validarNoNulo(fechaContratacion, "Fecha de contratación");
+    public void setFechaContratacion(LocalDate fechaContratacion) {
+        this.fechaContratacion = fechaContratacion;
     }
 
     public String getHorario() {
-        return this.horario;
+        return horario;
     }
 
-    public final void setHorario(String horario) {
-        this.horario = validarNoNulo(horario, "Horario");
+    public void setHorario(String horario) {
+        this.horario = horario;
     }
 
-    // Métodos equals y hashCode más seguros
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        
-        Recepcionista that = (Recepcionista) o;
-        
-        // Comparación segura contra nulos
-        return Objects.equals(this.getNumeroDocumento(), that.getNumeroDocumento()) && 
-               Objects.equals(this.codigoEmpleado, that.codigoEmpleado);
+
+    public String getEstado() {
+        return estado;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(
-            getNumeroDocumento(), 
-            codigoEmpleado
-        );
-    }
-    
-    @Override
-    public String toString() {
-        return "Recepcionista{" +
-               "documento='" + getNumeroDocumento() + '\'' +
-               ", nombres='" + getNombres() + '\'' +
-               ", apellidos='" + getApellidos() + '\'' +
-               ", codigoEmpleado='" + codigoEmpleado + '\'' +
-               '}';
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

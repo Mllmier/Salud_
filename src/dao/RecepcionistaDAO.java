@@ -1,34 +1,39 @@
 package dao;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.TypeAdapter;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Reader;
-import java.lang.reflect.Type;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import model.Recepcionista;
 
 public interface RecepcionistaDAO {
-List<Recepcionista> cargarTodos();
+
+    // 🔹 Cargar todos los recepcionistas desde el archivo JSON
+    List<Recepcionista> cargarTodos();
+
+    // 🔹 Guardar un nuevo recepcionista
     boolean guardarRecepcionista(Recepcionista recepcionista);
+
+    // 🔹 Guardar toda la lista (sobrescribe el JSON completo)
     void guardarTodos(List<Recepcionista> recepcionistas);
-    boolean eliminarRecepcionista(String numeroDocumento);
-    Recepcionista obtenerPorDocumento(String documento);
+
+    // 🔹 Obtener todos los recepcionistas
+    List<Recepcionista> obtenerTodosRecepcionistas();
+
+    // 🔹 Buscar por documento
+    Recepcionista buscarPorDocumento(String documento);
+
+    // 🔹 Actualizar información completa de un recepcionista
     boolean actualizarRecepcionista(String documentoOriginal, Recepcionista recepcionistaActualizado);
-    public Recepcionista buscarPorEmail(String email);
-    public boolean existeEmail(String email);
-    public boolean actualizarCredenciales(String emailActual, String nuevoEmail, String nuevaContraseña);
-    
+
+    // 🔹 Eliminar un recepcionista (si decides borrarlo completamente)
+    boolean eliminarRecepcionista(String numeroDocumento);
+
+    // 🔹 Verificar si ya existe un recepcionista con esa cédula
+    boolean existeRecepcionista(String numeroDocumento);
+    // 🔹 Verificar si existe un email registrado
+    boolean existeEmail(String email);
+
+    // 🔹 Actualizar credenciales (correo o contraseña)
+    boolean actualizarCredenciales(String emailActual, String nuevoEmail, String nuevaContraseña);
+
+    // 🔹 NUEVO: Actualizar el estado ("Activo" / "Deshabilitado")
+    boolean actualizarEstado(String numeroDocumento, String nuevoEstado);
 }
