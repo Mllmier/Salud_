@@ -1,26 +1,26 @@
 [
   {
     "IdCita": "5264",
-    "fechaCita": "2025-05-21",
+    "fechaCita": "2025-11-07",
     "hora": "08:00",
     "tipoCita": "Prioritaria",
     "motivo": "Problemas Especificos",
-    "estado": "PROGRAMADA",
+    "estado": "CANCELADA",
     "documentoPaciente": "2134567890",
     "medico": {
-      "especialidad": "terapeusta",
+      "especialidad": "Medico general",
       "fechaContratacion": "2025-05-08",
-      "horario": "Martes-jueves-sabado",
-      "numeroDocumento": "1014662612",
-      "nombres": "Maria",
-      "apellidos": "Liz",
-      "fechaNacimiento": "2004-05-20",
-      "sexo": "F",
-      "email": "leonmiermarializ@gmail.com",
-      "celular": "3186476452",
-      "contraseña": "Evk\u003e^1b.,U"
+      "horario": "Sabado-domingo",
+      "numeroDocumento": "1048456789",
+      "nombres": "ronaldo",
+      "apellidos": "cano",
+      "fechaNacimiento": "2004-05-19",
+      "sexo": "M",
+      "email": "ronaldocanomorales54@gmail.com",
+      "celular": "310554789",
+      "contraseña": "37df269a8871a82e38db39193fadf285fbeb429b481c6a7f516dbd9a207a7ca1"
     },
-    "documentoMedico": "1014662612",
+    "documentoMedico": "1048456789",
     "sala": {
       "nombreSala": "quirofano",
       "codigoSala": "SAL.002",
@@ -598,6 +598,181 @@
       "codigoSala": "SAL.002",
       "tipoSala": "Sala de Urgencias",
       "capacidadSala": "8"
+    },
+    "sede": {
+      "idSede": "SEDE002",
+      "nombreSede": "Sede Norte",
+      "direccion": "Avenida 5 #23-45, Barrio Norte",
+      "horarioFuncionamiento": "Lunes-Sabado 9:00-17:00"
+    }
+  },
+  {
+    "IdCita": "Medd0001",
+    "fechaCita": "2025-11-12",
+    "hora": "07:30",
+    "tipoCita": "Prioritaria",
+    "motivo": "Seguimiento",
+    "estado": "PROGRAMADA",
+    "documentoPaciente": "2134567890",
+    "medico": {
+      "especialidad": "Cardilogo",
+      "fechaContratacion": "2025-05-08",
+      "horario": "Martes-jueves-sabado",
+      "numeroDocumento": "63525192",
+      "nombres": "Haider",
+      "apellidos": "Stiven",
+      "fechaNacimiento": "2001-05-21",
+      "sexo": "F",
+      "email": "thejh0nl3n0n@gmail.com",
+      "celular": "3001164785",
+      "contraseña": ".P}z7Q]@3a"
+    },
+    "documentoMedico": "63525192",
+    "sala": {
+      "nombreSala": "XD",
+      "codigoSala": "SAL.001",
+      "tipoSala": "Sala de Medicina General",
+      "capacidadSala": "4"
+    },
+    "sede": {
+      "idSede": "SEDE001",
+      "nombreSede": "Sede Principal",
+      "direccion": "Calle 128 #48-67, Borotá",
+      "horarioFuncionamiento": "Lunes-Viernes 8:00-18:00"
+    }
+  },
+  {
+    "IdCita": "Medd0002",
+    "fechaCita": "2025-11-14",
+    "hora": "07:30",
+    "tipoCita": "Regular",
+    "motivo": "Control",
+    "estado": "PROGRAMADA",
+    "documentoPaciente": "2134567890",
+    "medico": {
+      "especialidad": "terapeusta",
+      "fechaContratacion": "2025-09-17",
+      "horario": "Martes-jueves-sabado",
+      "numeroDocumento": "123456789",
+      "nombres": "sharlok",
+      "apellidos": "alcazar",
+      "fechaNacimiento": "2000-05-16",
+      "sexo": "F",
+      "email": "haider.pabonmejia@unicolombo.edu.co",
+      "celular": "3044451166",
+      "contraseña": "63K1Hx,OjW"
+    },
+    "documentoMedico": "123456789",
+    "sala": {
+      "nombreSala": "XD",
+      "codigoSala": "SAL.001",
+      "tipoSala": "Sala de Medicina General",
+      "capacidadSala": "4"
+    },
+    "sede": {
+      "idSede": "SEDE001",
+      "nombreSede": "Sede Principal",
+      "direccion": "Calle 128 #48-67, Borotá",
+      "horarioFuncionamiento": "Lunes-Viernes 8:00-18:00"
+    }
+  },
+  {
+    "IdCita": "Medd0003",
+    "fechaCita": "2025-11-22",
+    "hora": "07:30",
+    "tipoCita": "Prioritaria",
+    "motivo": "Seguimiento",
+    "estado": "PROGRAMADA",
+    "documentoPaciente": "2134567890",
+    "medico": {
+      "especialidad": "Medico general",
+      "fechaContratacion": "2025-05-08",
+      "horario": "Sabado-domingo",
+      "numeroDocumento": "1048456789",
+      "nombres": "ronaldo",
+      "apellidos": "cano",
+      "fechaNacimiento": "2004-05-19",
+      "sexo": "M",
+      "email": "ronaldocanomorales54@gmail.com",
+      "celular": "310554789",
+      "contraseña": "37df269a8871a82e38db39193fadf285fbeb429b481c6a7f516dbd9a207a7ca1"
+    },
+    "documentoMedico": "1048456789",
+    "sala": {
+      "nombreSala": "quirofano",
+      "codigoSala": "SAL.002",
+      "tipoSala": "Sala de Urgencias",
+      "capacidadSala": "8"
+    },
+    "sede": {
+      "idSede": "SEDE002",
+      "nombreSede": "Sede Norte",
+      "direccion": "Avenida 5 #23-45, Barrio Norte",
+      "horarioFuncionamiento": "Lunes-Sabado 9:00-17:00"
+    }
+  },
+  {
+    "IdCita": "Medd0004",
+    "fechaCita": "2025-11-22",
+    "hora": "08:30",
+    "tipoCita": "Regular",
+    "motivo": "Seguimiento",
+    "estado": "PROGRAMADA",
+    "documentoPaciente": "2134567890",
+    "medico": {
+      "especialidad": "Medico general",
+      "fechaContratacion": "2025-05-08",
+      "horario": "Sabado-domingo",
+      "numeroDocumento": "1048456789",
+      "nombres": "ronaldo",
+      "apellidos": "cano",
+      "fechaNacimiento": "2004-05-19",
+      "sexo": "M",
+      "email": "ronaldocanomorales54@gmail.com",
+      "celular": "310554789",
+      "contraseña": "37df269a8871a82e38db39193fadf285fbeb429b481c6a7f516dbd9a207a7ca1"
+    },
+    "documentoMedico": "1048456789",
+    "sala": {
+      "nombreSala": "fghmknn",
+      "codigoSala": "456789",
+      "tipoSala": "Sala de Pediatría",
+      "capacidadSala": "3"
+    },
+    "sede": {
+      "idSede": "SEDE001",
+      "nombreSede": "Sede Principal",
+      "direccion": "Calle 128 #48-67, Borotá",
+      "horarioFuncionamiento": "Lunes-Viernes 8:00-18:00"
+    }
+  },
+  {
+    "IdCita": "Medd0005",
+    "fechaCita": "2025-11-22",
+    "hora": "09:00",
+    "tipoCita": "Regular",
+    "motivo": "Seguimiento",
+    "estado": "PROGRAMADA",
+    "documentoPaciente": "2134567890",
+    "medico": {
+      "especialidad": "Medico general",
+      "fechaContratacion": "2025-05-08",
+      "horario": "Sabado-domingo",
+      "numeroDocumento": "1048456789",
+      "nombres": "ronaldo",
+      "apellidos": "cano",
+      "fechaNacimiento": "2004-05-19",
+      "sexo": "M",
+      "email": "ronaldocanomorales54@gmail.com",
+      "celular": "310554789",
+      "contraseña": "37df269a8871a82e38db39193fadf285fbeb429b481c6a7f516dbd9a207a7ca1"
+    },
+    "documentoMedico": "1048456789",
+    "sala": {
+      "nombreSala": "fghmknn",
+      "codigoSala": "456789",
+      "tipoSala": "Sala de Pediatría",
+      "capacidadSala": "3"
     },
     "sede": {
       "idSede": "SEDE002",

@@ -58,7 +58,7 @@ import DAOImpl.SedeDAOImpl;
  * @author Maria liz
  */
 public class ControllerCitasPaciente {
- private JTextField txtIdCita;
+    private JLabel  lblIdCita;
     private JLabel lblDocumento;
     private JLabel lblNombre;
     private JLabel lblApellido;
@@ -80,9 +80,7 @@ public class ControllerCitasPaciente {
     private JDateChooser JDateFechaCita;
     private DefaultTableModel tableModelCitas;
     private Sede sedeSelecccionada;
-
     private CitaDAO citasDAO ;
-
     private PacienteDAO pacienteDAO;
     private MedicoDAO medicoDAO=new MedicoDAOImpl();
     private SedeDAO sedesDAO = new SedeDAOImpl();
@@ -95,7 +93,7 @@ public class ControllerCitasPaciente {
     private JComboBox<String> lblEstadoCita2;
     private JComboBox<String> cboConsultorio2;
     private JComboBox<String> cboSede2;
- 
+
     private JComboBox<String> cboMedico2;
     private JLabel lblEspecialidadMedico2;
     private JLabel lblNombrePaciente2;
@@ -157,6 +155,7 @@ public class ControllerCitasPaciente {
 
     public void setjDateChooserCita(JDateChooser jDateChooserCita) {
         this.jDateChooserCita = jDateChooserCita;
+          configurarDateChooser();
     
     }
      public Paciente buscarPorDocumento(String documento) {
@@ -249,11 +248,13 @@ public class ControllerCitasPaciente {
         this.cboTipoCita = cboTipoCita;
     }
 
-    public void setTxtIdCita(JTextField txtIdCita) {
-        this.txtIdCita = txtIdCita;
+    public void setLblIdCita(JLabel lblIdCita) {
+        this.lblIdCita = lblIdCita;
     }
    public void setJDateFechaCita(JDateChooser JDateFechaCita) {
     this.JDateFechaCita = JDateFechaCita;
+   
+    
 
 }
     public void LblEspecialidad(JLabel lblEspecialidadMedico) {
@@ -312,7 +313,7 @@ public class ControllerCitasPaciente {
     }
 
    
-public void guardarCitaDesdeFormulario() {
+   public void guardarCitaDesdeFormulario() {
     if (pacienteActual == null || pacienteActual.getNumeroDocumento() == null) {
         JOptionPane.showMessageDialog(null, 
             "Error: No se ha cargado correctamente el paciente", 
@@ -320,20 +321,20 @@ public void guardarCitaDesdeFormulario() {
             JOptionPane.ERROR_MESSAGE);
         return;
     }
-// Modifica esta parte del método guardarCitaDesdeFormulario:
-if (cboMedico.getSelectedItem() == null || "<Seleccione>".equals(cboMedico.getSelectedItem().toString())) {
+    // Modifica esta parte del método guardarCitaDesdeFormulario:
+     if (cboMedico.getSelectedItem() == null || "<Seleccione>".equals(cboMedico.getSelectedItem().toString())) {
     JOptionPane.showMessageDialog(null, "Debe seleccionar un médico", "Error", JOptionPane.ERROR_MESSAGE);
     return;
-}
+    }
 
-System.out.println("Médico seleccionado: " + cboMedico.getSelectedItem());
+     System.out.println("Médico seleccionado: " + cboMedico.getSelectedItem());
 
-String nombreCompleto = cboMedico.getSelectedItem().toString();
-medicoSeleccionado = obtenerMedicoPorNombreCompleto(nombreCompleto);
+     String nombreCompleto = cboMedico.getSelectedItem().toString();
+      medicoSeleccionado = obtenerMedicoPorNombreCompleto(nombreCompleto);
 
 
     try {
-        String idCita = txtIdCita.getText().trim();
+        String idCita = generarIdCita();
         Date fechaDate = JDateFechaCita.getDate();
         if (fechaDate == null) {
     JOptionPane.showMessageDialog(null, 
@@ -348,23 +349,23 @@ medicoSeleccionado = obtenerMedicoPorNombreCompleto(nombreCompleto);
         String tipoCita = cboTipoCita.getSelectedItem().toString();
         EstadoCita estado = EstadoCita.valueOf(cboEstado.getSelectedItem().toString());
        if (!estado.equals(EstadoCita.PROGRAMADA)) {
-    JOptionPane.showMessageDialog(null,
+        JOptionPane.showMessageDialog(null,
         "Solo se permite agendar citas con estado PROGRAMADA.",
         "Estado inválido",
         JOptionPane.WARNING_MESSAGE);
     return;
 }
-if (cboTipoCita.getSelectedIndex() <= 0 || 
-    cboMotivoCita.getSelectedIndex() <= 0 || 
-    cboHoraCita.getSelectedIndex() <= 0) {
-    JOptionPane.showMessageDialog(null, "Todos los campos deben tener una selección válida", "Error", JOptionPane.ERROR_MESSAGE);
-    return;
-}
+     if (cboTipoCita.getSelectedIndex() <= 0 || 
+     cboMotivoCita.getSelectedIndex() <= 0 || 
+     cboHoraCita.getSelectedIndex() <= 0) {
+     JOptionPane.showMessageDialog(null, "Todos los campos deben tener una selección válida", "Error", JOptionPane.ERROR_MESSAGE);
+      return;
+     }
 
        if (idCita.isEmpty() || fechaDate == null || horaCita.isEmpty() || motivo.isEmpty() || 
-    tipoCita.isEmpty() || tipoCita.equalsIgnoreCase("<Seleccione>")) {
-    JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
-    return;
+       tipoCita.isEmpty() || tipoCita.equalsIgnoreCase("<Seleccione>")) {
+       JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
 }
 
 
@@ -392,22 +393,25 @@ if (cboTipoCita.getSelectedIndex() <= 0 ||
         }
 
         LocalDate fechaCita = fechaDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        if (existeCitaEnMismaHora(fechaCita, horaCita)) {
-            JOptionPane.showMessageDialog(null,
-                "Ya existe una cita programada para esta hora. Por favor seleccione otra hora.",
-                "Hora no disponible",
-                JOptionPane.WARNING_MESSAGE);
-            return;
+        LocalDate hoy = LocalDate.now();
+        LocalDate limite = hoy.plusMonths(6);
+
+       if (fechaCita.isAfter(limite)) {
+        JOptionPane.showMessageDialog(null,
+        "No puede agendar una cita con más de 6 meses de anticipación.",
+        "Fecha no permitida",
+        JOptionPane.WARNING_MESSAGE);
+         return;
         }
    
-          String nombreCompletoMedico = medicoSeleccionado.getNombres() + " " + medicoSeleccionado.getApellidos();
-    String idCitaActual = txtIdCita.getText().trim();
-if (existeOtraCitaEnMismaHora(fechaCita, horaCita, nombreCompletoMedico, idCitaActual)) {
-    JOptionPane.showMessageDialog(null,
+         String nombreCompletoMedico = medicoSeleccionado.getNombres() + " " + medicoSeleccionado.getApellidos();
+         String idCitaActual = lblIdCita.getText().trim();
+      if (existeOtraCitaEnMismaHora(fechaCita, horaCita, nombreCompletoMedico, idCitaActual)) {
+       JOptionPane.showMessageDialog(null,
         "El médico ya tiene una cita en esta fecha y hora. Por favor seleccione otra hora.",
         "Horario no disponible",
         JOptionPane.WARNING_MESSAGE);
-    return;
+         return;
 }
         boolean existe = citasDAO.cargarTodos().stream()
             .anyMatch(p -> p.getIdCita() != null && p.getIdCita().equals(idCita));
@@ -419,6 +423,7 @@ if (existeOtraCitaEnMismaHora(fechaCita, horaCita, nombreCompletoMedico, idCitaA
             return;
         }
 
+        
         Cita nuevaCita = new Cita(
             idCita,
             fechaCita,
@@ -433,12 +438,12 @@ if (existeOtraCitaEnMismaHora(fechaCita, horaCita, nombreCompletoMedico, idCitaA
         );
 
         nuevaCita.setDocumentoPaciente(pacienteActual.getNumeroDocumento());
-                nuevaCita.setDocumentoMedico(medicoSeleccionado.getNumeroDocumento());
+        nuevaCita.setDocumentoMedico(medicoSeleccionado.getNumeroDocumento());
 
         citasDAO.guardarCita(nuevaCita);
         JOptionPane.showMessageDialog(null, "Cita guardada exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-      notificarCitaAgregada(nuevaCita);
-ControllerCitas.getInstance().notificarCitaAgregada(nuevaCita);
+        notificarCitaAgregada(nuevaCita);
+        ControllerCitas.getInstance().notificarCitaAgregada(nuevaCita);
 
 
 
@@ -646,11 +651,18 @@ public void buscarCitasPorFecha() {
 
 public void configurarDateChooser() {
     Date fechaActual = new Date();
-    
-    JDateFechaCita.setMinSelectableDate(fechaActual);
-    
-    JDateFechaCita.setDateFormatString("yyyy-MM-dd");
+
+    if (jDateChooserCita != null) {
+        jDateChooserCita.setMinSelectableDate(fechaActual);
+        jDateChooserCita.setDateFormatString("yyyy-MM-dd");
+    }
+
+    if (JDateFechaCita != null) {
+        JDateFechaCita.setMinSelectableDate(fechaActual);
+        JDateFechaCita.setDateFormatString("yyyy-MM-dd");
+    }
 }
+
 public boolean existeCitaEnMismaHora(LocalDate fecha, String hora) {
     List<Cita> citas = citasDAO.cargarTodos();
     
@@ -986,8 +998,13 @@ public void actualizarCitaDesdeFormulario(JTable tablaCitas) {
     }
 
     try {
+        if (lblIdCita == null) {
+       JOptionPane.showMessageDialog(null, "Error interno: lblIdCita no fue inicializado correctamente.");
+        return;
+   }
+
         String idCitaOriginal = tablaCitas.getValueAt(filaSeleccionada, 5).toString();
-        String idCitaNueva = txtIdCita.getText().trim();
+        String idCitaNueva = lblIdCita.getText().trim();
         String hora = (String) cboHoraCita.getSelectedItem();
         String motivo = (String) cboMotivoCita.getSelectedItem();
         String tipo = (String) cboTipoCita.getSelectedItem();
@@ -999,6 +1016,19 @@ public void actualizarCitaDesdeFormulario(JTable tablaCitas) {
         String nombreSede = (String) cboSede.getSelectedItem();
         String nombreConsultorio = (String) cboConsultorio.getSelectedItem();
         Date fecha = JDateFechaCita.getDate();
+        if (hora == null || hora.equals("<Seleccione>") ||
+    motivo == null || motivo.equals("<Seleccione>") ||
+    tipo == null || tipo.equals("<Seleccione>") ||
+    nombreSede == null || nombreSede.equals("<Seleccione>") ||
+    nombreConsultorio == null || nombreConsultorio.equals("<Seleccione>")) {
+
+    JOptionPane.showMessageDialog(null,
+        "Debe seleccionar todos los campos: hora, motivo, tipo, sede y consultorio",
+        "Error",
+        JOptionPane.WARNING_MESSAGE);
+    return;
+}
+
 
         if (fecha == null) {
             JOptionPane.showMessageDialog(null, "Seleccione una fecha válida", "Error", JOptionPane.ERROR_MESSAGE);
@@ -1008,6 +1038,17 @@ public void actualizarCitaDesdeFormulario(JTable tablaCitas) {
         Sede sede = sedesDAO.buscarPorNombre(nombreSede);
         Salas sala = salasDAO.buscarPorNombre(nombreConsultorio);
         LocalDate fechaLocal = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+          LocalDate hoy = LocalDate.now();
+        LocalDate limite = hoy.plusMonths(6);
+
+       if (fechaLocal.isAfter(limite)) {
+        JOptionPane.showMessageDialog(null,
+        "No puede agendar una cita con más de 6 meses de anticipación.",
+        "Fecha no permitida",
+        JOptionPane.WARNING_MESSAGE);
+         return;
+        }
+       
 
         Medico medico = obtenerMedicoPorNombreCompleto((String) cboMedico.getSelectedItem());
         if (medico == null) {
@@ -1076,11 +1117,25 @@ public List<Cita> obtenerCitasPorMedico(String documentoMedico) {
     }
     return citasMedico;
 }
+private String generarIdCita() {
+    List<Cita> citas = citasDAO.cargarTodos();
+    int maxId = 0;
 
+    for (Cita c : citas) {
+        if (c.getIdCita() != null && c.getIdCita().startsWith("Medd")) {
+            try {
+                int numero = Integer.parseInt(c.getIdCita().substring(4)); // cambiar 5 por 4
+                if (numero > maxId) {
+                    maxId = numero;
+                }
+            } catch (NumberFormatException e) {
+                // Ignorar IDs no válidos
+            }
+        }
+    }
 
-
-
-
+    return "Medd" + String.format("%04d", maxId + 1);
 }
 
+}
 
