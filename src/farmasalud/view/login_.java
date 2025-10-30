@@ -4,6 +4,7 @@
  */
 package farmasalud.view;
 //import dao.usuarioDAO;
+import Controller.Controller_Login;
 import dao.usuarioDAO;
 import javax.swing.*;
 import model.Usuario;
@@ -139,88 +140,12 @@ public class login_ extends javax.swing.JFrame {
     }//GEN-LAST:event_Jtextfield_contraseñaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                                        
-    String email = Jtextfield_usuario.getText().trim();
+     String email = Jtextfield_usuario.getText().trim();
     String contraseña = new String(Jtextfield_contraseña.getPassword());
     String rolSeleccionado = (String) jComboBox1.getSelectedItem();
-    
-  
-    if (email.isEmpty() || contraseña.isEmpty()) {
-        JOptionPane.showMessageDialog(this, 
-            "Email y contraseña son requeridos", 
-            "Error", 
-            JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    
-    if (rolSeleccionado.equals("<Seleccione una opcion>")) {
-        JOptionPane.showMessageDialog(this, 
-            "Debe seleccionar un rol válido", 
-            "Error", 
-            JOptionPane.ERROR_MESSAGE);
-        return;
-    }
 
-    try {
-        
-        usuarioDAO usuarioDAO = new usuarioDAO();
-        
-
-        Object usuario = usuarioDAO.validarCredenciales(email, contraseña, rolSeleccionado);
-
-        if (usuario == null) {
-            JOptionPane.showMessageDialog(this, 
-                "Contraseña o Usuario incorrecta", 
-                "Error", 
-                JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        switch(rolSeleccionado) {
-            case "Administrador":
-                abrirVista(new admin(), "Bienvenido Administrador");
-                break;
-            case "Doctor":
-                  model.Medico MedicoLogueado = (model.Medico) usuario;
-    farmasalud.view.Doctor framedoctor = new farmasalud.view.Doctor();
-    framedoctor.inicializarConDoctor(MedicoLogueado.getNumeroDocumento()); // ✅ Filtramos por documento
-    framedoctor.setVisible(true);
-    break;
-                
-                
-            case "Recepcionista":
-                abrirVista(new recepcionista(), "Bienvenida Recepcionista");
-                break;
-            case "Paciente":
-     model.Paciente pacienteLogueado = (model.Paciente) usuario;
-    farmasalud.view.Paciente framePaciente = new farmasalud.view.Paciente();
-    framePaciente.inicializarConPaciente(pacienteLogueado.getNumeroDocumento());
-    framePaciente.setVisible(true);
-    break;     }
-        
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, 
-            "Error durante el login: " + e.getMessage(), 
-            "Error", 
-            JOptionPane.ERROR_MESSAGE);
-        e.printStackTrace();
-    }
-}
-
-private void abrirVista(JFrame vista, String mensajeBienvenida) {
-    try {
-        vista.setVisible(true);
-        JOptionPane.showMessageDialog(this, 
-            mensajeBienvenida, 
-            "Login Exitoso", 
-            JOptionPane.INFORMATION_MESSAGE);
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, 
-            "Error al abrir la vista: " + e.getMessage(), 
-            "Error", 
-            JOptionPane.ERROR_MESSAGE);
-    }
-
+    Controller_Login controller = new Controller_Login();
+    controller.procesarLogin(email, contraseña, rolSeleccionado, this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed

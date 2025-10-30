@@ -18,6 +18,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -27,6 +28,7 @@ import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import model.Sede;
 
 /**
  *
@@ -38,8 +40,8 @@ public class admin extends javax.swing.JFrame {
     private ControllerRecepcionista controllerRecepcionista = ControllerRecepcionista.getInstancia();
     private ControllerSalas controllerSalas = new ControllerSalas();
     private ControllerMedicamento controllerMedicamento = new ControllerMedicamento(this);
+    ControllerSede controllerSede = ControllerSede.getInstancia();
     private void limpiarDoctor() {controllerDoctor.limpiarFormulario();}
-    private ControllerSede controllerSede = new ControllerSede();
     private ControllerEnfermedades controllerEnfermedades = new ControllerEnfermedades();
     private JPasswordField pwdContraseña = new JPasswordField();
 
@@ -60,7 +62,12 @@ public class admin extends javax.swing.JFrame {
         
         
         configurarListeners();
-        
+        List<Sede> sedes = controllerSede.listarSedes();
+        cbSede.removeAllItems();
+        cbSede.addItem("<Seleccione una sede>");
+        for (Sede s : sedes) {
+        cbSede.addItem(s.getNombreSede()); // asumiendo que Sede tiene getNombre()
+}
         
         
         
@@ -80,6 +87,8 @@ public class admin extends javax.swing.JFrame {
     controllerDoctor.setDateChooserNacimiento(Fecha_nacimiento);
     controllerDoctor.setDateChooserContratacion(Fecha_contratacion_doctor);
     controllerDoctor.setjComboBox_estado_doctor(jComboBox_estado_doctor);
+    controllerDoctor.setCbSede(cbSede);
+
     
     controllerDoctor.initTableDoctor();
     controllerDoctor.cargarDatosEnTablaDoctor();
@@ -223,7 +232,7 @@ public class admin extends javax.swing.JFrame {
         @Override
         public void valueChanged(ListSelectionEvent e) {
             if (!e.getValueIsAdjusting()) {
-                controllerSede.cargarDatosSedeEnFormulario();
+                controllerSede.cargarDatosEnTablaSedes();
             }
         }
     });
@@ -297,13 +306,13 @@ public class admin extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         cbSexo2 = new javax.swing.JComboBox<>();
         cbEspecialidad = new javax.swing.JComboBox<>();
         Fecha_nacimiento = new com.toedter.calendar.JDateChooser();
         Fecha_contratacion_doctor = new com.toedter.calendar.JDateChooser();
         Jcombo_horario = new javax.swing.JComboBox<>();
         jComboBox_estado_doctor = new javax.swing.JComboBox<>();
+        cbSede = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaDoctores = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -741,7 +750,7 @@ public class admin extends javax.swing.JFrame {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setText("NOMBRE:");
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 60, 30));
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 110, 30));
 
         txtNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtNombre.setBorder(null);
@@ -750,10 +759,10 @@ public class admin extends javax.swing.JFrame {
                 txtNombreKeyTyped(evt);
             }
         });
-        jPanel4.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 250, 20));
+        jPanel4.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 300, 20));
 
         jLabel7.setText("APELLIDOS:");
-        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 90, 30));
+        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 140, 30));
 
         txtApellidos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtApellidos.setBorder(null);
@@ -762,10 +771,10 @@ public class admin extends javax.swing.JFrame {
                 txtApellidosKeyTyped(evt);
             }
         });
-        jPanel4.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 250, 20));
+        jPanel4.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 300, 20));
 
         jLabel8.setText("CORREO:");
-        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 90, 30));
+        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 140, 30));
 
         txtCorreo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCorreo.setBorder(null);
@@ -774,10 +783,10 @@ public class admin extends javax.swing.JFrame {
                 txtCorreoFocusLost(evt);
             }
         });
-        jPanel4.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 250, 20));
+        jPanel4.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 300, 20));
 
         jLabel9.setText("C.C :");
-        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 30, 30));
+        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 80, 30));
 
         txtCedula.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCedula.setBorder(null);
@@ -791,7 +800,7 @@ public class admin extends javax.swing.JFrame {
                 txtCedulaKeyTyped(evt);
             }
         });
-        jPanel4.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 250, 20));
+        jPanel4.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 300, 20));
 
         txtTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTelefono.setBorder(null);
@@ -800,31 +809,32 @@ public class admin extends javax.swing.JFrame {
                 txtTelefonoKeyTyped(evt);
             }
         });
-        jPanel4.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 250, 20));
+        jPanel4.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 300, 20));
 
         jLabel11.setText("TELEFONO :");
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 70, 30));
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 120, 30));
 
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel4.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 250, 10));
+        jPanel4.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 300, 10));
 
         jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel4.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 250, 10));
+        jPanel4.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 300, 10));
 
         jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 250, 10));
+        jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 300, 10));
 
         jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel4.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 250, 10));
+        jPanel4.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 300, 10));
 
         jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator6.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel4.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 250, 10));
+        jPanel4.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 300, 10));
 
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -835,10 +845,11 @@ public class admin extends javax.swing.JFrame {
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel15.setText("AGREGAR DOCTOR");
-        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 190, 50));
+        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 190, 50));
 
-        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 370, 70));
+        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 390, 70));
 
+        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -852,41 +863,42 @@ public class admin extends javax.swing.JFrame {
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel16.setText("MODIFICAR DOCTOR");
-        jPanel6.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 220, 50));
+        jPanel6.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 220, 50));
 
-        jPanel4.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 370, 70));
+        jPanel4.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 590, 390, 70));
 
-        jButton1.setText("ACTUALIZAR TABLA");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, -1, -1));
-
-        cbSexo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "F" }));
+        cbSexo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<SELECCIONE UN GENERO>", "MASCULINO", "FEMENINO", "NO BINARIO", " " }));
         cbSexo2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "GENERO:"));
-        jPanel4.add(cbSexo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, -1, -1));
+        jPanel4.add(cbSexo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 370, -1));
 
         cbEspecialidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Seleccione  la especialidad del doctor>", "Medico general", "Cardilogo", "terapeusta", " ", " " }));
         cbEspecialidad.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "ESPECIALIDAD:"));
-        jPanel4.add(cbEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 260, 40));
+        jPanel4.add(cbEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 370, 40));
 
         Fecha_nacimiento.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Fecha de Nacimiento"));
-        jPanel4.add(Fecha_nacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 160, -1));
+        jPanel4.add(Fecha_nacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 180, -1));
 
         Fecha_contratacion_doctor.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Fecha de Contratacion"));
-        jPanel4.add(Fecha_contratacion_doctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 170, -1));
+        jPanel4.add(Fecha_contratacion_doctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 180, -1));
 
         Jcombo_horario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<SELECCIONE EL HORARIO>", "Lunes-miercoles-viernes", "Martes-jueves-sabado", "Sabado-domingo" }));
         Jcombo_horario.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Horario:"));
-        jPanel4.add(Jcombo_horario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 340, 40));
+        jPanel4.add(Jcombo_horario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 370, 40));
 
-        jComboBox_estado_doctor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ESTADO", "Habilitado", "Desabilitado" }));
+        jComboBox_estado_doctor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<SELECCIONE EL ESTADO>", "Habilitado", "Desabilitado" }));
         jComboBox_estado_doctor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel4.add(jComboBox_estado_doctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 372, 370, 40));
+        jPanel4.add(jComboBox_estado_doctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 370, 30));
 
-        jPanel10.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 393, 630));
+        cbSede.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<SELECCIONA LA SEDE>" }));
+        cbSede.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cbSede.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbSedeActionPerformed(evt);
+            }
+        });
+        jPanel4.add(cbSede, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 370, 30));
+
+        jPanel10.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 393, 680));
 
         TablaDoctores.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
         TablaDoctores.setModel(new javax.swing.table.DefaultTableModel(
@@ -902,7 +914,7 @@ public class admin extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(TablaDoctores);
 
-        jPanel10.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 620, 630));
+        jPanel10.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 620, 680));
 
         jTable2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "DOCTORES DISPONIBLES", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -2106,10 +2118,6 @@ public class admin extends javax.swing.JFrame {
         controllerDoctor.guardarDoctorDesdeFormulario();
     }//GEN-LAST:event_jPanel5MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        controllerDoctor.cargarDatosEnTablaDoctor();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
         if (TablaDoctores.getSelectedRow() == -1) {
             controllerDoctor.cargarDatosDoctorEnFormulario();
@@ -2424,6 +2432,10 @@ public class admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox_estado_recepcionistaActionPerformed
 
+    private void cbSedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSedeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbSedeActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -2499,9 +2511,9 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JTable TablaDoctores;
     private javax.swing.JTable TabladeRecepcionistas;
     private javax.swing.JComboBox<String> cbEspecialidad;
+    private javax.swing.JComboBox<String> cbSede;
     private javax.swing.JComboBox<String> cbSexo2;
     private javax.swing.JComboBox<String> eps_recepcionista;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton_BuscarMedicamento;
     private javax.swing.JButton jButton_MostrarTodosMedicamentos;

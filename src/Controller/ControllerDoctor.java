@@ -37,6 +37,11 @@ public class ControllerDoctor {
     private JDateChooser dateChooserNacimiento;
     private JDateChooser dateChooserContratacion;
 
+    public void setCbSede(JComboBox<String> cbSede) {
+        this.cbSede = cbSede;
+    }
+    private JComboBox<String> cbSede;
+
     private GeneradorContraseñas generadorContraseñas = new GeneradorContraseñas();
     private EnviadorCredenciales enviadorCredenciales = EnviadorCredenciales.getInstancia();
     
@@ -131,6 +136,7 @@ public class ControllerDoctor {
             String sexo = cbSexo.getSelectedItem().toString();
             String horario = cbHorario.getSelectedItem().toString();
             String especialidad = cbEspecialidad.getSelectedItem().toString();
+            String sedeSeleccionada = cbSede.getSelectedItem().toString();
             
             if (nombres.isEmpty() || apellidos.isEmpty() || cedula.isEmpty() || 
                 correo.isEmpty() || telefono.isEmpty() ||
@@ -169,7 +175,7 @@ public class ControllerDoctor {
             Medico nuevoMedico = new Medico(
                 cedula, nombres, apellidos, fechaNacimiento, sexo,
                 correo, telefono, contrasena, especialidad,
-                fechaContratacion, horario, "Activo" // estado por defecto
+                fechaContratacion, horario, "Activo" , sedeSeleccionada// estado por defecto
             );
             
             if (medicoDAO.guardarMedico(nuevoMedico)) {
@@ -230,6 +236,7 @@ public class ControllerDoctor {
             String horario = cbHorario.getSelectedItem().toString();
             String especialidad = cbEspecialidad.getSelectedItem().toString();
             String estado = jComboBox_estado_doctor.getSelectedItem().toString();
+            String sedeSeleccionada = cbSede.getSelectedItem().toString();
 
             if (nombres.isEmpty() || apellidos.isEmpty() || cedula.isEmpty() || 
                 correo.isEmpty() || telefono.isEmpty() ||
@@ -268,7 +275,7 @@ public class ControllerDoctor {
             Medico medicoActualizado = new Medico(
                 cedula, nombres, apellidos, fechaNacimiento, sexo,
                 correo, telefono, contraseña, especialidad,
-                fechaContratacion, horario, estado
+                fechaContratacion, horario, estado, sedeSeleccionada
             );
 
             if (medicoDAO.actualizarMedico(documentoOriginal, medicoActualizado)) {

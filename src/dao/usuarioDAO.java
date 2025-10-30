@@ -16,6 +16,7 @@ public class usuarioDAO {
     private static final String MEDICOS_JSON = JSON_BASE_PATH + "medico.json";
     private static final String RECEPCIONISTAS_JSON = JSON_BASE_PATH + "recepcionista.json";
     private static final String PACIENTES_JSON = JSON_BASE_PATH + "pacientes.json";
+    
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
@@ -85,47 +86,52 @@ public class usuarioDAO {
         return null;
     }
 
-    private Medico buscarMedico(String email, String contraseña) throws Exception {
-        System.out.println("Buscando médico en: " + MEDICOS_JSON);
-        try (FileReader reader = new FileReader(MEDICOS_JSON)) {
-            JsonArray array = JsonParser.parseReader(reader).getAsJsonArray();
-            System.out.println("Número de médicos en archivo: " + array.size());
+   private Medico buscarMedico(String email, String contraseña) throws Exception {
+    System.out.println("Buscando médico en: " + MEDICOS_JSON);
+    try (FileReader reader = new FileReader(MEDICOS_JSON)) {
+        JsonArray array = JsonParser.parseReader(reader).getAsJsonArray();
+        System.out.println("Número de médicos en archivo: " + array.size());
 
-            for (int i = 0; i < array.size(); i++) {
-                JsonObject json = array.get(i).getAsJsonObject();
-                System.out.println("Comparando con: " + json.get("email").getAsString());
+        for (int i = 0; i < array.size(); i++) {
+            JsonObject json = array.get(i).getAsJsonObject();
+            System.out.println("Comparando con: " + json.get("email").getAsString());
 
-                if (json.get("email").getAsString().equalsIgnoreCase(email) &&
-                    json.get("contraseña").getAsString().equals(contraseña)) {
+            if (json.get("email").getAsString().equalsIgnoreCase(email) &&
+                json.get("contraseña").getAsString().equals(contraseña)) {
 
-                    System.out.println("Médico encontrado!");
+                System.out.println("Médico encontrado!");
 
-                    // Leer el campo 'estado' si existe, si no, por defecto "Activo"
-                    String estado = "Activo";
-                    if (json.has("estado") && !json.get("estado").isJsonNull()) {
-                        estado = json.get("estado").getAsString();
-                    }
 
-                    return new Medico(
-                        json.get("numeroDocumento").getAsString(),
-                        json.get("nombres").getAsString(),
-                        json.get("apellidos").getAsString(),
-                        LocalDate.parse(json.get("fechaNacimiento").getAsString(), DATE_FORMATTER),
-                        json.get("sexo").getAsString(),
-                        json.get("email").getAsString(),
-                        json.get("celular").getAsString(),
-                        json.get("contraseña").getAsString(),
-                        json.get("especialidad").getAsString(),
-                        LocalDate.parse(json.get("fechaContratacion").getAsString(), DATE_FORMATTER),
-                        json.get("horario").getAsString(),
-                        estado // <-- ahora se pasa estado al constructor
-                    );
-                }
+                String estado = json.has("estado") && !json.get("estado").isJsonNull()
+                        ? json.get("estado").getAsString()
+                        : "Activo";
+
+                String sede = json.has("sede") && !json.get("sede").isJsonNull()
+                        ? json.get("sede").getAsString()
+                        : "Sin asignar";
+
+                return new Medico(
+                    json.get("numeroDocumento").getAsString(),
+                    json.get("nombres").getAsString(),
+                    json.get("apellidos").getAsString(),
+                    LocalDate.parse(json.get("fechaNacimiento").getAsString(), DATE_FORMATTER),
+                    json.get("sexo").getAsString(),
+                    json.get("email").getAsString(),
+                    json.get("celular").getAsString(),
+                    json.get("contraseña").getAsString(),
+                    json.get("especialidad").getAsString(),
+                    LocalDate.parse(json.get("fechaContratacion").getAsString(), DATE_FORMATTER),
+                    json.get("horario").getAsString(),
+                    estado,
+                    sede 
+                );
             }
         }
-        System.out.println("Médico no encontrado con esas credenciales");
-        return null;
     }
+    System.out.println("Médico no encontrado con esas credenciales");
+    return null;
+}
+
 
     private Recepcionista buscarRecepcionista(String email, String contraseña) throws Exception {
         // Obtener la ruta absoluta del archivo

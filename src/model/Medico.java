@@ -14,18 +14,30 @@ public class Medico extends Persona {
     private String horario;
 
     @SerializedName("estado")
-    private String estado; // Nuevo campo: Activo o Deshabilitado
+    private String estado;// Nuevo campo: Activo o Deshabilitado
+    
+    @SerializedName("sede")
+    private String sede;
+
+    public void setSede(String sede) {
+        this.sede = sede;
+    }
+
+    public String getSede() {
+        return sede;
+    }
 
     public Medico(String numeroDocumento, String nombres, String apellidos,
                   LocalDate fechaNacimiento, String sexo,
                   String email, String celular, String contraseña,
                   String especialidad, LocalDate fechaContratacion,
-                  String horario, String estado) {
+                  String horario, String estado,String sede) {
         super(numeroDocumento, nombres, apellidos, fechaNacimiento, sexo, null, email, celular, contraseña);
         this.especialidad = especialidad;
         this.fechaContratacion = fechaContratacion;
         this.horario = horario;
         this.estado = estado;
+        this.sede=sede;
     }
 
     public String getEspecialidad() {
