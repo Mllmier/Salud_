@@ -358,9 +358,18 @@ if (salaSeleccionada == null) {
 
 
 
-     LocalDate fechaCita = fechaDate.toInstant()
-    .atZone(ZoneId.systemDefault())
-    .toLocalDate();
+    LocalDate fechaCita = fechaDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate hoy = LocalDate.now();
+        LocalDate limite = hoy.plusMonths(6);
+
+       if (fechaCita.isAfter(limite)) {
+        JOptionPane.showMessageDialog(null,
+        "No puede agendar una cita con más de 6 meses de anticipación.",
+        "Fecha no permitida",
+        JOptionPane.WARNING_MESSAGE);
+         return;
+        }
+   
          String documentoMedico = medicoSeleccionado.getNumeroDocumento();
      if (!ControllerCitas.getInstance().medicoTieneCupoEnFecha(documentoMedico, fechaCita)) {
     JOptionPane.showMessageDialog(null,
@@ -644,9 +653,18 @@ public void cargarMedicosEnCombo2(JComboBox<String> cbNombreApellidoMedico2, JLa
             return;
         }
 
-        LocalDate fechaCita2 = fechaC.toInstant()
-            .atZone(ZoneId.systemDefault())
-            .toLocalDate();
+      LocalDate fechaCita2 = fechaC.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate hoy = LocalDate.now();
+        LocalDate limite = hoy.plusMonths(6);
+
+       if (fechaCita2.isAfter(limite)) {
+        JOptionPane.showMessageDialog(null,
+        "No puede agendar una cita con más de 6 meses de anticipación.",
+        "Fecha no permitida",
+        JOptionPane.WARNING_MESSAGE);
+         return;
+        }
+   
 
         if (existeOtraCitaEnMismaHora(fechaCita2, horaCita, medicoSeleccionado.getNumeroDocumento(), idCitaOriginal)) {
             JOptionPane.showMessageDialog(null,
@@ -1134,7 +1152,24 @@ public void cargarCitasPorMedicoYFecha(String nombreApellido, Date fechaSeleccio
     }
     return String.format("Med.%03d", maxNumero + 1);
 }
- 
+ public  void verificarCambioEstadoCita() {
+    if (tablaCitas.getSelectedRow() == -1) return;
+
+    String estadoActualStr = tablaCitas.getValueAt(tablaCitas.getSelectedRow(), 11).toString();
+    String nuevoEstadoStr = cboEstadoCita2.getSelectedItem().toString();
+
+    // Si la cita ya está COMPLETADA, no permitir cambiar a CANCELADA
+    if (estadoActualStr.equalsIgnoreCase("COMPLETADA") && nuevoEstadoStr.equalsIgnoreCase("CANCELADA")) {
+        JOptionPane.showMessageDialog(null,
+            "No se puede cancelar una cita que ya está completada",
+            "Acción no permitida",
+            JOptionPane.WARNING_MESSAGE);
+
+        // Revertir al estado original
+        cboEstadoCita2.setSelectedItem(estadoActualStr);
+    }
+}
+
 }
      
 

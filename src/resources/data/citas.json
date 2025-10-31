@@ -71,28 +71,12 @@
   },
   {
     "IdCita": "32u3",
-    "fechaCita": "2025-05-16",
+    "fechaCita": "2031-05-10",
     "hora": "03:30",
     "tipoCita": "Control",
     "motivo": "Seguimiento",
-    "estado": "COMPLETADA",
+    "estado": "PROGRAMADA",
     "documentoPaciente": "2134567890",
-    "paciente": {
-      "tipoSangre": "O-",
-      "tipoDocumento": "TI",
-      "antecedentes": "dufre de alergias a las abejas",
-      "peso": 0,
-      "altura": 0.0,
-      "numeroDocumento": "2134567890",
-      "nombres": "araima",
-      "apellidos": "davila",
-      "fechaNacimiento": "2025-05-08",
-      "sexo": "F",
-      "eps": "Comfamiliar",
-      "email": "arai@gmail.com",
-      "celular": "1234567890",
-      "contraseña": "455789"
-    },
     "medico": {
       "especialidad": "Cardilogo",
       "fechaContratacion": "2025-05-08",
@@ -214,8 +198,8 @@
   },
   {
     "IdCita": "54588",
-    "fechaCita": "2025-05-29",
-    "hora": "08:30am",
+    "fechaCita": "2026-01-16",
+    "hora": "08:00",
     "tipoCita": "Prioritaria",
     "motivo": "Sintomas Agudos",
     "estado": "PROGRAMADA",
@@ -253,36 +237,20 @@
     "hora": "08:00",
     "tipoCita": "Regular",
     "motivo": "Seguimiento",
-    "estado": "COMPLETADA",
+    "estado": "CANCELADA",
     "documentoPaciente": "2134567890",
-    "paciente": {
-      "tipoSangre": "O-",
-      "tipoDocumento": "TI",
-      "antecedentes": "dufre de alergias a las abejas",
-      "peso": 80,
-      "altura": 70.0,
-      "numeroDocumento": "2134567890",
-      "nombres": "araima",
-      "apellidos": "davila",
-      "fechaNacimiento": "2025-05-08",
-      "sexo": "F",
-      "eps": "Comfamiliar",
-      "email": "arai@gmail.com",
-      "celular": "1234567890",
-      "contraseña": "455789"
-    },
     "medico": {
       "especialidad": "Medico general",
       "fechaContratacion": "2025-05-08",
-      "horario": "Lunes-miercoles-viernes",
+      "horario": "Sabado-domingo",
       "numeroDocumento": "1048456789",
-      "nombres": "Sharlok",
-      "apellidos": "Maia",
+      "nombres": "ronaldo",
+      "apellidos": "cano",
       "fechaNacimiento": "2004-05-19",
-      "sexo": "F",
-      "email": "imsharlok@gmail.com",
-      "celular": "3164419082",
-      "contraseña": "WnKi\u003c:z1!,"
+      "sexo": "M",
+      "email": "ronaldocanomorales54@gmail.com",
+      "celular": "310554789",
+      "contraseña": "37df269a8871a82e38db39193fadf285fbeb429b481c6a7f516dbd9a207a7ca1"
     },
     "documentoMedico": "1048456789",
     "sala": {
@@ -779,6 +747,41 @@
       "nombreSede": "Sede Norte",
       "direccion": "Avenida 5 #23-45, Barrio Norte",
       "horarioFuncionamiento": "Lunes-Sabado 9:00-17:00"
+    }
+  },
+  {
+    "IdCita": "Med.008",
+    "fechaCita": "2025-11-22",
+    "hora": "08:30am",
+    "tipoCita": "Regular",
+    "motivo": "Prevencion",
+    "estado": "PROGRAMADA",
+    "documentoPaciente": "1234567893",
+    "medico": {
+      "especialidad": "Cardilogo",
+      "fechaContratacion": "2025-05-08",
+      "horario": "Martes-jueves-sabado",
+      "numeroDocumento": "63525192",
+      "nombres": "Haider",
+      "apellidos": "Stiven",
+      "fechaNacimiento": "2001-05-21",
+      "sexo": "F",
+      "email": "thejh0nl3n0n@gmail.com",
+      "celular": "3001164785",
+      "contraseña": ".P}z7Q]@3a"
+    },
+    "documentoMedico": "63525192",
+    "sala": {
+      "nombreSala": "XDN",
+      "codigoSala": "SAL.003",
+      "tipoSala": "Sala de Rayos X",
+      "capacidadSala": "4"
+    },
+    "sede": {
+      "idSede": "SEDE001",
+      "nombreSede": "Sede Principal",
+      "direccion": "Calle 128 #48-67, Borotá",
+      "horarioFuncionamiento": "Lunes-Viernes 8:00-18:00"
     }
   }
 ]
