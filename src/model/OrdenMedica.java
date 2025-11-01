@@ -17,10 +17,9 @@ import java.util.List;
 public class OrdenMedica  {
   
     
-        private String idCita;
-
-  private   String nombre ;
-    private String apellido ;
+   private String idCita;
+   private   String nombre ;
+   private String apellido ;
    private  String email ;
    private  String altura ;
    private  String peso;

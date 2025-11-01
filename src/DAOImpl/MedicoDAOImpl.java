@@ -264,4 +264,17 @@ public boolean actualizarCredenciales(String emailActual, String nuevoEmail, Str
     }
     return false;
 }
+@Override
+public boolean actualizarEstado(String numeroDocumento, String nuevoEstado) {
+    List<Medico> medicos = cargarTodos();
+    for (Medico m : medicos) {
+        if (m.getNumeroDocumento().equals(numeroDocumento)) {
+            m.setEstado(nuevoEstado);
+            guardarTodos(medicos);
+            return true;
+        }
+    }
+    return false;
+}
+
 }
