@@ -503,5 +503,41 @@
       "direccion": "Avenida 5 #23-45, Barrio Norte",
       "horarioFuncionamiento": "Lunes-Sabado 9:00-17:00"
     }
+  },
+  {
+    "IdCita": "Med.006",
+    "fechaCita": "2025-10-31",
+    "hora": "02:00pm",
+    "tipoCita": "Regular",
+    "motivo": "Seguimiento",
+    "estado": "PROGRAMADA",
+    "documentoPaciente": "8384354545",
+    "medico": {
+      "especialidad": "Medico general",
+      "fechaContratacion": "2025-10-03",
+      "horario": "Martes-jueves-sabado",
+      "estado": "Desabilitado",
+      "numeroDocumento": "1014662612",
+      "nombres": "haider",
+      "apellidos": "pabon mejia",
+      "fechaNacimiento": "2006-06-23",
+      "sexo": "M",
+      "email": "haider32108@gmail.com",
+      "celular": "3001164785",
+      "contraseña": "QpPxyz])34"
+    },
+    "documentoMedico": "1014662612",
+    "sala": {
+      "nombreSala": "quirofano",
+      "codigoSala": "SAL.002",
+      "tipoSala": "Sala de Urgencias",
+      "capacidadSala": "8"
+    },
+    "sede": {
+      "idSede": "SEDE002",
+      "nombreSede": "Sede Norte",
+      "direccion": "Avenida 5 #23-45, Barrio Norte",
+      "horarioFuncionamiento": "Lunes-Sabado 9:00-17:00"
+    }
   }
 ]
