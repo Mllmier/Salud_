@@ -49,6 +49,7 @@ public class ConsultarCita extends javax.swing.JDialog implements CitaListener {
          this.controller = ControllerCitasPaciente.getInstance();
         this.controller.addCitaListener(this);
         configurarControlador();
+          this.setLocationRelativeTo(null);
       
         
     }
@@ -99,11 +100,17 @@ public class ConsultarCita extends javax.swing.JDialog implements CitaListener {
     JMenuItem itemCancelar = new JMenuItem("Reprogramar");
     popupMenu.add(itemCancelar);
 
-   itemCancelar.addActionListener(new ActionListener() {
+     itemCancelar.addActionListener(new ActionListener() {
         @Override
             public void actionPerformed(ActionEvent evt) {
                 int filaSeleccionada = tableCitas.getSelectedRow();
                 if (filaSeleccionada >= 0) {
+                    String estado = tableCitas.getValueAt(filaSeleccionada, 11).toString(); // <-- Estado
+                    if (estado.equalsIgnoreCase("Completada")) {
+                        JOptionPane.showMessageDialog(null, "No se puede reprogramar una cita completada.");
+                        return;
+                    }
+
                     DialogModificar dialog = new DialogModificar(null, true);
                     dialog.cargarDatosDesdeFilaSeleccionada(tableCitas, filaSeleccionada);  
                     dialog.setLocationRelativeTo(null);
@@ -114,6 +121,7 @@ public class ConsultarCita extends javax.swing.JDialog implements CitaListener {
                 }
             }
         });
+
      JMenuItem itemModificarAvanzado = new JMenuItem("Cancelar");
     popupMenu.add(itemModificarAvanzado);
 
@@ -122,6 +130,12 @@ public class ConsultarCita extends javax.swing.JDialog implements CitaListener {
         public void actionPerformed(ActionEvent evt) {
             int filaSeleccionada = tableCitas.getSelectedRow();
             if (filaSeleccionada >= 0) {
+                String estado = tableCitas.getValueAt(filaSeleccionada, 11).toString(); // <-- Estado
+                if (estado.equalsIgnoreCase("Completada")) {
+                    JOptionPane.showMessageDialog(null, "No se puede cancelar una cita completada.");
+                    return;
+                }
+
                 DialogCancelar2 dialog2 = new DialogCancelar2(null, true); 
                 dialog2.mostrarDatosCitaEnLabels(tableCitas, filaSeleccionada);
                 dialog2.setTablaCitasPaciente(tableCitas);
@@ -132,6 +146,7 @@ public class ConsultarCita extends javax.swing.JDialog implements CitaListener {
             }
         }
     });
+
   JMenuItem itemVerOrden = new JMenuItem("Ver orden médica");
 popupMenu.add(itemVerOrden);
 
@@ -184,31 +199,9 @@ itemVerOrden.addActionListener(new ActionListener() {
         }
     });
 }
-private void verOrdenMedica() {
-    int fila = tableCitas.getSelectedRow();
-    if (fila == -1) {
-        JOptionPane.showMessageDialog(this, "Seleccione una fila primero.");
-        return;
-    }
-String idCita = tableCitas.getValueAt(fila, 0).toString();
-    OrdenMedicaDAO ordenDAO = new OrdenMedicaDAOImpl();
-    OrdenMedica orden = ordenDAO.obtenerPorIdCita(idCita);
-    if (orden == null) {
-        JOptionPane.showMessageDialog(this, "No se encontró una orden médica para esta cita.");
-        return;
-    }
-    DialogOrdenMedica dialog = new DialogOrdenMedica(null, true);
-    dialog.setOrdenMedica(orden);
-    dialog.cargarDatos();  
-    dialog.setLocationRelativeTo(this);
-    dialog.setVisible(true);
-}
-
-
-    public JTable getTableCitas() {
-        return tableCitas;
-
-    }
+   public JTable getTableCitas() { 
+       return tableCitas; 
+   }
 
    public void actualizarTablaCitas() {
     if (documentoPaciente != null && !documentoPaciente.trim().isEmpty()) {

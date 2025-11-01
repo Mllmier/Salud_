@@ -38,6 +38,8 @@ public class DialogAgendarCita extends javax.swing.JDialog implements CitaListen
        this.controller = ControllerCitasPaciente.getInstance();
         this.controller.addCitaListener(this); 
         configurarCitas();
+       this.setLocationRelativeTo(null);
+
     }
 
     @Override
@@ -106,7 +108,7 @@ public class DialogAgendarCita extends javax.swing.JDialog implements CitaListen
         jDateFechaCita.setMinSelectableDate(fechaActual);
         jDateFechaCita.setDateFormatString("yyyy-MM-dd");
     }
-        controller.setTxtIdCita(txtIdCita);
+        controller.setLblIdCita(lblCita);
         controller.setCboSede(cboSede);
         controller.setCboConsultorio(cboConsultorio); 
         controller.setCboMedico(cboMedico);
@@ -193,9 +195,10 @@ public void citaEliminada(String idCita) {
         cboHoraCita = new javax.swing.JComboBox<>();
         jSeparator15 = new javax.swing.JSeparator();
         lblEps = new javax.swing.JLabel();
-        txtIdCita = new javax.swing.JTextField();
         lblEspecialidadMedico = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        lblCita = new javax.swing.JLabel();
+        jSeparator11 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
 
@@ -359,19 +362,13 @@ public void citaEliminada(String idCita) {
         jSeparator15.setForeground(new java.awt.Color(28, 43, 110));
         jPanel2.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 180, 10));
         jPanel2.add(lblEps, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 150, 40));
-
-        txtIdCita.setText("dffghm");
-        txtIdCita.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdCitaActionPerformed(evt);
-            }
-        });
-        jPanel2.add(txtIdCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, 160, 40));
         jPanel2.add(lblEspecialidadMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 370, 170, 30));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel11.setText("Id Cita ");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, -1, -1));
+        jPanel2.add(lblCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 150, 40));
+        jPanel2.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, 150, 10));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 770, 510));
 
@@ -400,10 +397,6 @@ if (dialogConsultarCitas != null) {
     private void cboSedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboSedeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cboSedeActionPerformed
-
-    private void txtIdCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdCitaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdCitaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -479,6 +472,7 @@ if (dialogConsultarCitas != null) {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator14;
@@ -492,11 +486,11 @@ if (dialogConsultarCitas != null) {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JLabel lblApellidoPaciente;
+    private javax.swing.JLabel lblCita;
     private javax.swing.JLabel lblDocumentoPaciente;
     private javax.swing.JLabel lblEmailPaciente;
     private javax.swing.JLabel lblEps;
     private javax.swing.JLabel lblEspecialidadMedico;
     private javax.swing.JLabel lblNombrePaciente;
-    private javax.swing.JTextField txtIdCita;
     // End of variables declaration//GEN-END:variables
 }

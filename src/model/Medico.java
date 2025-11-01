@@ -63,8 +63,12 @@ public class Medico extends Persona {
     public void setHorario(String horario) {
         this.horario = horario;
     }
+ @Override
+public String toString() {
+    return getNombres() + " " + getApellidos();
+}
 
-    public String getEstado() {
+  public String getEstado() {
         return estado;
     }
 
@@ -72,3 +76,6 @@ public class Medico extends Persona {
         this.estado = estado;
     }
 }
+
+  
+

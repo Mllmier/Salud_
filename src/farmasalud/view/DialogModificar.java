@@ -33,10 +33,11 @@ private JTable tablaCitasPacienteExterna;
     public DialogModificar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
                 initComponents();
+                  this.setLocationRelativeTo(null);
          
         ControllerCitasPaciente controller = ControllerCitasPaciente.getInstance();
 
-        controller.setTxtIdCita(txtIdCita2);
+        controller.setLblIdCita(lblCita);
         controller.setJDateFechaCita(jDateChooserCita);
         controller.setCboHoraCita(cboHoraCita2);
         controller.setCboMotivoCita(cboMotivoCita2);
@@ -82,7 +83,7 @@ public void cargarDatosDesdeFilaSeleccionada(JTable table, int fila) {
     lblEmail2.setText(model.getValueAt(fila, 4).toString());
 
 
-    txtIdCita2.setText(model.getValueAt(fila, 5).toString());
+    lblCita.setText(model.getValueAt(fila, 5).toString());
     cboHoraCita2.setSelectedItem(model.getValueAt(fila, 6).toString());
     cboMotivoCita2.setSelectedItem(model.getValueAt(fila, 7).toString());
 
@@ -165,10 +166,13 @@ public void cargarDatosDesdeFilaSeleccionada(JTable table, int fila) {
         jSeparator13 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jDateChooserCita = new com.toedter.calendar.JDateChooser();
-        txtIdCita2 = new javax.swing.JTextField();
         lblEps2 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
+        lblCita = new javax.swing.JLabel();
+        jSeparator14 = new javax.swing.JSeparator();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -177,7 +181,7 @@ public void cargarDatosDesdeFilaSeleccionada(JTable table, int fila) {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -318,12 +322,11 @@ public void cargarDatosDesdeFilaSeleccionada(JTable table, int fila) {
 
         jDateChooserCita.setBackground(new java.awt.Color(28, 43, 110));
         jPanel2.add(jDateChooserCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 150, 30));
-        jPanel2.add(txtIdCita2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, -1, -1));
         jPanel2.add(lblEps2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, 170, 40));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel15.setText("Id Cita");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 70, -1));
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 70, -1));
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -331,11 +334,41 @@ public void cargarDatosDesdeFilaSeleccionada(JTable table, int fila) {
                 btnModificarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 460, -1, -1));
+        jPanel2.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, -1, 40));
+        jPanel2.add(lblCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 170, 30));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 590, 520));
+        jSeparator14.setBackground(new java.awt.Color(28, 43, 110));
+        jSeparator14.setForeground(new java.awt.Color(28, 43, 110));
+        jPanel2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 170, 10));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 640));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 610, 500));
+
+        jPanel3.setBackground(new java.awt.Color(28, 43, 110));
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("REAGENDAMIENTO CITAS");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(245, Short.MAX_VALUE)
+                .addComponent(jLabel16)
+                .addGap(226, 226, 226))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(35, Short.MAX_VALUE)
+                .addComponent(jLabel16)
+                .addGap(33, 33, 33))
+        );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 770, 100));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 640));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -347,7 +380,7 @@ public void cargarDatosDesdeFilaSeleccionada(JTable table, int fila) {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
     if (tablaCitasPacienteExterna != null) {
         ControllerCitasPaciente.getInstance().actualizarCitaDesdeFormulario(tablaCitasPacienteExterna);
-        this.dispose(); // cierra el diálogo después de actualizar
+       
     } else {
         JOptionPane.showMessageDialog(this, "No se vinculó correctamente la tabla de citas", "Error", JOptionPane.ERROR_MESSAGE);
     } 
@@ -412,6 +445,7 @@ public void cargarDatosDesdeFilaSeleccionada(JTable table, int fila) {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -422,11 +456,13 @@ public void cargarDatosDesdeFilaSeleccionada(JTable table, int fila) {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator13;
+    private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -436,12 +472,12 @@ public void cargarDatosDesdeFilaSeleccionada(JTable table, int fila) {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JLabel lblApellidoPaciente2;
+    private javax.swing.JLabel lblCita;
     private javax.swing.JLabel lblDocumentoPaciente2;
     private javax.swing.JLabel lblEmail2;
     private javax.swing.JLabel lblEps2;
     private javax.swing.JLabel lblEspecialidadMedico2;
     private javax.swing.JComboBox<String> lblEstadoCita2;
     private javax.swing.JLabel lblNombrePaciente2;
-    private javax.swing.JTextField txtIdCita2;
     // End of variables declaration//GEN-END:variables
 }
