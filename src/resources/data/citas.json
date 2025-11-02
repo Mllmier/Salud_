@@ -179,24 +179,25 @@
   },
   {
     "IdCita": "48434",
-    "fechaCita": "2025-05-30",
-    "hora": "10:00am",
+    "fechaCita": "2026-05-09",
+    "hora": "08:30",
     "tipoCita": "Regular",
     "motivo": "Enfermedad Cronica",
     "estado": "PROGRAMADA",
     "documentoPaciente": "1234567893",
     "medico": {
-      "especialidad": "terapeusta",
-      "fechaContratacion": "2025-05-08",
+      "especialidad": "Medico general",
+      "fechaContratacion": "2025-10-03",
       "horario": "Martes-jueves-sabado",
+      "estado": "Desabilitado",
       "numeroDocumento": "1014662612",
-      "nombres": "Maria",
-      "apellidos": "Liz",
-      "fechaNacimiento": "2004-05-20",
-      "sexo": "F",
-      "email": "leonmiermarializ@gmail.com",
-      "celular": "3186476452",
-      "contraseña": "Evk\u003e^1b.,U"
+      "nombres": "haider",
+      "apellidos": "pabon mejia",
+      "fechaNacimiento": "2006-06-23",
+      "sexo": "M",
+      "email": "haider32108@gmail.com",
+      "celular": "3001164785",
+      "contraseña": "QpPxyz])34"
     },
     "documentoMedico": "1014662612",
     "sala": {
@@ -204,12 +205,6 @@
       "codigoSala": "SAL.001",
       "tipoSala": "Sala de Medicina General",
       "capacidadSala": "4"
-    },
-    "sede": {
-      "idSede": "SEDE001",
-      "nombreSede": "Sede Principal",
-      "direccion": "Calle 128 #48-67, Borotá",
-      "horarioFuncionamiento": "Lunes-Viernes 8:00-18:00"
     }
   },
   {
@@ -779,6 +774,191 @@
       "nombreSede": "Sede Norte",
       "direccion": "Avenida 5 #23-45, Barrio Norte",
       "horarioFuncionamiento": "Lunes-Sabado 9:00-17:00"
+    }
+  },
+  {
+    "IdCita": "Med.008",
+    "fechaCita": "2025-11-14",
+    "hora": "09:30",
+    "tipoCita": "Regular",
+    "motivo": "Prevencion",
+    "estado": "PROGRAMADA",
+    "documentoPaciente": "1234567893",
+    "medico": {
+      "especialidad": "Cardilogo",
+      "fechaContratacion": "2025-10-30",
+      "horario": "Martes-jueves-sabado",
+      "estado": "Activo",
+      "sede": "Sede Norte",
+      "numeroDocumento": "1234567890",
+      "nombres": "Carlos",
+      "apellidos": "XD",
+      "fechaNacimiento": "2000-06-14",
+      "sexo": "M",
+      "email": "ahhajhajshakja@gmail.com",
+      "celular": "3164419082",
+      "contraseña": "*:LO4|dK(-"
+    },
+    "documentoMedico": "1234567890",
+    "sala": {
+      "nombreSala": "fghmknn",
+      "codigoSala": "456789",
+      "tipoSala": "Sala de Pediatría",
+      "capacidadSala": "3"
+    },
+    "sede": {
+      "idSede": "SEDE002",
+      "nombreSede": "Sede Norte",
+      "direccion": "Avenida 5 #23-45, Barrio Norte",
+      "horarioFuncionamiento": "Lunes-Sabado 9:00-17:00"
+    }
+  },
+  {
+    "IdCita": "Med.009",
+    "fechaCita": "2025-11-12",
+    "hora": "12:00",
+    "tipoCita": "Control",
+    "motivo": "Sintomas Agudos",
+    "estado": "PROGRAMADA",
+    "documentoPaciente": "2134567890",
+    "medico": {
+      "especialidad": "Medico general",
+      "fechaContratacion": "2025-10-12",
+      "horario": "Martes-jueves-sabado",
+      "estado": "Activo",
+      "sede": "Sede Principal",
+      "numeroDocumento": "1102253456",
+      "nombres": "Sara",
+      "apellidos": "Cadrazco",
+      "fechaNacimiento": "1992-10-09",
+      "sexo": "FEMENINO",
+      "email": "sara@gmail.com",
+      "celular": "3252905689",
+      "contraseña": "!A\u003eZ\u0026r6]La"
+    },
+    "documentoMedico": "1102253456",
+    "sala": {
+      "nombreSala": "XDN",
+      "codigoSala": "SAL.003",
+      "tipoSala": "Sala de Rayos X",
+      "capacidadSala": "4"
+    },
+    "sede": {
+      "idSede": "SEDE001",
+      "nombreSede": "Sede Principal",
+      "direccion": "Calle 128 #48-67, Borotá",
+      "horarioFuncionamiento": "Lunes-Viernes 8:00-18:00"
+    }
+  },
+  {
+    "IdCita": "Med.010",
+    "fechaCita": "2025-11-07",
+    "hora": "08:30am",
+    "tipoCita": "Prioritaria",
+    "motivo": "Enfermedad Cronica",
+    "estado": "PROGRAMADA",
+    "documentoPaciente": "123456789",
+    "medico": {
+      "especialidad": "Cardilogo",
+      "fechaContratacion": "2025-10-30",
+      "horario": "Martes-jueves-sabado",
+      "estado": "Activo",
+      "sede": "Sede Norte",
+      "numeroDocumento": "1234567890",
+      "nombres": "Carlos",
+      "apellidos": "XD",
+      "fechaNacimiento": "2000-06-14",
+      "sexo": "M",
+      "email": "ahhajhajshakja@gmail.com",
+      "celular": "3164419082",
+      "contraseña": "*:LO4|dK(-"
+    },
+    "documentoMedico": "1234567890",
+    "sala": {
+      "nombreSala": "XDN",
+      "codigoSala": "SAL.003",
+      "tipoSala": "Sala de Rayos X",
+      "capacidadSala": "4"
+    },
+    "sede": {
+      "idSede": "SEDE002",
+      "nombreSede": "Sede Norte",
+      "direccion": "Avenida 5 #23-45, Barrio Norte",
+      "horarioFuncionamiento": "Lunes-Sabado 9:00-17:00"
+    }
+  },
+  {
+    "IdCita": "Med.011",
+    "fechaCita": "2025-11-21",
+    "hora": "12:00",
+    "tipoCita": "Regular",
+    "motivo": "Sintomas Agudos",
+    "estado": "PROGRAMADA",
+    "documentoPaciente": "123456789",
+    "medico": {
+      "especialidad": "Medico general",
+      "fechaContratacion": "2025-10-12",
+      "horario": "Martes-jueves-sabado",
+      "estado": "Activo",
+      "sede": "Sede Principal",
+      "numeroDocumento": "1102253456",
+      "nombres": "Sara",
+      "apellidos": "Cadrazco",
+      "fechaNacimiento": "1992-10-09",
+      "sexo": "FEMENINO",
+      "email": "sara@gmail.com",
+      "celular": "3252905689",
+      "contraseña": "!A\u003eZ\u0026r6]La"
+    },
+    "documentoMedico": "1102253456",
+    "sala": {
+      "nombreSala": "quirofano",
+      "codigoSala": "SAL.002",
+      "tipoSala": "Sala de Urgencias",
+      "capacidadSala": "8"
+    },
+    "sede": {
+      "idSede": "SEDE001",
+      "nombreSede": "Sede Principal",
+      "direccion": "Calle 128 #48-67, Borotá",
+      "horarioFuncionamiento": "Lunes-Viernes 8:00-18:00"
+    }
+  },
+  {
+    "IdCita": "Med.012",
+    "fechaCita": "2025-11-21",
+    "hora": "05:00",
+    "tipoCita": "Regular",
+    "motivo": "Sintomas Agudos",
+    "estado": "PROGRAMADA",
+    "documentoPaciente": "1234567893",
+    "medico": {
+      "especialidad": "Medico general",
+      "fechaContratacion": "2025-10-12",
+      "horario": "Martes-jueves-sabado",
+      "estado": "Activo",
+      "sede": "Sede Principal",
+      "numeroDocumento": "1102253456",
+      "nombres": "Sara",
+      "apellidos": "Cadrazco",
+      "fechaNacimiento": "1992-10-09",
+      "sexo": "FEMENINO",
+      "email": "sara@gmail.com",
+      "celular": "3252905689",
+      "contraseña": "!A\u003eZ\u0026r6]La"
+    },
+    "documentoMedico": "1102253456",
+    "sala": {
+      "nombreSala": "XDN",
+      "codigoSala": "SAL.003",
+      "tipoSala": "Sala de Rayos X",
+      "capacidadSala": "4"
+    },
+    "sede": {
+      "idSede": "SEDE001",
+      "nombreSede": "Sede Principal",
+      "direccion": "Calle 128 #48-67, Borotá",
+      "horarioFuncionamiento": "Lunes-Viernes 8:00-18:00"
     }
   }
 ]
