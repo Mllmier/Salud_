@@ -1,6 +1,7 @@
 package Controller;
 
 import DAOImpl.MedicoDAOImpl;
+import DAOImpl.SalasDAOImpl;
 import Utilidades.EnviadorCredenciales;
 import Utilidades.GeneradorContraseñas;
 import com.toedter.calendar.JDateChooser;
@@ -15,6 +16,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import model.Medico;
+import model.Salas;
 
 public class ControllerDoctor {
     private static ControllerDoctor instancia;
@@ -41,6 +43,11 @@ public class ControllerDoctor {
         this.cbSede = cbSede;
     }
     private JComboBox<String> cbSede;
+    private JComboBox<String> cbSala;
+
+    public void setCbSala(JComboBox<String> cbSala) {
+      this.cbSala = cbSala;
+    }
 
     private GeneradorContraseñas generadorContraseñas = new GeneradorContraseñas();
     private EnviadorCredenciales enviadorCredenciales = EnviadorCredenciales.getInstancia();
@@ -137,6 +144,7 @@ public class ControllerDoctor {
             String horario = cbHorario.getSelectedItem().toString();
             String especialidad = cbEspecialidad.getSelectedItem().toString();
             String sedeSeleccionada = cbSede.getSelectedItem().toString();
+            String salaSeleccionada = cbSala != null ? cbSala.getSelectedItem().toString() : "Sin sala asignada";
             
             if (nombres.isEmpty() || apellidos.isEmpty() || cedula.isEmpty() || 
                 correo.isEmpty() || telefono.isEmpty() ||
@@ -175,7 +183,7 @@ public class ControllerDoctor {
             Medico nuevoMedico = new Medico(
                 cedula, nombres, apellidos, fechaNacimiento, sexo,
                 correo, telefono, contrasena, especialidad,
-                fechaContratacion, horario, "Activo" , sedeSeleccionada// estado por defecto
+                fechaContratacion, horario, "Activo" , sedeSeleccionada,salaSeleccionada// estado por defecto
             );
             
             if (medicoDAO.guardarMedico(nuevoMedico)) {
@@ -237,6 +245,7 @@ public class ControllerDoctor {
             String especialidad = cbEspecialidad.getSelectedItem().toString();
             String estado = jComboBox_estado_doctor.getSelectedItem().toString();
             String sedeSeleccionada = cbSede.getSelectedItem().toString();
+            String salaSeleccionada = cbSala != null ? cbSala.getSelectedItem().toString() : "Sin sala asignada";
 
             if (nombres.isEmpty() || apellidos.isEmpty() || cedula.isEmpty() || 
                 correo.isEmpty() || telefono.isEmpty() ||
@@ -275,7 +284,7 @@ public class ControllerDoctor {
             Medico medicoActualizado = new Medico(
                 cedula, nombres, apellidos, fechaNacimiento, sexo,
                 correo, telefono, contraseña, especialidad,
-                fechaContratacion, horario, estado, sedeSeleccionada
+                fechaContratacion, horario, estado, sedeSeleccionada,salaSeleccionada
             );
 
             if (medicoDAO.actualizarMedico(documentoOriginal, medicoActualizado)) {
@@ -364,4 +373,24 @@ public class ControllerDoctor {
             this.documentoOriginal = txtCedula.getText();
         }
     }
+   public void cargarSalasEnCombo() {
+    try {
+        DAOImpl.SalasDAOImpl salasDAO = new DAOImpl.SalasDAOImpl();
+        List<model.Salas> listaSalas = salasDAO.cargarTodasSalas();
+
+        cbSala.removeAllItems();
+        cbSala.addItem("<SELECCIONE UNA SALA>");
+        for (model.Salas s : listaSalas) {
+            cbSala.addItem(s.getNombreSala());
+        }
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null,
+            "Error al cargar las salas: " + e.getMessage(),
+            "Error",
+            JOptionPane.ERROR_MESSAGE);
+        e.printStackTrace();
+    }
+}
+
 }

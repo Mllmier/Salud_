@@ -14,19 +14,6 @@
     "contraseña": "QpPxyz])34"
   },
   {
-    "especialidad": "Medico general",
-    "fechaContratacion": "2025-09-25",
-    "horario": "Martes-jueves-sabado",
-    "numeroDocumento": "0987654321",
-    "nombres": "sofia",
-    "apellidos": "carson",
-    "fechaNacimiento": "2025-09-19",
-    "sexo": "F",
-    "email": "sofia@clinica.com",
-    "celular": "1234567890",
-    "contraseña": ":g-PAS_1Bq",
-    "especialidad": "terapeusta",
-    "fechaContratacion": "2025-09-17",
     "especialidad": "Cardilogo",
     "fechaContratacion": "2025-10-30",
     "horario": "Martes-jueves-sabado",
@@ -40,5 +27,21 @@
     "email": "ahhajhajshakja@gmail.com",
     "celular": "3164419082",
     "contraseña": "*:LO4|dK(-"
+  },
+  {
+    "especialidad": "\u003cSeleccione  la especialidad del doctor\u003e",
+    "fechaContratacion": "2025-11-02",
+    "horario": "Sabado-domingo",
+    "estado": "Activo",
+    "sede": "sede sur",
+    "sala": "fghmknn",
+    "numeroDocumento": "159753456",
+    "nombres": "ASDFG",
+    "apellidos": "asdfgh",
+    "fechaNacimiento": "1985-05-08",
+    "sexo": "MASCULINO",
+    "email": "AHAHHAHAHA@GMAIL.COM",
+    "celular": "3001164785",
+    "contraseña": ";*kq\u003c9k\u003e!N"
   }
 ]

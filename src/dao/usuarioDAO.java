@@ -109,6 +109,10 @@ public class usuarioDAO {
                 String sede = json.has("sede") && !json.get("sede").isJsonNull()
                         ? json.get("sede").getAsString()
                         : "Sin asignar";
+                
+                 String sala = json.has("sala") && !json.get("sala").isJsonNull()
+                        ? json.get("sala").getAsString()
+                        : "Sin asignar";
 
                 return new Medico(
                     json.get("numeroDocumento").getAsString(),
@@ -123,7 +127,8 @@ public class usuarioDAO {
                     LocalDate.parse(json.get("fechaContratacion").getAsString(), DATE_FORMATTER),
                     json.get("horario").getAsString(),
                     estado,
-                    sede 
+                    sede,
+                    sala
                 );
             }
         }
