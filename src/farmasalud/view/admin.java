@@ -10,6 +10,7 @@ import Controller.ControllerMedicamento;
 import Controller.ControllerRecepcionista;
 import Controller.ControllerSalas;
 import Controller.ControllerSede;
+import DAOImpl.SalasDAOImpl;
 import com.google.gson.JsonObject;
 import dao.AdminDAO;
 import java.awt.Color;
@@ -28,6 +29,7 @@ import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import model.Salas;
 import model.Sede;
 
 /**
@@ -44,6 +46,9 @@ public class admin extends javax.swing.JFrame {
     private void limpiarDoctor() {controllerDoctor.limpiarFormulario();}
     private ControllerEnfermedades controllerEnfermedades = new ControllerEnfermedades();
     private JPasswordField pwdContraseña = new JPasswordField();
+    ControllerDoctor controller = ControllerDoctor.getInstancia();
+    
+    
 
     
 
@@ -66,8 +71,15 @@ public class admin extends javax.swing.JFrame {
         cbSede.removeAllItems();
         cbSede.addItem("<Seleccione una sede>");
         for (Sede s : sedes) {
-        cbSede.addItem(s.getNombreSede()); // asumiendo que Sede tiene getNombre()
+        cbSede.addItem(s.getNombreSede()); // asumiendo que Sede tiene getNombre()  
 }
+    controller.setCbSala(cbSala);
+    controller.cargarSalasEnCombo();
+        
+      
+
+
+
         
         
         
@@ -88,6 +100,7 @@ public class admin extends javax.swing.JFrame {
     controllerDoctor.setDateChooserContratacion(Fecha_contratacion_doctor);
     controllerDoctor.setjComboBox_estado_doctor(jComboBox_estado_doctor);
     controllerDoctor.setCbSede(cbSede);
+    controllerDoctor.setCbSala(cbSala);
 
     
     controllerDoctor.initTableDoctor();
@@ -312,6 +325,7 @@ public class admin extends javax.swing.JFrame {
         Fecha_contratacion_doctor = new com.toedter.calendar.JDateChooser();
         Jcombo_horario = new javax.swing.JComboBox<>();
         jComboBox_estado_doctor = new javax.swing.JComboBox<>();
+        cbSala = new javax.swing.JComboBox<>();
         cbSede = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaDoctores = new javax.swing.JTable();
@@ -845,9 +859,9 @@ public class admin extends javax.swing.JFrame {
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel15.setText("AGREGAR DOCTOR");
-        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 190, 50));
+        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 190, 50));
 
-        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 390, 70));
+        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 390, 50));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -863,9 +877,9 @@ public class admin extends javax.swing.JFrame {
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel16.setText("MODIFICAR DOCTOR");
-        jPanel6.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 220, 50));
+        jPanel6.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 220, 50));
 
-        jPanel4.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 590, 390, 70));
+        jPanel4.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 620, 390, 50));
 
         cbSexo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<SELECCIONE UN GENERO>", "MASCULINO", "FEMENINO", "NO BINARIO", " " }));
         cbSexo2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "GENERO:"));
@@ -889,7 +903,16 @@ public class admin extends javax.swing.JFrame {
         jComboBox_estado_doctor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.add(jComboBox_estado_doctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 370, 30));
 
-        cbSede.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<SELECCIONA LA SEDE>" }));
+        cbSala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<SELECCIONA LA SALA>" }));
+        cbSala.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cbSala.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbSalaActionPerformed(evt);
+            }
+        });
+        jPanel4.add(cbSala, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, 370, 30));
+
+        cbSede.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<SELECCIONE LA SEDE>" }));
         cbSede.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         cbSede.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -898,7 +921,7 @@ public class admin extends javax.swing.JFrame {
         });
         jPanel4.add(cbSede, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 370, 30));
 
-        jPanel10.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 393, 680));
+        jPanel10.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 393, 690));
 
         TablaDoctores.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
         TablaDoctores.setModel(new javax.swing.table.DefaultTableModel(
@@ -2432,6 +2455,10 @@ public class admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox_estado_recepcionistaActionPerformed
 
+    private void cbSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSalaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbSalaActionPerformed
+
     private void cbSedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSedeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbSedeActionPerformed
@@ -2511,6 +2538,7 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JTable TablaDoctores;
     private javax.swing.JTable TabladeRecepcionistas;
     private javax.swing.JComboBox<String> cbEspecialidad;
+    private javax.swing.JComboBox<String> cbSala;
     private javax.swing.JComboBox<String> cbSede;
     private javax.swing.JComboBox<String> cbSexo2;
     private javax.swing.JComboBox<String> eps_recepcionista;

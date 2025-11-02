@@ -18,6 +18,17 @@ public class Medico extends Persona {
     
     @SerializedName("sede")
     private String sede;
+    
+    @SerializedName("sala")
+    private String sala;
+
+    public String getSala() {
+      return sala;
+    }
+
+    public void setSala(String sala) {
+       this.sala = sala;
+    } 
 
     public void setSede(String sede) {
         this.sede = sede;
@@ -31,13 +42,14 @@ public class Medico extends Persona {
                   LocalDate fechaNacimiento, String sexo,
                   String email, String celular, String contraseña,
                   String especialidad, LocalDate fechaContratacion,
-                  String horario, String estado,String sede) {
+                  String horario, String estado,String sede,String sala) {
         super(numeroDocumento, nombres, apellidos, fechaNacimiento, sexo, null, email, celular, contraseña);
         this.especialidad = especialidad;
         this.fechaContratacion = fechaContratacion;
         this.horario = horario;
         this.estado = estado;
         this.sede=sede;
+        this.sala=sala;
     }
 
     public String getEspecialidad() {
