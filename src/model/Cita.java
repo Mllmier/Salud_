@@ -14,7 +14,7 @@ public class Cita {
     private String tipoCita;
     private String motivo;
     private EstadoCita estado;
-    private String documentoPaciente;
+   private String documentoPaciente;
     private Paciente paciente;
     private Medico medico;
     private String documentoMedico;
@@ -52,6 +52,8 @@ public class Cita {
         this.medico=medico;
         this.sala=sala;
         this.sede=sede;
+        this.paciente=paciente;
+        
            }
     
 
@@ -114,7 +116,6 @@ public class Cita {
     public void setDocumentoPaciente(String documentoPaciente) {
         this.documentoPaciente = documentoPaciente;
     }
-
     public Paciente getPaciente() {
         return paciente;
     }

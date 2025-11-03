@@ -160,14 +160,14 @@ private void configurarCitas(){
         controllerCitas.setCboTipoCita(cboTipoCita);
         controllerCitas.setCboMotivoCita(cboMotivoCita);
         controllerCitas.setCboEstadoCita(cboEstadoCita);
-        controllerCitas.cargarSalasEnComboBox(cboConsultorio);
-        controllerCitas.cargarMedicosPorSedeYEspecialidad(cbNombreApellidoMedico, cboSede, cboEspecialidadMedico);
+        controllerCitas.cargarSalasEnComboBox(lblConsultorio);
+        controllerCitas.cargarMedicosPorSedeYEspecialidad(cbNombreApellidoMedico, cboSede, cboEspecialidadMedico,lblConsultorio);
         controllerCitas.cargarSedesEnComboBox(cboSede);
 
      
        
         controllerCitas.setCboSede(cboSede);
-        controllerCitas.setCboConsultorio(cboConsultorio);        
+        controllerCitas.setLblConsultorio(lblConsultorio);        
         controllerCitas.cargarPacienteEnTabla();
         controllerCitas.cargarCitasEnTabla();
         controllerCitas.cargarCitasEnTabla();
@@ -193,9 +193,9 @@ private void configurarCitas(){
     cboEstadoCita2.addItem("CANCELADA");
     cboEstadoCita2.setSelectedIndex(0);
     cboEstadoCita2.setEnabled(true);  
-    controllerCitas.cargarSalasEnComboBox(cboConsultorio2);
+    controllerCitas.cargarSalasEnComboBox(lblConsultorio2);
     controllerCitas.cargarEspecialidadesPorSede(cboEspecialidadMedico2, cboSede2);
-     controllerCitas.cargarMedicosPorSedeYEspecialidad(cbNombreApellidoMedico, cboSede, cboEspecialidadMedico);
+     controllerCitas.cargarMedicosPorSedeYEspecialidad(cbNombreApellidoMedico, cboSede, cboEspecialidadMedico,lblConsultorio);
      controllerCitas.setCboMedico(cboMedico);
    
    
@@ -204,7 +204,7 @@ private void configurarCitas(){
      });
 
      cboEspecialidadMedico.addActionListener(e -> {
-         controllerCitas.cargarMedicosPorSedeYEspecialidad(cbNombreApellidoMedico, cboSede, cboEspecialidadMedico);
+         controllerCitas.cargarMedicosPorSedeYEspecialidad(cbNombreApellidoMedico, cboSede, cboEspecialidadMedico,lblConsultorio);
       });
 
    
@@ -213,13 +213,13 @@ private void configurarCitas(){
      });
 
       cboEspecialidadMedico2.addActionListener(e -> {
-        controllerCitas.cargarMedicosPorSedeYEspecialidad(cboMedico, cboSede2, cboEspecialidadMedico2);
+        controllerCitas.cargarMedicosPorSedeYEspecialidad(cboMedico, cboSede2, cboEspecialidadMedico2,lblConsultorio2);
         });
 
     controllerCitas.cargarCitasEnTabla();
     controllerCitas.cargarPacienteEnTabla();
        controllerCitas.setCboSede2(cboSede2);
-        controllerCitas.setCboConsultorio2(cboConsultorio2);
+        controllerCitas.setLblConsultorio2(lblConsultorio2);
     controllerCitas.actualizarEstadisticasCitas();
     controllerCitas.configurarDateChooser();
 
@@ -275,7 +275,7 @@ private void cargarDatosCitaEnFormularioActualizacion() {
         cboHoraCita2.setSelectedItem(tablaCitas.getValueAt(filaSeleccionada, 6).toString());
         cboMotivoCita2.setSelectedItem(tablaCitas.getValueAt(filaSeleccionada, 7).toString());
         cboTipoCita2.setSelectedItem(tablaCitas.getValueAt(filaSeleccionada, 9).toString());
-        cboConsultorio2.setSelectedItem(tablaCitas.getValueAt(filaSeleccionada, 10).toString());
+        lblConsultorio2.setText(tablaCitas.getValueAt(filaSeleccionada, 10).toString());
         cboEstadoCita2.setSelectedItem(tablaCitas.getValueAt(filaSeleccionada, 11).toString());
 
         // 🧑‍⚕️ Datos del médico
@@ -290,8 +290,7 @@ private void cargarDatosCitaEnFormularioActualizacion() {
 
         cboEspecialidadMedico2.setSelectedItem(especialidadMedicoStr);
 
-        controllerCitas.cargarMedicosPorSedeYEspecialidad(cboMedico, cboSede2, cboEspecialidadMedico2);
-
+        controllerCitas.cargarMedicosPorSedeYEspecialidad(cboMedico, cboSede2, cboEspecialidadMedico2, lblConsultorio2);
         boolean encontrado = false;
         for (int i = 0; i < cboMedico.getItemCount(); i++) {
             String item = cboMedico.getItemAt(i);
@@ -435,7 +434,6 @@ public void verificarDisponibilidadHoraActualizacion() {
         jSeparator14 = new javax.swing.JSeparator();
         cboEstadoCita2 = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        cboConsultorio2 = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jSeparator11 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
@@ -464,6 +462,7 @@ public void verificarDisponibilidadHoraActualizacion() {
         jSeparator21 = new javax.swing.JSeparator();
         cboMedico = new javax.swing.JComboBox<>();
         cboEspecialidadMedico2 = new javax.swing.JComboBox<>();
+        lblConsultorio2 = new javax.swing.JLabel();
         panelGuardarPaciente = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         cbTipoDocumento = new javax.swing.JComboBox<>();
@@ -524,7 +523,6 @@ public void verificarDisponibilidadHoraActualizacion() {
         cboHoraCita = new javax.swing.JComboBox<>();
         jLabel62 = new javax.swing.JLabel();
         jLabel71 = new javax.swing.JLabel();
-        cboConsultorio = new javax.swing.JComboBox<>();
         btnAgendarCita = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         cboEstadoCita = new javax.swing.JComboBox<>();
@@ -550,6 +548,7 @@ public void verificarDisponibilidadHoraActualizacion() {
         jSeparator37 = new javax.swing.JSeparator();
         jLabel20 = new javax.swing.JLabel();
         cboEspecialidadMedico = new javax.swing.JComboBox<>();
+        lblConsultorio = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jLabel38 = new javax.swing.JLabel();
         refrecarTablaPaciente = new javax.swing.JButton();
@@ -942,10 +941,6 @@ public void verificarDisponibilidadHoraActualizacion() {
         jLabel5.setText("Estado Cita");
         jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 80, 105, -1));
 
-        cboConsultorio2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Seleccione>", "Consultorio 1", "Consultorio 2", "Consultorio 3", "Consultorio 4", "Consultorio 5" }));
-        cboConsultorio2.setBorder(null);
-        jPanel5.add(cboConsultorio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 110, 140, 40));
-
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setText("Apellido ");
         jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 6, 94, -1));
@@ -1026,6 +1021,9 @@ public void verificarDisponibilidadHoraActualizacion() {
 
         cboEspecialidadMedico2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel5.add(cboEspecialidadMedico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 140, 40));
+
+        lblConsultorio2.setText("jLabel19");
+        jPanel5.add(lblConsultorio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 110, 140, 40));
 
         panelModificarCita.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 940, 250));
 
@@ -1466,15 +1464,6 @@ public void verificarDisponibilidadHoraActualizacion() {
         jLabel71.setText("Consultorio*");
         jPanel8.add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
 
-        cboConsultorio.setBackground(new java.awt.Color(0, 0, 0, 0));
-        cboConsultorio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Seleccione>", "Consultorio 1", "Consultorio 2", "Consultorio 3", "Consultorio 4", "Consultorio 5" }));
-        cboConsultorio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboConsultorioActionPerformed(evt);
-            }
-        });
-        jPanel8.add(cboConsultorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 160, 50));
-
         btnAgendarCita.setBackground(new java.awt.Color(10, 92, 184));
         btnAgendarCita.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         btnAgendarCita.setForeground(new java.awt.Color(255, 255, 255));
@@ -1569,6 +1558,9 @@ public void verificarDisponibilidadHoraActualizacion() {
         jPanel8.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 100, -1, -1));
 
         jPanel8.add(cboEspecialidadMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 160, 50));
+
+        lblConsultorio.setText("jLabel19");
+        jPanel8.add(lblConsultorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 160, 50));
 
         panelAgendar.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 900, 230));
 
@@ -1812,10 +1804,6 @@ for (int i = 0; i < TabbetCitas.getTabCount(); i++) {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgendarCitaMouseClicked
-
-    private void cboConsultorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboConsultorioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cboConsultorioActionPerformed
 
     private void cboHoraCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboHoraCitaActionPerformed
         // TODO add your handling code here:
@@ -2149,8 +2137,6 @@ TabbetCitas.setSelectedIndex(4);       // TODO add your handling code here:
     private javax.swing.JComboBox<String> cbNombreApellidoMedico;
     private javax.swing.JComboBox<String> cbSexo;
     private javax.swing.JComboBox<String> cbTipoDocumento;
-    private javax.swing.JComboBox<String> cboConsultorio;
-    private javax.swing.JComboBox<String> cboConsultorio2;
     private javax.swing.JLabel cboEps2;
     private javax.swing.JComboBox<String> cboEspecialidadMedico;
     private javax.swing.JComboBox<String> cboEspecialidadMedico2;
@@ -2284,6 +2270,8 @@ TabbetCitas.setSelectedIndex(4);       // TODO add your handling code here:
     private javax.swing.JLabel lblCitasCanceladas;
     private javax.swing.JLabel lblCitasCompletadas;
     private javax.swing.JLabel lblCitasProgramadas;
+    private javax.swing.JLabel lblConsultorio;
+    private javax.swing.JLabel lblConsultorio2;
     private javax.swing.JLabel lblNombreRecepcion1;
     private javax.swing.JPanel panelAgendar;
     private javax.swing.JPanel panelBtnAgendar1;

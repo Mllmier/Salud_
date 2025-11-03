@@ -852,8 +852,8 @@
   },
   {
     "IdCita": "Med.010",
-    "fechaCita": "2025-11-07",
-    "hora": "08:30am",
+    "fechaCita": "2025-11-15",
+    "hora": "\u003cSeleccione\u003e",
     "tipoCita": "Prioritaria",
     "motivo": "Enfermedad Cronica",
     "estado": "PROGRAMADA",
@@ -874,12 +874,6 @@
       "contraseña": "*:LO4|dK(-"
     },
     "documentoMedico": "1234567890",
-    "sala": {
-      "nombreSala": "XDN",
-      "codigoSala": "SAL.003",
-      "tipoSala": "Sala de Rayos X",
-      "capacidadSala": "4"
-    },
     "sede": {
       "idSede": "SEDE002",
       "nombreSede": "Sede Norte",
@@ -959,6 +953,152 @@
       "nombreSede": "Sede Principal",
       "direccion": "Calle 128 #48-67, Borotá",
       "horarioFuncionamiento": "Lunes-Viernes 8:00-18:00"
+    }
+  },
+  {
+    "IdCita": "Med.013",
+    "fechaCita": "2025-11-14",
+    "hora": "\u003cSeleccione\u003e",
+    "tipoCita": "Prioritaria",
+    "motivo": "Sintomas Agudos",
+    "estado": "PROGRAMADA",
+    "documentoPaciente": "1234567894",
+    "medico": {
+      "especialidad": "\u003cSeleccione  la especialidad del doctor\u003e",
+      "fechaContratacion": "2025-11-02",
+      "horario": "Sabado-domingo",
+      "estado": "Activo",
+      "sede": "sede sur",
+      "sala": "fghmknn",
+      "numeroDocumento": "159753456",
+      "nombres": "ASDFG",
+      "apellidos": "asdfgh",
+      "fechaNacimiento": "1985-05-08",
+      "sexo": "MASCULINO",
+      "email": "AHAHHAHAHA@GMAIL.COM",
+      "celular": "3001164785",
+      "contraseña": ";*kq\u003c9k\u003e!N"
+    },
+    "documentoMedico": "159753456",
+    "sala": {
+      "nombreSala": "fghmknn",
+      "codigoSala": "456789",
+      "tipoSala": "Sala de Pediatría",
+      "capacidadSala": "3"
+    },
+    "sede": {
+      "idSede": "SEDE003",
+      "nombreSede": "sede sur",
+      "direccion": "calle 125#56-89",
+      "horarioFuncionamiento": "Martes-miercoles"
+    }
+  },
+  {
+    "IdCita": "Med.014",
+    "fechaCita": "2025-11-21",
+    "hora": "08:00am",
+    "tipoCita": "Prioritaria",
+    "motivo": "Prevencion",
+    "estado": "PROGRAMADA",
+    "documentoPaciente": "123456789",
+    "paciente": {
+      "tipoSangre": "A+",
+      "tipoDocumento": "CC",
+      "antecedentes": "alergica a las hormigas",
+      "peso": 0,
+      "altura": 0.0,
+      "numeroDocumento": "123456789",
+      "nombres": "karen",
+      "apellidos": "mier",
+      "fechaNacimiento": "2025-05-21",
+      "sexo": "M",
+      "eps": "Coosalud",
+      "email": "karen@gmail.com",
+      "celular": "234567890",
+      "contraseña": ""
+    },
+    "medico": {
+      "especialidad": "\u003cSeleccione  la especialidad del doctor\u003e",
+      "fechaContratacion": "2025-11-02",
+      "horario": "Sabado-domingo",
+      "estado": "Activo",
+      "sede": "sede sur",
+      "sala": "fghmknn",
+      "numeroDocumento": "159753456",
+      "nombres": "ASDFG",
+      "apellidos": "asdfgh",
+      "fechaNacimiento": "1985-05-08",
+      "sexo": "MASCULINO",
+      "email": "AHAHHAHAHA@GMAIL.COM",
+      "celular": "3001164785",
+      "contraseña": ";*kq\u003c9k\u003e!N"
+    },
+    "documentoMedico": "159753456",
+    "sala": {
+      "nombreSala": "fghmknn",
+      "codigoSala": "456789",
+      "tipoSala": "Sala de Pediatría",
+      "capacidadSala": "3"
+    },
+    "sede": {
+      "idSede": "SEDE003",
+      "nombreSede": "sede sur",
+      "direccion": "calle 125#56-89",
+      "horarioFuncionamiento": "Martes-miercoles"
+    }
+  },
+  {
+    "IdCita": "Med.015",
+    "fechaCita": "2025-11-15",
+    "hora": "08:00",
+    "tipoCita": "Control",
+    "motivo": "Enfermedad Cronica",
+    "estado": "PROGRAMADA",
+    "documentoPaciente": "1234567893",
+    "paciente": {
+      "tipoSangre": "\u003cSeleccione\u003e",
+      "tipoDocumento": "CC",
+      "antecedentes": "38948943",
+      "peso": 0,
+      "altura": 0.0,
+      "numeroDocumento": "1234567893",
+      "nombres": "sofia",
+      "apellidos": "fell",
+      "fechaNacimiento": "2025-05-21",
+      "sexo": "M",
+      "eps": "Sanistas",
+      "email": "sofia@gmail.com",
+      "celular": "4362332328",
+      "contraseña": ""
+    },
+    "medico": {
+      "especialidad": "\u003cSeleccione  la especialidad del doctor\u003e",
+      "fechaContratacion": "2025-11-02",
+      "horario": "Sabado-domingo",
+      "estado": "Activo",
+      "sede": "sede sur",
+      "sala": "fghmknn",
+      "numeroDocumento": "159753456",
+      "nombres": "ASDFG",
+      "apellidos": "asdfgh",
+      "fechaNacimiento": "1985-05-08",
+      "sexo": "MASCULINO",
+      "email": "AHAHHAHAHA@GMAIL.COM",
+      "celular": "3001164785",
+      "contraseña": ";*kq\u003c9k\u003e!N"
+    },
+    "documentoMedico": "159753456",
+    "sala": {
+      "nombreSala": "fghmknn",
+      "codigoSala": "456789",
+      "tipoSala": "Sala de Pediatría",
+      "capacidadSala": "3"
+    },
+    "sede": {
+      "idSede": "SEDE003",
+      "nombreSede": "sede sur",
+      "direccion": "calle 125#56-89",
+      "horarioFuncionamiento": "Martes-miercoles"
     }
   }
 ]
