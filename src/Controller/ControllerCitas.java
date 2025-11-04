@@ -717,12 +717,12 @@ public Medico obtenerMedicoPorNombreCompleto2(String nombreCompleto) {
             salaSeleccionada,
             estado, 
             pacienteSeleccionado,
-            medicoSeleccionado, // 👉 ya es el del combo
+            medicoSeleccionado, 
             sedeSeleccionada
         );
 
         citaActualizada.setDocumentoPaciente(documentoPaciente);
-        citaActualizada.setDocumentoMedico(medicoSeleccionado.getNumeroDocumento()); // 👉 ya no usamos el de la tabla
+        citaActualizada.setDocumentoMedico(medicoSeleccionado.getNumeroDocumento()); 
 
         boolean actualizado = citasDAO.actualizarCita(idCitaOriginal, citaActualizada);
         actualizarEstadisticasCitas(); 
@@ -1069,7 +1069,7 @@ public void cargarCitasPorMedicoYFecha(String nombreApellido, Date fechaSeleccio
         return;
     }
 
-    tableModelConsultarMedico.setRowCount(0); // Limpiar tabla
+    tableModelConsultarMedico.setRowCount(0); 
 
     LocalDate fechaLocal = fechaSeleccionada.toInstant()
             .atZone(ZoneId.systemDefault())
@@ -1096,7 +1096,6 @@ public void cargarCitasPorMedicoYFecha(String nombreApellido, Date fechaSeleccio
 
             LocalDate fechaCita = cita.getFechaCita();
 
-            // 🔹 Cambiado equals -> isEqual para que funcione bien
             boolean coincideFecha = fechaCita != null && fechaCita.isEqual(fechaLocal);
 
             if (coincideNombre && coincideFecha) {
@@ -1172,12 +1171,10 @@ public void cargarCitasPorMedicoYFecha(String nombreApellido, Date fechaSeleccio
         return;
     }
 
-    // Cargar especialidades disponibles en esa sede
     List<Medico> medicos = medicoDAO.cargarTodos();
     Set<String> especialidades = new HashSet<>();
 
     for (Medico m : medicos) {
-        // Comparar por nombre de sede (no por ID)
         if (m.getSede() != null && m.getSede().equalsIgnoreCase(sedeSeleccionada.getNombreSede())) {
             especialidades.add(m.getEspecialidad());
         }
@@ -1190,7 +1187,7 @@ public void cargarCitasPorMedicoYFecha(String nombreApellido, Date fechaSeleccio
 
  
 
- public void cargarMedicosPorSedeYEspecialidad(   JComboBox<String> cbNombreApellidoMedico, JComboBox<String> cboSede,JComboBox<String> cboEspecialidad, JLabel lblConsultorio) {
+ public void cargarMedicosPorSedeYEspecialidad(JComboBox<String> cbNombreApellidoMedico, JComboBox<String> cboSede,JComboBox<String> cboEspecialidad, JLabel lblConsultorio) {
 
     cbNombreApellidoMedico.removeAllItems();
     cbNombreApellidoMedico.addItem("<Seleccione>");
@@ -1216,18 +1213,16 @@ public void cargarCitasPorMedicoYFecha(String nombreApellido, Date fechaSeleccio
         }
     }
 
-    // 🔹 Eliminar listeners anteriores para evitar duplicados
     for (ActionListener al : cbNombreApellidoMedico.getActionListeners()) {
         cbNombreApellidoMedico.removeActionListener(al);
     }
 
-    // 🔹 Listener: cuando se elige un médico
     cbNombreApellidoMedico.addActionListener(e -> {
         String seleccionado = (String) cbNombreApellidoMedico.getSelectedItem();
 
         if (seleccionado == null || seleccionado.equals("<Seleccione>")) {
             medicoSeleccionado = null;
-            lblConsultorio.setText(""); // Limpia el label
+            lblConsultorio.setText(""); 
             return;
         }
 
@@ -1235,16 +1230,13 @@ public void cargarCitasPorMedicoYFecha(String nombreApellido, Date fechaSeleccio
         if (medico != null) {
             medicoSeleccionado = medico;
 
-            // 🔹 Mostrar el consultorio en el JLabel
             if (medico.getSala() != null && medico.getSala()!= null) {
                 lblConsultorio.setText(medico.getSala());
             } else {
                 lblConsultorio.setText("No asignado");
             }
 
-            System.out.println("Médico seleccionado: " + medicoSeleccionado.getNombres() +
-                               " " + medicoSeleccionado.getApellidos() +
-                               " - Consultorio: " + lblConsultorio.getText());
+           
         } else {
             medicoSeleccionado = null;
             lblConsultorio.setText("");
