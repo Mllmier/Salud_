@@ -29,19 +29,6 @@
     "contraseña": "*:LO4|dK(-"
   },
   {
-    "especialidad": "Medico general",
-    "fechaContratacion": "2025-10-12",
-    "horario": "Martes-jueves-sabado",
-    "estado": "Activo",
-    "sede": "Sede Principal",
-    "numeroDocumento": "1102253456",
-    "nombres": "Sara",
-    "apellidos": "Cadrazco",
-    "fechaNacimiento": "1992-10-09",
-    "sexo": "FEMENINO",
-    "email": "sara@gmail.com",
-    "celular": "3252905689",
-    "contraseña": "!A\u003eZ\u0026r6]La",
     "especialidad": "\u003cSeleccione  la especialidad del doctor\u003e",
     "fechaContratacion": "2025-11-02",
     "horario": "Sabado-domingo",
@@ -56,5 +43,21 @@
     "email": "AHAHHAHAHA@GMAIL.COM",
     "celular": "3001164785",
     "contraseña": ";*kq\u003c9k\u003e!N"
+  },
+  {
+    "especialidad": "terapeusta",
+    "fechaContratacion": "2027-11-13",
+    "horario": "Martes-jueves-sabado",
+    "estado": "Habilitado",
+    "sede": "Sede Principal",
+    "sala": "quirofano",
+    "numeroDocumento": "1102267789",
+    "nombres": "luz",
+    "apellidos": "Crespo",
+    "fechaNacimiento": "2022-11-12",
+    "sexo": "FEMENINO",
+    "email": "luz@clinica.com",
+    "celular": "3205325106",
+    "contraseña": "tS6.2#y8Ty"
   }
 ]
