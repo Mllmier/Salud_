@@ -460,10 +460,8 @@ if (nombreSede.equals("<Seleccione>")) {
                 
                 
             );
-              nuevaCita.setDocumentoPaciente(pacienteSeleccionado.getNumeroDocumento());
-              nuevaCita.setDocumentoMedico(medicoSeleccionado.getNumeroDocumento());
               nuevaCita.setPaciente(pacienteSeleccionado);
-
+              nuevaCita.setMedico(medicoSeleccionado);
             citasDAO.guardarCita(nuevaCita);
             notificarCitaAgregada(nuevaCita);
             actualizarEstadisticasCitas(); 
@@ -603,13 +601,19 @@ public Medico obtenerMedicoPorNombreCompleto2(String nombreCompleto) {
     }
     
     tableModelCita.setRowCount(0);
-    
-    
+
+    // Verificar paciente nulo
+  
     List<Cita> citas = citasDAO.cargarTodos();
     for (Cita cita : citas) {
+        if (cita.getPaciente() == null) {
+        System.err.println("⚠️ Cita con ID " + cita.getIdCita() + " no tiene paciente asociado.");
+        continue; 
+    }
+    
 
-        Paciente paciente = pacienteDAO.buscarPorDocumento(cita.getDocumentoPaciente());
-        Medico medico=medicoDAO.buscarPorDocumentoMedico(cita.getDocumentoMedico());
+        Paciente paciente = pacienteDAO.buscarPorDocumento(cita.getPaciente().getNumeroDocumento());
+        Medico medico=medicoDAO.buscarPorDocumentoMedico(cita.getMedico().getNumeroDocumento());
          String nombreSala = (cita.getSala() != null) ? cita.getSala().getNombreSala() : "No asignado";
          String nombreSede = (cita.getSede() != null) ? cita.getSede().getNombreSede() : "No asignada";
         if (paciente != null && medico !=null) {
@@ -721,8 +725,6 @@ public Medico obtenerMedicoPorNombreCompleto2(String nombreCompleto) {
             sedeSeleccionada
         );
 
-        citaActualizada.setDocumentoPaciente(documentoPaciente);
-        citaActualizada.setDocumentoMedico(medicoSeleccionado.getNumeroDocumento()); 
 
         boolean actualizado = citasDAO.actualizarCita(idCitaOriginal, citaActualizada);
         actualizarEstadisticasCitas(); 
@@ -779,11 +781,11 @@ public void buscarCitaPorDocumento(String documentoPaciente) {
         List<Cita> citas = citasDAO.cargarTodos();
 
         for (Cita cita : citas) {
-            if (cita.getDocumentoPaciente() != null && 
-                cita.getDocumentoPaciente().toLowerCase().contains(documentoPaciente.toLowerCase())) {
+            if (cita.getPaciente().getNumeroDocumento() != null && 
+                cita.getPaciente().getNumeroDocumento().toLowerCase().contains(documentoPaciente.toLowerCase())) {
                 
-                Paciente paciente = pacienteDAO.buscarPorDocumento(cita.getDocumentoPaciente());
-                Medico medico = medicoDAO.buscarPorDocumentoMedico(cita.getDocumentoMedico());
+                Paciente paciente = pacienteDAO.buscarPorDocumento(cita.getPaciente().getNumeroDocumento());
+                Medico medico = medicoDAO.buscarPorDocumentoMedico(cita.getMedico().getNumeroDocumento());
                 String nombreSede = (cita.getSede() != null) ? cita.getSede().getNombreSede() : "No asignada";
                String nombreSala = (cita.getSala() != null) ? cita.getSala().getNombreSala() : "No asignado";
 
@@ -874,7 +876,7 @@ public void actualizarEstadisticasCitas() {
         if (!cita.getIdCita().equals(idCitaExcluir)) { 
             if (cita.getFechaCita().equals(fecha) && 
                 cita.getHora().equals(hora) && 
-                cita.getDocumentoMedico().equals(documentoMedico) &&
+                cita.getMedico().getNumeroDocumento().equals(documentoMedico) &&
                 cita.getEstado() != EstadoCita.CANCELADA) {
                 return true;
             }
@@ -952,7 +954,7 @@ public void configurarColoresTablaCitas() {
     tableModelCita.setRowCount(0); 
 
     List<Cita> citasDelPaciente = citasDAO.cargarTodos().stream()
-            .filter(cita -> cita.getDocumentoPaciente().equals(documentoPaciente))
+            .filter(cita -> cita.getPaciente().getNumeroDocumento().equals(documentoPaciente))
             .collect(Collectors.toList());
 
     if (citasDelPaciente.isEmpty()) {
@@ -964,8 +966,8 @@ public void configurarColoresTablaCitas() {
     }
 
     for (Cita cita : citasDelPaciente) {
-        Paciente paciente = pacienteDAO.buscarPorDocumento(cita.getDocumentoPaciente());
-        Medico medico = medicoDAO.buscarPorDocumentoMedico(cita.getDocumentoMedico());
+        Paciente paciente = pacienteDAO.buscarPorDocumento(cita.getPaciente().getTipoDocumento());
+        Medico medico = medicoDAO.buscarPorDocumentoMedico(cita.getMedico().getNumeroDocumento());
         
         if (paciente != null && medico != null) {
             Object[] row = {
@@ -1080,7 +1082,7 @@ public void cargarCitasPorMedicoYFecha(String nombreApellido, Date fechaSeleccio
     boolean encontroCita = false;
 
     for (Cita cita : todasCitas) {
-        Medico medico = medicoDAO.buscarPorDocumentoMedico(cita.getDocumentoMedico());
+        Medico medico = medicoDAO.buscarPorDocumentoMedico(cita.getMedico().getNumeroDocumento());
 
         if (medico != null) {
             String nombreCompleto = (medico.getNombres() + " " + medico.getApellidos()).toLowerCase().trim();
@@ -1099,7 +1101,7 @@ public void cargarCitasPorMedicoYFecha(String nombreApellido, Date fechaSeleccio
             boolean coincideFecha = fechaCita != null && fechaCita.isEqual(fechaLocal);
 
             if (coincideNombre && coincideFecha) {
-                Paciente paciente = pacienteDAO.buscarPorDocumento(cita.getDocumentoPaciente());
+                Paciente paciente = pacienteDAO.buscarPorDocumento(cita.getPaciente().getNumeroDocumento());
                 if (paciente != null) {
                     tableModelConsultarMedico.addRow(new Object[]{
                         paciente.getNumeroDocumento(),

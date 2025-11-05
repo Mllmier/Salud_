@@ -14,10 +14,8 @@ public class Cita {
     private String tipoCita;
     private String motivo;
     private EstadoCita estado;
-   private String documentoPaciente;
     private Paciente paciente;
     private Medico medico;
-    private String documentoMedico;
     private Salas sala;
     private Sede sede;
     public enum EstadoCita {
@@ -108,14 +106,6 @@ public class Cita {
         this.estado = estado;
     }
 
-
-    public String getDocumentoPaciente() {
-        return documentoPaciente;
-    }
-
-    public void setDocumentoPaciente(String documentoPaciente) {
-        this.documentoPaciente = documentoPaciente;
-    }
     public Paciente getPaciente() {
         return paciente;
     }
@@ -132,13 +122,7 @@ public class Cita {
         this.medico = medico;
     }
 
-    public String getDocumentoMedico() {
-        return documentoMedico;
-    }
-
-    public void setDocumentoMedico(String documentoMedico) {
-        this.documentoMedico = documentoMedico;
-    }
+   
 
     public Salas getSala() {
         return sala;

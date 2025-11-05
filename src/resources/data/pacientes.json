@@ -222,5 +222,21 @@
     "email": "jhfhd@gmai.com",
     "celular": "234567890",
     "contraseña": ""
+  },
+  {
+    "tipoSangre": "B+",
+    "tipoDocumento": "RC",
+    "antecedentes": "Sufre de migraña y dolores en los huesos",
+    "peso": 55,
+    "altura": 1.67,
+    "numeroDocumento": "1102334567",
+    "nombres": "camilo",
+    "apellidos": "Jurado",
+    "fechaNacimiento": "2007-02-17",
+    "sexo": "M",
+    "eps": "Sanistas",
+    "email": "camilo@gmail.com",
+    "celular": "3208975643",
+    "contraseña": ""
   }
 ]

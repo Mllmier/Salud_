@@ -452,9 +452,7 @@ public class ControllerCitasPaciente {
             sedeSelecccionada
         );
 
-        nuevaCita.setDocumentoPaciente(pacienteActual.getNumeroDocumento());
-        nuevaCita.setDocumentoMedico(medicoSeleccionado.getNumeroDocumento());
-
+         
         citasDAO.guardarCita(nuevaCita);
         JOptionPane.showMessageDialog(null, "Cita guardada exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
         notificarCitaAgregada(nuevaCita);
@@ -504,7 +502,7 @@ public class ControllerCitasPaciente {
     
     List<Cita> citas = citasDAO.cargarTodos();
     for (Cita cita : citas) {
-        Paciente paciente = pacienteDAO.buscarPorDocumento(cita.getDocumentoPaciente());
+        Paciente paciente = pacienteDAO.buscarPorDocumento(cita.getPaciente().getNumeroDocumento());
         Medico medico = cita.getMedico(); 
          String nombreSala = (cita.getSala() != null) ? cita.getSala().getNombreSala() : "No asignado";
          String nombreSede = (cita.getSede() != null) ? cita.getSede().getNombreSede() : "No asignada";
@@ -541,10 +539,10 @@ public class ControllerCitasPaciente {
 
     for (Cita cita : citas) {
         if (cita.getFechaCita().isEqual(fecha) &&
-            cita.getDocumentoPaciente().equals(documentoPaciente)) {
+            cita.getPaciente().getNumeroDocumento().equals(documentoPaciente)) {
 
             Paciente paciente = pacienteDAO.buscarPorDocumento(documentoPaciente);
-            Medico medico = medicoDAO.buscarPorDocumentoMedico(cita.getDocumentoMedico());
+            Medico medico = medicoDAO.buscarPorDocumentoMedico(cita.getMedico().getNumeroDocumento());
             String nombreSala = (cita.getSala() != null) ? cita.getSala().getNombreSala() : "No asignado";
             String nombreSede = (cita.getSede() != null) ? cita.getSede().getNombreSede() : "No asignada";
 
@@ -628,8 +626,8 @@ public void buscarCitasPorFecha() {
                 JOptionPane.INFORMATION_MESSAGE);
         } else {
             for (Cita cita : citasEncontradas) {
-                Paciente paciente = pacienteDAO.buscarPorDocumento(cita.getDocumentoPaciente());
-                Medico medico = medicoDAO.buscarPorDocumentoMedico(cita.getDocumentoMedico());
+                Paciente paciente = pacienteDAO.buscarPorDocumento(cita.getPaciente().getNumeroDocumento());
+                Medico medico = medicoDAO.buscarPorDocumentoMedico(cita.getMedico().getNumeroDocumento());
                 
                 if (paciente != null && medico != null) {
                     Object[] row = {
@@ -747,8 +745,8 @@ public void configurarColoresTablaCitas() {
     List<Cita> citas = citasDAO.cargarTodos();
 
     for (Cita cita : citas) {
-        if (documentoPaciente.equals(cita.getDocumentoPaciente())) {
-            Paciente paciente = pacienteDAO.buscarPorDocumento(cita.getDocumentoPaciente());
+        if (documentoPaciente.equals(cita.getPaciente().getNumeroDocumento())) {
+            Paciente paciente = pacienteDAO.buscarPorDocumento(cita.getPaciente().getNumeroDocumento());
             Medico medico = cita.getMedico();
             String nombreSala = (cita.getSala() != null) ? cita.getSala().getNombreSala() : "No asignado";
             String nombreSede = (cita.getSede() != null) ? cita.getSede().getNombreSede() : "No asignada";
@@ -1092,8 +1090,6 @@ public void actualizarCitaDesdeFormulario(JTable tablaCitas) {
             sede
         );
 
-        citaActualizada.setDocumentoPaciente(pacienteActual.getNumeroDocumento());
-        citaActualizada.setDocumentoMedico(medico.getNumeroDocumento());
 
         boolean exito = citasDAO.actualizarCita(idCitaOriginal, citaActualizada);
 
@@ -1133,8 +1129,8 @@ public List<Cita> obtenerCitasPorMedico(String documentoMedico) {
     List<Cita> citasMedico = new ArrayList<>();
     
     for (Cita cita : todasLasCitas) {
-        if (cita.getDocumentoMedico() != null && 
-            cita.getDocumentoMedico().equals(documentoMedico)) {
+        if (cita.getMedico().getNumeroDocumento() != null && 
+            cita.getMedico().getNumeroDocumento().equals(documentoMedico)) {
             citasMedico.add(cita);
         }
     }
