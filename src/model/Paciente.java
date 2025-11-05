@@ -6,6 +6,7 @@ public class Paciente extends Persona {
     private String tipoSangre;
     private String antecedentes;
     private int peso;
+    private String tipoDocumento;
     private double altura;
     
    
@@ -31,6 +32,7 @@ public class Paciente extends Persona {
         this.tipoSangre = tipoSangre;
         this.antecedentes = antecedentes;
         this.peso=peso;
+        this.tipoDocumento=tipoDocumento;
         this.altura=altura;
     }
 
@@ -42,7 +44,17 @@ public class Paciente extends Persona {
     public void setTipoSangre(String tipoSangre) {
         this.tipoSangre = tipoSangre;
     }
+     public String getTipoDocumento() {
+        return tipoDocumento;
+    }
 
+    public void setTipoDocumento(String tipoDocumento) {
+        if (tipoDocumento == null || tipoDocumento.trim().isEmpty()) {
+            throw new IllegalArgumentException("El tipo de documento no puede ser nulo o vacío");
+        }
+        this.tipoDocumento = tipoDocumento;
+    }
+ 
     
    
 
