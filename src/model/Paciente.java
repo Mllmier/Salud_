@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 public class Paciente extends Persona {
     private String tipoSangre;
-    private String tipoDocumento;
     private String antecedentes;
     private int peso;
     private double altura;
@@ -29,7 +28,6 @@ public class Paciente extends Persona {
             throw new IllegalArgumentException("El tipo de documento no puede ser nulo o vacío");
         }
         
-        this.tipoDocumento = tipoDocumento;
         this.tipoSangre = tipoSangre;
         this.antecedentes = antecedentes;
         this.peso=peso;
@@ -45,16 +43,8 @@ public class Paciente extends Persona {
         this.tipoSangre = tipoSangre;
     }
 
-    public String getTipoDocumento() {
-        return tipoDocumento;
-    }
-
-    public void setTipoDocumento(String tipoDocumento) {
-        if (tipoDocumento == null || tipoDocumento.trim().isEmpty()) {
-            throw new IllegalArgumentException("El tipo de documento no puede ser nulo o vacío");
-        }
-        this.tipoDocumento = tipoDocumento;
-    }
+    
+   
 
     public String getAntecedentes() {
         return antecedentes;
