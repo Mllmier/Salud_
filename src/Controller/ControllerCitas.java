@@ -723,7 +723,8 @@ public void buscarCitaPorDocumento(String documentoPaciente) {
             JOptionPane.ERROR_MESSAGE);
         e.printStackTrace();
     }
-}         public void actualizarEstadisticasCitas() {
+}     
+public void actualizarEstadisticasCitas() {
           List<Cita> citas = citasDAO.cargarTodos();
     
           int totalCitas = citas.size();

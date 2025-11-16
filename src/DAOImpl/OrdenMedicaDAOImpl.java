@@ -60,7 +60,7 @@ public OrdenMedica obtenerPorIdCita(String idCita) {
     }
     return null;
 }
-
+ 
 /*
 
 public String generarCodigoOrden(){

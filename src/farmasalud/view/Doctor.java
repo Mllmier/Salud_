@@ -41,6 +41,7 @@ public class Doctor extends javax.swing.JFrame {
    private DefaultTableModel tableModelConsultarMedico=new DefaultTableModel();
     private JPopupMenu popupMenu;
     private JMenuItem itemAtender;
+    private JMenuItem itemHistorial;
     private Medico medicoLogueado;
 
     private ControllerPaciente controller;
@@ -58,13 +59,44 @@ public class Doctor extends javax.swing.JFrame {
     initComponents();
          popupMenu = new JPopupMenu();
 
+        itemHistorial = new JMenuItem("Historial Clinico");
+        popupMenu.add(itemHistorial);
+         
+         
         itemAtender = new JMenuItem("Atender cita");  
         popupMenu.add(itemAtender);
         
+    
 
          JMenuItem itemNoAsistio = new JMenuItem("No asistió");
          popupMenu.add(itemNoAsistio);
-       actualizarInterfaz();   
+       actualizarInterfaz();  
+       
+      itemHistorial.addActionListener(evt -> {
+    int fila = tableCitasPorMedico.getSelectedRow();
+    if (fila == -1) {
+        JOptionPane.showMessageDialog(this, "Seleccione una cita para ver el historial clínico.");
+        return;
+    }
+    // Obtener documento del paciente (columna 0 según tu modelo)
+    Object docObj = tableCitasPorMedico.getValueAt(fila, 0);
+    String documentoPaciente = docObj != null ? docObj.toString().trim() : "";
+
+    if (documentoPaciente.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "No se encontró documento del paciente en la fila seleccionada.");
+        return;
+    }
+
+    // Crear diálogo y pasar documento para que cargue el historial
+    DialogHistorial dialog = new DialogHistorial(new javax.swing.JFrame(), true);
+ //   dialog.setDocumentoPaciente(documentoPaciente);
+    //   dialog.cargarHistorialPorDocumento(documentoPaciente); // <- aquí usamos el método nuevo
+    
+    dialog.setLocationRelativeTo(tableCitasPorMedico);
+    dialog.setVisible(true);
+});
+
+       
         itemAtender.addActionListener(evt -> {
     int filaSeleccionada = tableCitasPorMedico.getSelectedRow();
     if (filaSeleccionada != -1) {
@@ -140,30 +172,51 @@ cita.setPaciente(paciente);
                 }
             }
         }); 
+        
        itemNoAsistio.addActionListener(evt -> {
     int filaSeleccionada = tableCitasPorMedico.getSelectedRow();
     if (filaSeleccionada != -1) {
-        String idCita = tableCitasPorMedico.getValueAt(filaSeleccionada, 5).toString(); // Columna 5 = Id Cita
+        // Obtener id de la fila (asegúrate que la columna es la correcta)
+        Object idObj = tableCitasPorMedico.getValueAt(filaSeleccionada, 5); // col 5 = Id Cita
+        String idCita = idObj != null ? idObj.toString().trim() : "";
 
-        Cita cita = ControllerCitas.getInstance().buscarCitaPorId(idCita);
-        if (cita != null) {
-            cita.setEstado(Cita.EstadoCita.NOASISTIO);
-            ControllerCitas.getInstance().actualizarCita(cita);
+        if (idCita.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No se encontró Id de la cita en la fila seleccionada.");
+            return;
+        }
 
-            // Notificar a los listeners para que actualicen sus tablas
-            ControllerCitas.getInstance().notificarCitaActualizada(cita);
+        // Buscar la cita en memoria / DAO
+        model.Cita cita = ControllerCitas.getInstance().buscarCitaPorId(idCita);
+        if (cita == null) {
+            JOptionPane.showMessageDialog(this, "No se encontró la cita con id: " + idCita);
+            return;
+        }
 
-            // Actualizar directamente en la tabla (columna 11 = Estado)
+        // Cambiar estado y guardar
+        cita.setEstado(model.Cita.EstadoCita.NOASISTIO);
+        ControllerCitas.getInstance().actualizarCita(cita); // esto actualiza en DAO
+
+        // **REFRESCAR**: recargar la tabla desde el controlador que lee el JSON
+        try {
+            // controllerCargarMedicos es la instancia que usas para la tabla
+            if (controllerCargarMedicos != null) {
+                controllerCargarMedicos.cargarCitasMedicoEnTabla(); // recarga con datos actualizados
+            } else {
+                // Como fallback, actualizamos solo la celda
+                tableCitasPorMedico.setValueAt(cita.getEstado().toString(), filaSeleccionada, 11);
+            }
+            JOptionPane.showMessageDialog(this, "La cita fue marcada como 'No asistió'.");
+        } catch (Exception ex) {
+            // Mostrar mensaje si algo falla
+            JOptionPane.showMessageDialog(this, "Error al actualizar la vista: " + ex.getMessage());
+            // intentar al menos actualizar en la tabla local
             tableCitasPorMedico.setValueAt("No asistió", filaSeleccionada, 11);
-
-            JOptionPane.showMessageDialog(null, "La cita fue marcada como 'No asistió'.");
-        } else {
-            JOptionPane.showMessageDialog(null, "No se encontró la cita con el ID especificado.");
         }
     } else {
-        JOptionPane.showMessageDialog(null, "Seleccione una cita para marcar como 'No asistió'.");
+        JOptionPane.showMessageDialog(this, "Seleccione una cita para marcar como 'No asistió'.");
     }
 });
+
 
 
      
