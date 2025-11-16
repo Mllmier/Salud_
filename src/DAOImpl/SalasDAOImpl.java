@@ -1,7 +1,5 @@
 package DAOImpl;
 
-
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.TypeAdapter;
@@ -22,13 +20,21 @@ import java.util.Iterator;
 import java.util.List;
 import model.Salas;
 
-/**
- * Implementación concreta del DAO de Salas
- */
 public class SalasDAOImpl implements SalasDAO {
+
+    private static SalasDAOImpl instancia;
+
+    public static synchronized SalasDAOImpl getInstancia() {
+        if (instancia == null) {
+            instancia = new SalasDAOImpl();
+        }
+        return instancia;
+    }
+
     private static final String JSON_BASE_PATH = System.getProperty("user.dir") + "/src/resources/data/";
     private static final String ARCHIVO_JSON = JSON_BASE_PATH + "salas.json";
-    private Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
+    private Gson gson = new GsonBuilder()
+        .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
         .create();
     
     private class LocalDateAdapter extends TypeAdapter<LocalDate> {
@@ -214,4 +220,6 @@ public class SalasDAOImpl implements SalasDAO {
             return false;
         }
     }
+    
+   
 }

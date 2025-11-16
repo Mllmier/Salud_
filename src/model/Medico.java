@@ -6,25 +6,52 @@ import java.time.LocalDate;
 public class Medico extends Persona {
     @SerializedName("especialidad")
     private String especialidad;
-    
+
     @SerializedName("fechaContratacion")
     private LocalDate fechaContratacion;
-    
+
     @SerializedName("horario")
     private String horario;
+
+    @SerializedName("estado")
+    private String estado;// Nuevo campo: Activo o Deshabilitado
     
+    @SerializedName("sede")
+    private String sede;
     
-    public Medico(String numeroDocumento, String nombres, String apellidos, 
-                 LocalDate fechaNacimiento, String sexo, 
-                 String email, String celular,String contraseña, String especialidad,
-                 LocalDate fechaContratacion, String horario) {
-        super(numeroDocumento, nombres, apellidos, fechaNacimiento, sexo, null, email, celular,contraseña);
+    @SerializedName("sala")
+    private String sala;
+
+    public String getSala() {
+      return sala;
+    }
+
+    public void setSala(String sala) {
+       this.sala = sala;
+    } 
+
+    public void setSede(String sede) {
+        this.sede = sede;
+    }
+
+    public String getSede() {
+        return sede;
+    }
+
+    public Medico(String numeroDocumento, String nombres, String apellidos,
+                  LocalDate fechaNacimiento, String sexo,
+                  String email, String celular, String contraseña,
+                  String especialidad, LocalDate fechaContratacion,
+                  String horario, String estado,String sede,String sala) {
+        super(numeroDocumento, nombres, apellidos, fechaNacimiento, sexo, null, email, celular, contraseña);
         this.especialidad = especialidad;
         this.fechaContratacion = fechaContratacion;
         this.horario = horario;
+        this.estado = estado;
+        this.sede=sede;
+        this.sala=sala;
     }
 
-   
     public String getEspecialidad() {
         return especialidad;
     }
@@ -48,4 +75,19 @@ public class Medico extends Persona {
     public void setHorario(String horario) {
         this.horario = horario;
     }
+ @Override
+public String toString() {
+    return getNombres() + " " + getApellidos();
 }
+
+  public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+}
+
+  
+

@@ -30,4 +30,5 @@ List<Medico> cargarTodos();
     boolean existeMedico(String numeroDocumento);
     boolean existeEmail(String email);
     boolean actualizarCredenciales(String emailActual, String nuevoEmail, String nuevaContraseña);
+    boolean actualizarEstado(String numeroDocumento, String nuevoEstado);
 }

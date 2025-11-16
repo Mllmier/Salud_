@@ -162,7 +162,7 @@ public void setTablaEnfermedades(JTable tabla) {
             continue; 
         }
 
-        Paciente paciente = pacienteDAO.buscarPorDocumento(cita.getDocumentoPaciente());
+        Paciente paciente = pacienteDAO.buscarPorDocumento(cita.getPaciente().getNumeroDocumento());
         Medico medico = cita.getMedico();
 
         String nombreSala = (cita.getSala() != null) ? cita.getSala().getNombreSala() : "No asignado";
@@ -209,7 +209,7 @@ public void setTablaEnfermedades(JTable tabla) {
             continue;
         }
 
-        Paciente paciente = pacienteDAO.buscarPorDocumento(cita.getDocumentoPaciente());
+        Paciente paciente = pacienteDAO.buscarPorDocumento(cita.getPaciente().getNumeroDocumento());
         Medico medico = cita.getMedico();
         String nombreSala = (cita.getSala() != null) ? cita.getSala().getNombreSala() : "No asignado";
         String nombreSede = (cita.getSede() != null) ? cita.getSede().getNombreSede() : "No asignada";

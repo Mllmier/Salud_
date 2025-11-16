@@ -25,10 +25,18 @@ public class Paciente extends javax.swing.JFrame {
     public Paciente( ) {
         initComponents();
  this.controller = ControllerCitasPaciente.getInstance();
-        ImageIcon iconoOriginal = new ImageIcon("C:\\Users\\Maria liz\\Documents\\atencion.jpeg");
-        Image imagenEscalada = iconoOriginal.getImage().getScaledInstance(
-                jLabel1.getWidth(), jLabel1.getHeight(), Image.SCALE_SMOOTH);
-        jLabel1.setIcon(new ImageIcon(imagenEscalada));
+/*try {
+    String ruta = "C:\\Users\\Maria liz\\OneDrive\\Desktop\\Farmasalud_Oficial\\src\\resources\\Yaque.jpg";
+    ImageIcon iconoOriginal = new ImageIcon(ruta);
+    Image imagenEscalada = iconoOriginal.getImage().getScaledInstance(
+            imagenCentral.getWidth(), imagenCentral.getHeight(), Image.SCALE_SMOOTH);
+    imagenCentral.setIcon(new ImageIcon(imagenEscalada));
+} catch (Exception e) {
+    System.err.println("⚠️ No se pudo cargar la imagen: " + e.getMessage());
+}
+*/
+  this.setLocationRelativeTo(null);
+
     }
      
    
@@ -38,14 +46,10 @@ public class Paciente extends javax.swing.JFrame {
             return;
         }
         this.documentoPaciente = documento;
-        actualizarInterfaz();
     }
 
 
-    private void actualizarInterfaz() {
-        jLabel2.setText("BIENVENIDO PACIENTE");
-    }
-
+   
  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -55,50 +59,53 @@ public class Paciente extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        jLabel2 = new javax.swing.JLabel();
         btnConsultar = new javax.swing.JButton();
         btnAgendar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        imagenCentral = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(28, 43, 110));
         jPanel2.setName(""); // NOI18N
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Citas Asignadas ");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 47, 310, -1));
 
         jSeparator4.setBackground(new java.awt.Color(204, 0, 0));
         jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 101, 357, 15));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Maria liz\\Documents\\atencion.jpeg")); // NOI18N
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(677, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel3)
+                .addGap(33, 33, 33)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
-        jTextPane1.setEditable(false);
-        jTextPane1.setBorder(null);
-        jTextPane1.setContentType("Aqui podras Solicitar, consultar o modificar  tu citas para realizar  tramites de oficina  de Atencion"); // NOI18N
-        jTextPane1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jTextPane1.setForeground(new java.awt.Color(28, 43, 110));
-        jTextPane1.setText("Aqui podras Solicitar, consultar o modificar  tu citas para realizar  tramites de oficina  de Atencion");
-        jTextPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextPane1.setDisabledTextColor(new java.awt.Color(255, 255, 255));
-        jTextPane1.setSelectionColor(new java.awt.Color(255, 255, 255));
-        jScrollPane2.setViewportView(jTextPane1);
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(28, 43, 110));
-        jLabel2.setText("BIENVENIDO");
+        jPanel6.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 1090, 70));
 
         btnConsultar.setText("Consultar");
         btnConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +113,7 @@ public class Paciente extends javax.swing.JFrame {
                 btnConsultarActionPerformed(evt);
             }
         });
+        jPanel6.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, 171, 48));
 
         btnAgendar.setText("Agendar Cita ");
         btnAgendar.addActionListener(new java.awt.event.ActionListener() {
@@ -113,6 +121,7 @@ public class Paciente extends javax.swing.JFrame {
                 btnAgendarActionPerformed(evt);
             }
         });
+        jPanel6.add(btnAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 470, 160, 48));
 
         jButton1.setText("Cambiar Contraseña");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -120,54 +129,10 @@ public class Paciente extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 470, -1, 48));
+        jPanel6.add(imagenCentral, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1090, 200));
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(btnAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(39, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addGap(0, 35, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(97, 97, 97))))
-        );
-
-        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1350, 770));
+        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1100, 680));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -267,14 +232,11 @@ public class Paciente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgendar;
     private javax.swing.JButton btnConsultar;
+    private javax.swing.JLabel imagenCentral;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 }

@@ -38,6 +38,8 @@ public class DialogAgendarCita extends javax.swing.JDialog implements CitaListen
        this.controller = ControllerCitasPaciente.getInstance();
         this.controller.addCitaListener(this); 
         configurarCitas();
+       this.setLocationRelativeTo(null);
+
     }
 
     @Override
@@ -106,27 +108,39 @@ public class DialogAgendarCita extends javax.swing.JDialog implements CitaListen
         jDateFechaCita.setMinSelectableDate(fechaActual);
         jDateFechaCita.setDateFormatString("yyyy-MM-dd");
     }
-        controller.setTxtIdCita(txtIdCita);
+        controller.setLblIdCita(lblCita);
         controller.setCboSede(cboSede);
-        controller.setCboConsultorio(cboConsultorio); 
+        controller.setLblConsultorio(lblConsultorio); 
         controller.setCboMedico(cboMedico);
-        controller.setLblEspecialidadMedico(lblEspecialidadMedico);
+        controller.setCboEspecialidadMedico(cboEspecialidadMedico);
 
-      
-        controller.cargarSalasEnComboBox(cboConsultorio);
+        controller.cargarSalasEnComboBox(lblConsultorio);
         controller.cargarSedesEnComboBox(cboSede);
         controller.cargarMedicosEnComboBox();
+        
 
         cboMedico.addActionListener(e -> {
             String seleccion = (String) cboMedico.getSelectedItem();
             if (seleccion != null && !seleccion.equals("<Seleccione>")) {
                 Medico medico = controller.obtenerMedicoPorNombreCompleto(seleccion);
-                if (medico != null && lblEspecialidadMedico != null) {
-                    lblEspecialidadMedico.setText(medico.getEspecialidad());
+                if (medico != null && cboEspecialidadMedico != null) {
+                    cboEspecialidadMedico.setSelectedItem(medico.getEspecialidad());
                 }
             }
         });
+         controller.cargarEspecialidadesPorSede(cboEspecialidadMedico, cboSede);
+       controller.cargarMedicosPorSedeYEspecialidad(cboMedico, cboSede, cboEspecialidadMedico, lblConsultorio);
+         cboSede.addActionListener(e -> {
+             
+      controller.cargarEspecialidadesPorSede(cboEspecialidadMedico, cboSede);
+     });
+
+     cboEspecialidadMedico.addActionListener(e -> {
+         controller.cargarMedicosPorSedeYEspecialidad(cboMedico, cboSede, cboEspecialidadMedico,lblConsultorio);
+      });
+
     }
+    
     @Override
 public void citaActualizada(Cita cita) {
    
@@ -157,7 +171,6 @@ public void citaEliminada(String idCita) {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        cboConsultorio = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
@@ -193,9 +206,11 @@ public void citaEliminada(String idCita) {
         cboHoraCita = new javax.swing.JComboBox<>();
         jSeparator15 = new javax.swing.JSeparator();
         lblEps = new javax.swing.JLabel();
-        txtIdCita = new javax.swing.JTextField();
-        lblEspecialidadMedico = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        lblCita = new javax.swing.JLabel();
+        jSeparator11 = new javax.swing.JSeparator();
+        lblConsultorio = new javax.swing.JLabel();
+        cboEspecialidadMedico = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
 
@@ -233,11 +248,9 @@ public void citaEliminada(String idCita) {
         jSeparator3.setForeground(new java.awt.Color(28, 43, 110));
         jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 180, 10));
 
-        jPanel2.add(cboConsultorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 180, 50));
-
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setText("Consultorio");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 100, 30));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, 100, 30));
 
         jSeparator4.setBackground(new java.awt.Color(28, 43, 110));
         jSeparator4.setForeground(new java.awt.Color(28, 43, 110));
@@ -245,14 +258,14 @@ public void citaEliminada(String idCita) {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Sede");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 90, 30));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 90, 30));
 
         cboSede.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboSedeActionPerformed(evt);
             }
         });
-        jPanel2.add(cboSede, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 180, 40));
+        jPanel2.add(cboSede, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, 180, 40));
 
         jSeparator5.setBackground(new java.awt.Color(28, 43, 110));
         jSeparator5.setForeground(new java.awt.Color(28, 43, 110));
@@ -286,7 +299,7 @@ public void citaEliminada(String idCita) {
 
         jSeparator8.setBackground(new java.awt.Color(28, 43, 110));
         jSeparator8.setForeground(new java.awt.Color(28, 43, 110));
-        jPanel2.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 150, 10));
+        jPanel2.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 170, 10));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel9.setText("Eps");
@@ -294,45 +307,50 @@ public void citaEliminada(String idCita) {
 
         jSeparator9.setBackground(new java.awt.Color(28, 43, 110));
         jSeparator9.setForeground(new java.awt.Color(28, 43, 110));
-        jPanel2.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 150, 10));
+        jPanel2.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 170, 10));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel10.setText("Medico");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, -1, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, -1, -1));
 
         cboMedico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Seleccione>" }));
-        jPanel2.add(cboMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, 160, 40));
+        cboMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboMedicoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cboMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 180, 40));
 
         jSeparator10.setBackground(new java.awt.Color(28, 43, 110));
         jSeparator10.setForeground(new java.awt.Color(28, 43, 110));
-        jPanel2.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 350, 160, 10));
+        jPanel2.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 330, 180, 10));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel12.setText("Especialidad M");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 130, 30));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, 130, 30));
 
         jSeparator12.setBackground(new java.awt.Color(28, 43, 110));
         jSeparator12.setForeground(new java.awt.Color(28, 43, 110));
-        jPanel2.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, 160, 10));
+        jPanel2.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 180, 10));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel13.setText("Fecha Cita");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 100, 30));
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 100, 30));
 
         jSeparator13.setBackground(new java.awt.Color(28, 43, 110));
         jSeparator13.setForeground(new java.awt.Color(28, 43, 110));
-        jPanel2.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, 160, 10));
+        jPanel2.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 380, 190, 10));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel14.setText("Estado");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, -1, -1));
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
 
         cboEstadoCita.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Seleccione>", "PROGRAMADA", "COMPLETADA", "CANCELADA" }));
-        jPanel2.add(cboEstadoCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 160, 40));
+        jPanel2.add(cboEstadoCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 180, 40));
 
         jSeparator14.setBackground(new java.awt.Color(28, 43, 110));
         jSeparator14.setForeground(new java.awt.Color(28, 43, 110));
-        jPanel2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 160, 10));
+        jPanel2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 280, 180, 10));
 
         btnAgendar.setBackground(new java.awt.Color(109, 140, 172));
         btnAgendar.setText("Agendar ");
@@ -345,8 +363,8 @@ public void citaEliminada(String idCita) {
         jPanel2.add(lblNombrePaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 180, 40));
         jPanel2.add(lblApellidoPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 150, 40));
         jPanel2.add(lblDocumentoPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 150, 40));
-        jPanel2.add(lblEmailPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 140, 40));
-        jPanel2.add(jDateFechaCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, 160, 40));
+        jPanel2.add(lblEmailPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 170, 40));
+        jPanel2.add(jDateFechaCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 180, 40));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel15.setText("Hora Cita ");
@@ -358,20 +376,20 @@ public void citaEliminada(String idCita) {
         jSeparator15.setBackground(new java.awt.Color(28, 43, 110));
         jSeparator15.setForeground(new java.awt.Color(28, 43, 110));
         jPanel2.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 180, 10));
-        jPanel2.add(lblEps, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 150, 40));
-
-        txtIdCita.setText("dffghm");
-        txtIdCita.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdCitaActionPerformed(evt);
-            }
-        });
-        jPanel2.add(txtIdCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, 160, 40));
-        jPanel2.add(lblEspecialidadMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 370, 170, 30));
+        jPanel2.add(lblEps, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 170, 40));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel11.setText("Id Cita ");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, -1, -1));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+        jPanel2.add(lblCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 180, 40));
+
+        jSeparator11.setBackground(new java.awt.Color(28, 43, 110));
+        jSeparator11.setForeground(new java.awt.Color(28, 43, 110));
+        jPanel2.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, 180, 10));
+        jPanel2.add(lblConsultorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 340, 190, 40));
+
+        cboEspecialidadMedico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(cboEspecialidadMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 180, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 770, 510));
 
@@ -390,10 +408,10 @@ public void citaEliminada(String idCita) {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarActionPerformed
-controller.guardarCitaDesdeFormulario();
-if (dialogConsultarCitas != null) {
+   controller.guardarCitaDesdeFormulario();
+    if (dialogConsultarCitas != null) {
     dialogConsultarCitas.actualizarTablaCitas();
-}
+   }
         
     }//GEN-LAST:event_btnAgendarActionPerformed
 
@@ -401,9 +419,9 @@ if (dialogConsultarCitas != null) {
         // TODO add your handling code here:
     }//GEN-LAST:event_cboSedeActionPerformed
 
-    private void txtIdCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdCitaActionPerformed
+    private void cboMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMedicoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdCitaActionPerformed
+    }//GEN-LAST:event_cboMedicoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -450,7 +468,7 @@ if (dialogConsultarCitas != null) {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgendar;
-    private javax.swing.JComboBox<String> cboConsultorio;
+    private javax.swing.JComboBox<String> cboEspecialidadMedico;
     private javax.swing.JComboBox<String> cboEstadoCita;
     private javax.swing.JComboBox<String> cboHoraCita;
     private javax.swing.JComboBox<String> cboMedico;
@@ -479,6 +497,7 @@ if (dialogConsultarCitas != null) {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator14;
@@ -492,11 +511,11 @@ if (dialogConsultarCitas != null) {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JLabel lblApellidoPaciente;
+    private javax.swing.JLabel lblCita;
+    private javax.swing.JLabel lblConsultorio;
     private javax.swing.JLabel lblDocumentoPaciente;
     private javax.swing.JLabel lblEmailPaciente;
     private javax.swing.JLabel lblEps;
-    private javax.swing.JLabel lblEspecialidadMedico;
     private javax.swing.JLabel lblNombrePaciente;
-    private javax.swing.JTextField txtIdCita;
     // End of variables declaration//GEN-END:variables
 }
