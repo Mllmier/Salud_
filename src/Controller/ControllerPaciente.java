@@ -230,19 +230,33 @@ public void agregarPacienteListener(PacienteListener listener) {
             String tipoDocumento = cbTipoDocumento.getSelectedItem().toString();
             String tipoSangre = cbTipoSangre.getSelectedItem().toString();
             String antecedentes = txtAreaAntecedentes.getText().trim();
-            int peso = Integer.parseInt(txtPeso.getText().trim());
-           double altura = Double.parseDouble(txtAltura.getText().trim());
+             String pesoS = txtPeso.getText().trim().replace(",", ".");
+             String alturaS = txtAltura.getText().trim().replace(",", ".");
             
             if (documento.isEmpty() || nombres.isEmpty() || apellidos.isEmpty() || 
                 email.isEmpty() || celular.isEmpty()  || 
-                dateChooserNacimiento.getDate() == null) {
+                dateChooserNacimiento.getDate() == null || pesoS.isEmpty() || alturaS.isEmpty()) {
                 JOptionPane.showMessageDialog(null, 
                     "Todos los campos son obligatorios", 
                     "Error", 
                     JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            
+            if (sexo.equals("<Seleccione>") || eps.equals("<Seleccione>") ||
+            tipoDocumento.equals("<Seleccione>") || tipoSangre.equals("<Seleccione>")) {
+
+               JOptionPane.showMessageDialog(null,
+                "Debe seleccionar todas las opciones de las listas desplegables",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+              return;
+            }
+
+           
+
+             double peso = Double.parseDouble(pesoS);
+              double altura = Double.parseDouble(alturaS);
+      
             // Convertir fecha
             LocalDate fechaNacimiento = dateChooserNacimiento.getDate()
                 .toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -320,6 +334,8 @@ public void agregarPacienteListener(PacienteListener listener) {
         cbTipoDocumento.setSelectedIndex(0);
         cbTipoSangre.setSelectedIndex(0);
         txtAreaAntecedentes.setText("");
+        txtPeso.setText("");
+        txtAltura.setText("");
     }
     
     public void eliminarPacienteSeleccionado() {
@@ -380,12 +396,11 @@ public void agregarPacienteListener(PacienteListener listener) {
             String tipoDocumento = cbTipoDocumento.getSelectedItem().toString();
             String tipoSangre = cbTipoSangre.getSelectedItem().toString();
             String antecedentes = txtAreaAntecedentes.getText().trim();
-           int peso = Integer.parseInt(txtPeso.getText().trim());
-           double altura = Double.parseDouble(txtAltura.getText().trim());
+           String pesoS = txtPeso.getText().trim().replace(",", ".");
+            String alturaS = txtAltura.getText().trim().replace(",", ".");
 
-            // Validar campos obligatorios
             if (documento.isEmpty() || nombres.isEmpty() || apellidos.isEmpty() || 
-                email.isEmpty() || celular.isEmpty()  || 
+                email.isEmpty() || celular.isEmpty()  || pesoS.isEmpty() || alturaS.isEmpty() ||
                 dateChooserNacimiento.getDate() == null) {
                 JOptionPane.showMessageDialog(null,
                     "Todos los campos son obligatorios",
@@ -393,8 +408,24 @@ public void agregarPacienteListener(PacienteListener listener) {
                     JOptionPane.ERROR_MESSAGE);
                 return;
             }
+            if (sexo.equals("<Seleccione>") || eps.equals("<Seleccione>") ||
+            tipoDocumento.equals("<Seleccione>") || tipoSangre.equals("<Seleccione>")) {
 
-            // Convertir fecha
+               JOptionPane.showMessageDialog(null,
+                "Debe seleccionar todas las opciones de las listas desplegables",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+              return;
+            }
+
+           
+
+             double peso = Double.parseDouble(pesoS);
+              double altura = Double.parseDouble(alturaS);
+      
+            
+            
+
             LocalDate fechaNacimiento = dateChooserNacimiento.getDate()
                 .toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 

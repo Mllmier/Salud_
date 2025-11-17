@@ -44,20 +44,32 @@ private JTable tablaCitasPacienteExterna;
         controller.setCboTipoCita(cboTipoCita2);
         controller.setCboEstado(lblEstadoCita2);
             lblEstadoCita2.removeAllItems();
-    lblEstadoCita2.addItem("PROGRAMADA");
-    lblEstadoCita2.setSelectedIndex(0);
-    lblEstadoCita2.setEnabled(false);
-        controller.cargarSalasEnComboBox(cboConsultorio2);
+           lblEstadoCita2.addItem("PROGRAMADA");
+           lblEstadoCita2.setSelectedIndex(0);
+            lblEstadoCita2.setEnabled(false);
+        controller.cargarSalasEnComboBox(lblConsultorio2);
         controller.cargarSedesEnComboBox(cboSede2);
         controller.setCboSede(cboSede2);
         controller.setCboMedico(cboMedico2);
-        controller.setLblEspecialidadMedico(lblEspecialidadMedico2);
+        controller.setCboEspecialidadMedico2(cboEspecialidad2);
+      
+       
         controller.setLblNombre(lblNombrePaciente2);
         controller.setLblApellido(lblApellidoPaciente2);
         controller.setLblEmail(lblEmail2);
         controller.setLblDocumento(lblDocumentoPaciente2);
         controller.setCLblEps(lblEps2);
-        controller.setCboConsultorio(cboConsultorio2);
+        
+          controller.cargarEspecialidadesPorSede(cboEspecialidad2, cboSede2);
+        controller.cargarMedicosPorSedeYEspecialidad(cboMedico2, cboSede2, cboEspecialidad2, lblConsultorio2);
+          cboSede2.addActionListener(e -> {
+      controller.cargarEspecialidadesPorSede(cboEspecialidad2, cboSede2);
+     });
+       controller.setLblConsultorio(lblConsultorio2);
+     cboEspecialidad2.addActionListener(e -> {
+         controller.cargarMedicosPorSedeYEspecialidad(cboMedico2, cboSede2, cboEspecialidad2,lblConsultorio2);
+      });
+
     }
 
 public void cargarDatosDesdeFilaSeleccionada(JTable table, int fila) {
@@ -72,7 +84,7 @@ public void cargarDatosDesdeFilaSeleccionada(JTable table, int fila) {
     String documentoPaciente = model.getValueAt(fila, 0).toString();
     controller.cargarYPersistirPaciente(documentoPaciente); 
 
-    controller.cargarSalasEnComboBox(cboConsultorio2);
+    controller.cargarSalasEnComboBox(lblConsultorio2);
     controller.cargarSedesEnComboBox(cboSede2);
 
   
@@ -98,18 +110,26 @@ public void cargarDatosDesdeFilaSeleccionada(JTable table, int fila) {
     }
 
     cboTipoCita2.setSelectedItem(model.getValueAt(fila, 9).toString());
-    cboConsultorio2.setSelectedItem(model.getValueAt(fila, 10).toString());
+    lblConsultorio2.setText(model.getValueAt(fila, 10).toString());
     lblEstadoCita2.setSelectedItem(model.getValueAt(fila, 11).toString());
 
-    String nombreMedico = model.getValueAt(fila, 12).toString() + " " + model.getValueAt(fila, 13).toString();
-    cboMedico2.setSelectedItem(nombreMedico.trim());
+    String nombreMedico = model.getValueAt(fila, 12).toString();
+    String apellidoMedico = model.getValueAt(fila, 13).toString();
+    String especialidad = model.getValueAt(fila, 14).toString();
+     javax.swing.SwingUtilities.invokeLater(() -> {
+        controller.seleccionarEspecialidadEnVista(cboEspecialidad2, especialidad);
+        controller.seleccionarMedicoEnVista(cboMedico2, nombreMedico, apellidoMedico);
+    });
 
-    lblEspecialidadMedico2.setText(model.getValueAt(fila, 14).toString());
-    cboSede2.setSelectedItem(model.getValueAt(fila, 15).toString());
+    if (model.getColumnCount() > 15) {
+        String sede = model.getValueAt(fila, 15).toString();
+        cboSede2.setSelectedItem(sede);
+    }
+
 }
 
-    public void setTablaCitasPaciente(JTable tabla) {
-    this.tablaCitasPacienteExterna = tabla;
+       public void setTablaCitasPaciente(JTable tabla) {
+        this.tablaCitasPacienteExterna = tabla;
 }
 
 
@@ -151,11 +171,9 @@ public void cargarDatosDesdeFilaSeleccionada(JTable table, int fila) {
         jLabel13 = new javax.swing.JLabel();
         jSeparator10 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
-        lblEspecialidadMedico2 = new javax.swing.JLabel();
         jSeparator11 = new javax.swing.JSeparator();
         cboMedico2 = new javax.swing.JComboBox<>();
         cboSede2 = new javax.swing.JComboBox<>();
-        cboConsultorio2 = new javax.swing.JComboBox<>();
         cboTipoCita2 = new javax.swing.JComboBox<>();
         cboMotivoCita2 = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
@@ -171,6 +189,8 @@ public void cargarDatosDesdeFilaSeleccionada(JTable table, int fila) {
         btnModificar = new javax.swing.JButton();
         lblCita = new javax.swing.JLabel();
         jSeparator14 = new javax.swing.JSeparator();
+        cboEspecialidad2 = new javax.swing.JComboBox<>();
+        lblConsultorio2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
 
@@ -213,7 +233,7 @@ public void cargarDatosDesdeFilaSeleccionada(JTable table, int fila) {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setText("Consultorio");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 100, 30));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 100, 30));
 
         jSeparator4.setBackground(new java.awt.Color(28, 43, 110));
         jSeparator4.setForeground(new java.awt.Color(28, 43, 110));
@@ -221,7 +241,7 @@ public void cargarDatosDesdeFilaSeleccionada(JTable table, int fila) {
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setText("Sede");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 90, 20));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 90, 20));
 
         jSeparator5.setBackground(new java.awt.Color(28, 43, 110));
         jSeparator5.setForeground(new java.awt.Color(28, 43, 110));
@@ -241,52 +261,50 @@ public void cargarDatosDesdeFilaSeleccionada(JTable table, int fila) {
 
         jSeparator7.setBackground(new java.awt.Color(28, 43, 110));
         jSeparator7.setForeground(new java.awt.Color(28, 43, 110));
-        jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 423, 170, 10));
+        jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 170, 10));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel11.setText("Telefono");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, -1, -1));
-        jPanel2.add(lblEmail2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 160, 30));
+        jPanel2.add(lblEmail2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 170, 40));
 
         jSeparator8.setBackground(new java.awt.Color(28, 43, 110));
         jSeparator8.setForeground(new java.awt.Color(28, 43, 110));
-        jPanel2.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 117, 170, 10));
+        jPanel2.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 117, 170, 10));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel9.setText("Eps");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 60, 30));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 60, 30));
 
         jSeparator9.setBackground(new java.awt.Color(28, 43, 110));
         jSeparator9.setForeground(new java.awt.Color(28, 43, 110));
-        jPanel2.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 170, 10));
+        jPanel2.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 170, 10));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel13.setText("Medico");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 80, 30));
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 80, 30));
 
         jSeparator10.setBackground(new java.awt.Color(28, 43, 110));
         jSeparator10.setForeground(new java.awt.Color(28, 43, 110));
-        jPanel2.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 170, 10));
+        jPanel2.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 180, 10));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Especialidad");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, 110, -1));
-        jPanel2.add(lblEspecialidadMedico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, 150, 40));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 110, -1));
 
         jSeparator11.setBackground(new java.awt.Color(28, 43, 110));
         jSeparator11.setForeground(new java.awt.Color(28, 43, 110));
-        jPanel2.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, 160, 10));
+        jPanel2.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, 180, 10));
 
-        jPanel2.add(cboMedico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 170, 40));
+        cboMedico2.setToolTipText("");
+        jPanel2.add(cboMedico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 180, 40));
 
         cboSede2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboSede2ActionPerformed(evt);
             }
         });
-        jPanel2.add(cboSede2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 170, 40));
-
-        jPanel2.add(cboConsultorio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 170, 40));
+        jPanel2.add(cboSede2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 170, 40));
 
         cboTipoCita2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Seleccione>", "Prioritaria", "Regular", "Control" }));
         jPanel2.add(cboTipoCita2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 170, 40));
@@ -296,25 +314,25 @@ public void cargarDatosDesdeFilaSeleccionada(JTable table, int fila) {
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel12.setText("Estado");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 100, 30));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 100, 30));
 
         lblEstadoCita2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Seleccione>", "PROGRAMADA", "COMPLETADA", "CANCELADA" }));
-        jPanel2.add(lblEstadoCita2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 170, 40));
+        jPanel2.add(lblEstadoCita2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 170, 40));
 
         jSeparator12.setBackground(new java.awt.Color(28, 43, 110));
         jSeparator12.setForeground(new java.awt.Color(28, 43, 110));
-        jPanel2.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 170, -1));
+        jPanel2.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, 180, 10));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel14.setText("Hora Cita");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, -1, -1));
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, -1, -1));
 
         cboHoraCita2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Seleccione>", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "01:00", "01:30", "02:00", "02:30", "03:00", "03:30", "04:00", "04:30", "05:00" }));
-        jPanel2.add(cboHoraCita2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 170, 40));
+        jPanel2.add(cboHoraCita2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 340, 180, 40));
 
         jSeparator13.setBackground(new java.awt.Color(28, 43, 110));
         jSeparator13.setForeground(new java.awt.Color(28, 43, 110));
-        jPanel2.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, 170, -1));
+        jPanel2.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, 180, 10));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Fecha Cita ");
@@ -322,7 +340,7 @@ public void cargarDatosDesdeFilaSeleccionada(JTable table, int fila) {
 
         jDateChooserCita.setBackground(new java.awt.Color(28, 43, 110));
         jPanel2.add(jDateChooserCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 150, 30));
-        jPanel2.add(lblEps2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, 170, 40));
+        jPanel2.add(lblEps2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 170, 40));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel15.setText("Id Cita");
@@ -335,13 +353,17 @@ public void cargarDatosDesdeFilaSeleccionada(JTable table, int fila) {
             }
         });
         jPanel2.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, -1, 40));
-        jPanel2.add(lblCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 170, 30));
+        jPanel2.add(lblCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, 170, 30));
 
         jSeparator14.setBackground(new java.awt.Color(28, 43, 110));
         jSeparator14.setForeground(new java.awt.Color(28, 43, 110));
-        jPanel2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 170, 10));
+        jPanel2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, 170, 10));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 610, 500));
+        cboEspecialidad2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Seleccione>" }));
+        jPanel2.add(cboEspecialidad2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, 180, 40));
+        jPanel2.add(lblConsultorio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 290, 180, 40));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 640, 490));
 
         jPanel3.setBackground(new java.awt.Color(28, 43, 110));
 
@@ -431,7 +453,7 @@ public void cargarDatosDesdeFilaSeleccionada(JTable table, int fila) {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnModificar;
-    private javax.swing.JComboBox<String> cboConsultorio2;
+    private javax.swing.JComboBox<String> cboEspecialidad2;
     private javax.swing.JComboBox<String> cboHoraCita2;
     private javax.swing.JComboBox<String> cboMedico2;
     private javax.swing.JComboBox<String> cboMotivoCita2;
@@ -473,10 +495,10 @@ public void cargarDatosDesdeFilaSeleccionada(JTable table, int fila) {
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JLabel lblApellidoPaciente2;
     private javax.swing.JLabel lblCita;
+    private javax.swing.JLabel lblConsultorio2;
     private javax.swing.JLabel lblDocumentoPaciente2;
     private javax.swing.JLabel lblEmail2;
     private javax.swing.JLabel lblEps2;
-    private javax.swing.JLabel lblEspecialidadMedico2;
     private javax.swing.JComboBox<String> lblEstadoCita2;
     private javax.swing.JLabel lblNombrePaciente2;
     // End of variables declaration//GEN-END:variables

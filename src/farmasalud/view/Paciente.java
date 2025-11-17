@@ -26,7 +26,7 @@ public class Paciente extends javax.swing.JFrame {
         initComponents();
  this.controller = ControllerCitasPaciente.getInstance();
 /*try {
-    String ruta = "Yaque.jpg";
+    String ruta = "C:\\Users\\Maria liz\\OneDrive\\Desktop\\Farmasalud_Oficial\\src\\resources\\Yaque.jpg";
     ImageIcon iconoOriginal = new ImageIcon(ruta);
     Image imagenEscalada = iconoOriginal.getImage().getScaledInstance(
             imagenCentral.getWidth(), imagenCentral.getHeight(), Image.SCALE_SMOOTH);
@@ -46,14 +46,10 @@ public class Paciente extends javax.swing.JFrame {
             return;
         }
         this.documentoPaciente = documento;
-        actualizarInterfaz();
     }
 
 
-    private void actualizarInterfaz() {
-        jLabel2.setText("BIENVENIDO PACIENTE");
-    }
-
+   
  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -63,7 +59,6 @@ public class Paciente extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
         btnConsultar = new javax.swing.JButton();
         btnAgendar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -112,18 +107,13 @@ public class Paciente extends javax.swing.JFrame {
 
         jPanel6.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 1090, 70));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(28, 43, 110));
-        jLabel2.setText("BIENVENIDO");
-        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(372, 349, 255, 62));
-
         btnConsultar.setText("Consultar");
         btnConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultarActionPerformed(evt);
             }
         });
-        jPanel6.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, 171, 48));
+        jPanel6.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, 171, 48));
 
         btnAgendar.setText("Agendar Cita ");
         btnAgendar.addActionListener(new java.awt.event.ActionListener() {
@@ -131,7 +121,7 @@ public class Paciente extends javax.swing.JFrame {
                 btnAgendarActionPerformed(evt);
             }
         });
-        jPanel6.add(btnAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 470, 160, 48));
+        jPanel6.add(btnAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 470, 160, 48));
 
         jButton1.setText("Cambiar Contraseña");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +129,7 @@ public class Paciente extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 470, -1, 48));
+        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 470, -1, 48));
         jPanel6.add(imagenCentral, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1090, 200));
 
         getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1100, 680));
@@ -244,7 +234,6 @@ public class Paciente extends javax.swing.JFrame {
     private javax.swing.JButton btnConsultar;
     private javax.swing.JLabel imagenCentral;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;

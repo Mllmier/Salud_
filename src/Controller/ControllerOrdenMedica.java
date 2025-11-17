@@ -54,7 +54,7 @@ private Medico medicoLogueado;
   private JTextArea txtAreaMedicamentos;
   private JLabel lblFechaCita;
   private JLabel lblHoraCita;
-  private JLabel lblidCita;
+  private JLabel lblIdCita;
   private JLabel lblSede;
   private JLabel lblEstado;
   private JLabel lblMotivo;
@@ -76,7 +76,7 @@ private Medico medicoLogueado;
     public ControllerOrdenMedica(JLabel lblNombre,JLabel lblApellido,JLabel lblEmail,JLabel lblAltura,
                                  JLabel txtPeso,JLabel lblFechaNacimiento,JLabel lblTipoSangre,JTextArea txtAntecedentes,JLabel lblCelular,
                                  JLabel lblSexo,JLabel lblEps,JTextArea areaDiagnostico,JTextArea textAreareceta,JTextArea txtAreaMedicamentos,JLabel lblFechaCita,
-                                 JLabel lblHoraCita,Medico medicoLogueado,OrdenMedicaDAO ordenmedica,JLabel idCita,JLabel lblSede,JLabel lblMotivo,JLabel lblEstado){
+                                 JLabel lblHoraCita,Medico medicoLogueado,OrdenMedicaDAO ordenmedica,JLabel lblIdCita,JLabel lblSede,JLabel lblMotivo,JLabel lblEstado){
         
         this.lblNombre = lblNombre;
         this.lblApellido = lblApellido;
@@ -96,7 +96,7 @@ private Medico medicoLogueado;
         this.lblHoraCita=lblHoraCita;
         this.medicoLogueado= medicoLogueado;
         this.ordenmedica = ordenmedica;  
-        this.lblidCita = lblidCita;
+        this.lblIdCita = lblIdCita;
         this.lblEstado = lblEstado;
         this.lblSede = lblSede;
         this.lblMotivo = lblMotivo;
@@ -136,7 +136,7 @@ private Medico medicoLogueado;
         String nombreMedico = medicoLogueado != null ? medicoLogueado.getNombres(): "";
         String apellidoMedico = medicoLogueado != null ? medicoLogueado.getApellidos() : "";
         String especialidad = medicoLogueado != null ? medicoLogueado.getEspecialidad() : "";
-       String idCita = lblidCita != null ? lblidCita.getText(): "";
+       String idCita = lblIdCita != null ? lblIdCita.getText(): "";
        String motivo = lblMotivo != null ? lblMotivo.getText(): "";
        String sede = lblSede != null ? lblSede.getText(): "";
        String estado = lblEstado != null ? lblEstado.getText(): "";
@@ -144,7 +144,7 @@ private Medico medicoLogueado;
         return new OrdenMedica(
             nombre, apellido, email, altura, peso, fechaNacimiento,
             tipoSangre, antecedentes, celular, sexo, eps, diagnostico,receta,listaMedicamentos,fechacita,horacita,
-                nombreMedico,apellidoMedico,especialidad,idCita,motivo,sede,estado
+                nombreMedico,apellidoMedico,especialidad,idCita,sede,motivo,estado
         );
     }
 }

@@ -54,7 +54,7 @@ private int columnaEstado = 7;
     ControllerPaciente.getInstance().agregarPacienteListener(this);
 
     }
-    @Override
+      @Override
 public void actualizar(Paciente paciente) {
     if (paciente != null && this.documentoPaciente != null 
         && paciente.getNumeroDocumento().equals(documentoPaciente)) {
@@ -487,6 +487,12 @@ public void setFilaSeleccionada(int fila) {
             }
         });
         jPanel2.add(lblAltura, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 120, 30));
+
+        lblEstado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblEstadoMouseClicked(evt);
+            }
+        });
         jPanel2.add(lblEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 170, 110, 40));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -862,6 +868,12 @@ java.awt.Window parentWindow = SwingUtilities.getWindowAncestor(this);
        
     }//GEN-LAST:event_btnGuardarMouseClicked
 
+    private void lblEstadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEstadoMouseClicked
+        // TODO add your handling code here:
+        
+   
+    }//GEN-LAST:event_lblEstadoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1008,7 +1020,7 @@ if (txtMedicamento != null) {
     String nombreMedico = medicoSeleccionado != null ? medicoSeleccionado.getNombres(): "";
     String apellidoMedico = medicoSeleccionado != null ? medicoSeleccionado.getApellidos() : "";
     String especialidad = medicoSeleccionado != null ? medicoSeleccionado.getEspecialidad() : "";
-    String idCita = lblEstado != null ? lblEstado.getText() : "";
+    String idCita = lblIdCita != null ? lblIdCita.getText() : "";
    String sede = lblSede != null ? lblSede.getText() : "";
    String motivo = lblMotivo!= null ? lblMotivo.getText() : ""; 
     String estado = lblEstado != null ? lblEstado.getText() : "";

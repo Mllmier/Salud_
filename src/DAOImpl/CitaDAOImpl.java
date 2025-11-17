@@ -102,8 +102,8 @@ public class CitaDAOImpl implements CitaDAO{
         }
         
         for (Cita cita : todasLasCitas) {
-            if (cita.getDocumentoPaciente() != null && 
-                cita.getDocumentoPaciente().equals(documentoPaciente)) {
+            if (cita.getPaciente().getNumeroDocumento() != null && 
+                cita.getPaciente().getNumeroDocumento().equals(documentoPaciente)) {
                 citasPaciente.add(cita);
             }
         }
@@ -120,8 +120,8 @@ public class CitaDAOImpl implements CitaDAO{
         }
         
         for (Cita cita : todasLasCitas) {
-            if (cita.getDocumentoMedico() != null && 
-                cita.getDocumentoMedico().equals(documentoMedico)) {
+            if (cita.getMedico().getNumeroDocumento() != null && 
+                cita.getMedico().getNumeroDocumento().equals(documentoMedico)) {
                 citasMedico.add(cita);
             }
         }
@@ -193,8 +193,8 @@ public class CitaDAOImpl implements CitaDAO{
         List<Cita> todasLasCitas = cargarTodos();
 
         for (Cita cita : todasLasCitas) {
-            if (cita.getDocumentoMedico() != null && cita.getFechaCita() != null) {
-                if (cita.getDocumentoMedico().equals(documentoMedico) && cita.getFechaCita().equals(fecha)) {
+            if (cita.getMedico().getNumeroDocumento() != null && cita.getFechaCita() != null) {
+                if (cita.getMedico().getNumeroDocumento().equals(documentoMedico) && cita.getFechaCita().equals(fecha)) {
                     contador++;
                 }
             }
