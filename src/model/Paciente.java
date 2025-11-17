@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class Paciente extends Persona {
     private String tipoSangre;
     private String antecedentes;
-    private int peso;
+    private double  peso;
     private String tipoDocumento;
     private double altura;
     
@@ -18,7 +18,7 @@ public class Paciente extends Persona {
         String tipoDocumento,
         String tipoSangre,
         String antecedentes,
-        int peso,
+        double  peso,
         double altura) {
         super(numeroDocumento, nombres, apellidos, fechaNacimiento, sexo, eps, email, celular, contraseña);
         
@@ -66,7 +66,7 @@ public class Paciente extends Persona {
         this.antecedentes = antecedentes;
     }
 
-    public int getPeso() {
+    public double getPeso() {
         return peso;
     }
 

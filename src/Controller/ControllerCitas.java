@@ -711,6 +711,15 @@ public Medico obtenerMedicoPorNombreCompleto2(String nombreCompleto) {
 
 
         String documentoPaciente = tablaCitas.getValueAt(filaSeleccionada, 0).toString();
+        Paciente pacienteSeleccionado = pacienteDAO.buscarPorDocumento(documentoPaciente);
+
+      if (pacienteSeleccionado == null) {
+       JOptionPane.showMessageDialog(null,
+        "No se encontró el paciente asociado a esta cita.",
+        "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+     }
+
 
         Cita citaActualizada = new Cita(
             idCita, 

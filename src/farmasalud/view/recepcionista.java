@@ -1217,7 +1217,7 @@ public void verificarDisponibilidadHoraActualizacion() {
                 cbEpsActionPerformed(evt);
             }
         });
-        jPanel13.add(cbEps, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 200, 40));
+        jPanel13.add(cbEps, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 100, 180, 40));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("Grupo Sangre");
@@ -1238,7 +1238,7 @@ public void verificarDisponibilidadHoraActualizacion() {
                 cboTipoSangreActionPerformed(evt);
             }
         });
-        jPanel13.add(cboTipoSangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 100, 180, 40));
+        jPanel13.add(cboTipoSangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 200, 40));
 
         jSeparator1.setForeground(new java.awt.Color(10, 92, 184));
         jPanel13.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 160, 10));
@@ -1558,8 +1558,6 @@ public void verificarDisponibilidadHoraActualizacion() {
         jPanel8.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 100, -1, -1));
 
         jPanel8.add(cboEspecialidadMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 160, 50));
-
-        lblConsultorio.setText("jLabel19");
         jPanel8.add(lblConsultorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 160, 50));
 
         panelAgendar.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 900, 230));
@@ -1975,12 +1973,7 @@ for (int i = 0; i < TabbetCitas.getTabCount(); i++) {
     }//GEN-LAST:event_cbTipoDocumentoActionPerformed
 
     private void txtPriNombreRKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPriNombreRKeyTyped
-        char c = evt.getKeyChar();
-
-        if (!Character.isLetter(c) && c != ' ' && c != KeyEvent.VK_BACK_SPACE && c != KeyEvent.VK_DELETE) {
-            evt.consume();
-            JOptionPane.showMessageDialog(null, "Solo se permiten letras", "Error", JOptionPane.WARNING_MESSAGE);
-        }
+        
     }//GEN-LAST:event_txtPriNombreRKeyTyped
 
     private void txtPriNombreRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPriNombreRActionPerformed
@@ -2079,7 +2072,7 @@ TabbetCitas.setSelectedIndex(4);       // TODO add your handling code here:
     }//GEN-LAST:event_txtPesoActionPerformed
 
     private void txtAlturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlturaActionPerformed
-        // TODO add your handling code here:
+         // TODO add your handling code here:
     }//GEN-LAST:event_txtAlturaActionPerformed
 
     /**

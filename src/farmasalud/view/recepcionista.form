@@ -1778,7 +1778,7 @@
                       </AuxValues>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="160" y="100" width="200" height="40"/>
+                          <AbsoluteConstraints x="720" y="100" width="180" height="40"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1852,7 +1852,7 @@
                       </AuxValues>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="720" y="100" width="180" height="40"/>
+                          <AbsoluteConstraints x="160" y="100" width="200" height="40"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -2720,9 +2720,6 @@
                       </Constraints>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblConsultorio">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jLabel19"/>
-                      </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="190" y="120" width="160" height="50"/>
