@@ -6,6 +6,7 @@ package farmasalud.view;
 
 import com.google.gson.JsonObject;
 import dao.AdminDAO;
+import dao.usuarioDAO;
 import java.io.IOException;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -23,10 +24,23 @@ public class DialogCambiarContraseña extends javax.swing.JDialog {
     public DialogCambiarContraseña(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        txtContraseña.setEchoChar('•');
     }
     public void setUsuario(JsonObject admin) {
         this.adminOriginal = admin;
     }
+    
+    private void cargarDatosDoctor() {
+    if (usuarioDAO.medicoActual != null) {
+        txtCorreoElectronico.setText(usuarioDAO.medicoActual.getEmail());
+        txtContraseña.setText(usuarioDAO.medicoActual.getContraseña());
+    } else {
+        JOptionPane.showMessageDialog(this,
+            "No se encontró información del doctor logueado.",
+            "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
 
    /* private void guardarEmailYContrasena() {
         String nuevoEmail = txtCorreoElectronico.getText().trim();
@@ -89,80 +103,69 @@ public class DialogCambiarContraseña extends javax.swing.JDialog {
         txtCorreoElectronico = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtContraseña = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
         BbtnGuardar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        txtContraseña = new javax.swing.JPasswordField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtCorreoElectronico.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         txtCorreoElectronico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCorreoElectronicoActionPerformed(evt);
             }
         });
+        jPanel1.add(txtCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 124, 300, 30));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("GMAIL");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        jLabel1.setText("MIS CREDENCIALES");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 220, 39));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("Contraseña");
+        jLabel2.setText("Contraseña :");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 207, 109, -1));
 
-        txtContraseña.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContraseñaActionPerformed(evt);
-            }
-        });
+        jPanel2.setBackground(new java.awt.Color(0, 102, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BbtnGuardar.setText("jButton1");
+        BbtnGuardar.setText("Guardar cambios\n");
+        BbtnGuardar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         BbtnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BbtnGuardarActionPerformed(evt);
             }
         });
+        jPanel2.add(BbtnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtContraseña))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(155, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BbtnGuardar)
-                .addGap(207, 207, 207))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(txtContraseña)))
-                .addGap(45, 45, 45)
-                .addComponent(BbtnGuardar)
-                .addContainerGap(60, Short.MAX_VALUE))
-        );
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 180, 300));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 300));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setText("Correo :");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 89, 39));
+
+        txtContraseña.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 300, 30));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setText("mostrar contraseña");
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel4MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel4MouseReleased(evt);
+            }
+        });
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 110, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -171,13 +174,53 @@ public class DialogCambiarContraseña extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCorreoElectronicoActionPerformed
 
-    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtContraseñaActionPerformed
-
     private void BbtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbtnGuardarActionPerformed
-       // TODO add your handling code here:
-    }//GEN-LAST:event_BbtnGuardarActionPerformed
+try {
+        String nuevoCorreo = txtCorreoElectronico.getText().trim();
+        String nuevaContraseña = txtContraseña.getText().trim();
+
+        if (nuevoCorreo.isEmpty() || nuevaContraseña.isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                "Debe completar ambos campos.",
+                "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        dao.MedicoDAO medicoDAO = DAOImpl.MedicoDAOImpl.getInstancia();
+        boolean actualizado = medicoDAO.actualizarCredenciales(
+            usuarioDAO.medicoActual.getNumeroDocumento(),
+            nuevoCorreo,
+            nuevaContraseña
+        );
+
+        if (actualizado) {
+            JOptionPane.showMessageDialog(this,
+                "Datos actualizados correctamente.",
+                "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+            
+            usuarioDAO.medicoActual.setEmail(nuevoCorreo);
+            usuarioDAO.medicoActual.setContraseña(nuevaContraseña);
+            
+            dispose(); 
+        } else {
+            JOptionPane.showMessageDialog(this,
+                "No se pudieron actualizar los datos.",
+                "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this,
+            "Error al actualizar: " + e.getMessage(),
+            "Error", JOptionPane.ERROR_MESSAGE);
+        e.printStackTrace();
+    }    }//GEN-LAST:event_BbtnGuardarActionPerformed
+
+    private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
+    txtContraseña.setEchoChar((char) 0);    }//GEN-LAST:event_jLabel4MousePressed
+
+    private void jLabel4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseReleased
+        txtContraseña.setEchoChar('•');
+    }//GEN-LAST:event_jLabel4MouseReleased
 
     /**
      * @param args the command line arguments
@@ -225,8 +268,11 @@ public class DialogCambiarContraseña extends javax.swing.JDialog {
     private javax.swing.JButton BbtnGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtContraseña;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JTextField txtCorreoElectronico;
     // End of variables declaration//GEN-END:variables
 }

@@ -19,7 +19,8 @@ public class usuarioDAO {
     
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
+     public static Medico medicoActual; 
+     public static Recepcionista recepcionistaActual;
     /**
      * Valida las credenciales de un usuario según su rol
      * @param email Correo electrónico del usuario
@@ -34,10 +35,19 @@ public class usuarioDAO {
                     return buscarAdministrador(email, contraseña);
 
                 case "Doctor":
-                    return buscarMedico(email, contraseña);
+                    Medico medico = buscarMedico(email, contraseña);
+                    if (medico != null) {
+                    usuarioDAO.medicoActual = medico; 
+                     }
+                    return medico;
 
                 case "Recepcionista":
-                    return buscarRecepcionista(email, contraseña);
+                    Recepcionista recepcionista = buscarRecepcionista(email, contraseña);
+                    if (recepcionista != null) {
+                        usuarioDAO.recepcionistaActual = recepcionista;
+                    }
+                    
+                    return recepcionista;
 
                 case "Paciente":
                     return buscarPaciente(email, contraseña);

@@ -21,6 +21,7 @@ public class login_ extends javax.swing.JFrame {
      */
     public login_() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
    
@@ -66,7 +67,7 @@ public class login_ extends javax.swing.JFrame {
         jPanel2.add(Jtextfield_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 300, 29));
 
         jComboBox1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Seleccione una opcion>", "Administrador", "Doctor", "Recepcionista", "Farmaceutico", "Paciente" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "                       <Seleccione una opcion>", "Administrador", "Doctor", "Recepcionista", "Farmaceutico", "Paciente" }));
         jComboBox1.setBorder(null);
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,7 +114,7 @@ public class login_ extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 590));
 
-        jPanel3.setBackground(new java.awt.Color(10, 92, 184));
+        jPanel3.setBackground(new java.awt.Color(28, 43, 110));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, 360, 590));
 
