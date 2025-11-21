@@ -10,14 +10,15 @@ import dao.usuarioDAO;
 import java.io.IOException;
 import java.util.List;
 import javax.swing.JOptionPane;
+import model.Medico;
 
 /**
  *
  * @author Maria liz
  */
 public class DialogCambiarContraseña extends javax.swing.JDialog {
-    private JsonObject adminOriginal; // El usuario logueado
-
+    private JsonObject adminOriginal;// El usuario logueado
+    private Medico medico;
     /**
      * Creates new form DialogCambiarContraseña
      */
@@ -26,6 +27,12 @@ public class DialogCambiarContraseña extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         txtContraseña.setEchoChar('•');
+    }
+    public DialogCambiarContraseña(java.awt.Frame parent, boolean modal, Medico medicoLogueado){
+        super(parent, modal);
+        initComponents();
+        this.medico = medicoLogueado;
+        cargarDatosDoctor();
     }
     public void setUsuario(JsonObject admin) {
         this.adminOriginal = admin;
@@ -175,7 +182,7 @@ public class DialogCambiarContraseña extends javax.swing.JDialog {
     }//GEN-LAST:event_txtCorreoElectronicoActionPerformed
 
     private void BbtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbtnGuardarActionPerformed
-try {
+     try {
         String nuevoCorreo = txtCorreoElectronico.getText().trim();
         String nuevaContraseña = txtContraseña.getText().trim();
 
@@ -198,14 +205,14 @@ try {
                 "Datos actualizados correctamente.",
                 "Éxito", JOptionPane.INFORMATION_MESSAGE);
 
-            
+            // 🔥 MUY IMPORTANTE — actualizar los datos en memoria
             usuarioDAO.medicoActual.setEmail(nuevoCorreo);
             usuarioDAO.medicoActual.setContraseña(nuevaContraseña);
-            
+
             dispose(); 
         } else {
             JOptionPane.showMessageDialog(this,
-                "No se pudieron actualizar los datos.",
+                "No se pudieron actualizar los datos. El correo ya está en uso.",
                 "Error", JOptionPane.ERROR_MESSAGE);
         }
     } catch (Exception e) {
@@ -213,6 +220,7 @@ try {
             "Error al actualizar: " + e.getMessage(),
             "Error", JOptionPane.ERROR_MESSAGE);
         e.printStackTrace();
+    
     }    }//GEN-LAST:event_BbtnGuardarActionPerformed
 
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed

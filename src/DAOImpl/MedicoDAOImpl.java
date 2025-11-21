@@ -240,30 +240,29 @@ public class MedicoDAOImpl implements MedicoDAO {
         .filter(Objects::nonNull)
         .anyMatch(m -> email.equalsIgnoreCase(m.getEmail()));
 }
-@Override
-public boolean actualizarCredenciales(String emailActual, String nuevoEmail, String nuevaContraseña) {
-    List<Medico> medicos = cargarTodos();
-    boolean encontrado = false;
-    
-    for (Medico medico : medicos) {
-        if (medico.getEmail().equalsIgnoreCase(emailActual)) {
-            if (nuevoEmail != null && !nuevoEmail.isEmpty()) {
+    @Override
+public boolean actualizarCredenciales(String numeroDocumento, String nuevoEmail, String nuevaContrasena) {
+    try {
+        List<Medico> lista = cargarTodos(); // Carga el JSON completo
+
+        for (Medico medico : lista) {
+            if (medico.getNumeroDocumento().equals(numeroDocumento)) {
+
+                // Actualizar directamente SIN VALIDAR si el correo existe
                 medico.setEmail(nuevoEmail);
+                medico.setContraseña(nuevaContrasena);
+
+                guardarTodos(lista); // Guardar cambios en el JSON
+                return true;
             }
-            if (nuevaContraseña != null && !nuevaContraseña.isEmpty()) {
-                medico.setContraseña(nuevaContraseña);
-            }
-            encontrado = true;
-            break;
         }
+    } catch (Exception e) {
+        e.printStackTrace();
     }
-    
-    if (encontrado) {
-        guardarTodos(medicos);
-        return true;
-    }
+
     return false;
 }
+
 @Override
 public boolean actualizarEstado(String numeroDocumento, String nuevoEstado) {
     List<Medico> medicos = cargarTodos();
@@ -276,5 +275,6 @@ public boolean actualizarEstado(String numeroDocumento, String nuevoEstado) {
     }
     return false;
 }
+
 
 }

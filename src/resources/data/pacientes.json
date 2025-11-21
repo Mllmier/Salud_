@@ -254,5 +254,53 @@
     "email": "laura@gmail.com",
     "celular": "3245889909",
     "contraseña": ""
+  },
+  {
+    "tipoSangre": "B+",
+    "antecedentes": "es alergico a la ampicilina",
+    "peso": 80.0,
+    "tipoDocumento": "CC",
+    "altura": 1.82,
+    "numeroDocumento": "1597534568",
+    "nombres": "carlitos",
+    "apellidos": "pabon mejia",
+    "fechaNacimiento": "2006-06-23",
+    "sexo": "M",
+    "eps": "Sanistas",
+    "email": "haider32107@gmail.com",
+    "celular": "3044451166",
+    "contraseña": ""
+  },
+  {
+    "tipoSangre": "B-",
+    "antecedentes": "tenia dengue",
+    "peso": 75.0,
+    "tipoDocumento": "CC",
+    "altura": 1.78,
+    "numeroDocumento": "7896541235",
+    "nombres": "ronaldo",
+    "apellidos": "serrano",
+    "fechaNacimiento": "2000-11-01",
+    "sexo": "M",
+    "eps": "Nueva Eps",
+    "email": "hahahah@gmail.com",
+    "celular": "3145459612",
+    "contraseña": ""
+  },
+  {
+    "tipoSangre": "A-",
+    "antecedentes": "ghjk",
+    "peso": 55.0,
+    "tipoDocumento": "CC",
+    "altura": 1.65,
+    "numeroDocumento": "7531598521",
+    "nombres": "jader",
+    "apellidos": "fuentes",
+    "fechaNacimiento": "2001-11-10",
+    "sexo": "M",
+    "eps": "Comfamiliar",
+    "email": "haider32104@gmail.com",
+    "celular": "3164419082",
+    "contraseña": ",$p3TFI3gM"
   }
 ]

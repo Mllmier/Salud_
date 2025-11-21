@@ -57,6 +57,8 @@ public class Doctor extends javax.swing.JFrame {
     public Doctor() {
       
     initComponents();
+    
+    
          popupMenu = new JPopupMenu();
 
         itemHistorial = new JMenuItem("Historial Clinico");
@@ -587,7 +589,8 @@ if (fechaSeleccionada.before(hoySinHora)) {
     }//GEN-LAST:event_dateChooserFechaActionPerformed
 
     private void btnCredencialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCredencialesActionPerformed
-  
+    DialogCambiarContraseña dialog = new DialogCambiarContraseña(this, true, medicoLogueado);
+    dialog.setVisible(true);
     }//GEN-LAST:event_btnCredencialesActionPerformed
 
     /*
@@ -619,11 +622,9 @@ if (fechaSeleccionada.before(hoySinHora)) {
         //</editor-fold>
 
        Create and display the form */
-       java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Doctor().setVisible(true);
-            }
-        });
+       
+            
+ 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

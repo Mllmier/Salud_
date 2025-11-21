@@ -1,12 +1,17 @@
 package dao;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 import java.io.File;
 import java.io.FileReader;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import model.*;
 
 public class usuarioDAO {
@@ -285,4 +290,42 @@ public class usuarioDAO {
         }
         return false;
     }
+    
+    
+   public List<Paciente> cargarPacientes() {
+    try {
+        File file = new File(PACIENTES_JSON); // <- usa la misma ruta del login
+
+        if (!file.exists()) {
+            System.err.println("ERROR: No existe el archivo pacientes.json en: " + file.getAbsolutePath());
+            return new ArrayList<>();
+        }
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        FileReader reader = new FileReader(file);
+
+        List<Paciente> pacientes = gson.fromJson(reader, new TypeToken<List<Paciente>>() {}.getType());
+        reader.close();
+
+        return pacientes != null ? pacientes : new ArrayList<>();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        return new ArrayList<>();
+    }
+}
+
+
+    public Paciente validarPacientePorEmailIdentificacion(String email, String identificacion) {
+    List<Paciente> pacientes = cargarPacientes(); // tu método existente
+
+    for (Paciente p : pacientes) {
+        if (p.getEmail().equalsIgnoreCase(email)
+                && p.getNumeroDocumento().equals(identificacion)) {
+            return p;
+        }
+    }
+    return null;
+}
+
 }

@@ -2,6 +2,8 @@ package Controller;
 
 import DAOImpl.PacienteDAOImpl;
 import Listener.PacienteListener;
+import Utilidades.EnviadorCredenciales;
+import Utilidades.GeneradorContraseñas;
 import com.toedter.calendar.JDateChooser;
 import dao.PacienteDAO;
 import java.time.LocalDate;
@@ -44,6 +46,8 @@ public class ControllerPaciente {
     private JTextArea txtAreaAntecedentes;
     private JTextField txtAltura;
     private JTextField txtPeso;
+    private GeneradorContraseñas generadorContraseñas = new GeneradorContraseñas();
+    private EnviadorCredenciales enviadorCredenciales = EnviadorCredenciales.getInstancia();
 
     private List<PacienteListener> listeners = new ArrayList<>();
    public void agregarListener(PacienteListener listener) {
@@ -224,7 +228,6 @@ public void agregarPacienteListener(PacienteListener listener) {
             String apellidos = txtApellido.getText().trim();
             String email = txtEmail.getText().trim();
             String celular = txtCelular.getText().trim();
-            String contraseña = txtContraseña.getText().trim();
             String sexo = cbSexo.getSelectedItem().toString();
             String eps = cbEps.getSelectedItem().toString();
             String tipoDocumento = cbTipoDocumento.getSelectedItem().toString();
@@ -269,6 +272,7 @@ public void agregarPacienteListener(PacienteListener listener) {
                     JOptionPane.ERROR_MESSAGE);
                 return;
             }
+            String contrasena = generadorContraseñas.generarContrasena(10);
             
             Paciente nuevoPaciente = new Paciente(
                 documento,
@@ -279,7 +283,7 @@ public void agregarPacienteListener(PacienteListener listener) {
                 eps,
                 email,
                 celular,
-                contraseña,
+                contrasena,
                 tipoDocumento,
                 tipoSangre,
                 antecedentes,
@@ -288,20 +292,34 @@ public void agregarPacienteListener(PacienteListener listener) {
                   
             );
             
-            if (pacienteDAO.guardarPaciente(nuevoPaciente)) {
-                JOptionPane.showMessageDialog(null, 
-                    "Paciente guardado exitosamente", 
-                    "Éxito", 
-                    JOptionPane.INFORMATION_MESSAGE);
-                cargarDatosEnTablaPaciente();
-                limpiarFormulario();
-            } else {
-                JOptionPane.showMessageDialog(null,
-                    "No se pudo guardar el paciente",
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE);
-            }
-            
+if (pacienteDAO.guardarPaciente(nuevoPaciente)) {
+
+    // 1. Enviar credenciales
+    boolean envioExitoso = enviadorCredenciales.enviarCredenciales(
+        email, nombres + " " + apellidos, contrasena
+    );
+
+    if (envioExitoso) {
+        JOptionPane.showMessageDialog(null, 
+            "Paciente registrado exitosamente y credenciales enviadas.", 
+            "Éxito", 
+            JOptionPane.INFORMATION_MESSAGE);
+    } else {
+        JOptionPane.showMessageDialog(null, 
+            "Paciente registrado pero no se pudo enviar el correo.", 
+            "Advertencia", 
+            JOptionPane.WARNING_MESSAGE);
+    }
+
+    // 2. Notificar listeners (si tienes ventanas que dependen del paciente)
+    notificarPacienteActualizado(nuevoPaciente);
+
+    // 3. Recargar tabla
+    cargarDatosEnTablaPaciente();
+
+    // 4. Limpiar formulario
+    limpiarFormulario();
+}
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, 
                 "Error al guardar paciente: " + e.getMessage(),

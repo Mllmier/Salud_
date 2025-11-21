@@ -141,12 +141,19 @@ public class login_ extends javax.swing.JFrame {
     }//GEN-LAST:event_Jtextfield_contraseñaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     String email = Jtextfield_usuario.getText().trim();
-    String contraseña = new String(Jtextfield_contraseña.getPassword());
+    
+    // Capturar email
+    String email = Jtextfield_usuario.getText().trim();
+
+    // Capturar lo que está en el campo de contraseña (pero será identificación en Paciente)
+    String identificacion = new String(Jtextfield_contraseña.getPassword()).trim();
+
+    // Capturar el rol seleccionado
     String rolSeleccionado = (String) jComboBox1.getSelectedItem();
 
+    // Controlador de login
     Controller_Login controller = new Controller_Login();
-    controller.procesarLogin(email, contraseña, rolSeleccionado, this);
+    controller.procesarLogin(email, identificacion, rolSeleccionado, this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
