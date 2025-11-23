@@ -78,7 +78,7 @@ public class recepcionista extends javax.swing.JFrame implements CitaListener,Pa
         controllerCitas.cargarPacienteEnTabla();
     
        configurarCitas();
-       
+        controllerCitas.actualizarEstadisticasCitas();
         this.setTitle("Sistema de Recepción");
         this.setLocationRelativeTo(null);
          if (txtIdCita == null || JDateFechaNacimiento == null) {
@@ -586,8 +586,7 @@ public void verificarDisponibilidadHoraActualizacion() {
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 60, 60));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("FarmaSalud");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 170, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 170, -1));
 
         jPanel3.setBackground(new java.awt.Color(28, 43, 110));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -753,12 +752,12 @@ public void verificarDisponibilidadHoraActualizacion() {
         jPanel9.setBackground(new java.awt.Color(10, 92, 184));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel77.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel77.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel77.setForeground(new java.awt.Color(255, 255, 255));
         jLabel77.setText("CITAS ");
-        jPanel9.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 530, 40));
+        jPanel9.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 530, 40));
 
-        jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 1000, 110));
+        jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 1000, 130));
 
         TabbetCitas.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -766,25 +765,25 @@ public void verificarDisponibilidadHoraActualizacion() {
         panelInicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblCitasProgramadas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        panelInicio.add(lblCitasProgramadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 110, 40));
+        panelInicio.add(lblCitasProgramadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 110, 110, 40));
 
         lblCitasCanceladas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        panelInicio.add(lblCitasCanceladas, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 130, 40));
+        panelInicio.add(lblCitasCanceladas, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 230, 110, 40));
 
         lblCitasCompletadas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        panelInicio.add(lblCitasCompletadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, 110, 40));
+        panelInicio.add(lblCitasCompletadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 360, 110, 40));
 
-        jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel25.setText("Citas Programadas");
-        panelInicio.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, -1));
+        panelInicio.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 70, -1, -1));
 
-        jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel26.setText("Citas Canceladas");
-        panelInicio.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 150, 20));
+        panelInicio.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 200, 150, 20));
 
-        jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel27.setText("Citas Completadas");
-        panelInicio.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, -1, -1));
+        panelInicio.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 310, -1, -1));
 
         TabbetCitas.addTab("Inicio", panelInicio);
 

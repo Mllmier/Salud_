@@ -141,6 +141,7 @@ public void notificarCitaAgregada(Cita cita) {
     for (CitaListener listener : listeners) {
         listener.citaAgregada(cita);
     }
+        actualizarEstadisticasCitas();
 }
 public List<Cita> obtenerTodasLasCitas() {
         return citasDAO.cargarTodos();
