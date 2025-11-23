@@ -59,6 +59,7 @@ public class recepcionista extends javax.swing.JFrame implements CitaListener,Pa
     
     public recepcionista() {
         initComponents();
+
        this.controllerCitas = ControllerCitas.getInstance();
         ControllerCitas.getInstance().addCitaListener(this);
    ControllerCitasPaciente.getInstance().addCitaListener(this);
@@ -81,6 +82,8 @@ public class recepcionista extends javax.swing.JFrame implements CitaListener,Pa
         controllerCitas.actualizarEstadisticasCitas();
         this.setTitle("Sistema de Recepción");
         this.setLocationRelativeTo(null);
+   
+
          if (txtIdCita == null || JDateFechaNacimiento == null) {
             JOptionPane.showMessageDialog(this,
                 "Error: Componentes críticos no inicializados",
@@ -89,6 +92,13 @@ public class recepcionista extends javax.swing.JFrame implements CitaListener,Pa
             return;
         }
          btnBuscarCita.addActionListener(e -> buscarCitaPorDocumento());
+  SwingUtilities.invokeLater(() -> {
+    String ruta = "C:/Users/Maria liz/OneDrive/Desktop/Farmasalud/logorec.png";
+    ImageIcon icon = new ImageIcon(ruta);
+    Image img = icon.getImage().getScaledInstance(imagen.getWidth(), imagen.getHeight(), Image.SCALE_SMOOTH);
+    imagen.setIcon(new ImageIcon(img));
+});
+
     }
     
 @Override
@@ -406,7 +416,7 @@ public void verificarDisponibilidadHoraActualizacion() {
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        imagen = new javax.swing.JLabel();
         panelModificarCita = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tablaCitas = new javax.swing.JTable();
@@ -785,9 +795,7 @@ public void verificarDisponibilidadHoraActualizacion() {
         jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel27.setText("Citas Completadas");
         panelInicio.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 310, -1, -1));
-
-        jLabel19.setIcon(new javax.swing.ImageIcon("C:\\Users\\Maria liz\\OneDrive\\Desktop\\imagenofi.jpg")); // NOI18N
-        panelInicio.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 580, 400));
+        panelInicio.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 680, 460));
 
         TabbetCitas.addTab("Inicio", panelInicio);
 
@@ -2148,6 +2156,7 @@ TabbetCitas.setSelectedIndex(4);       // TODO add your handling code here:
     private javax.swing.JComboBox<String> cboTipoCita;
     private javax.swing.JComboBox<String> cboTipoCita2;
     private javax.swing.JComboBox<String> cboTipoSangre;
+    private javax.swing.JLabel imagen;
     private javax.swing.JButton jButton1;
     private com.toedter.calendar.JDateChooser jDateConsultarCitaMedico;
     private javax.swing.JLabel jLabel1;
@@ -2160,7 +2169,6 @@ TabbetCitas.setSelectedIndex(4);       // TODO add your handling code here:
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
