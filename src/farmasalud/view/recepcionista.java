@@ -406,6 +406,7 @@ public void verificarDisponibilidadHoraActualizacion() {
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         panelModificarCita = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tablaCitas = new javax.swing.JTable();
@@ -755,7 +756,7 @@ public void verificarDisponibilidadHoraActualizacion() {
         jLabel77.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel77.setForeground(new java.awt.Color(255, 255, 255));
         jLabel77.setText("CITAS ");
-        jPanel9.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 530, 40));
+        jPanel9.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 530, 50));
 
         jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 1000, 130));
 
@@ -784,6 +785,9 @@ public void verificarDisponibilidadHoraActualizacion() {
         jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel27.setText("Citas Completadas");
         panelInicio.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 310, -1, -1));
+
+        jLabel19.setIcon(new javax.swing.ImageIcon("C:\\Users\\Maria liz\\OneDrive\\Desktop\\imagenofi.jpg")); // NOI18N
+        panelInicio.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 580, 400));
 
         TabbetCitas.addTab("Inicio", panelInicio);
 
@@ -2156,6 +2160,7 @@ TabbetCitas.setSelectedIndex(4);       // TODO add your handling code here:
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;

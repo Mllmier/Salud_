@@ -31,7 +31,6 @@ import model.Cita;
  */
 public class CitaDAOImpl implements CitaDAO{
      private static final String JSON_BASE_PATH = "src/resources/data/";
-
     private static final String ARCHIVO_JSON = JSON_BASE_PATH+"citas.json";
     private final Gson gson;
     private List<Cita> citas = new ArrayList<>();
