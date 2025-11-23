@@ -21,7 +21,9 @@ import dao.OrdenMedicaDAO;
  * @author Maria liz
  */
 public class OrdenMedicaDAOImpl implements OrdenMedicaDAO{
-    private static final String ARCHIVO_JSON = "C:\\Users\\Maria liz\\OneDrive\\Desktop\\Farmasalud_Oficial\\src\\resources\\data\\ordenmedica.json";
+private static final String JSON_BASE_PATH = "src/resources/data/";
+private static final String ARCHIVO_JSON = JSON_BASE_PATH + "ordenmedica.json";
+
     private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     @Override

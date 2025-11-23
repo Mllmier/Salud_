@@ -5,13 +5,13 @@
     "hora": "07:30",
     "tipoCita": "Regular",
     "motivo": "Sintomas Agudos",
-    "estado": "PROGRAMADA",
+    "estado": "COMPLETADA",
     "paciente": {
       "tipoSangre": "A+",
       "antecedentes": "alergica a las hormigas",
-      "peso": 50.0,
+      "peso": 90.0,
       "tipoDocumento": "CC",
-      "altura": 1.67,
+      "altura": 1.68,
       "numeroDocumento": "123456789",
       "nombres": "karen",
       "apellidos": "mier",
@@ -57,7 +57,7 @@
     "hora": "08:30",
     "tipoCita": "Regular",
     "motivo": "Sintomas Agudos",
-    "estado": "PROGRAMADA",
+    "estado": "COMPLETADA",
     "paciente": {
       "tipoSangre": "O-",
       "antecedentes": "Presenta alergias a latex",
@@ -161,7 +161,7 @@
     "hora": "08:30",
     "tipoCita": "Prioritaria",
     "motivo": "Enfermedad Cronica",
-    "estado": "PROGRAMADA",
+    "estado": "COMPLETADA",
     "paciente": {
       "tipoSangre": "O-",
       "antecedentes": "dufre de alergias a las abejas",
@@ -257,6 +257,58 @@
       "nombreSede": "Sede Principal",
       "direccion": "Calle 128 #48-67, Borotá",
       "horarioFuncionamiento": "Lunes-Viernes 8:00-18:00"
+    }
+  },
+  {
+    "IdCita": "Med.007",
+    "fechaCita": "2025-11-28",
+    "hora": "07:30am",
+    "tipoCita": "Control",
+    "motivo": "Sintomas Agudos",
+    "estado": "PROGRAMADA",
+    "paciente": {
+      "tipoSangre": "B+",
+      "antecedentes": "38948943",
+      "peso": 59.0,
+      "tipoDocumento": "CC",
+      "altura": 1.2,
+      "numeroDocumento": "1234567893",
+      "nombres": "sofia",
+      "apellidos": "fell",
+      "fechaNacimiento": "2025-05-21",
+      "sexo": "M",
+      "eps": "Sanistas",
+      "email": "sofia@gmail.com",
+      "celular": "4362332328",
+      "contraseña": ""
+    },
+    "medico": {
+      "especialidad": "\u003cSeleccione  la especialidad del doctor\u003e",
+      "fechaContratacion": "2025-11-02",
+      "horario": "Sabado-domingo",
+      "estado": "Activo",
+      "sede": "sede sur",
+      "sala": "fghmknn",
+      "numeroDocumento": "159753456",
+      "nombres": "ASDFG",
+      "apellidos": "asdfgh",
+      "fechaNacimiento": "1985-05-08",
+      "sexo": "MASCULINO",
+      "email": "AHAHHAHAHA@GMAIL.COM",
+      "celular": "3001164785",
+      "contraseña": ";*kq\u003c9k\u003e!N"
+    },
+    "sala": {
+      "nombreSala": "fghmknn",
+      "codigoSala": "456789",
+      "tipoSala": "Sala de Pediatría",
+      "capacidadSala": "3"
+    },
+    "sede": {
+      "idSede": "SEDE003",
+      "nombreSede": "sede sur",
+      "direccion": "calle 125#56-89",
+      "horarioFuncionamiento": "Martes-miercoles"
     }
   }
 ]
