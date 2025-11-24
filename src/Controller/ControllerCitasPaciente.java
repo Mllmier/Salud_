@@ -61,6 +61,7 @@ import java.util.Set;
  * @author Maria liz
  */
 public class ControllerCitasPaciente {
+
     private JLabel  lblIdCita;
     private JLabel lblDocumento;
     private JLabel lblNombre;

@@ -4,6 +4,11 @@
  */
 package farmasalud.view;
 
+import Controller.ControllerCitasPaciente;
+import Controller.ControllerOrdenMedica;
+import DAOImpl.OrdenMedicaDAOImpl;
+import javax.swing.JOptionPane;
+import model.Cita;
 import model.OrdenMedica;
 
 /**
@@ -11,16 +16,46 @@ import model.OrdenMedica;
  * @author Maria liz
  */
 public class DialogOrdenMedica extends javax.swing.JDialog {
+    private final ControllerOrdenMedica controllerOrdenMedica = ControllerOrdenMedica.getInstance();
+private OrdenMedica ordenMedica;
+private Cita citaSeleccionada;
+
+public void setCita(Cita cita) {
+    this.citaSeleccionada = cita;
+
+    // Obtener la orden médica asociada a esta cita
+    OrdenMedicaDAOImpl dao = new OrdenMedicaDAOImpl();
+    this.ordenMedica = dao.obtenerPorIdCita(cita.getIdCita());
+
+    if (ordenMedica != null) {
+        cargarDatos();  // llenar campos con los datos de la orden
+    } else {
+        JOptionPane.showMessageDialog(this, "No se encontró una orden médica para esta cita.");
+    }
+}
+
 
     /**
      * Creates new form DialogOrdenMedica
      */
     public DialogOrdenMedica(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        
+        
         initComponents();
+        
+   btnDescargar.addActionListener(e -> {
+    if (ordenMedica != null) { // usamos la orden cargada
+        ControllerOrdenMedica.getInstance().descargarPdfOrdenMedica(ordenMedica);
+    } else {
+        JOptionPane.showMessageDialog(this, "No se encontró la orden médica.");
+    }
+});
+
     }
    
-private OrdenMedica ordenMedica;
+
+
 
     public void setOrdenMedica(OrdenMedica ordenMedica) {
         this.ordenMedica = ordenMedica;
@@ -115,6 +150,7 @@ private OrdenMedica ordenMedica;
         jScrollPane4 = new javax.swing.JScrollPane();
         lblAreaAntecendetes = new javax.swing.JTextArea();
         jLabel18 = new javax.swing.JLabel();
+        btnDescargar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -245,10 +281,22 @@ private OrdenMedica ordenMedica;
         jLabel18.setText("Antecedentes");
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, -1, -1));
 
+        btnDescargar.setText("Descargar");
+        btnDescargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDescargarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDescargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 640));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDescargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescargarActionPerformed
+     // TODO add your handling code here:
+    }//GEN-LAST:event_btnDescargarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,6 +341,7 @@ private OrdenMedica ordenMedica;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDescargar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

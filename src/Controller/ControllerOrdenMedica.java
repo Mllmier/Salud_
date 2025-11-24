@@ -7,6 +7,7 @@ package Controller;
 import DAOImpl.CitaDAOImpl;
 import DAOImpl.OrdenMedicaDAOImpl;
 import DAOImpl.PacienteDAOImpl;
+import Utilidades.PdfPacienteGenerator;
 import dao.CitaDAO;
 import dao.MedicoDAO;
 import java.util.List;
@@ -24,7 +25,9 @@ import dao.PacienteDAO;
 import dao.SalasDAO;
 import dao.SedeDAO;
 import exceptions.ValidacionException;
+import java.io.File;
 import java.util.ArrayList;
+import javax.swing.JFileChooser;
 import model.Cita;
 
 
@@ -73,7 +76,18 @@ private Medico medicoLogueado;
      this.ordenmedica = ordenmedica;
    
   }
-    public ControllerOrdenMedica(JLabel lblNombre,JLabel lblApellido,JLabel lblEmail,JLabel lblAltura,
+     private static ControllerOrdenMedica instance;
+
+    private ControllerOrdenMedica() {}
+
+    public static ControllerOrdenMedica getInstance() {
+        if (instance == null) {
+            instance = new ControllerOrdenMedica();
+        }
+        return instance;
+    }
+
+        public ControllerOrdenMedica(JLabel lblNombre,JLabel lblApellido,JLabel lblEmail,JLabel lblAltura,
                                  JLabel txtPeso,JLabel lblFechaNacimiento,JLabel lblTipoSangre,JTextArea txtAntecedentes,JLabel lblCelular,
                                  JLabel lblSexo,JLabel lblEps,JTextArea areaDiagnostico,JTextArea textAreareceta,JTextArea txtAreaMedicamentos,JLabel lblFechaCita,
                                  JLabel lblHoraCita,Medico medicoLogueado,OrdenMedicaDAO ordenmedica,JLabel lblIdCita,JLabel lblSede,JLabel lblMotivo,JLabel lblEstado){
@@ -147,4 +161,30 @@ private Medico medicoLogueado;
                 nombreMedico,apellidoMedico,especialidad,idCita,sede,motivo,estado
         );
     }
+public void descargarPdfOrdenMedica(OrdenMedica orden) {
+    try {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setDialogTitle("Guardar Orden Médica");
+        chooser.setSelectedFile(new File("OrdenMedica_" + orden.getIdCita() + ".pdf"));
+
+        int opcion = chooser.showSaveDialog(null);
+        if (opcion != JFileChooser.APPROVE_OPTION) return;
+
+        String ruta = chooser.getSelectedFile().getAbsolutePath();
+
+        PdfPacienteGenerator.generarOrdenMedica(orden, ruta);
+
+        JOptionPane.showMessageDialog(null,
+            "Orden médica guardada correctamente.",
+            "Éxito",
+            JOptionPane.INFORMATION_MESSAGE);
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null,
+            "Error al generar PDF: " + e.getMessage(),
+            "Error",
+            JOptionPane.ERROR_MESSAGE);
+    }
+}
+
 }
