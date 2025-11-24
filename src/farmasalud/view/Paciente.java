@@ -19,6 +19,9 @@ public class Paciente extends javax.swing.JFrame {
   private String documentoPaciente;
       private final ControllerCitasPaciente controller;
     private ConsultarCita dialogConsulta;
+    private model.Paciente pacienteLogueado;
+
+
 
 
 
@@ -38,6 +41,13 @@ public class Paciente extends javax.swing.JFrame {
   this.setLocationRelativeTo(null);
 
     }
+   public Paciente(model.Paciente paciente) {
+        initComponents();
+        this.controller = ControllerCitasPaciente.getInstance(); // ← evita el error
+        this.pacienteLogueado = paciente;
+        this.setLocationRelativeTo(null);
+    }
+
      
    
     public void inicializarConPaciente(String documento) {

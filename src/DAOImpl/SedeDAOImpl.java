@@ -250,4 +250,5 @@ public class SedeDAOImpl implements SedeDAO {
                 (sede.getHorarioFuncionamiento() != null && sede.getHorarioFuncionamiento().toLowerCase().contains(criterioLower)))
             .collect(Collectors.toList());
     }
+    
 }

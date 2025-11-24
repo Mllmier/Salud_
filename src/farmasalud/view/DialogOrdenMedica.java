@@ -295,7 +295,7 @@ public void setCita(Cita cita) {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDescargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescargarActionPerformed
-     // TODO add your handling code here:
+     
     }//GEN-LAST:event_btnDescargarActionPerformed
 
     /**

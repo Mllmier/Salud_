@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import model.OrdenMedica;
 import dao.OrdenMedicaDAO;
+import java.io.File;
+import model.Cita;
 
 /**
  *
@@ -62,6 +64,7 @@ public OrdenMedica obtenerPorIdCita(String idCita) {
     }
     return null;
 }
+
  
 /*
 

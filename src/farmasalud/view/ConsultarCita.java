@@ -37,12 +37,9 @@ public class ConsultarCita extends javax.swing.JDialog implements CitaListener {
     private final ControllerCitasPaciente controllerCitasPaciente = ControllerCitasPaciente.getInstance();
     private boolean isTableInitialized = false;
     CitaDAO citasDAO;
-        private String documentoPaciente;
-
-  
-
+    private String documentoPaciente;
     private final ControllerCitasPaciente controller;
-
+    
 
     public ConsultarCita(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -94,6 +91,7 @@ public class ConsultarCita extends javax.swing.JDialog implements CitaListener {
                 controller.configurarColoresTablaCitas();
 
            configurarPopupMenu(); 
+           
     }
 }
    private void configurarPopupMenu() {
