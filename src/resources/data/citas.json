@@ -5,7 +5,7 @@
     "hora": "07:30",
     "tipoCita": "Regular",
     "motivo": "Sintomas Agudos",
-    "estado": "COMPLETADA",
+    "estado": "NOASISTIO",
     "paciente": {
       "tipoSangre": "A+",
       "antecedentes": "alergica a las hormigas",
@@ -57,7 +57,7 @@
     "hora": "08:30",
     "tipoCita": "Regular",
     "motivo": "Sintomas Agudos",
-    "estado": "COMPLETADA",
+    "estado": "NOASISTIO",
     "paciente": {
       "tipoSangre": "O-",
       "antecedentes": "Presenta alergias a latex",
@@ -161,7 +161,7 @@
     "hora": "08:30",
     "tipoCita": "Prioritaria",
     "motivo": "Enfermedad Cronica",
-    "estado": "COMPLETADA",
+    "estado": "NOASISTIO",
     "paciente": {
       "tipoSangre": "O-",
       "antecedentes": "dufre de alergias a las abejas",
@@ -213,7 +213,7 @@
     "hora": "09:00",
     "tipoCita": "Regular",
     "motivo": "Sintomas Agudos",
-    "estado": "PROGRAMADA",
+    "estado": "COMPLETADA",
     "paciente": {
       "tipoSangre": "B-",
       "antecedentes": "sufre de rinitis",
