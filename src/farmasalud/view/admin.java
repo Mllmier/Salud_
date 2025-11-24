@@ -6,13 +6,16 @@ package farmasalud.view;
 
 import Controller.ControllerDoctor;
 import Controller.ControllerEnfermedades;
+import Controller.ControllerExamenes;
 import Controller.ControllerMedicamento;
 import Controller.ControllerRecepcionista;
 import Controller.ControllerSalas;
 import Controller.ControllerSede;
 import DAOImpl.SalasDAOImpl;
+import DAOImpl.SedeDAOImpl;
 import com.google.gson.JsonObject;
 import dao.AdminDAO;
+import dao.SedeDAO;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
@@ -47,7 +50,8 @@ public class admin extends javax.swing.JFrame {
     private ControllerEnfermedades controllerEnfermedades = new ControllerEnfermedades();
     private JPasswordField pwdContraseña = new JPasswordField();
     ControllerDoctor controller = ControllerDoctor.getInstancia();
-    
+    ControllerExamenes controllerExamenes = ControllerExamenes.getInstance();
+   SedeDAO sedesDAO = new SedeDAOImpl(); 
     
 
     
@@ -64,6 +68,8 @@ public class admin extends javax.swing.JFrame {
         configurarControllerMedicamento();
         configurarControllerSede();
         configurarControllerEnfermedades();
+        configurarControllerExamenes () ;
+        
         
         
         configurarListeners();
@@ -76,7 +82,11 @@ public class admin extends javax.swing.JFrame {
     controller.setCbSala(cbSala);
     controller.cargarSalasEnCombo();
         
-      
+      tableExamenes.getSelectionModel().addListSelectionListener(e -> {
+    if (!e.getValueIsAdjusting()) {
+        controllerExamenes.cargarDatosEnTablaExamenes();
+    }
+});
 
 
 
@@ -86,7 +96,8 @@ public class admin extends javax.swing.JFrame {
         //doctores
     }
     private void configurarControllerDoctor() {
-    controllerDoctor.setTablaDoctores(TablaDoctores);
+        
+        controllerDoctor.setTablaDoctores(TablaDoctores);
     controllerDoctor.setTxtNombre(txtNombre);
     controllerDoctor.setTxtApellidos(txtApellidos);
     controllerDoctor.setTxtCedula(txtCedula);
@@ -101,6 +112,11 @@ public class admin extends javax.swing.JFrame {
     controllerDoctor.setjComboBox_estado_doctor(jComboBox_estado_doctor);
     controllerDoctor.setCbSede(cbSede);
     controllerDoctor.setCbSala(cbSala);
+
+        
+        
+        
+       
 
     
     controllerDoctor.initTableDoctor();
@@ -124,6 +140,27 @@ public class admin extends javax.swing.JFrame {
         controllerRecepcionista.initTableRecepcionista();
         controllerRecepcionista.cargarDatosEnTablaRecepcionista();
     }
+ private void configurarControllerExamenes () {
+    // Configurar tabla
+    controllerExamenes.setTableExamenes(tableExamenes);
+    
+    controllerExamenes.setTxtIdExamenes(txtIdExamen);
+    controllerExamenes.setTxtNombre(txtNombreExamenes);
+    controllerExamenes.setTxtTipoExamen(txtTipo);
+ 
+    controllerExamenes.setTxtValor(txtValorExamenes);
+    controllerExamenes.setCboSede(cboSedeExamenes);
+   controllerExamenes.cargarSedesEnCombo(sedesDAO.cargarTodasSedes());
+ 
+    controllerExamenes.setupTableModelExamenes();
+    try {
+        controllerExamenes.cargarDatosExamenes();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error al cargar medicamentos: " + e.getMessage(), 
+            "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+  
     
     private void configurarControllerSalas() {
         controllerSalas.setTablaSalas(TablaDeSalas);
@@ -282,9 +319,10 @@ public class admin extends javax.swing.JFrame {
         Panel_Salas = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         Panel_MISDATOS = new javax.swing.JPanel();
-        jLabel65 = new javax.swing.JLabel();
         Panel_farmaceutica1 = new javax.swing.JPanel();
         jLabel90 = new javax.swing.JLabel();
+        panelExamenes = new javax.swing.JPanel();
+        jLabel37 = new javax.swing.JLabel();
         Panel_sedes = new javax.swing.JPanel();
         jLabel95 = new javax.swing.JLabel();
         Panel_farmaceutica7 = new javax.swing.JPanel();
@@ -293,6 +331,7 @@ public class admin extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         Panel_doctor1 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel65 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         Paneles_jtablepane = new javax.swing.JTabbedPane();
@@ -482,6 +521,24 @@ public class admin extends javax.swing.JFrame {
         jLabel88 = new javax.swing.JLabel();
         Jbuton_buscador = new javax.swing.JButton();
         Buscador_enfermedades_txt = new javax.swing.JTextField();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel14 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        txtNombreExamenes = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        txtIdExamen = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        txtTipo = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        txtValorExamenes = new javax.swing.JTextField();
+        txtGuardar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        txtEliminar = new javax.swing.JButton();
+        cboSedeExamenes = new javax.swing.JComboBox<>();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tableExamenes = new javax.swing.JTable();
+        btnrefrescar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -510,7 +567,7 @@ public class admin extends javax.swing.JFrame {
         jLabel2.setText("INICIO");
         Panel_inicio.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 60, 41));
 
-        jPanel2.add(Panel_inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 320, 60));
+        jPanel2.add(Panel_inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 320, 60));
 
         Panel_ENFERMEDADES.setBackground(new java.awt.Color(10, 92, 184));
         Panel_ENFERMEDADES.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -532,7 +589,7 @@ public class admin extends javax.swing.JFrame {
         jLabel3.setText("GESTION ENFERMEDADES");
         Panel_ENFERMEDADES.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 230, 50));
 
-        jPanel2.add(Panel_ENFERMEDADES, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 320, -1));
+        jPanel2.add(Panel_ENFERMEDADES, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 320, 60));
 
         Panel_recepcionistas.setBackground(new java.awt.Color(10, 92, 184));
         Panel_recepcionistas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -554,7 +611,7 @@ public class admin extends javax.swing.JFrame {
         jLabel4.setText("GESTION RECEPCIONISTAS");
         Panel_recepcionistas.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 240, 41));
 
-        jPanel2.add(Panel_recepcionistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 320, 60));
+        jPanel2.add(Panel_recepcionistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 320, 60));
 
         Panel_medicamento.setBackground(new java.awt.Color(10, 92, 184));
         Panel_medicamento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -576,7 +633,7 @@ public class admin extends javax.swing.JFrame {
         jLabel1.setText("GESTION MEDICAMENTOS");
         Panel_medicamento.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 230, 41));
 
-        jPanel2.add(Panel_medicamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 320, 60));
+        jPanel2.add(Panel_medicamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 320, 60));
 
         Panel_Salas.setBackground(new java.awt.Color(10, 92, 184));
         Panel_Salas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -598,7 +655,7 @@ public class admin extends javax.swing.JFrame {
         jLabel14.setText("GESTION SALAS");
         Panel_Salas.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 156, 41));
 
-        jPanel2.add(Panel_Salas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 320, 60));
+        jPanel2.add(Panel_Salas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 320, 60));
 
         Panel_MISDATOS.setBackground(new java.awt.Color(10, 92, 184));
         Panel_MISDATOS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -614,11 +671,6 @@ public class admin extends javax.swing.JFrame {
             }
         });
         Panel_MISDATOS.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel65.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel65.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel65.setText("MIS DATOS");
-        Panel_MISDATOS.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 230, 41));
 
         Panel_farmaceutica1.setBackground(new java.awt.Color(10, 92, 184));
         Panel_farmaceutica1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -642,7 +694,34 @@ public class admin extends javax.swing.JFrame {
 
         Panel_MISDATOS.add(Panel_farmaceutica1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 320, 60));
 
-        jPanel2.add(Panel_MISDATOS, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 320, 60));
+        panelExamenes.setBackground(new java.awt.Color(10, 92, 184));
+        panelExamenes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelExamenesMouseClicked(evt);
+            }
+        });
+
+        jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel37.setText("EXAMENES MEDICOS ");
+
+        javax.swing.GroupLayout panelExamenesLayout = new javax.swing.GroupLayout(panelExamenes);
+        panelExamenes.setLayout(panelExamenesLayout);
+        panelExamenesLayout.setHorizontalGroup(
+            panelExamenesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelExamenesLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(89, Short.MAX_VALUE))
+        );
+        panelExamenesLayout.setVerticalGroup(
+            panelExamenesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+        );
+
+        Panel_MISDATOS.add(panelExamenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel2.add(Panel_MISDATOS, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 320, 50));
 
         Panel_sedes.setBackground(new java.awt.Color(10, 92, 184));
         Panel_sedes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -667,7 +746,7 @@ public class admin extends javax.swing.JFrame {
                 jLabel95MouseClicked(evt);
             }
         });
-        Panel_sedes.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 230, 41));
+        Panel_sedes.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, 41));
 
         Panel_farmaceutica7.setBackground(new java.awt.Color(10, 92, 184));
         Panel_farmaceutica7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -691,7 +770,7 @@ public class admin extends javax.swing.JFrame {
 
         Panel_sedes.add(Panel_farmaceutica7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 320, 60));
 
-        jPanel2.add(Panel_sedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 320, 60));
+        jPanel2.add(Panel_sedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 320, 60));
 
         Btn_salir.setBackground(new java.awt.Color(10, 92, 184));
         Btn_salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -711,9 +790,9 @@ public class admin extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("SALIR");
-        Btn_salir.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 70, 41));
+        Btn_salir.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 70, 41));
 
-        jPanel2.add(Btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 700, 320, 70));
+        jPanel2.add(Btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 720, 140, 50));
 
         Panel_doctor1.setBackground(new java.awt.Color(10, 92, 184));
         Panel_doctor1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -735,7 +814,17 @@ public class admin extends javax.swing.JFrame {
         jLabel12.setText("GESTION DOCTORES");
         Panel_doctor1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 187, 50));
 
-        jPanel2.add(Panel_doctor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 320, -1));
+        jPanel2.add(Panel_doctor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 320, -1));
+
+        jLabel65.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel65.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel65.setText("MIS DATOS");
+        jLabel65.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel65MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, 300, 41));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 770));
 
@@ -1959,6 +2048,149 @@ public class admin extends javax.swing.JFrame {
 
         Paneles_jtablepane.addTab("Gestion_enfermedades", panel_enfermedades_1);
 
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "Examenes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel13.setText("Nombre :");
+        jPanel14.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 72, -1));
+
+        txtNombreExamenes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreExamenesKeyTyped(evt);
+            }
+        });
+        jPanel14.add(txtNombreExamenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 136, 200, 30));
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel22.setText("Id Examen ");
+        jPanel14.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+
+        txtIdExamen.setEditable(false);
+        jPanel14.add(txtIdExamen, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 190, 39));
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel23.setText("Tipo Examen :");
+        jPanel14.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 90, 30));
+
+        txtTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTipoActionPerformed(evt);
+            }
+        });
+        txtTipo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTipoKeyTyped(evt);
+            }
+        });
+        jPanel14.add(txtTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 193, 200, 30));
+
+        jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel26.setText("Sede :");
+        jPanel14.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 50, 30));
+
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel27.setText("Valor : ");
+        jPanel14.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, -1, 30));
+
+        txtValorExamenes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtValorExamenesKeyTyped(evt);
+            }
+        });
+        jPanel14.add(txtValorExamenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 200, 30));
+
+        txtGuardar.setBackground(new java.awt.Color(51, 102, 255));
+        txtGuardar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        txtGuardar.setForeground(new java.awt.Color(255, 255, 255));
+        txtGuardar.setText("Guardar");
+        txtGuardar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGuardarActionPerformed(evt);
+            }
+        });
+        jPanel14.add(txtGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 330, 50));
+
+        btnActualizar.setBackground(new java.awt.Color(51, 102, 255));
+        btnActualizar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setText("Actualizar");
+        btnActualizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        jPanel14.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 330, 50));
+
+        txtEliminar.setBackground(new java.awt.Color(51, 102, 255));
+        txtEliminar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        txtEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        txtEliminar.setText("Eliminar");
+        txtEliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEliminarActionPerformed(evt);
+            }
+        });
+        jPanel14.add(txtEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, 330, 50));
+
+        jPanel14.add(cboSedeExamenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 200, 30));
+
+        tableExamenes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(tableExamenes);
+
+        btnrefrescar.setText("Refrescar");
+        btnrefrescar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnrefrescarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(531, 531, 531)
+                        .addComponent(btnrefrescar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 674, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel9Layout.createSequentialGroup()
+                        .addComponent(btnrefrescar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane5)))
+                .addGap(18, 18, 18))
+        );
+
+        Paneles_jtablepane.addTab("ExamenesMedicos", jPanel9);
+
         jPanel1.add(Paneles_jtablepane, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 1020, 730));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -2463,6 +2695,66 @@ public class admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbSedeActionPerformed
 
+    private void txtTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTipoActionPerformed
+
+    private void txtGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGuardarActionPerformed
+   controllerExamenes.guardarExamenesDesdeFormulario();
+   // TODO add your handling code here:
+    }//GEN-LAST:event_txtGuardarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+   controllerExamenes.actualizarExamenes(); 
+   
+
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void txtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEliminarActionPerformed
+  controllerExamenes.eliminaraExamenSeleccionado();        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEliminarActionPerformed
+
+    private void btnrefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrefrescarActionPerformed
+   controllerExamenes.mostrarTodosExamenes();
+       
+    }//GEN-LAST:event_btnrefrescarActionPerformed
+
+    private void txtValorExamenesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorExamenesKeyTyped
+           char c = evt.getKeyChar();
+    if (!Character.isDigit(c) && c != '.') {
+        evt.consume();
+        return;
+    }
+    if (c == '.' && txtValorExamenes.getText().contains(".")) {
+        evt.consume();
+    }
+    }//GEN-LAST:event_txtValorExamenesKeyTyped
+
+    private void txtNombreExamenesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreExamenesKeyTyped
+      char c = evt.getKeyChar();
+
+    // Acepta solo letras y espacio
+    if (!Character.isLetter(c) && c != ' ') {
+        evt.consume(); // Bloquea el carácter
+    }  // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreExamenesKeyTyped
+
+    private void txtTipoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTipoKeyTyped
+   char c = evt.getKeyChar();
+
+    if (!Character.isLetter(c) && c != ' ') {
+        evt.consume(); 
+    }     
+    }//GEN-LAST:event_txtTipoKeyTyped
+
+    private void jLabel65MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel65MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel65MouseClicked
+
+    private void panelExamenesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelExamenesMouseClicked
+         Paneles_jtablepane.setSelectedIndex(7);
+    }//GEN-LAST:event_panelExamenesMouseClicked
+
 
     /**
      * @param args the command line arguments
@@ -2537,10 +2829,13 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JTable TablaDeSalas;
     private javax.swing.JTable TablaDoctores;
     private javax.swing.JTable TabladeRecepcionistas;
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnrefrescar;
     private javax.swing.JComboBox<String> cbEspecialidad;
     private javax.swing.JComboBox<String> cbSala;
     private javax.swing.JComboBox<String> cbSede;
     private javax.swing.JComboBox<String> cbSexo2;
+    private javax.swing.JComboBox<String> cboSedeExamenes;
     private javax.swing.JComboBox<String> eps_recepcionista;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton_BuscarMedicamento;
@@ -2553,6 +2848,7 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -2562,8 +2858,12 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
@@ -2573,6 +2873,7 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
@@ -2617,6 +2918,7 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel2;
@@ -2650,6 +2952,7 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel jPanelEliminarMedicamento;
     private javax.swing.JPanel jPanelModificarMedicamento;
     private javax.swing.JPanel jPanel_AgregarMedicamento;
@@ -2661,6 +2964,7 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
@@ -2706,13 +3010,21 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JTextField jtextfieldNombre_Medicamento;
     private javax.swing.JTextField jtextfieldTelefono_recep;
     private javax.swing.JTextField jtextfield_cantidad_Medicamento;
+    private javax.swing.JPanel panelExamenes;
     private javax.swing.JPanel panel_enfermedades_1;
+    private javax.swing.JTable tableExamenes;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtCodigoSala;
     private javax.swing.JTextField txtCorreo;
+    private javax.swing.JButton txtEliminar;
+    private javax.swing.JButton txtGuardar;
+    private javax.swing.JTextField txtIdExamen;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNombreExamenes;
     private javax.swing.JTextField txtNombreSala;
     private javax.swing.JTextField txtTelefono;
+    private javax.swing.JTextField txtTipo;
+    private javax.swing.JTextField txtValorExamenes;
     // End of variables declaration//GEN-END:variables
 }

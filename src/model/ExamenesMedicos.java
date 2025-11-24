@@ -13,15 +13,15 @@ public class ExamenesMedicos {
     private String nombre;
     private String tipo;
     private String valor;
-    private Salas salas;
+    private Sede sede;
     
 
-    public ExamenesMedicos(String idExamenes, String nombre, String tipo, String valor,Salas  salas  ) {
+    public ExamenesMedicos(String idExamenes, String nombre, String tipo, String valor,Sede  sede  ) {
         this.idExamenes = idExamenes;
         this.nombre = nombre;
         this.tipo = tipo;
         this.valor = valor;
-        this.salas=salas;
+        this.sede=sede;
     }
     
     
@@ -58,12 +58,12 @@ public class ExamenesMedicos {
         this.valor = valor;
     }
 
-    public Salas getSalas() {
-        return salas;
+    public Sede getSede() {
+        return sede;
     }
 
-    public void setSalas(Salas salas) {
-        this.salas = salas;
+    public void setSede(Sede sede) {
+        this.sede = sede;
     }
     
     
