@@ -1,0 +1,231 @@
+[
+  {
+    "idExamenes": "Med.001",
+    "nombre": "rayos x",
+    "tipo": "muscular",
+    "valor": "60000",
+    "sede": {
+      "idSede": "SEDE002",
+      "nombreSede": "Sede Norte",
+      "direccion": "Avenida 5 #23-45, Barrio Norte",
+      "horarioFuncionamiento": "Lunes-Sabado 9:00-17:00"
+    }
+  }
+  ,
+  {
+    "idExamenes": "Med.002",
+    "nombre": "Hemograma Completo",
+    "tipo": "Laboratorio",
+    "valor": "45000",
+    "sede": {
+      "idSede": "SEDE001",
+      "nombreSede": "Sede Centro",
+      "direccion": "Calle 10 #12-34, Centro",
+      "horarioFuncionamiento": "Lunes-Viernes 8:00-18:00"
+    }
+  },
+  {
+    "idExamenes": "Med.003",
+    "nombre": "Tomografía",
+    "tipo": "Imagen",
+    "valor": "210000",
+    "sede": {
+      "idSede": "SEDE003",
+      "nombreSede": "Sede Sur",
+      "direccion": "Carrera 20 #45-67, Barrio Sur",
+      "horarioFuncionamiento": "Todos los días 7:00-19:00"
+    }
+  },
+   {
+    "idExamenes": "Med.004",
+    "nombre": "Glucosa en Ayunas",
+    "tipo": "Laboratorio",
+    "valor": "18000",
+    "sede": {
+      "idSede": "SEDE001",
+      "nombreSede": "Sede Centro",
+      "direccion": "Calle 10 #12-34, Centro",
+      "horarioFuncionamiento": "Lunes-Viernes 8:00-18:00"
+    }
+  },
+  {
+    "idExamenes": "Med.005",
+    "nombre": "Perfil Lipídico",
+    "tipo": "Laboratorio",
+    "valor": "52000",
+    "sede": {
+      "idSede": "SEDE002",
+      "nombreSede": "Sede Norte",
+      "direccion": "Avenida 5 #23-45, Barrio Norte",
+      "horarioFuncionamiento": "Lunes-Sabado 9:00-17:00"
+    }
+  },
+  {
+    "idExamenes": "Med.006",
+    "nombre": "Función Hepática",
+    "tipo": "Laboratorio",
+    "valor": "47000",
+    "sede": {
+      "idSede": "SEDE003",
+      "nombreSede": "Sede Sur",
+      "direccion": "Carrera 20 #45-67, Barrio Sur",
+      "horarioFuncionamiento": "Todos los días 7:00-19:00"
+    }
+  },
+  {
+    "idExamenes": "Med.007",
+    "nombre": "Función Renal",
+    "tipo": "Laboratorio",
+    "valor": "43000",
+    "sede": {
+      "idSede": "SEDE003",
+      "nombreSede": "Sede Sur",
+      "direccion": "Carrera 20 #45-67, Barrio Sur",
+      "horarioFuncionamiento": "Todos los días 7:00-19:00"
+    }
+  },
+  {
+    "idExamenes": "Med.008",
+    "nombre": "Radiografía de Tórax",
+    "tipo": "Imagen",
+    "valor": "60000",
+    "sede": {
+      "idSede": "SEDE002",
+      "nombreSede": "Sede Norte",
+      "direccion": "Avenida 5 #23-45, Barrio Norte",
+      "horarioFuncionamiento": "Lunes-Sabado 9:00-17:00"
+    }
+  },
+  {
+    "idExamenes": "Med.009",
+    "nombre": "Resonancia Magnética",
+    "tipo": "Imagen",
+    "valor": "350000",
+    "sede": {
+      "idSede": "SEDE001",
+      "nombreSede": "Sede Centro",
+      "direccion": "Calle 10 #12-34, Centro",
+      "horarioFuncionamiento": "Lunes-Viernes 8:00-18:00"
+    }
+  },
+  {
+    "idExamenes": "Med.010",
+    "nombre": "Electrocardiograma",
+    "tipo": "Cardiología",
+    "valor": "48000",
+    "sede": {
+      "idSede": "SEDE002",
+      "nombreSede": "Sede Norte",
+      "direccion": "Avenida 5 #23-45, Barrio Norte",
+      "horarioFuncionamiento": "Lunes-Sabado 9:00-17:00"
+    }
+  },
+  {
+    "idExamenes": "Med.011",
+    "nombre": "Ecocardiograma",
+    "tipo": "Cardiología",
+    "valor": "120000",
+    "sede": {
+      "idSede": "SEDE002",
+      "nombreSede": "Sede Norte",
+      "direccion": "Avenida 5 #23-45, Barrio Norte",
+      "horarioFuncionamiento": "Lunes-Sabado 9:00-17:00"
+    }
+  },
+  {
+    "idExamenes": "Med.012",
+    "nombre": "Prueba de Esfuerzo",
+    "tipo": "Cardiología",
+    "valor": "95000",
+    "sede": {
+      "idSede": "SEDE001",
+      "nombreSede": "Sede Centro",
+      "direccion": "Calle 10 #12-34, Centro",
+      "horarioFuncionamiento": "Lunes-Viernes 8:00-18:00"
+    }
+  },
+  {
+    "idExamenes": "Med.013",
+    "nombre": "Examen de Orina",
+    "tipo": "Laboratorio",
+    "valor": "15000",
+    "sede": {
+      "idSede": "SEDE003",
+      "nombreSede": "Sede Sur",
+      "direccion": "Carrera 20 #45-67, Barrio Sur",
+      "horarioFuncionamiento": "Todos los días 7:00-19:00"
+    }
+  },
+  {
+    "idExamenes": "Med.014",
+    "nombre": "Examen de Heces",
+    "tipo": "Laboratorio",
+    "valor": "17000",
+    "sede": {
+      "idSede": "SEDE003",
+      "nombreSede": "Sede Sur",
+      "direccion": "Carrera 20 #45-67, Barrio Sur",
+      "horarioFuncionamiento": "Todos los días 7:00-19:00"
+    }
+  },
+  {
+    "idExamenes": "Med.015",
+    "nombre": "Ultrasonido Abdominal",
+    "tipo": "Imagen",
+    "valor": "85000",
+    "sede": {
+      "idSede": "SEDE003",
+      "nombreSede": "Sede Sur",
+      "direccion": "Carrera 20 #45-67, Barrio Sur",
+      "horarioFuncionamiento": "Todos los días 7:00-19:00"
+    }
+  },
+  {
+    "idExamenes": "Med.016",
+    "nombre": "Control Prenatal",
+    "tipo": "Obstetricia",
+    "valor": "70000",
+    "sede": {
+      "idSede": "SEDE002",
+      "nombreSede": "Sede Norte",
+      "direccion": "Avenida 5 #23-45, Barrio Norte",
+      "horarioFuncionamiento": "Lunes-Sabado 9:00-17:00"
+    }
+  },
+  {
+    "idExamenes": "Med.017",
+    "nombre": "Examen de Tiroides (TSH)",
+    "tipo": "Laboratorio",
+    "valor": "30000",
+    "sede": {
+      "idSede": "SEDE001",
+      "nombreSede": "Sede Centro",
+      "direccion": "Calle 10 #12-34, Centro",
+      "horarioFuncionamiento": "Lunes-Viernes 8:00-18:00"
+    }
+  },
+  {
+    "idExamenes": "Med.018",
+    "nombre": "Examen de VIH",
+    "tipo": "Laboratorio",
+    "valor": "25000",
+    "sede": {
+      "idSede": "SEDE002",
+      "nombreSede": "Sede Norte",
+      "direccion": "Avenida 5 #23-45, Barrio Norte",
+      "horarioFuncionamiento": "Lunes-Sabado 9:00-17:00"
+    }
+  },
+  {
+    "idExamenes": "Med.019",
+    "nombre": "Audiometría",
+    "tipo": "Especializado",
+    "valor": "50000",
+    "sede": {
+      "idSede": "SEDE003",
+      "nombreSede": "Sede Sur",
+      "direccion": "Carrera 20 #45-67, Barrio Sur",
+      "horarioFuncionamiento": "Todos los días 7:00-19:00"
+    }
+  }
+]
