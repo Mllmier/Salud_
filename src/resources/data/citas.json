@@ -5,7 +5,7 @@
     "hora": "07:30",
     "tipoCita": "Regular",
     "motivo": "Sintomas Agudos",
-    "estado": "COMPLETADA",
+    "estado": "NOASISTIO",
     "paciente": {
       "tipoSangre": "A+",
       "antecedentes": "alergica a las hormigas",
