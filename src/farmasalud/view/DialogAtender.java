@@ -781,27 +781,34 @@ java.awt.Window parentWindow = SwingUtilities.getWindowAncestor(this);
     }
 
     // Validar formatos numéricos
-    try {
-        double altura = Double.parseDouble(lblAltura.getText().trim());
-        if (altura <= 0) {
-            JOptionPane.showMessageDialog(this, "La altura debe ser mayor que cero", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Formato de altura inválido", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+   // Validar Altura
+try {
+    String alturaTxt = lblAltura.getText().trim().replace(",", ".");
+    double altura = Double.parseDouble(alturaTxt);
 
-    try {
-        double peso = Double.parseDouble(txtPeso.getText().trim());
-        if (peso <= 0) {
-            JOptionPane.showMessageDialog(this, "El peso debe ser mayor que cero", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Formato de peso inválido", "Error", JOptionPane.ERROR_MESSAGE);
+    if (altura <= 0) {
+        JOptionPane.showMessageDialog(this, "La altura debe ser mayor que cero", "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
+} catch (NumberFormatException e) {
+    JOptionPane.showMessageDialog(this, "Formato de altura inválido. Solo números.", "Error", JOptionPane.ERROR_MESSAGE);
+    return;
+}
+
+// Validar Peso
+try {
+    String pesoTxt = txtPeso.getText().trim().replace(",", ".");
+    double peso = Double.parseDouble(pesoTxt);
+
+    if (peso <= 0) {
+        JOptionPane.showMessageDialog(this, "El peso debe ser mayor que cero", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+} catch (NumberFormatException e) {
+    JOptionPane.showMessageDialog(this, "Formato de peso inválido. Solo números.", "Error", JOptionPane.ERROR_MESSAGE);
+    return;
+}
+
 
     // Si todo está correcto, guardar
     try {
@@ -831,7 +838,7 @@ java.awt.Window parentWindow = SwingUtilities.getWindowAncestor(this);
             JOptionPane.showMessageDialog(this, "La cita seleccionada no tiene paciente asociado.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-paciente.setPeso(Integer.parseInt(txtPeso.getText().trim()));
+paciente.setPeso(Double.parseDouble(txtPeso.getText().trim()));
 paciente.setAltura(Double.parseDouble(lblAltura.getText().trim()));
 
 // Guardar los cambios en el DAO

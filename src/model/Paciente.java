@@ -70,7 +70,7 @@ public class Paciente extends Persona {
         return peso;
     }
 
-    public void setPeso(int peso) {
+    public void setPeso(double peso) {
         this.peso = peso;
     }
 
