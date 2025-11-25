@@ -976,7 +976,7 @@ public void configurarColoresTablaCitas() {
     }
 
     for (Cita cita : citasDelPaciente) {
-        Paciente paciente = pacienteDAO.buscarPorDocumento(cita.getPaciente().getTipoDocumento());
+        Paciente paciente = pacienteDAO.buscarPorDocumento(cita.getPaciente().getNumeroDocumento());
         Medico medico = medicoDAO.buscarPorDocumentoMedico(cita.getMedico().getNumeroDocumento());
         
         if (paciente != null && medico != null) {
