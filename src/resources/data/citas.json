@@ -213,7 +213,7 @@
     "hora": "09:00",
     "tipoCita": "Regular",
     "motivo": "Sintomas Agudos",
-    "estado": "COMPLETADA",
+    "estado": "NOASISTIO",
     "paciente": {
       "tipoSangre": "B-",
       "antecedentes": "sufre de rinitis",
@@ -317,7 +317,7 @@
     "hora": "09:30",
     "tipoCita": "Regular",
     "motivo": "Seguimiento",
-    "estado": "PROGRAMADA",
+    "estado": "NOASISTIO",
     "paciente": {
       "tipoSangre": "O-",
       "antecedentes": "dufre de alergias a las abejas",

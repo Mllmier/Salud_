@@ -79,7 +79,7 @@ public class Doctor extends javax.swing.JFrame {
     
 
        
-        itemAtender.addActionListener(evt -> {
+itemAtender.addActionListener(evt -> {
     int filaSeleccionada = tableCitasPorMedico.getSelectedRow();
     if (filaSeleccionada != -1) {
         String idCita = tableCitasPorMedico.getValueAt(filaSeleccionada, 5).toString();
@@ -90,45 +90,71 @@ public class Doctor extends javax.swing.JFrame {
             return;
         }
 
-Object valorDocumento = tableCitasPorMedico.getValueAt(filaSeleccionada, 0);
-String documentoPaciente = valorDocumento.toString(); 
+        // Documento paciente
+        Object valorDocumento = tableCitasPorMedico.getValueAt(filaSeleccionada, 0);
+        String documentoPaciente = valorDocumento.toString(); 
 
-Paciente paciente = ControllerPaciente.getInstance().buscarPacientePorDocumento(documentoPaciente);
-if (paciente == null) {
-    JOptionPane.showMessageDialog(this, "No se encontró el paciente con documento: " + documentoPaciente);
-    return;
-}
-cita.setPaciente(paciente);
+        Paciente paciente = ControllerPaciente.getInstance().buscarPacientePorDocumento(documentoPaciente);
+        if (paciente == null) {
+            JOptionPane.showMessageDialog(this, "No se encontró el paciente con documento: " + documentoPaciente);
+            return;
+        }
+        cita.setPaciente(paciente);
 
+        // Datos de la tabla
         Object valorFecha = tableCitasPorMedico.getValueAt(filaSeleccionada, 8);
         Object valorHora = tableCitasPorMedico.getValueAt(filaSeleccionada, 6);
-        Object IdCita = tableCitasPorMedico.getValueAt(filaSeleccionada, 5);
         Object valorMotivo = tableCitasPorMedico.getValueAt(filaSeleccionada, 15);
         Object valorEstado = tableCitasPorMedico.getValueAt(filaSeleccionada, 11);
         Object valorSede = tableCitasPorMedico.getValueAt(filaSeleccionada, 7);
 
+        String estadoActual = valorEstado != null ? valorEstado.toString().trim().toUpperCase() : "";
+
+        // ❌ NO Permitimos atender una cita ya completada
+        if (estadoActual.equals("COMPLETADA")) {
+            JOptionPane.showMessageDialog(this,
+                "Esta cita ya fue atendida. No se puede volver a abrir.",
+                "Acción no permitida",
+                JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        // ❌ NO Permitimos atender si NO ASISTIÓ
+        if (estadoActual.equals("NOASISTIO") || estadoActual.equals("NO ASISTIÓ")) {
+            JOptionPane.showMessageDialog(this,
+                "Esta cita fue marcada como 'NO ASISTIÓ'. No se puede atender.",
+                "Acción no permitida",
+                JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        // ✔ Si llega aquí, SÍ puede atender
         if (valorFecha != null && valorHora != null) {
             String fecha = valorFecha.toString();
             String hora = valorHora.toString();
             String motivo = valorMotivo != null ? valorMotivo.toString() : "";
-            String estado = valorEstado != null ? valorEstado.toString() : "";
             String sede = valorSede != null ? valorSede.toString() : "";
             String documento = valorDocumento.toString();
-           
+
             DialogAtender dialog = new DialogAtender(null, true);
             dialog.setCita(cita);
             dialog.setCitaSeleccionada(cita);
-            
             dialog.setDocumentoPaciente(documento);
             dialog.setMedicamento("");
             dialog.setMedicoSeleccionado(medicoLogueado);
-            dialog.setFechaYHora(fecha, hora, idCita, estado, sede, motivo, documento);
+
+            dialog.setFechaYHora(fecha, hora, idCita, estadoActual, sede, motivo, documento);
+
             dialog.setVisible(true);
+
         } else {
             JOptionPane.showMessageDialog(this, "La fila seleccionada no contiene hora o fecha válida.");
         }
     }
 });
+
 
 
         // Agregar MouseListener para mostrar el menú contextual
@@ -153,51 +179,62 @@ cita.setPaciente(paciente);
                 }
             }
         }); 
-        
-       itemNoAsistio.addActionListener(evt -> {
+      itemNoAsistio.addActionListener(evt -> {
     int filaSeleccionada = tableCitasPorMedico.getSelectedRow();
-    if (filaSeleccionada != -1) {
-        // Obtener id de la fila (asegúrate que la columna es la correcta)
-        Object idObj = tableCitasPorMedico.getValueAt(filaSeleccionada, 5); // col 5 = Id Cita
-        String idCita = idObj != null ? idObj.toString().trim() : "";
-
-        if (idCita.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No se encontró Id de la cita en la fila seleccionada.");
-            return;
-        }
-
-        // Buscar la cita en memoria / DAO
-        model.Cita cita = ControllerCitas.getInstance().buscarCitaPorId(idCita);
-        if (cita == null) {
-            JOptionPane.showMessageDialog(this, "No se encontró la cita con id: " + idCita);
-            return;
-        }
-
-        // Cambiar estado y guardar
-        cita.setEstado(model.Cita.EstadoCita.NOASISTIO);
-        ControllerCitas.getInstance().actualizarCita(cita); // esto actualiza en DAO
-
-        // **REFRESCAR**: recargar la tabla desde el controlador que lee el JSON
-        try {
-            // controllerCargarMedicos es la instancia que usas para la tabla
-            if (controllerCargarMedicos != null) {
-                controllerCargarMedicos.cargarCitasMedicoEnTabla(); // recarga con datos actualizados
-            } else {
-                // Como fallback, actualizamos solo la celda
-                tableCitasPorMedico.setValueAt(cita.getEstado().toString(), filaSeleccionada, 11);
-            }
-            JOptionPane.showMessageDialog(this, "La cita fue marcada como 'No asistió'.");
-        } catch (Exception ex) {
-            // Mostrar mensaje si algo falla
-            JOptionPane.showMessageDialog(this, "Error al actualizar la vista: " + ex.getMessage());
-            // intentar al menos actualizar en la tabla local
-            tableCitasPorMedico.setValueAt("No asistió", filaSeleccionada, 11);
-        }
-    } else {
+    if (filaSeleccionada == -1) {
         JOptionPane.showMessageDialog(this, "Seleccione una cita para marcar como 'No asistió'.");
+        return;
+    }
+
+    // Obtener ID de la cita
+    Object idObj = tableCitasPorMedico.getValueAt(filaSeleccionada, 5);
+    String idCita = idObj != null ? idObj.toString().trim() : "";
+
+    if (idCita.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "No se encontró Id de la cita en la fila seleccionada.");
+        return;
+    }
+
+    // Buscar cita en memoria
+    Cita cita = ControllerCitas.getInstance().buscarCitaPorId(idCita);
+    if (cita == null) {
+        JOptionPane.showMessageDialog(this, "No se encontró la cita con id: " + idCita);
+        return;
+    }
+
+    // Si ya está marcada como NO ASISTIÓ evita volver a cambiar
+    if (cita.getEstado() == Cita.EstadoCita.NOASISTIO) {
+        JOptionPane.showMessageDialog(this,
+            "Esta cita YA está marcada como 'No asistió'.",
+            "Información",
+            JOptionPane.INFORMATION_MESSAGE
+        );
+        return;
+    }
+
+    // Cambiar estado
+    cita.setEstado(Cita.EstadoCita.NOASISTIO);
+    ControllerCitas.getInstance().actualizarCita(cita);
+
+    // REFRESCAR TABLA SEGÚN DISPONIBILIDAD DEL CONTROLLER
+    try {
+        if (controllerCargarMedicos != null) {
+            controllerCargarMedicos.cargarCitasMedicoEnTabla();
+        } else {
+            // Si no existe el controlador, solo actualiza visualmente la tabla
+            tableCitasPorMedico.setValueAt("NOASISTIO", filaSeleccionada, 11);
+        }
+
+        JOptionPane.showMessageDialog(this, "La cita fue marcada como 'No asistió'.");
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(this,
+                "Error al actualizar la vista: " + ex.getMessage(),
+                "Error",
+                JOptionPane.ERROR_MESSAGE
+        );
+        tableCitasPorMedico.setValueAt("NOASISTIO", filaSeleccionada, 11);
     }
 });
-
 
 
      
