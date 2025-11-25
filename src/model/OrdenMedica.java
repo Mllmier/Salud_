@@ -31,6 +31,7 @@ public class OrdenMedica  {
    private String eps ;
     private String diagnostico ;
     private String receta;
+    private String examen;
     private List<String> areamedicamentos;
     private String fecha;
     private String hora;
@@ -44,7 +45,7 @@ private String estado;
    
      public OrdenMedica(String nombre, String apellido ,String email ,String altura , String peso,
              String fechaNacimiento , String tipoSangre , String antecedentes , String celular 
-             ,String sexo ,String eps ,String diagnostico,String receta, List<String> areamedicamentos
+             ,String sexo ,String eps ,String diagnostico,String receta,String examen, List<String> areamedicamentos
              ,String fecha,String hora,String nombreMedico,String apellidoMedico,
              String especialidadMedico,String idCita,String motivo,String sede,String estado){
      this.nombre = nombre != null ? nombre : "";
@@ -60,6 +61,7 @@ private String estado;
      this.eps=eps != null ? eps : "";
      this.diagnostico= diagnostico != null ? diagnostico : "";
      this.receta= receta != null ? receta : "";
+     this.examen= examen != null ? examen : "";
     this.areamedicamentos = (areamedicamentos != null) ? areamedicamentos : new ArrayList<>();  
     this.fecha= fecha != null ? fecha : "";
      this.hora= hora != null ? hora : "";
@@ -209,6 +211,14 @@ public void setAreamedicamentos(List<String> areamedicamentos) {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public String getExamen() {
+        return examen;
+    }
+
+    public void setExamen(String examen) {
+        this.examen = examen;
     }
 
 

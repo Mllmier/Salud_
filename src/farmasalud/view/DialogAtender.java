@@ -113,7 +113,13 @@ private boolean esFechaValida(String fecha, String formato) {
         txtMedicamento.append("\n" + medicamento);
     }
 }
-
+public void setExamenes(String examen){
+    if (txtExamenes.getText().trim().isEmpty()) {
+        txtExamenes.setText(examen);
+    }else{
+     txtExamenes.append("\n"+examen);
+    }
+}
 private Medico medicoSeleccionado;
 
 public void setMedicoSeleccionado(Medico medico) {
@@ -308,6 +314,10 @@ public void setFilaSeleccionada(int fila) {
         jScrollPane4 = new javax.swing.JScrollPane();
         txtAreceta = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        txtExamenes = new javax.swing.JTextArea();
+        btnSeleccionarExamenes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -344,7 +354,7 @@ public void setFilaSeleccionada(int fila) {
         });
         jScrollPane1.setViewportView(areaDiagnostico);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 360, 140));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 320, 60));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -583,7 +593,7 @@ public void setFilaSeleccionada(int fila) {
                 btnSeleccionarEnfermedadActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSeleccionarEnfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, 170, 40));
+        jPanel1.add(btnSeleccionarEnfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, 170, 40));
 
         lblDiagnostico.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblDiagnostico.setText("Diagnostico");
@@ -608,7 +618,7 @@ public void setFilaSeleccionada(int fila) {
                 btnSeleccionarMedicamentoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSeleccionarMedicamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 560, 170, 40));
+        jPanel1.add(btnSeleccionarMedicamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 520, 170, 40));
 
         txtMedicamento.setColumns(20);
         txtMedicamento.setRows(5);
@@ -634,6 +644,23 @@ public void setFilaSeleccionada(int fila) {
 
         jLabel4.setText("Receta");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 526, 40, 30));
+
+        jLabel12.setText("Examenes");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, -1, -1));
+
+        txtExamenes.setColumns(20);
+        txtExamenes.setRows(5);
+        jScrollPane5.setViewportView(txtExamenes);
+
+        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 560, 310, 70));
+
+        btnSeleccionarExamenes.setText("Seleccionar Examen");
+        btnSeleccionarExamenes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeleccionarExamenesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSeleccionarExamenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 570, 170, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 670));
 
@@ -746,7 +773,11 @@ java.awt.Window parentWindow = SwingUtilities.getWindowAncestor(this);
         txtMedicamento.requestFocus();
         return;
     }
-
+     if (txtExamenes.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "El examen no puede estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+        txtExamenes.requestFocus();
+        return;
+    }
     if (areaDiagnostico.getText().trim().isEmpty()) {
         JOptionPane.showMessageDialog(this, "El diagnóstico no puede estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
         areaDiagnostico.requestFocus();
@@ -875,6 +906,17 @@ java.awt.Window parentWindow = SwingUtilities.getWindowAncestor(this);
    
     }//GEN-LAST:event_lblEstadoMouseClicked
 
+    private void btnSeleccionarExamenesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarExamenesActionPerformed
+        // TODO add your handling code here:
+        java.awt.Window parentWindow = SwingUtilities.getWindowAncestor(this);
+    Dialog_Examenes dialog = new Dialog_Examenes((java.awt.Frame) parentWindow, true);
+    dialog.setDialogExamenes(this);
+    dialog.setLocationRelativeTo(parentWindow);
+    dialog.inicializarListener(); 
+    dialog.setVisible(true);
+        
+    }//GEN-LAST:event_btnSeleccionarExamenesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -922,10 +964,12 @@ java.awt.Window parentWindow = SwingUtilities.getWindowAncestor(this);
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnSeleccionarEnfermedad;
+    private javax.swing.JButton btnSeleccionarExamenes;
     private javax.swing.JButton btnSeleccionarMedicamento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
@@ -950,6 +994,7 @@ java.awt.Window parentWindow = SwingUtilities.getWindowAncestor(this);
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
@@ -986,6 +1031,7 @@ java.awt.Window parentWindow = SwingUtilities.getWindowAncestor(this);
     private javax.swing.JTextArea txtAntecedentes;
     private javax.swing.JTextArea txtAreceta;
     private javax.swing.JTextField txtDocumento;
+    private javax.swing.JTextArea txtExamenes;
     private javax.swing.JTextArea txtMedicamento;
     private javax.swing.JTextField txtPeso;
     // End of variables declaration//GEN-END:variables
@@ -1005,6 +1051,7 @@ public OrdenMedica getOrdenMedica() {
     String eps = lblEps != null ? lblEps.getText() : "";
     String diagnostico = areaDiagnostico != null ? areaDiagnostico.getText() : "";
     String receta = txtAreceta != null ? txtAreceta.getText() : "";
+    String examen = txtExamenes != null ? txtExamenes.getText() : "";
 List<String> listaMedicamentos = new ArrayList<>();
 if (txtMedicamento != null) {
     String texto = txtMedicamento.getText().trim();
@@ -1028,7 +1075,7 @@ if (txtMedicamento != null) {
 
 
     return new OrdenMedica(nombre, apellido, email, altura, peso, fechaNacimiento, 
-                         tipoSangre, antecedentes, celular, sexo, eps, diagnostico,receta,
+                         tipoSangre, antecedentes, celular, sexo, eps, diagnostico,receta,examen,
             listaMedicamentos,fechacita,horacita,nombreMedico,apellidoMedico,especialidad,idCita,sede,motivo,estado);
    }
 }

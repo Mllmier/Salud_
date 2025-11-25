@@ -55,6 +55,7 @@ private Medico medicoLogueado;
    private JTextArea areaDiagnostico;
   private JTextArea textAreareceta;
   private JTextArea txtAreaMedicamentos;
+  private JTextArea txtExamenes;
   private JLabel lblFechaCita;
   private JLabel lblHoraCita;
   private JLabel lblIdCita;
@@ -89,7 +90,7 @@ private Medico medicoLogueado;
 
         public ControllerOrdenMedica(JLabel lblNombre,JLabel lblApellido,JLabel lblEmail,JLabel lblAltura,
                                  JLabel txtPeso,JLabel lblFechaNacimiento,JLabel lblTipoSangre,JTextArea txtAntecedentes,JLabel lblCelular,
-                                 JLabel lblSexo,JLabel lblEps,JTextArea areaDiagnostico,JTextArea textAreareceta,JTextArea txtAreaMedicamentos,JLabel lblFechaCita,
+                                 JLabel lblSexo,JLabel lblEps,JTextArea areaDiagnostico,JTextArea textAreareceta,JTextArea txtAreaMedicamentos,JTextArea txtExamenes,JLabel lblFechaCita,
                                  JLabel lblHoraCita,Medico medicoLogueado,OrdenMedicaDAO ordenmedica,JLabel lblIdCita,JLabel lblSede,JLabel lblMotivo,JLabel lblEstado){
         
         this.lblNombre = lblNombre;
@@ -105,6 +106,7 @@ private Medico medicoLogueado;
         this.lblEps = lblEps;
         this.areaDiagnostico = areaDiagnostico;
         this.txtAreaMedicamentos =txtAreaMedicamentos;
+        this.txtExamenes = txtExamenes;
         this.textAreareceta=textAreareceta;
         this.lblFechaCita=lblFechaCita;
         this.lblHoraCita=lblHoraCita;
@@ -132,6 +134,7 @@ private Medico medicoLogueado;
         String sexo = lblSexo != null ? lblSexo.getText() : "";
         String eps = lblEps != null ? lblEps.getText() : "";
         String diagnostico = areaDiagnostico != null ? areaDiagnostico.getText() : "";
+        String examen = txtExamenes != null ? txtExamenes.getText() : "";
         String receta= textAreareceta != null ? textAreareceta.getText() : "";
         List<String> listaMedicamentos = new ArrayList<>();
       if (txtAreaMedicamentos != null) {
@@ -157,7 +160,7 @@ private Medico medicoLogueado;
 
         return new OrdenMedica(
             nombre, apellido, email, altura, peso, fechaNacimiento,
-            tipoSangre, antecedentes, celular, sexo, eps, diagnostico,receta,listaMedicamentos,fechacita,horacita,
+            tipoSangre, antecedentes, celular, sexo, eps, diagnostico,examen,receta,listaMedicamentos,fechacita,horacita,
                 nombreMedico,apellidoMedico,especialidad,idCita,sede,motivo,estado
         );
     }

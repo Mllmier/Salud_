@@ -5,11 +5,11 @@
     "hora": "07:30",
     "tipoCita": "Regular",
     "motivo": "Sintomas Agudos",
-    "estado": "NOASISTIO",
+    "estado": "COMPLETADA",
     "paciente": {
       "tipoSangre": "A+",
       "antecedentes": "alergica a las hormigas",
-      "peso": 90.0,
+      "peso": 40.0,
       "tipoDocumento": "CC",
       "altura": 1.68,
       "numeroDocumento": "123456789",
