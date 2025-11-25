@@ -396,6 +396,7 @@ public void verificarDisponibilidadHoraActualizacion() {
         jLabel74 = new javax.swing.JLabel();
         panelCitasMedico = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jLabel77 = new javax.swing.JLabel();
         TabbetCitas = new javax.swing.JTabbedPane();
@@ -747,6 +748,14 @@ public void verificarDisponibilidadHoraActualizacion() {
 
         jPanel3.add(panelCitasMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 300, 60));
 
+        jButton2.setText("REGRESAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 720, -1, -1));
+
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 770));
 
         jPanel9.setBackground(new java.awt.Color(10, 92, 184));
@@ -757,7 +766,7 @@ public void verificarDisponibilidadHoraActualizacion() {
         jLabel77.setText("CITAS ");
         jPanel9.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 530, 40));
 
-        jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 1000, 100));
+        jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 1000, 50));
 
         TabbetCitas.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1706,7 +1715,7 @@ public void verificarDisponibilidadHoraActualizacion() {
     }//GEN-LAST:event_panelBtnAgendar1MouseMoved
 
     private void panelBtnAgendar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBtnAgendar1MouseClicked
-        TabbetCitas.setSelectedIndex(2);
+        TabbetCitas.setSelectedIndex(4);
     }//GEN-LAST:event_panelBtnAgendar1MouseClicked
 
     private void panelBtnAgendar1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBtnAgendar1MouseExited
@@ -1718,7 +1727,7 @@ public void verificarDisponibilidadHoraActualizacion() {
     }//GEN-LAST:event_AgendarPacienteMouseMoved
 
     private void AgendarPacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgendarPacienteMouseClicked
-        TabbetCitas.setSelectedIndex(3);
+        TabbetCitas.setSelectedIndex(2);
     }//GEN-LAST:event_AgendarPacienteMouseClicked
 
     private void AgendarPacienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgendarPacienteMouseExited
@@ -2063,7 +2072,7 @@ panelCitasMedico.setBackground(new Color(28,43,110));
     }//GEN-LAST:event_panelCitasMedicoMouseExited
 
     private void panelCitasMedicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelCitasMedicoMouseClicked
-TabbetCitas.setSelectedIndex(4);       // TODO add your handling code here:
+TabbetCitas.setSelectedIndex(3);       // TODO add your handling code here:
     }//GEN-LAST:event_panelCitasMedicoMouseClicked
 
     private void txtPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesoActionPerformed
@@ -2073,6 +2082,13 @@ TabbetCitas.setSelectedIndex(4);       // TODO add your handling code here:
     private void txtAlturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlturaActionPerformed
          // TODO add your handling code here:
     }//GEN-LAST:event_txtAlturaActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        new login_().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2145,6 +2161,7 @@ TabbetCitas.setSelectedIndex(4);       // TODO add your handling code here:
     private javax.swing.JComboBox<String> cboTipoCita2;
     private javax.swing.JComboBox<String> cboTipoSangre;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private com.toedter.calendar.JDateChooser jDateConsultarCitaMedico;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

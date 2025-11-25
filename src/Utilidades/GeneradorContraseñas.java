@@ -38,6 +38,8 @@ public class GeneradorContraseñas {
         for (int i = 0; i < caracteres.length; i++) {
             int posicionAleatoria = random.nextInt(caracteres.length);
             char temp = caracteres[i];
+            
+            
             caracteres[i] = caracteres[posicionAleatoria];
             caracteres[posicionAleatoria] = temp;
         }
