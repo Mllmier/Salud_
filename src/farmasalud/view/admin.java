@@ -839,7 +839,7 @@ public class admin extends javax.swing.JFrame {
         });
         jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 20, -1, 40));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 1020, 30));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 1020, 80));
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -2747,13 +2747,13 @@ public class admin extends javax.swing.JFrame {
     }     
     }//GEN-LAST:event_txtTipoKeyTyped
 
-    private void jLabel65MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel65MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel65MouseClicked
-
     private void panelExamenesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelExamenesMouseClicked
          Paneles_jtablepane.setSelectedIndex(7);
     }//GEN-LAST:event_panelExamenesMouseClicked
+
+    private void jLabel65MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel65MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel65MouseClicked
 
 
     /**
