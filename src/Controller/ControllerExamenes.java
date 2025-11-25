@@ -325,6 +325,32 @@ public void actualizarExamenes() {
             JOptionPane.ERROR_MESSAGE);
     }
 }
+  
+  public void mostrarTablaExamenes(JTable tablaDestino) {
+    try {
+        this.tableExamenes = tablaDestino;
+
+        this.tableModelExamenes = new DefaultTableModel(
+                new Object[]{"ID Examen", "Nombre", "Tipo", "Precio", "Sede"}, 0
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        tableExamenes.setModel(tableModelExamenes);
+
+        cargarDatosExamenes();
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null,
+                "Error al mostrar tabla de exámenes: " + e.getMessage(),
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+    }
+}
+
 
 
     
