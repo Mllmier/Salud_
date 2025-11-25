@@ -201,6 +201,15 @@ itemAtender.addActionListener(evt -> {
         JOptionPane.showMessageDialog(this, "No se encontró la cita con id: " + idCita);
         return;
     }
+    
+     if (cita.getEstado() == Cita.EstadoCita.COMPLETADA) {
+        JOptionPane.showMessageDialog(this,
+            "Esta cita ya ha sido marcada como COMPLETADA.\nNo se puede colocar NO ASISTIÓ.",
+            "Acción no permitida",
+            JOptionPane.WARNING_MESSAGE
+        );
+        return; // ← detiene la acción
+    }
 
     // Si ya está marcada como NO ASISTIÓ evita volver a cambiar
     if (cita.getEstado() == Cita.EstadoCita.NOASISTIO) {
@@ -383,6 +392,7 @@ itemAtender.addActionListener(evt -> {
         lblIconRecepcion = new javax.swing.JLabel();
         Diagnostico = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -452,6 +462,17 @@ itemAtender.addActionListener(evt -> {
         Diagnostico.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 50));
 
         jPanel2.add(Diagnostico, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 260, 70));
+
+        jButton1.setBackground(new java.awt.Color(28, 43, 110));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("regresar");
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, 80, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 630));
 
@@ -617,6 +638,12 @@ itemAtender.addActionListener(evt -> {
     dialog.setVisible(true);
     }//GEN-LAST:event_btnCredencialesActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+                       new login_().setVisible(true);
+           this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /*
      * @param args the command line arguments
      */
@@ -658,6 +685,7 @@ itemAtender.addActionListener(evt -> {
     private javax.swing.JButton btnCredenciales;
     private com.toedter.calendar.JDateChooser dateChooserF;
     private javax.swing.JButton dateChooserFecha;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;

@@ -14,5 +14,21 @@
     "email": "arai@gmail.com",
     "celular": "1234567890",
     "contraseña": "455789"
+  },
+  {
+    "tipoSangre": "0+",
+    "antecedentes": "fractura rodilla",
+    "peso": 53.0,
+    "tipoDocumento": "TI",
+    "altura": 1.54,
+    "numeroDocumento": "1043652773",
+    "nombres": "Aldo",
+    "apellidos": "Cano",
+    "fechaNacimiento": "2005-11-04",
+    "sexo": "M",
+    "eps": "Coosalud",
+    "email": "ronaldocanomorales54@gmail.com",
+    "celular": "3005742261",
+    "contraseña": "7myN-j45,i"
   }
 ]

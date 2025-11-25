@@ -1,5 +1,31 @@
 [
-{
-    
-}
+  {},
+  {
+    "idCita": "Med.001",
+    "nombre": "Aldo",
+    "apellido": "Cano",
+    "email": "ronaldocanomorales54@gmail.com",
+    "altura": "1.54",
+    "peso": "53.0",
+    "fechaNacimiento": "04/11/2005",
+    "tipoSangre": "0+",
+    "antecedentes": "fractura rodilla",
+    "celular": "3005742261",
+    "sexo": "M",
+    "eps": "Coosalud",
+    "diagnostico": "Enfermedad: Cáncer de mama\nSíntomas: Bulto en el seno, Secreción del pezón, Hinchazón",
+    "receta": "lipos",
+    "examen": "Examen de VIH\nUltrasonido Abdominal",
+    "areamedicamentos": [
+      "Pantoprazol"
+    ],
+    "fecha": "2025-11-27",
+    "hora": "08:00am",
+    "nombreMedico": "luz",
+    "apellidoMedico": "Crespo",
+    "especialidadMedico": "terapeusta",
+    "motivo": "Sede Principal",
+    "sede": "Prevencion",
+    "estado": "PROGRAMADA"
+  }
 ]
