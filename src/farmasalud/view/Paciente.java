@@ -73,6 +73,7 @@ public class Paciente extends javax.swing.JFrame {
         btnAgendar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         imagenCentral = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -115,7 +116,7 @@ public class Paciente extends javax.swing.JFrame {
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel6.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 1090, 70));
+        jPanel6.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 1090, 130));
 
         btnConsultar.setText("Consultar");
         btnConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +124,7 @@ public class Paciente extends javax.swing.JFrame {
                 btnConsultarActionPerformed(evt);
             }
         });
-        jPanel6.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, 171, 48));
+        jPanel6.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 470, 171, 48));
 
         btnAgendar.setText("Agendar Cita ");
         btnAgendar.addActionListener(new java.awt.event.ActionListener() {
@@ -131,7 +132,7 @@ public class Paciente extends javax.swing.JFrame {
                 btnAgendarActionPerformed(evt);
             }
         });
-        jPanel6.add(btnAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 470, 160, 48));
+        jPanel6.add(btnAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 560, 160, 48));
 
         jButton1.setText("Cambiar Contraseña");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -139,8 +140,11 @@ public class Paciente extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 470, -1, 48));
+        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 560, -1, 48));
         jPanel6.add(imagenCentral, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1090, 200));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Maria liz\\Downloads\\Diseño sin título.png")); // NOI18N
+        jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 640, 370));
 
         getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1100, 680));
 
@@ -244,6 +248,7 @@ public class Paciente extends javax.swing.JFrame {
     private javax.swing.JButton btnConsultar;
     private javax.swing.JLabel imagenCentral;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
