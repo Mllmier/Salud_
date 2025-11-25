@@ -51,12 +51,12 @@ public class login_ extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 30)); // NOI18N
-        jLabel1.setText("INICIAR SESION");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 291, 61));
+        jLabel1.setText("INICIAR SESIÓN");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 291, 61));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel2.setText("Usuario *");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 144, 26));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 144, 26));
 
         Jtextfield_usuario.setBorder(null);
         Jtextfield_usuario.addActionListener(new java.awt.event.ActionListener() {
@@ -64,25 +64,25 @@ public class login_ extends javax.swing.JFrame {
                 Jtextfield_usuarioActionPerformed(evt);
             }
         });
-        jPanel2.add(Jtextfield_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 300, 29));
+        jPanel2.add(Jtextfield_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 390, 29));
 
         jComboBox1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "                       <Seleccione una opcion>", "Administrador", "Doctor", "Recepcionista", "Farmaceutico", "Paciente" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "                       <Seleccione una opción>", "Administrador", "Doctor", "Recepcionista", "Paciente" }));
         jComboBox1.setBorder(null);
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 430, -1));
+        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 430, -1));
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 390, 10));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 390, 10));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel3.setText("Contraseña *");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 299, 33));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 299, 33));
 
         Jtextfield_contraseña.setBorder(null);
         Jtextfield_contraseña.addActionListener(new java.awt.event.ActionListener() {
@@ -90,11 +90,11 @@ public class login_ extends javax.swing.JFrame {
                 Jtextfield_contraseñaActionPerformed(evt);
             }
         });
-        jPanel2.add(Jtextfield_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 292, 300, 24));
+        jPanel2.add(Jtextfield_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 380, 30));
 
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 322, 390, 10));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 390, 10));
 
         jButton1.setBackground(new java.awt.Color(10, 92, 184));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -105,12 +105,12 @@ public class login_ extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 385, 141, 36));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, 141, 36));
 
         jLabel9.setForeground(new java.awt.Color(10, 92, 184));
         jLabel9.setText("¿Olvidaste tu contraseña?");
         jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 140, 20));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 400, 140, 20));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 590));
 
