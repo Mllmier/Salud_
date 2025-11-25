@@ -26,7 +26,6 @@ public void procesarLogin(String email, String passwordOIdentificacion, String r
 
         Object usuario = null;
 
-      // --- LOGIN PARA PACIENTE (igual que doctor y recepcionista) ---
 if (rolSeleccionado.equalsIgnoreCase("Paciente")) {
 
     usuario = usuarioDAO.validarCredenciales(email, passwordOIdentificacion, "Paciente");
@@ -45,7 +44,6 @@ if (rolSeleccionado.equalsIgnoreCase("Paciente")) {
 }
 
 
-        // --- OTROS ROLES (Password normal) ---
         usuario = usuarioDAO.validarCredenciales(email, passwordOIdentificacion, rolSeleccionado);
 
         if (usuario == null) {
@@ -53,7 +51,6 @@ if (rolSeleccionado.equalsIgnoreCase("Paciente")) {
             return;
         }
 
-        // Doctor
         if (usuario instanceof Medico) {
             Medico medico = (Medico) usuario;
             if ("Desabilitado".equalsIgnoreCase(medico.getEstado())) {
@@ -66,7 +63,6 @@ if (rolSeleccionado.equalsIgnoreCase("Paciente")) {
             return;
         }
 
-        // Recepcionista
         if (usuario instanceof Recepcionista) {
             Recepcionista recep = (Recepcionista) usuario;
             if ("Desabilitado".equalsIgnoreCase(recep.getEstado())) {
@@ -77,7 +73,6 @@ if (rolSeleccionado.equalsIgnoreCase("Paciente")) {
             return;
         }
 
-        // Admin
         if (rolSeleccionado.equals("Administrador")) {
             abrirVista(new farmasalud.view.admin(), vistaActual, "Bienvenido Administrador");
         }

@@ -42,6 +42,7 @@ public class login_ extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,6 +117,10 @@ public class login_ extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(28, 43, 110));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\HP\\Downloads\\login.jpg")); // NOI18N
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 90, 470, 350));
+
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, 360, 590));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -142,16 +147,12 @@ public class login_ extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     
-    // Capturar email
     String email = Jtextfield_usuario.getText().trim();
 
-    // Capturar lo que está en el campo de contraseña (pero será identificación en Paciente)
     String identificacion = new String(Jtextfield_contraseña.getPassword()).trim();
 
-    // Capturar el rol seleccionado
     String rolSeleccionado = (String) jComboBox1.getSelectedItem();
 
-    // Controlador de login
     Controller_Login controller = new Controller_Login();
     controller.procesarLogin(email, identificacion, rolSeleccionado, this);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -203,6 +204,7 @@ public class login_ extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

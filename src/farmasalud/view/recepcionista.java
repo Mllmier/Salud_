@@ -249,7 +249,6 @@ private void cargarDatosCitaEnFormularioActualizacion() {
     if (filaSeleccionada == -1) return;
 
     try {
-        // 📋 Datos básicos del paciente
         txtNumeroDocumento2.setText(tablaCitas.getValueAt(filaSeleccionada, 0).toString());
         txtNombre2.setText(tablaCitas.getValueAt(filaSeleccionada, 1).toString());
         txtApellido2.setText(tablaCitas.getValueAt(filaSeleccionada, 2).toString());
@@ -257,7 +256,6 @@ private void cargarDatosCitaEnFormularioActualizacion() {
         txtEmail2.setText(tablaCitas.getValueAt(filaSeleccionada, 4).toString());
         txtIdCita2.setText(tablaCitas.getValueAt(filaSeleccionada, 5).toString());
 
-        // 📅 Fecha y hora
         Object fechaValue = tablaCitas.getValueAt(filaSeleccionada, 8);
         if (fechaValue != null) {
             try {
@@ -278,7 +276,6 @@ private void cargarDatosCitaEnFormularioActualizacion() {
         lblConsultorio2.setText(tablaCitas.getValueAt(filaSeleccionada, 10).toString());
         cboEstadoCita2.setSelectedItem(tablaCitas.getValueAt(filaSeleccionada, 11).toString());
 
-        // 🧑‍⚕️ Datos del médico
         String nombreMedicoStr = tablaCitas.getValueAt(filaSeleccionada, 13).toString().trim();
         String especialidadMedicoStr = tablaCitas.getValueAt(filaSeleccionada, 14).toString().trim();
         String sedeStr = tablaCitas.getValueAt(filaSeleccionada, 15).toString().trim();
@@ -396,6 +393,7 @@ public void verificarDisponibilidadHoraActualizacion() {
         jLabel74 = new javax.swing.JLabel();
         panelCitasMedico = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jLabel77 = new javax.swing.JLabel();
         TabbetCitas = new javax.swing.JTabbedPane();
@@ -406,6 +404,7 @@ public void verificarDisponibilidadHoraActualizacion() {
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         panelModificarCita = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tablaCitas = new javax.swing.JTable();
@@ -558,7 +557,8 @@ public void verificarDisponibilidadHoraActualizacion() {
         btnBuscarPaciente = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablePaciente = new javax.swing.JTable();
-        jLabel79 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
 
         jPopupMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -724,7 +724,7 @@ public void verificarDisponibilidadHoraActualizacion() {
         });
 
         jLabel31.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 21)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(255, 255, 255));
         jLabel31.setText("Citas Por Medico");
 
@@ -734,18 +734,28 @@ public void verificarDisponibilidadHoraActualizacion() {
             panelCitasMedicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCitasMedicoLayout.createSequentialGroup()
                 .addGap(61, 61, 61)
-                .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addComponent(jLabel31)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelCitasMedicoLayout.setVerticalGroup(
             panelCitasMedicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCitasMedicoLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel31)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.add(panelCitasMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 300, 60));
+
+        jButton2.setBackground(new java.awt.Color(28, 43, 110));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Regresar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 710, 160, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 770));
 
@@ -757,7 +767,7 @@ public void verificarDisponibilidadHoraActualizacion() {
         jLabel77.setText("CITAS ");
         jPanel9.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 530, 40));
 
-        jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 1000, 100));
+        jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 1000, 120));
 
         TabbetCitas.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -784,6 +794,9 @@ public void verificarDisponibilidadHoraActualizacion() {
         jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel27.setText("Citas Completadas");
         panelInicio.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 310, -1, -1));
+
+        jLabel19.setIcon(new javax.swing.ImageIcon("C:\\Users\\HP\\OneDrive\\Desktop\\Imagen de WhatsApp 2025-11-25 a las 07.52.27_c077e10c.jpg")); // NOI18N
+        panelInicio.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 630, 450));
 
         TabbetCitas.addTab("Inicio", panelInicio);
 
@@ -1672,9 +1685,13 @@ public void verificarDisponibilidadHoraActualizacion() {
 
         jPanel1.add(TabbetCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 970, 600));
 
-        jLabel79.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel79.setText("X");
-        jPanel1.add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 10, 20, 30));
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel22.setText("Farma Salud");
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 210, 80));
+
+        jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel37.setText("\"Tu bienestar, nuestra prioridad.\"  ");
+        jPanel1.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 30, 410, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -2074,6 +2091,12 @@ TabbetCitas.setSelectedIndex(4);       // TODO add your handling code here:
          // TODO add your handling code here:
     }//GEN-LAST:event_txtAlturaActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+                       new login_().setVisible(true);
+           this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2145,6 +2168,7 @@ TabbetCitas.setSelectedIndex(4);       // TODO add your handling code here:
     private javax.swing.JComboBox<String> cboTipoCita2;
     private javax.swing.JComboBox<String> cboTipoSangre;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private com.toedter.calendar.JDateChooser jDateConsultarCitaMedico;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -2156,9 +2180,11 @@ TabbetCitas.setSelectedIndex(4);       // TODO add your handling code here:
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
@@ -2174,6 +2200,7 @@ TabbetCitas.setSelectedIndex(4);       // TODO add your handling code here:
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel41;
@@ -2201,7 +2228,6 @@ TabbetCitas.setSelectedIndex(4);       // TODO add your handling code here:
     private javax.swing.JLabel jLabel73;
     private javax.swing.JLabel jLabel74;
     private javax.swing.JLabel jLabel77;
-    private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

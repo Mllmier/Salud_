@@ -51,7 +51,6 @@ public class ControllerRecepcionista {
         return instancia;
     }
 
-    // ---------------- Setters para vincular con la vista ---------------- //
     public void setTablaRecepcionistas(JTable tablaRecepcionistas) {
         this.tablaRecepcionistas = tablaRecepcionistas;
         this.tableModelRecepcionista = (DefaultTableModel) tablaRecepcionistas.getModel();
@@ -71,7 +70,6 @@ public class ControllerRecepcionista {
     public void setDateChooserContratacion(JDateChooser dateChooserContratacion) { this.dateChooserContratacion = dateChooserContratacion; }
     public void setjComboBox_estado_recepcionista(JComboBox<String> jComboBox_estado_recepcionista) { this.jComboBox_estado_recepcionista = jComboBox_estado_recepcionista; }
 
-    // ---------------- Inicializar tabla ---------------- //
     public void initTableRecepcionista() {
         tableModelRecepcionista = new DefaultTableModel(
             new Object[]{"Nombre", "Apellidos", "Cédula", "Teléfono", "Correo",
@@ -85,7 +83,6 @@ public class ControllerRecepcionista {
         tablaRecepcionistas.setModel(tableModelRecepcionista);
     }
 
-    // ---------------- Cargar datos ---------------- //
     public void cargarDatosEnTablaRecepcionista() {
         try {
             tableModelRecepcionista.setRowCount(0);
@@ -122,7 +119,6 @@ public class ControllerRecepcionista {
         }
     }
 
-    // ---------------- Guardar recepcionista ---------------- //
     public void guardarRecepcionistaDesdeFormulario() {
         try {
             String nombres = txtNombre.getText().trim();
@@ -179,7 +175,6 @@ public class ControllerRecepcionista {
         }
     }
 
-    // ---------------- Actualizar recepcionista ---------------- //
     public void actualizarRecepcionista() {
         try {
             int filaSeleccionada = tablaRecepcionistas.getSelectedRow();
@@ -244,7 +239,6 @@ public class ControllerRecepcionista {
         }
     }
 
-    // ---------------- Cargar datos en formulario ---------------- //
     public void cargarDatosRecepcionistaEnFormulario() {
         int filaSeleccionada = tablaRecepcionistas.getSelectedRow();
         if (filaSeleccionada != -1) {
@@ -261,7 +255,6 @@ public class ControllerRecepcionista {
         }
     }
 
-    // ---------------- Limpiar formulario ---------------- //
     public void limpiarFormulario() {
         txtNombre.setText("");
         txtApellidos.setText("");

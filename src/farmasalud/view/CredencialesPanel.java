@@ -23,23 +23,19 @@ public class CredencialesPanel {
     }
 
     public void mostrarPanel() {
-        // Primero mostrar diálogo de verificación de contraseña
         mostrarDialogoVerificacion();
     }
 
     private void mostrarDialogoVerificacion() {
-        // Configuración de colores y fuentes
         Color primaryColor = new Color(0, 102, 204);
         Color backgroundColor = new Color(248, 249, 250);
         Font labelFont = new Font("Segoe UI", Font.BOLD, 13);
         Font buttonFont = new Font("Segoe UI", Font.BOLD, 12);
 
-        // Crear panel de verificación
         JPanel panelVerificacion = new JPanel(new BorderLayout(10, 10));
         panelVerificacion.setBorder(new EmptyBorder(20, 20, 20, 20));
         panelVerificacion.setBackground(backgroundColor);
 
-        // Título
         JLabel titleLabel = new JLabel("Verificación de Seguridad");
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 16));
         titleLabel.setForeground(primaryColor);
@@ -47,7 +43,6 @@ public class CredencialesPanel {
         titleLabel.setBorder(new EmptyBorder(0, 0, 15, 0));
         panelVerificacion.add(titleLabel, BorderLayout.NORTH);
 
-        // Panel de contenido
         JPanel contentPanel = new JPanel(new GridBagLayout());
         contentPanel.setBackground(Color.WHITE);
         contentPanel.setBorder(BorderFactory.createCompoundBorder(
@@ -60,7 +55,6 @@ public class CredencialesPanel {
         gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        // Mensaje
         JLabel lblMensaje = new JLabel("<html><div style='width: 250px; text-align: justify;'>"
                 + "Para acceder a tus credenciales, por favor ingresa tu contraseña actual:"
                 + "</div></html>");
@@ -71,7 +65,6 @@ public class CredencialesPanel {
         gbc.gridwidth = 2;
         contentPanel.add(lblMensaje, gbc);
 
-        // Campo de contraseña
         JLabel lblPass = new JLabel("Contraseña:");
         lblPass.setFont(labelFont);
         JPasswordField txtPass = new JPasswordField(20);
@@ -90,7 +83,6 @@ public class CredencialesPanel {
 
         panelVerificacion.add(contentPanel, BorderLayout.CENTER);
 
-        // Panel de botones
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 10));
         buttonPanel.setBackground(backgroundColor);
         
@@ -104,14 +96,12 @@ public class CredencialesPanel {
 
         panelVerificacion.add(buttonPanel, BorderLayout.SOUTH);
 
-        // Configurar diálogo de verificación
         JDialog dialogVerificacion = new JDialog(parentFrame, "Verificación Requerida", true);
         dialogVerificacion.setContentPane(panelVerificacion);
         dialogVerificacion.pack();
         dialogVerificacion.setResizable(false);
         dialogVerificacion.setLocationRelativeTo(parentFrame);
 
-        // Acción del botón Verificar
         btnVerificar.addActionListener(e -> {
             String password = new String(txtPass.getPassword());
             if (password.isEmpty()) {
@@ -123,12 +113,11 @@ public class CredencialesPanel {
             }
 
             try {
-                // Verificar credenciales
                 boolean credencialesValidas = adminDAO.verificarCredenciales(emailAdmin, password);
                 
                 if (credencialesValidas) {
                     dialogVerificacion.dispose();
-                    mostrarCredenciales(); // Mostrar el panel de credenciales
+                    mostrarCredenciales(); 
                 } else {
                     JOptionPane.showMessageDialog(dialogVerificacion, 
                         "Contraseña incorrecta", 
@@ -144,16 +133,13 @@ public class CredencialesPanel {
             }
         });
 
-        // Acción del botón Cancelar
         btnCancelar.addActionListener(e -> dialogVerificacion.dispose());
 
-        // Hacer visible el diálogo
         dialogVerificacion.setVisible(true);
     }
 
     private void mostrarCredenciales() {
         try {
-            // Obtener datos del administrador
             JsonObject admin = adminDAO.obtenerAdministradorPorEmail(emailAdmin);
             
             if (admin == null) {
@@ -164,19 +150,16 @@ public class CredencialesPanel {
                 return;
             }
 
-            // Configuración de colores y fuentes
-            Color primaryColor = new Color(0, 102, 204); // Azul profesional
-            Color backgroundColor = new Color(248, 249, 250); // Gris claro
+            Color primaryColor = new Color(0, 102, 204); 
+            Color backgroundColor = new Color(248, 249, 250); 
             Font labelFont = new Font("Segoe UI", Font.BOLD, 13);
             Font textFont = new Font("Segoe UI", Font.PLAIN, 13);
             Font buttonFont = new Font("Segoe UI", Font.BOLD, 12);
 
-            // Crear panel principal
             JPanel panel = new JPanel(new BorderLayout(10, 10));
             panel.setBorder(new EmptyBorder(20, 20, 20, 20));
             panel.setBackground(backgroundColor);
 
-            // Panel de título
             JLabel titleLabel = new JLabel("Mis Credenciales");
             titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 18));
             titleLabel.setForeground(primaryColor);
@@ -184,7 +167,6 @@ public class CredencialesPanel {
             titleLabel.setBorder(new EmptyBorder(0, 0, 15, 0));
             panel.add(titleLabel, BorderLayout.NORTH);
 
-            // Panel de información
             JPanel infoPanel = new JPanel(new GridBagLayout());
             infoPanel.setBackground(Color.WHITE);
             infoPanel.setBorder(BorderFactory.createCompoundBorder(
@@ -197,7 +179,6 @@ public class CredencialesPanel {
             gbc.anchor = GridBagConstraints.WEST;
             gbc.fill = GridBagConstraints.HORIZONTAL;
 
-            // Componente para el email
             JLabel lblEmail = new JLabel("Correo electrónico:");
             lblEmail.setFont(labelFont);
             JTextField txtEmail = new JTextField(admin.get("email").getAsString(), 25);
@@ -215,7 +196,6 @@ public class CredencialesPanel {
             gbc.gridwidth = 2;
             infoPanel.add(txtEmail, gbc);
 
-            // Componente para la contraseña
             JLabel lblPass = new JLabel("Contraseña:");
             lblPass.setFont(labelFont);
             JPasswordField txtPass = new JPasswordField(admin.get("contraseña").getAsString(), 25);
@@ -248,7 +228,6 @@ public class CredencialesPanel {
             gbc.gridx = 2;
             infoPanel.add(chkMostrar, gbc);
 
-            // Panel de botones
             JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 10));
             buttonPanel.setBackground(backgroundColor);
             
@@ -271,11 +250,9 @@ public class CredencialesPanel {
             buttonPanel.add(btnCancelar);
             buttonPanel.add(btnGuardar);
 
-            // Ensamblar componentes
             panel.add(infoPanel, BorderLayout.CENTER);
             panel.add(buttonPanel, BorderLayout.SOUTH);
 
-            // Configurar diálogo
             JDialog dialog = new JDialog(parentFrame, "Gestión de Credenciales", true);
             dialog.setContentPane(panel);
             dialog.pack();
@@ -314,7 +291,6 @@ public class CredencialesPanel {
 
     private void guardarCambios(String emailActual, String nuevoEmail, String nuevaContraseña) {
         try {
-            // Validaciones
             if (nuevoEmail.isEmpty() || nuevaContraseña.isEmpty()) {
                 showErrorDialog("Todos los campos son obligatorios");
                 return;

@@ -61,7 +61,6 @@ public class ControllerDoctor {
         return instancia;
     }
     
-    // ================== Setters para inyectar componentes ==================
     public void setTablaDoctores(JTable tablaDoctores) {
         this.tablaDoctores = tablaDoctores;
         this.tableModelDoctor = (DefaultTableModel) tablaDoctores.getModel();
@@ -79,7 +78,6 @@ public class ControllerDoctor {
     public void setDateChooserContratacion(JDateChooser dateChooserContratacion) { this.dateChooserContratacion = dateChooserContratacion; }
     public void setjComboBox_estado_doctor(JComboBox<String> jComboBox_estado_doctor) { this.jComboBox_estado_doctor = jComboBox_estado_doctor; }
 
-    // ================== Inicializar Tabla ==================
     public void initTableDoctor() {
         tableModelDoctor = new DefaultTableModel(
             new Object[]{"Nombre", "Apellidos", "Cédula", "Teléfono", "Correo", 
@@ -93,7 +91,6 @@ public class ControllerDoctor {
         tablaDoctores.setModel(tableModelDoctor);
     }
     
-    // ================== Cargar Médicos en Tabla ==================
     public void cargarDatosEnTablaDoctor() {
         try {
             tableModelDoctor.setRowCount(0);
@@ -132,7 +129,6 @@ public class ControllerDoctor {
         }
     }
     
-    // ================== Guardar Nuevo Médico ==================
     public void guardarDoctorDesdeFormulario() {
         try {
             String nombres = txtNombre.getText().trim();
@@ -213,7 +209,6 @@ public class ControllerDoctor {
         }    
     }
     
-    // ================== Actualizar Médico ==================
     public void actualizarDoctor() {
         try {
             int filaSeleccionada = tablaDoctores.getSelectedRow();
@@ -304,7 +299,6 @@ public class ControllerDoctor {
         }
     }
     
-    // ================== Eliminar / Deshabilitar ==================
     public void eliminarDoctorSeleccionado() {
         int filaSeleccionada = tablaDoctores.getSelectedRow();
         if (filaSeleccionada == -1) {
@@ -335,7 +329,6 @@ public class ControllerDoctor {
         }
     }
     
-    // ================== Utilidades ==================
     public void limpiarFormulario() {
         txtNombre.setText("");
         txtApellidos.setText("");

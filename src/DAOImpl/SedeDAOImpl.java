@@ -169,7 +169,6 @@ public class SedeDAOImpl implements SedeDAO {
                     }
                 }
             } catch (NumberFormatException e) {
-                // Ignorar códigos que no siguen el formato esperado
             }
         }
         

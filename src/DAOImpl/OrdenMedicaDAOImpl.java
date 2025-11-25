@@ -65,22 +65,7 @@ public OrdenMedica obtenerPorIdCita(String idCita) {
     return null;
 }
 
- 
-/*
 
-public String generarCodigoOrden(){
-List<OrdenMedica> ordenmedica = cargarTodas();
-int maxNumero=0;
-
-for(OrdenMedica orden : ordenmedica ){
-  try{
-  }catch(NumberFormatException e){
-  
-  
-  }
-}
-
-}*/
 
 
 }

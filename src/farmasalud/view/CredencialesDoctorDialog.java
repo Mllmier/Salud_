@@ -32,12 +32,10 @@ public class CredencialesDoctorDialog extends JDialog {
         JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        // Panel de título
         JLabel titleLabel = new JLabel("Gestión de Credenciales Médico");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
         mainPanel.add(titleLabel, BorderLayout.NORTH);
 
-        // Panel de formulario
         JPanel formPanel = new JPanel(new GridLayout(3, 2, 5, 5));
         
         formPanel.add(new JLabel("Correo electrónico:"));
@@ -60,7 +58,6 @@ public class CredencialesDoctorDialog extends JDialog {
         
         mainPanel.add(formPanel, BorderLayout.CENTER);
 
-        // Panel de botones
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         cancelButton = new JButton("Cancelar");
         cancelButton.addActionListener(e -> dispose());
@@ -95,7 +92,6 @@ public class CredencialesDoctorDialog extends JDialog {
             String nuevoEmail = emailField.getText().trim();
             String nuevaContraseña = new String(passwordField.getPassword()).trim();
             
-            // Validaciones básicas
             if (nuevoEmail.isEmpty()) {
                 JOptionPane.showMessageDialog(CredencialesDoctorDialog.this, 
                     "El correo electrónico no puede estar vacío", 
@@ -103,7 +99,6 @@ public class CredencialesDoctorDialog extends JDialog {
                 return;
             }
             
-            // Verificar si el nuevo email ya está en uso (excepto si es el mismo)
             if (!nuevoEmail.equalsIgnoreCase(currentEmail) && medicoDAO.existeEmail(nuevoEmail)) {
                 JOptionPane.showMessageDialog(CredencialesDoctorDialog.this, 
                     "El correo electrónico ya está en uso por otro médico", 

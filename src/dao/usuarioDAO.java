@@ -26,13 +26,7 @@ public class usuarioDAO {
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
      public static Medico medicoActual; 
      public static Recepcionista recepcionistaActual;
-    /**
-     * Valida las credenciales de un usuario según su rol
-     * @param email Correo electrónico del usuario
-     * @param contraseña Contraseña del usuario
-     * @param rol Rol del usuario (Administrador, Médico, Recepcionista, Paciente)
-     * @return Objeto del tipo de usuario correspondiente o null si no se encuentra
-     */
+  
     public Object validarCredenciales(String email, String contraseña, String rol) {
         try {
             switch (rol) {

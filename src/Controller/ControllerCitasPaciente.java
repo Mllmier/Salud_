@@ -325,7 +325,6 @@ public class ControllerCitasPaciente {
             JOptionPane.ERROR_MESSAGE);
         return;
     }
-    // Modifica esta parte del método guardarCitaDesdeFormulario:
      if (cboMedico.getSelectedItem() == null || "<Seleccione>".equals(cboMedico.getSelectedItem().toString())) {
     JOptionPane.showMessageDialog(null, "Debe seleccionar un médico", "Error", JOptionPane.ERROR_MESSAGE);
     return;
@@ -345,7 +344,7 @@ public class ControllerCitasPaciente {
         "Por favor seleccione una fecha válida", 
         "Fecha requerida", 
         JOptionPane.ERROR_MESSAGE);
-    JDateFechaCita.requestFocus(); // Enfoca el campo de fecha
+    JDateFechaCita.requestFocus();
     return;
 }
         String horaCita = cboHoraCita.getSelectedItem().toString();

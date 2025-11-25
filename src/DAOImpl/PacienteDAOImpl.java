@@ -128,7 +128,6 @@ public class PacienteDAOImpl implements PacienteDAO{
         return false;
     }
 
-    // Adaptador LocalDate para Gson
     private static class LocalDateAdapter extends TypeAdapter<LocalDate> {
         private final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 
@@ -150,12 +149,10 @@ public class PacienteDAOImpl implements PacienteDAO{
     
     for (Paciente paciente : pacientes) {
         if (paciente.getEmail().equalsIgnoreCase(emailActual)) {
-            // Actualizar email si se proporciona uno nuevo
             if (nuevoEmail != null && !nuevoEmail.isEmpty()) {
                 paciente.setEmail(nuevoEmail);
             }
             
-            // Actualizar contraseña si se proporciona una nueva
             if (nuevaContraseña != null && !nuevaContraseña.isEmpty()) {
                 paciente.setContraseña(nuevaContraseña);
             }

@@ -23,12 +23,11 @@ private Cita citaSeleccionada;
 public void setCita(Cita cita) {
     this.citaSeleccionada = cita;
 
-    // Obtener la orden médica asociada a esta cita
     OrdenMedicaDAOImpl dao = new OrdenMedicaDAOImpl();
     this.ordenMedica = dao.obtenerPorIdCita(cita.getIdCita());
 
     if (ordenMedica != null) {
-        cargarDatos();  // llenar campos con los datos de la orden
+        cargarDatos();  
     } else {
         JOptionPane.showMessageDialog(this, "No se encontró una orden médica para esta cita.");
     }
@@ -45,7 +44,7 @@ public void setCita(Cita cita) {
         initComponents();
         
    btnDescargar.addActionListener(e -> {
-    if (ordenMedica != null) { // usamos la orden cargada
+    if (ordenMedica != null) { 
         ControllerOrdenMedica.getInstance().descargarPdfOrdenMedica(ordenMedica);
     } else {
         JOptionPane.showMessageDialog(this, "No se encontró la orden médica.");

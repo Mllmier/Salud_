@@ -13,7 +13,6 @@ import model.Sede;
 
 public class ControllerSede {
 
-    // ---------------- Singleton ----------------
     private static ControllerSede instancia;
 
     public static synchronized ControllerSede getInstancia() {
@@ -23,7 +22,6 @@ public class ControllerSede {
         return instancia;
     }
 
-    // ---------------- Atributos ----------------
     private DefaultTableModel tableModelSedes;
     private SedeDAO sedeDAO = SedeDAOImpl.getInstance();
     private String codigoOriginal;
@@ -34,7 +32,6 @@ public class ControllerSede {
     private JTextField txtDireccion;
     private JTextField txtHorarioAtencion;
 
-    // ---------------- Setters ----------------
     public void setTablaSedes(JTable tablaSedes) {
         this.tablaSedes = tablaSedes;
         this.tableModelSedes = (DefaultTableModel) tablaSedes.getModel();
@@ -56,7 +53,6 @@ public class ControllerSede {
         this.txtHorarioAtencion = txtHorarioAtencion;
     }
 
-    // ---------------- Inicializar Tabla ----------------
     public void initTableSedes() {
         tableModelSedes = new DefaultTableModel(
             new Object[]{"Código Sede", "Nombre Sede", "Dirección", "Horario Atención"}, 0) {
@@ -68,7 +64,6 @@ public class ControllerSede {
         tablaSedes.setModel(tableModelSedes);
     }
 
-    // ---------------- Cargar datos ----------------
     public void cargarDatosEnTablaSedes() {
         tableModelSedes.setRowCount(0);
         List<Sede> sedes = sedeDAO.cargarTodasSedes();
@@ -83,7 +78,6 @@ public class ControllerSede {
         }
     }
 
-    // ---------------- Guardar Sede ----------------
     public void guardarSedeDesdeFormulario() {
         try {
             String nombreSede = txtNombreSede.getText().trim();
@@ -133,7 +127,6 @@ public class ControllerSede {
         }
     }
 
-    // ---------------- Actualizar ----------------
     public void actualizarSede() {
         try {
             int filaSeleccionada = tablaSedes.getSelectedRow();
@@ -202,7 +195,6 @@ public class ControllerSede {
         }
     }
 
-    // ---------------- Eliminar ----------------
     public void eliminarSedeSeleccionada() {
         int filaSeleccionada = tablaSedes.getSelectedRow();
         if (filaSeleccionada == -1) {
@@ -239,7 +231,6 @@ public class ControllerSede {
         }
     }
 
-    // ---------------- Buscar ----------------
     public void buscarSedes(String criterio) {
         try {
             List<Sede> resultados = sedeDAO.buscarSedes(criterio);
@@ -269,7 +260,6 @@ public class ControllerSede {
         }
     }
 
-    // ---------------- Utilidades ----------------
     public void limpiarSede() {
         txtNombreSede.setText("");
         txtCodigoSede.setText("");

@@ -94,12 +94,11 @@ public void setDocumentoPaciente(String documentoPaciente) {
 
 
 
-// Dentro de tu clase
 
 private boolean esFechaValida(String fecha, String formato) {
     try {
         SimpleDateFormat sdf = new SimpleDateFormat(formato);
-        sdf.setLenient(false); // Para validar estrictamente la fecha
+        sdf.setLenient(false); 
         sdf.parse(fecha);
         return true;
     } catch (Exception e) {
@@ -166,7 +165,6 @@ public void setFilaSeleccionada(int fila) {
                     fechaFormateada = new SimpleDateFormat("dd/MM/yyyy").format(parsed);
                 } catch (Exception e1) {
                     try {
-                        // Intentar dd/MM/yyyy
                         Date parsed = new SimpleDateFormat("dd/MM/yyyy").parse(fechaStr);
                         fechaFormateada = new SimpleDateFormat("dd/MM/yyyy").format(parsed);
                     } catch (Exception e2) {
@@ -246,6 +244,7 @@ public void setFilaSeleccionada(int fila) {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         areaDiagnostico = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
@@ -327,15 +326,25 @@ public void setFilaSeleccionada(int fila) {
 
         jPanel3.setBackground(new java.awt.Color(28, 43, 110));
 
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Farma Salud");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 930, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(361, 361, 361)
+                .addComponent(jLabel14)
+                .addContainerGap(362, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 110, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 930, 110));
@@ -570,7 +579,7 @@ public void setFilaSeleccionada(int fila) {
                 .addComponent(txtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(77, 77, 77)
                 .addComponent(btnBuscar)
-                .addContainerGap(378, Short.MAX_VALUE))
+                .addContainerGap(379, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -610,7 +619,7 @@ public void setFilaSeleccionada(int fila) {
                 btnGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 640, -1, -1));
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 640, -1, -1));
 
         btnSeleccionarMedicamento.setText("Seleccionar Medicamento");
         btnSeleccionarMedicamento.addActionListener(new java.awt.event.ActionListener() {
@@ -660,7 +669,7 @@ public void setFilaSeleccionada(int fila) {
                 btnSeleccionarExamenesActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSeleccionarExamenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 570, 170, 40));
+        jPanel1.add(btnSeleccionarExamenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 580, 170, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 670));
 
@@ -689,22 +698,21 @@ java.awt.Window parentWindow = SwingUtilities.getWindowAncestor(this);
             "Ingrese un número de documento.", 
             "Campo vacío", 
             JOptionPane.WARNING_MESSAGE);
-        txtDocumento.requestFocus(); // Enfocar el campo
+        txtDocumento.requestFocus(); 
         return;
     }
 
-    // 2. Validar que solo contenga números (si es necesario)
     if (!documento.matches("\\d+")) {
         JOptionPane.showMessageDialog(this, 
             "El documento solo puede contener números.", 
             "Error de formato", 
             JOptionPane.ERROR_MESSAGE);
-        txtDocumento.setText(""); // Limpiar el campo
+        txtDocumento.setText("");
         txtDocumento.requestFocus();
         return;
     }
 
-    // 3. Validar longitud (ejemplo: DNI debe tener 8 dígitos)
+  
     if (documento.length() < 7 || documento.length() > 10) {
         JOptionPane.showMessageDialog(this, 
             "El documento debe tener entre 7 y 10 dígitos.", 
@@ -714,9 +722,9 @@ java.awt.Window parentWindow = SwingUtilities.getWindowAncestor(this);
         return;
     }
 
-    // 4. Ejecutar la búsqueda del paciente
+   
     try {
-        buscarPaciente(); // Llama a tu método de búsqueda
+        buscarPaciente();
     } catch (Exception e) {
         JOptionPane.showMessageDialog(this, 
             "Error al buscar paciente: " + e.getMessage(), 
@@ -727,10 +735,8 @@ java.awt.Window parentWindow = SwingUtilities.getWindowAncestor(this);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void txtDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDocumentoActionPerformed
-        // TODO add your handling code here:
          String documento = txtDocumento.getText().trim();
     
-    // Validar que no esté vacío
     if (documento.isEmpty()) {
         JOptionPane.showMessageDialog(this, 
             "El documento no puede estar vacío.", 
@@ -740,7 +746,6 @@ java.awt.Window parentWindow = SwingUtilities.getWindowAncestor(this);
         return;
     }
     
-    // Validar que solo contenga números
     if (!documento.matches("\\d+")) {
         JOptionPane.showMessageDialog(this, 
             "Solo se permiten números en el documento.", 
@@ -751,7 +756,6 @@ java.awt.Window parentWindow = SwingUtilities.getWindowAncestor(this);
         return;
     }
     
-    // Validar longitud (7 a 10 dígitos)
     if (documento.length() < 7 || documento.length() > 10) {
         JOptionPane.showMessageDialog(this, 
             "El documento debe tener entre 7 y 10 dígitos.", 
@@ -780,8 +784,6 @@ java.awt.Window parentWindow = SwingUtilities.getWindowAncestor(this);
         return;
     }
 
-    // Validar formatos numéricos
-   // Validar Altura
 try {
     String alturaTxt = lblAltura.getText().trim().replace(",", ".");
     double altura = Double.parseDouble(alturaTxt);
@@ -795,7 +797,6 @@ try {
     return;
 }
 
-// Validar Peso
 try {
     String pesoTxt = txtPeso.getText().trim().replace(",", ".");
     double peso = Double.parseDouble(pesoTxt);
@@ -810,7 +811,6 @@ try {
 }
 
 
-    // Si todo está correcto, guardar
     try {
         OrdenMedica guardarOrden = getOrdenMedica();
         OrdenMEdica.guardarOrdenMedica(guardarOrden);
@@ -819,14 +819,11 @@ try {
         citaSeleccionada.setEstado(Cita.EstadoCita.COMPLETADA);
         ControllerCitas.getInstance().actualizarCita(citaSeleccionada);
         
-        // Actualizar cita en controlador / DAO para persistir
         ControllerCitas controllerCitas = ControllerCitas.getInstance();
         controllerCitas.actualizarCita(citaSeleccionada);
 
-        // Notificar actualización para refrescar interfaces
         controllerCitas.notificarCitaActualizada(citaSeleccionada);
 
-        // Actualizar estado en la tabla (columnaEstado es el índice correcto)
         if (tableModel != null && filaSeleccionada != -1) {
             tableModel.setValueAt("Completada", filaSeleccionada, columnaEstado);
         }
@@ -841,11 +838,9 @@ try {
 paciente.setPeso(Double.parseDouble(txtPeso.getText().trim()));
 paciente.setAltura(Double.parseDouble(lblAltura.getText().trim()));
 
-// Guardar los cambios en el DAO
 ControllerPaciente controllerPaciente = ControllerPaciente.getInstance();
 controllerPaciente.actualizarPaciente(paciente.getNumeroDocumento(), paciente);
 
-// Notificar a las interfaces que escuchan cambios en pacientes
 controllerPaciente.notificarPacienteActualizado(paciente);
    
    JOptionPane.showMessageDialog(this, "Orden Guardada correctamente");
@@ -974,6 +969,7 @@ java.awt.Window parentWindow = SwingUtilities.getWindowAncestor(this);
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;

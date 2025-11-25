@@ -182,7 +182,7 @@ controller.cargarDatosEnTabla();
 
         if (dialogAtender != null) {
             dialogAtender.setDiagnostico(diagnosticoCompleto);
-            this.dispose(); // Cierra el diálogo Enfermedades si ya seleccionó
+            this.dispose(); 
         }
     } else {
         JOptionPane.showMessageDialog(this, "Seleccione una enfermedad.");

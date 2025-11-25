@@ -85,7 +85,6 @@ public class ControllerSalas {
                 return;
             }
             
-            // Solución: Verificar nulos en la comparación
             boolean existe = salasDAO.cargarTodasSalas().stream()
                 .anyMatch(s -> s != null && codigoSala.equals(s.getCodigoSala()));
             

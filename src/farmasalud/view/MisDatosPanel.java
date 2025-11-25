@@ -35,7 +35,6 @@ public class MisDatosPanel {
                 return;
             }
 
-            // Configurar el diálogo con sombra y bordes redondeados
             dialog = new JDialog(parentFrame, "Mis Datos Personales", true) {
                 @Override
                 public void paint(Graphics g) {
@@ -52,7 +51,6 @@ public class MisDatosPanel {
             dialog.setSize(500, 650);
             dialog.setLocationRelativeTo(parentFrame);
 
-            // Panel principal con efecto de vidrio
             JPanel mainPanel = new JPanel(new BorderLayout()) {
                 @Override
                 protected void paintComponent(Graphics g) {
@@ -60,12 +58,10 @@ public class MisDatosPanel {
                     Graphics2D g2d = (Graphics2D) g;
                     g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
                     
-                    // Fondo degradado
                     GradientPaint gp = new GradientPaint(0, 0, new Color(248, 248, 255), 0, getHeight(), new Color(220, 230, 250));
                     g2d.setPaint(gp);
                     g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 20, 20);
                     
-                    // Borde sutil
                     g2d.setStroke(new BasicStroke(2));
                     g2d.setColor(new Color(200, 200, 255));
                     g2d.drawRoundRect(1, 1, getWidth()-2, getHeight()-2, 20, 20);
@@ -74,7 +70,6 @@ public class MisDatosPanel {
             mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
             mainPanel.setOpaque(false);
 
-            // Encabezado con icono
             JPanel headerPanel = new JPanel(new BorderLayout());
             headerPanel.setOpaque(false);
             
@@ -85,13 +80,11 @@ public class MisDatosPanel {
             
             headerPanel.add(title, BorderLayout.CENTER);
             
-            // Icono de usuario (puedes reemplazarlo con tu propia imagen)
-            JLabel iconLabel = new JLabel(new ImageIcon("src/resources/images/user_icon.png")); // Ajusta la ruta
+            JLabel iconLabel = new JLabel(new ImageIcon("src/resources/images/user_icon.png")); 
             iconLabel.setPreferredSize(new Dimension(80, 80));
             iconLabel.setHorizontalAlignment(SwingConstants.CENTER);
             headerPanel.add(iconLabel, BorderLayout.WEST);
 
-            // Panel de información con efecto de tarjeta
             JPanel infoCard = new JPanel(new GridBagLayout()) {
                 @Override
                 protected void paintComponent(Graphics g) {
@@ -112,7 +105,6 @@ public class MisDatosPanel {
             gbc.anchor = GridBagConstraints.WEST;
             gbc.fill = GridBagConstraints.HORIZONTAL;
 
-            // Campos de información editables
             camposEdicion = new JTextField[8];
             
             agregarCampoEditable(infoCard, gbc, 0, "Nombres:", adminOriginal.get("nombres").getAsString());
@@ -129,26 +121,21 @@ public class MisDatosPanel {
             agregarCampoEditable(infoCard, gbc, 6, "EPS:", adminOriginal.get("eps").getAsString());
             agregarCampoEditable(infoCard, gbc, 7, "Celular:", adminOriginal.get("celular").getAsString());
 
-            // Panel de botones
             JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 0));
             buttonPanel.setOpaque(false);
             buttonPanel.setBorder(BorderFactory.createEmptyBorder(15, 0, 0, 0));
 
-            // Botón de editar
             btnEditar = crearBotonEstilizado("Editar Datos", PRIMARY_COLOR);
             btnEditar.addActionListener(e -> toggleModoEdicion());
             
-            // Botón de guardar
             btnGuardar = crearBotonEstilizado("Guardar Cambios", new Color(0, 150, 0));
             btnGuardar.setVisible(false);
             btnGuardar.addActionListener(e -> guardarCambios());
             
-            // Botón de cancelar
             JButton btnCancelar = crearBotonEstilizado("Cancelar", new Color(150, 0, 0));
             btnCancelar.setVisible(false);
             btnCancelar.addActionListener(e -> toggleModoEdicion(false));
             
-            // Botón de cerrar
             JButton btnCerrar = crearBotonEstilizado("Cerrar", new Color(100, 100, 100));
             btnCerrar.addActionListener(e -> dialog.dispose());
 
@@ -157,7 +144,6 @@ public class MisDatosPanel {
             buttonPanel.add(btnCancelar);
             buttonPanel.add(btnCerrar);
 
-            // Ensamblar componentes
             mainPanel.add(headerPanel, BorderLayout.NORTH);
             mainPanel.add(new JScrollPane(infoCard), BorderLayout.CENTER);
             mainPanel.add(buttonPanel, BorderLayout.SOUTH);
@@ -247,7 +233,6 @@ public class MisDatosPanel {
 
     private void guardarCambios() {
         try {
-            // Validar campos
             for (JTextField campo : camposEdicion) {
                 if (campo.getText().trim().isEmpty()) {
                     JOptionPane.showMessageDialog(dialog, 
@@ -258,7 +243,6 @@ public class MisDatosPanel {
                 }
             }
 
-            // Validar formato de fecha
             try {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                 LocalDate.parse(camposEdicion[4].getText(), formatter);
@@ -270,7 +254,6 @@ public class MisDatosPanel {
                 return;
             }
 
-            // Crear objeto con los datos modificados
             JsonObject adminModificado = new JsonObject();
             adminModificado.addProperty("nombres", camposEdicion[0].getText());
             adminModificado.addProperty("apellidos", camposEdicion[1].getText());
@@ -285,7 +268,6 @@ public class MisDatosPanel {
             adminModificado.addProperty("email", adminOriginal.get("email").getAsString());
             adminModificado.addProperty("contraseña", adminOriginal.get("contraseña").getAsString());
 
-            // Actualizar en el JSON
             AdminDAO adminDAO = new AdminDAOImpl();
             boolean success = adminDAO.actualizarDatosAdministrador(
                 adminOriginal.get("email").getAsString(),

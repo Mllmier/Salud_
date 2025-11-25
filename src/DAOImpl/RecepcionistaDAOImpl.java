@@ -38,10 +38,7 @@ public class RecepcionistaDAOImpl implements RecepcionistaDAO {
         return instancia;
     }
 
-    // ============================================================
-    // MÉTODOS PRINCIPALES DEL DAO
-    // ============================================================
-
+  
     @Override
     public List<Recepcionista> cargarTodos() {
         asegurarArchivoExiste();
@@ -205,10 +202,7 @@ public class RecepcionistaDAOImpl implements RecepcionistaDAO {
         return false;
     }
 
-    // ============================================================
-    // NUEVO MÉTODO — ACTUALIZAR ESTADO
-    // ============================================================
-
+  
     @Override
     public boolean actualizarEstado(String numeroDocumento, String nuevoEstado) {
         try {
@@ -227,10 +221,7 @@ public class RecepcionistaDAOImpl implements RecepcionistaDAO {
         return false;
     }
 
-    // ============================================================
-    // MÉTODOS AUXILIARES
-    // ============================================================
-
+   
     private void asegurarArchivoExiste() {
         File archivo = new File(ARCHIVO_JSON);
         if (!archivo.exists()) {
@@ -244,7 +235,6 @@ public class RecepcionistaDAOImpl implements RecepcionistaDAO {
         }
     }
 
-    // Adaptador para manejar LocalDate en GSON
     private static class LocalDateAdapter extends TypeAdapter<LocalDate> {
         private final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 

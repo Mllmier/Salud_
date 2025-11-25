@@ -15,9 +15,8 @@ public class Recepcionista extends Persona {
     private String horario;
 
     @SerializedName("estado")
-    private String estado; // Nuevo campo: "Activo" o "Deshabilitado"
+    private String estado; 
 
-    // 🔹 Constructor con estado (para nuevos o actualizados)
     public Recepcionista(String numeroDocumento, String nombres, String apellidos,
                          LocalDate fechaNacimiento, String sexo, String eps,
                          String email, String celular, String contraseña,
@@ -31,7 +30,6 @@ public class Recepcionista extends Persona {
         this.estado = estado;
     }
 
-    // 🔹 Constructor antiguo (por compatibilidad, estado por defecto "Activo")
     public Recepcionista(String numeroDocumento, String nombres, String apellidos,
                          LocalDate fechaNacimiento, String sexo, String eps,
                          String email, String celular, String contraseña,
@@ -42,7 +40,6 @@ public class Recepcionista extends Persona {
              email, celular, contraseña, codigoEmpleado, fechaContratacion, horario, "Activo");
     }
 
-    // --- Getters y Setters ---
     public String getCodigoEmpleado() {
         return codigoEmpleado;
     }

@@ -90,7 +90,6 @@ itemAtender.addActionListener(evt -> {
             return;
         }
 
-        // Documento paciente
         Object valorDocumento = tableCitasPorMedico.getValueAt(filaSeleccionada, 0);
         String documentoPaciente = valorDocumento.toString(); 
 
@@ -101,7 +100,6 @@ itemAtender.addActionListener(evt -> {
         }
         cita.setPaciente(paciente);
 
-        // Datos de la tabla
         Object valorFecha = tableCitasPorMedico.getValueAt(filaSeleccionada, 8);
         Object valorHora = tableCitasPorMedico.getValueAt(filaSeleccionada, 6);
         Object valorMotivo = tableCitasPorMedico.getValueAt(filaSeleccionada, 15);
@@ -110,7 +108,6 @@ itemAtender.addActionListener(evt -> {
 
         String estadoActual = valorEstado != null ? valorEstado.toString().trim().toUpperCase() : "";
 
-        // ❌ NO Permitimos atender una cita ya completada
         if (estadoActual.equals("COMPLETADA")) {
             JOptionPane.showMessageDialog(this,
                 "Esta cita ya fue atendida. No se puede volver a abrir.",
@@ -120,7 +117,6 @@ itemAtender.addActionListener(evt -> {
             return;
         }
 
-        // ❌ NO Permitimos atender si NO ASISTIÓ
         if (estadoActual.equals("NOASISTIO") || estadoActual.equals("NO ASISTIÓ")) {
             JOptionPane.showMessageDialog(this,
                 "Esta cita fue marcada como 'NO ASISTIÓ'. No se puede atender.",
@@ -130,7 +126,6 @@ itemAtender.addActionListener(evt -> {
             return;
         }
 
-        // ✔ Si llega aquí, SÍ puede atender
         if (valorFecha != null && valorHora != null) {
             String fecha = valorFecha.toString();
             String hora = valorHora.toString();
@@ -157,7 +152,6 @@ itemAtender.addActionListener(evt -> {
 
 
 
-        // Agregar MouseListener para mostrar el menú contextual
         tableCitasPorMedico.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -186,7 +180,6 @@ itemAtender.addActionListener(evt -> {
         return;
     }
 
-    // Obtener ID de la cita
     Object idObj = tableCitasPorMedico.getValueAt(filaSeleccionada, 5);
     String idCita = idObj != null ? idObj.toString().trim() : "";
 
@@ -195,7 +188,6 @@ itemAtender.addActionListener(evt -> {
         return;
     }
 
-    // Buscar cita en memoria
     Cita cita = ControllerCitas.getInstance().buscarCitaPorId(idCita);
     if (cita == null) {
         JOptionPane.showMessageDialog(this, "No se encontró la cita con id: " + idCita);
@@ -208,10 +200,10 @@ itemAtender.addActionListener(evt -> {
             "Acción no permitida",
             JOptionPane.WARNING_MESSAGE
         );
-        return; // ← detiene la acción
+        return; 
     }
 
-    // Si ya está marcada como NO ASISTIÓ evita volver a cambiar
+   
     if (cita.getEstado() == Cita.EstadoCita.NOASISTIO) {
         JOptionPane.showMessageDialog(this,
             "Esta cita YA está marcada como 'No asistió'.",
@@ -221,16 +213,13 @@ itemAtender.addActionListener(evt -> {
         return;
     }
 
-    // Cambiar estado
     cita.setEstado(Cita.EstadoCita.NOASISTIO);
     ControllerCitas.getInstance().actualizarCita(cita);
 
-    // REFRESCAR TABLA SEGÚN DISPONIBILIDAD DEL CONTROLLER
     try {
         if (controllerCargarMedicos != null) {
             controllerCargarMedicos.cargarCitasMedicoEnTabla();
         } else {
-            // Si no existe el controlador, solo actualiza visualmente la tabla
             tableCitasPorMedico.setValueAt("NOASISTIO", filaSeleccionada, 11);
         }
 
@@ -250,8 +239,8 @@ itemAtender.addActionListener(evt -> {
     }
     private void actualizarEstadoEnTabla(String idCita, String nuevoEstado) {
     DefaultTableModel model = (DefaultTableModel) tableCitasPorMedico.getModel();
-    int columnaId = 0;      // Asegúrate que el ID está en esta columna
-    int columnaEstado = 11; // Asegúrate que el estado está en esta columna
+    int columnaId = 0;      
+    int columnaEstado = 11;
 
     for (int i = 0; i < model.getRowCount(); i++) {
         Object valorId = model.getValueAt(i, columnaId);
@@ -271,8 +260,8 @@ itemAtender.addActionListener(evt -> {
         actualizarInterfaz();
 
         ControllerCargarMedicosCitas controller = new ControllerCargarMedicosCitas();
-        controller.setTablaCitas(tableCitasPorMedico); // tu JTable
-        controller.setDocumentoMedico(documentoDoctor); // aquí ya tiene el valor correcto
+        controller.setTablaCitas(tableCitasPorMedico); 
+        controller.setDocumentoMedico(documentoDoctor); 
         controller.initTableModelCita(); 
         controller.cargarCitasMedicoEnTabla(); 
    tableCitasPorMedico.addMouseListener(new MouseAdapter() {
@@ -292,32 +281,27 @@ itemAtender.addActionListener(evt -> {
     }
     private void filtrarCitasPorFecha(Date fechaSeleccionada) {
     try {
-        // Formatear la fecha seleccionada para comparación (mismo formato que en la tabla)
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String fechaSeleccionadaStr = sdf.format(fechaSeleccionada);
         
-        System.out.println("Buscando fecha: " + fechaSeleccionadaStr); // Debug
+        System.out.println("Buscando fecha: " + fechaSeleccionadaStr); 
         
-        // Obtener el modelo de la tabla
         DefaultTableModel model = (DefaultTableModel) tableCitasPorMedico.getModel();
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
         tableCitasPorMedico.setRowSorter(sorter);
 
-        // Crear filtro para mostrar solo las citas del día seleccionado
         sorter.setRowFilter(new RowFilter<DefaultTableModel, Integer>() {
             @Override
             public boolean include(Entry<? extends DefaultTableModel, ? extends Integer> entry) {
                 try {
-                    // Usar columna 8 que es "Fecha Cita"
                     Object fechaValue = entry.getValue(8);
                     
                     if (fechaValue != null) {
                         String fechaCitaStr = fechaValue.toString().trim();
-                        System.out.println("Comparando: " + fechaCitaStr + " con " + fechaSeleccionadaStr); // Debug
+                        System.out.println("Comparando: " + fechaCitaStr + " con " + fechaSeleccionadaStr); 
                         
-                        // Comparar las fechas como strings
                         boolean coincide = fechaCitaStr.equals(fechaSeleccionadaStr);
-                        System.out.println("Resultado: " + coincide); // Debug
+                        System.out.println("Resultado: " + coincide); 
                         return coincide;
                     }
                     return false;
@@ -328,7 +312,6 @@ itemAtender.addActionListener(evt -> {
             }
         });
         
-        // Mostrar resultado del filtrado
         int filasVisibles = 0;
         for (int i = 0; i < model.getRowCount(); i++) {
             if (sorter.convertRowIndexToView(i) >= 0) {
@@ -393,10 +376,10 @@ itemAtender.addActionListener(evt -> {
         Diagnostico = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         PanelDiagnostico = new javax.swing.JPanel();
@@ -464,15 +447,21 @@ itemAtender.addActionListener(evt -> {
         jPanel2.add(Diagnostico, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 260, 70));
 
         jButton1.setBackground(new java.awt.Color(28, 43, 110));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("regresar");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, 80, -1));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 548, 110, 30));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("\"Tu bienestar, nuestra prioridad.\"  ");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 20, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 630));
 
@@ -480,15 +469,10 @@ itemAtender.addActionListener(evt -> {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 17, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Farma Salud");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 17, 149, 54));
-
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("\"Tu bienestar, nuestra prioridad.\"  ");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(518, 28, -1, -1));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 220, 54));
         jPanel3.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 79, 65));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 1280, 100));
@@ -596,7 +580,6 @@ itemAtender.addActionListener(evt -> {
     private void dateChooserFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateChooserFechaActionPerformed
      Date fecha = dateChooserF.getDate();
     
-    // Validación de fecha seleccionada
     if (fecha == null) {
         JOptionPane.showMessageDialog(this, "Seleccione una fecha.", "Advertencia", JOptionPane.WARNING_MESSAGE);
         return;
@@ -604,7 +587,6 @@ itemAtender.addActionListener(evt -> {
     
     Date fechaSeleccionada = dateChooserF.getDate();
 
-    // Validación de fecha pasada
     Calendar calHoy = Calendar.getInstance();
     calHoy.set(Calendar.HOUR_OF_DAY, 0);
     calHoy.set(Calendar.MINUTE, 0);
@@ -620,7 +602,6 @@ itemAtender.addActionListener(evt -> {
     
     dateChooserF.setDateFormatString("dd/MM/yyyy"); 
     
-    // Validación de día de semana (lunes a viernes)
     Calendar calendar = Calendar.getInstance();
     calendar.setTime(fechaSeleccionada);
     int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
@@ -629,7 +610,6 @@ itemAtender.addActionListener(evt -> {
         return;
     }
     
-    // 🔥 Filtrar citas por la fecha seleccionada
     filtrarCitasPorFecha(fechaSeleccionada);
     }//GEN-LAST:event_dateChooserFechaActionPerformed
 

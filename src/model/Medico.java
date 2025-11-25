@@ -14,7 +14,7 @@ public class Medico extends Persona {
     private String horario;
 
     @SerializedName("estado")
-    private String estado;// Nuevo campo: Activo o Deshabilitado
+    private String estado;
     
     @SerializedName("sede")
     private String sede;

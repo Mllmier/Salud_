@@ -26,7 +26,6 @@ private DialogAtender dialogAtender;
         initComponents();
        ControllerCargarMedicosCitas.getInstance().setTabladeMedicamentos(tableMedicamentos);
 
-    // Ahora sí puedes cargar los datos
     ControllerCargarMedicosCitas.getInstance().cargarMedicamentosEnTabla();
        
     }
@@ -67,6 +66,7 @@ public void setDialogMedicamento(DialogAtender dialogAtender) {
         tableMedicamentos = new javax.swing.JTable();
         btnAgregarMedicamentos = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtMedicamento = new javax.swing.JTextField();
@@ -104,15 +104,25 @@ public void setDialogMedicamento(DialogAtender dialogAtender) {
 
         jPanel1.setBackground(new java.awt.Color(28, 43, 110));
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Farma Salud");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 760, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(307, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(305, 305, 305))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
 
         jPanel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 80));
@@ -165,8 +175,7 @@ public void setDialogMedicamento(DialogAtender dialogAtender) {
         String Medicamentos = "Medicamento: " + nombreMedicamento + "\nSíntomas: " + descripcion;
 
         if (dialogAtender!= null) {
-          //  dialogTratamiento.setMedicamento(Medicamentos);
-            this.dispose(); // Cierra el diálogo Enfermedades si ya seleccionó
+            this.dispose(); 
         }
     } else {
         JOptionPane.showMessageDialog(this, "Seleccione una enfermedad.");
@@ -220,6 +229,7 @@ public void setDialogMedicamento(DialogAtender dialogAtender) {
     private javax.swing.JButton btnBuscarMedicamento;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;

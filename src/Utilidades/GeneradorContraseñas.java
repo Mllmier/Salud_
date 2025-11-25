@@ -17,19 +17,16 @@ public class GeneradorContraseñas {
         
         StringBuilder contrasena = new StringBuilder(longitud);
         
-        // Asegurar al menos un caracter de cada tipo
         contrasena.append(MAYUSCULAS.charAt(random.nextInt(MAYUSCULAS.length())));
         contrasena.append(MINUSCULAS.charAt(random.nextInt(MINUSCULAS.length())));
         contrasena.append(NUMEROS.charAt(random.nextInt(NUMEROS.length())));
         contrasena.append(SIMBOLOS.charAt(random.nextInt(SIMBOLOS.length())));
         
-        // Completar el resto
         for (int i = 4; i < longitud; i++) {
             contrasena.append(caracteresPermitidos.charAt(
                 random.nextInt(caracteresPermitidos.length())));
         }
         
-        // Mezclar los caracteres
         return desordenarContrasena(contrasena.toString());
     }
     

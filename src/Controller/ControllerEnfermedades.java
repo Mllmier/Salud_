@@ -56,7 +56,6 @@ public class ControllerEnfermedades {
         this.txtCausas = txtCausas;
     }
     
-    // Inicializar tabla
     public void initTableEnfermedades() {
         tableModelEnfermedades = new DefaultTableModel(
             new Object[]{"ID", "Nombre", "Tipo", "Síntomas", "Causas"}, 0) {
@@ -65,7 +64,6 @@ public class ControllerEnfermedades {
                 return false;
             }
             
-            // Asegurar que la columna ID muestre valores enteros
             @Override
             public Class<?> getColumnClass(int columnIndex) {
                 if (columnIndex == 0) {
@@ -79,7 +77,6 @@ public class ControllerEnfermedades {
         }
     }
     
-    // Cargar datos en la tabla
     public void cargarDatosEnTabla() {
         if (tableModelEnfermedades == null) {
             initTableEnfermedades();
@@ -91,7 +88,7 @@ public class ControllerEnfermedades {
         for (Enfermedad enfermedad : enfermedades) {
             int id = enfermedad.getIdEnfermedad();
             Object[] row = {
-                id, // Aseguramos que el ID se envía como entero
+                id, 
                 enfermedad.getNombre(),
                 enfermedad.getTipo(),
                 convertirListaAString(enfermedad.getSintomas()),
@@ -99,21 +96,17 @@ public class ControllerEnfermedades {
             };
             tableModelEnfermedades.addRow(row);
             
-            // Verificación para depuración
             System.out.println("Cargando enfermedad ID: " + id + " - " + enfermedad.getNombre());
         }
     }
     
-    // Convertir lista a string para mostrar en la tabla
     private String convertirListaAString(List<String> lista) {
         if (lista == null || lista.isEmpty()) {
             return "";
         }
         return String.join(", ", lista);
     }
-    
-    // Convertir texto a lista
-    private List<String> convertirStringALista(String texto) {
+        private List<String> convertirStringALista(String texto) {
         if (texto == null || texto.trim().isEmpty()) {
             return Arrays.asList();
         }
@@ -123,10 +116,9 @@ public class ControllerEnfermedades {
                    .collect(Collectors.toList());
     }
     
-    // Guardar nueva enfermedad
+    
     public void guardarEnfermedadDesdeFormulario() {
         try {
-            // Validar que los componentes no sean nulos
             if (txtIdEnfermedad == null || txtNombre == null || txtTipo == null) {
                 JOptionPane.showMessageDialog(null, 
                     "Error: Componentes del formulario no inicializados", 
@@ -135,7 +127,6 @@ public class ControllerEnfermedades {
                 return;
             }
             
-            // Generar nuevo ID automáticamente si el campo está vacío
             int id;
             String idText = txtIdEnfermedad.getText().trim();
             if (idText.isEmpty()) {
@@ -210,7 +201,6 @@ public class ControllerEnfermedades {
         }    
     }
     
-    // Limpiar formulario
     public void limpiarFormulario() {
         if (txtIdEnfermedad != null) txtIdEnfermedad.setText("");
         if (txtNombre != null) txtNombre.setText("");
@@ -220,7 +210,6 @@ public class ControllerEnfermedades {
         this.idOriginal = null;
     }
     
-    // Eliminar enfermedad seleccionada
     public void eliminarEnfermedadSeleccionada() {
         if (tablaEnfermedades == null) {
             JOptionPane.showMessageDialog(null, 
@@ -239,7 +228,6 @@ public class ControllerEnfermedades {
             return;
         }
 
-        // Asegurar que obtenemos un entero y no un objeto
         Object idObj = tableModelEnfermedades.getValueAt(filaSeleccionada, 0);
         int idEnfermedad;
         
@@ -288,10 +276,8 @@ public class ControllerEnfermedades {
         }
     }
     
-    // Actualizar enfermedad
     public void actualizarEnfermedad() {
         try {
-            // Validar que hay un ID original (que se ha seleccionado una enfermedad)
             if (idOriginal == null) {
                 JOptionPane.showMessageDialog(null, 
                     "No hay enfermedad seleccionada para actualizar", 
@@ -300,7 +286,6 @@ public class ControllerEnfermedades {
                 return;
             }
             
-            // Validar componentes
             if (txtIdEnfermedad == null || txtNombre == null || txtTipo == null) {
                 JOptionPane.showMessageDialog(null, 
                     "Error: Componentes del formulario no inicializados", 
@@ -349,7 +334,6 @@ public class ControllerEnfermedades {
                 return;
             }
 
-            // Verificar si el ID ha cambiado
             if (idOriginal != id) {
                 if (enfermedadDAO.existeIdEnfermedad(id)) {
                     JOptionPane.showMessageDialog(null,
@@ -362,7 +346,6 @@ public class ControllerEnfermedades {
 
             Enfermedad enfermedadActualizada = new Enfermedad(id, nombre, tipo, sintomas, causas);
             
-            // Imprimir para depuración
             System.out.println("Actualizando enfermedad - ID Original: " + idOriginal);
             System.out.println("Nueva información: " + enfermedadActualizada);
 
@@ -408,7 +391,6 @@ public class ControllerEnfermedades {
         
         if (filaSeleccionada != -1) {
             try {
-                // Obtener ID y manejar diferentes tipos posibles
                 Object idObj = tableModelEnfermedades.getValueAt(filaSeleccionada, 0);
                 int id;
                 
@@ -420,7 +402,6 @@ public class ControllerEnfermedades {
                     throw new IllegalArgumentException("Tipo de ID no válido: " + (idObj != null ? idObj.getClass().getName() : "null"));
                 }
                 
-                // Si el ID es 0, buscar la enfermedad en la DAO por su posición o nombre
                 if (id == 0) {
                     String nombre = (String) tableModelEnfermedades.getValueAt(filaSeleccionada, 1);
                     List<Enfermedad> enfermedades = enfermedadDAO.buscarEnfermedades(nombre);
@@ -434,7 +415,6 @@ public class ControllerEnfermedades {
                     }
                 }
                 
-                // Recuperar la enfermedad completa desde el DAO para asegurar datos correctos
                 Enfermedad enfermedad = enfermedadDAO.buscarEnfermedadPorId(id);
                 if (enfermedad != null) {
                     if (txtIdEnfermedad != null) txtIdEnfermedad.setText(String.valueOf(enfermedad.getIdEnfermedad()));
@@ -445,10 +425,8 @@ public class ControllerEnfermedades {
                     
                     this.idOriginal = enfermedad.getIdEnfermedad();
                     
-                    // Imprimir para depuración
                     System.out.println("Cargado en formulario - ID: " + this.idOriginal);
                 } else {
-                    // Si no se encuentra por ID, usar los datos de la tabla directamente
                     String nombre = (String) tableModelEnfermedades.getValueAt(filaSeleccionada, 1);
                     String tipo = (String) tableModelEnfermedades.getValueAt(filaSeleccionada, 2);
                     String sintomas = (String) tableModelEnfermedades.getValueAt(filaSeleccionada, 3);
@@ -462,7 +440,6 @@ public class ControllerEnfermedades {
                     
                     this.idOriginal = id;
                     
-                    // Advertencia para depuración
                     System.out.println("ADVERTENCIA: Usando datos de tabla directamente - ID: " + id);
                 }
             } catch (Exception e) {
@@ -476,17 +453,15 @@ public class ControllerEnfermedades {
         }
     }
     
-    // Generar nuevo ID
     public void generarNuevoId() {
         if (txtIdEnfermedad != null) {
             int nuevoId = enfermedadDAO.generarNuevoId();
             txtIdEnfermedad.setText(String.valueOf(nuevoId));
             System.out.println("Nuevo ID generado: " + nuevoId);
         }
-        this.idOriginal = null; // Al generar nuevo ID, no hay enfermedad original
+        this.idOriginal = null; 
     }
     
-    // Buscar enfermedades
     public void buscarEnfermedades(String criterio) {
         try {
             if (tableModelEnfermedades == null) {
@@ -523,7 +498,6 @@ public class ControllerEnfermedades {
         }
     }
     
-    // Filtrar por tipo
     public void filtrarPorTipo(String tipo) {
         try {
             if (tableModelEnfermedades == null) {

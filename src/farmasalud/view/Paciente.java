@@ -28,22 +28,14 @@ public class Paciente extends javax.swing.JFrame {
     public Paciente( ) {
         initComponents();
  this.controller = ControllerCitasPaciente.getInstance();
-/*try {
-    String ruta = "C:\\Users\\Maria liz\\OneDrive\\Desktop\\Farmasalud_Oficial\\src\\resources\\Yaque.jpg";
-    ImageIcon iconoOriginal = new ImageIcon(ruta);
-    Image imagenEscalada = iconoOriginal.getImage().getScaledInstance(
-            imagenCentral.getWidth(), imagenCentral.getHeight(), Image.SCALE_SMOOTH);
-    imagenCentral.setIcon(new ImageIcon(imagenEscalada));
-} catch (Exception e) {
-    System.err.println("⚠️ No se pudo cargar la imagen: " + e.getMessage());
-}
-*/
+
+
   this.setLocationRelativeTo(null);
 
     }
    public Paciente(model.Paciente paciente) {
         initComponents();
-        this.controller = ControllerCitasPaciente.getInstance(); // ← evita el error
+        this.controller = ControllerCitasPaciente.getInstance(); 
         this.pacienteLogueado = paciente;
         this.setLocationRelativeTo(null);
     }
@@ -72,7 +64,9 @@ public class Paciente extends javax.swing.JFrame {
         btnConsultar = new javax.swing.JButton();
         btnAgendar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        imagenCentral = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -102,20 +96,20 @@ public class Paciente extends javax.swing.JFrame {
                         .addGap(56, 56, 56)
                         .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
+                        .addGap(64, 64, 64)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(677, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(47, 47, 47)
                 .addComponent(jLabel3)
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel6.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 1090, 70));
+        jPanel6.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 1090, 140));
 
         btnConsultar.setText("Consultar");
         btnConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +117,7 @@ public class Paciente extends javax.swing.JFrame {
                 btnConsultarActionPerformed(evt);
             }
         });
-        jPanel6.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, 171, 48));
+        jPanel6.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 460, 171, 48));
 
         btnAgendar.setText("Agendar Cita ");
         btnAgendar.addActionListener(new java.awt.event.ActionListener() {
@@ -131,7 +125,7 @@ public class Paciente extends javax.swing.JFrame {
                 btnAgendarActionPerformed(evt);
             }
         });
-        jPanel6.add(btnAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 470, 160, 48));
+        jPanel6.add(btnAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 530, 160, 48));
 
         jButton1.setText("Cambiar Contraseña");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -139,8 +133,19 @@ public class Paciente extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 470, -1, 48));
-        jPanel6.add(imagenCentral, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1090, 200));
+        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 530, -1, 48));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\HP\\OneDrive\\Desktop\\Imagen de WhatsApp 2025-11-25 a las 07.52.27_c077e10c.jpg")); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 600, 340));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel2.setText("Farma Salud");
+        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setText("\"Tu bienestar, nuestra prioridad.\"  ");
+        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, -1, -1));
 
         getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1100, 680));
 
@@ -242,9 +247,11 @@ public class Paciente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgendar;
     private javax.swing.JButton btnConsultar;
-    private javax.swing.JLabel imagenCentral;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JSeparator jSeparator4;

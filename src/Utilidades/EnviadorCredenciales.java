@@ -55,7 +55,6 @@ public class EnviadorCredenciales {
     }
 
     private String construirCuerpoCorreo(String nombre, String destinatario, String contrasena) {
-        // Escapar caracteres especiales para HTML
         String nombreEscapado = escapeHtml(nombre);
         String correoEscapado = escapeHtml(destinatario);
         String contrasenaEscapada = escapeHtml(contrasena);

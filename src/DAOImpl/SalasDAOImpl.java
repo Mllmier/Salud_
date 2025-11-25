@@ -177,7 +177,6 @@ public class SalasDAOImpl implements SalasDAO {
                     }
                 }
             } catch (NumberFormatException e) {
-                // Ignorar códigos que no siguen el formato esperado
             }
         }
         

@@ -17,7 +17,7 @@ import model.Medico;
  * @author Maria liz
  */
 public class DialogCambiarContraseña extends javax.swing.JDialog {
-    private JsonObject adminOriginal;// El usuario logueado
+    private JsonObject adminOriginal;
     private Medico medico;
     /**
      * Creates new form DialogCambiarContraseña
@@ -112,6 +112,7 @@ public class DialogCambiarContraseña extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         BbtnGuardar = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtContraseña = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
@@ -132,7 +133,7 @@ public class DialogCambiarContraseña extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel1.setText("MIS CREDENCIALES");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 220, 39));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 220, 39));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Contraseña :");
@@ -148,7 +149,10 @@ public class DialogCambiarContraseña extends javax.swing.JDialog {
                 BbtnGuardarActionPerformed(evt);
             }
         });
-        jPanel2.add(BbtnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
+        jPanel2.add(BbtnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\HP\\Downloads\\Adobe Express - file (4).png")); // NOI18N
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, 100));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 180, 300));
 
@@ -205,7 +209,6 @@ public class DialogCambiarContraseña extends javax.swing.JDialog {
                 "Datos actualizados correctamente.",
                 "Éxito", JOptionPane.INFORMATION_MESSAGE);
 
-            // 🔥 MUY IMPORTANTE — actualizar los datos en memoria
             usuarioDAO.medicoActual.setEmail(nuevoCorreo);
             usuarioDAO.medicoActual.setContraseña(nuevaContraseña);
 
@@ -278,6 +281,7 @@ public class DialogCambiarContraseña extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField txtContraseña;

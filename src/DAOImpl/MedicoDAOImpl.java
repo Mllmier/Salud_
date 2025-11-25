@@ -243,16 +243,15 @@ public class MedicoDAOImpl implements MedicoDAO {
     @Override
 public boolean actualizarCredenciales(String numeroDocumento, String nuevoEmail, String nuevaContrasena) {
     try {
-        List<Medico> lista = cargarTodos(); // Carga el JSON completo
+        List<Medico> lista = cargarTodos(); 
 
         for (Medico medico : lista) {
             if (medico.getNumeroDocumento().equals(numeroDocumento)) {
 
-                // Actualizar directamente SIN VALIDAR si el correo existe
                 medico.setEmail(nuevoEmail);
                 medico.setContraseña(nuevaContrasena);
 
-                guardarTodos(lista); // Guardar cambios en el JSON
+                guardarTodos(lista); 
                 return true;
             }
         }

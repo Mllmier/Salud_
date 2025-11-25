@@ -2364,7 +2364,8 @@ public class admin extends javax.swing.JFrame {
         JOptionPane.QUESTION_MESSAGE);
     
     if (respuesta == JOptionPane.YES_OPTION) {
-        System.exit(0);
+         new login_().setVisible(true);
+           this.dispose();
         
     }
     }//GEN-LAST:event_Btn_salirMouseClicked

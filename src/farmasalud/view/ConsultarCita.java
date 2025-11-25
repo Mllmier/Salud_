@@ -104,7 +104,7 @@ public class ConsultarCita extends javax.swing.JDialog implements CitaListener {
             public void actionPerformed(ActionEvent evt) {
                 int filaSeleccionada = tableCitas.getSelectedRow();
                 if (filaSeleccionada >= 0) {
-                    String estado = tableCitas.getValueAt(filaSeleccionada, 11).toString(); // <-- Estado
+                    String estado = tableCitas.getValueAt(filaSeleccionada, 11).toString(); 
                     if (estado.equalsIgnoreCase("Completada")) {
                         JOptionPane.showMessageDialog(null, "No se puede reprogramar una cita completada.");
                         return;
@@ -129,7 +129,7 @@ public class ConsultarCita extends javax.swing.JDialog implements CitaListener {
         public void actionPerformed(ActionEvent evt) {
             int filaSeleccionada = tableCitas.getSelectedRow();
             if (filaSeleccionada >= 0) {
-                String estado = tableCitas.getValueAt(filaSeleccionada, 11).toString(); // <-- Estado
+                String estado = tableCitas.getValueAt(filaSeleccionada, 11).toString();
                 if (estado.equalsIgnoreCase("Completada")) {
                     JOptionPane.showMessageDialog(null, "No se puede cancelar una cita completada.");
                     return;
@@ -353,11 +353,7 @@ controllerCitasPaciente.buscarCitasPorFecha();
     }//GEN-LAST:event_btnRefrescarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    // List<String> historial = PacienteDAOImpl.obtenerHistorialComoLista(paciente.getNumeroDocumento());
-
-//GeneradorPDFPaciente.generarPDF(paciente, historial);
-
-//JOptionPane.showMessageDialog(null, "PDF generado correctamente.");
+    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

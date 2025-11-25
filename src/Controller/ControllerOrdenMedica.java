@@ -37,7 +37,7 @@ import model.Cita;
  */
 public class ControllerOrdenMedica {
   
-private PacienteDAO pacienteDAO = new PacienteDAOImpl(); // Asegúrate de tenerlo
+private PacienteDAO pacienteDAO = new PacienteDAOImpl(); 
 
 private Medico medicoLogueado;
 
@@ -140,7 +140,7 @@ private Medico medicoLogueado;
       if (txtAreaMedicamentos != null) {
     String texto = txtAreaMedicamentos.getText().trim();
     if (!texto.isEmpty()) {
-        String[] medicamentos = texto.split("\\n"); // separa por líneas
+        String[] medicamentos = texto.split("\\n");
         for (String med : medicamentos) {
             if (!med.trim().isEmpty()) {
                 listaMedicamentos.add(med.trim());

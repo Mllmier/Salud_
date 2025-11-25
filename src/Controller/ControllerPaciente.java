@@ -62,7 +62,7 @@ public void agregarPacienteListener(PacienteListener listener) {
 
   public void notificarPacienteActualizado(Paciente paciente) {
     for (PacienteListener l : listeners) {
-        l.actualizar(paciente); // Aquí se pasa el objeto ya creado
+        l.actualizar(paciente); 
     }
 }  public Paciente buscarPacientePorDocumento(String documento) {
     try {
@@ -260,11 +260,9 @@ public void agregarPacienteListener(PacienteListener listener) {
              double peso = Double.parseDouble(pesoS);
               double altura = Double.parseDouble(alturaS);
       
-            // Convertir fecha
             LocalDate fechaNacimiento = dateChooserNacimiento.getDate()
                 .toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             
-            // Verificar si ya existe el paciente
             if (existePaciente(documento)) {
                 JOptionPane.showMessageDialog(null,
                     "Ya existe un paciente con este documento",
@@ -314,10 +312,8 @@ if (pacienteDAO.guardarPaciente(nuevoPaciente)) {
     // 2. Notificar listeners (si tienes ventanas que dependen del paciente)
     notificarPacienteActualizado(nuevoPaciente);
 
-    // 3. Recargar tabla
     cargarDatosEnTablaPaciente();
 
-    // 4. Limpiar formulario
     limpiarFormulario();
 }
         } catch (Exception e) {
@@ -447,7 +443,6 @@ if (pacienteDAO.guardarPaciente(nuevoPaciente)) {
             LocalDate fechaNacimiento = dateChooserNacimiento.getDate()
                 .toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-            // Verificar si cambió el documento y si ya existe
             if (!documentoOriginal.equals(documento) && existePaciente(documento)) {
                 JOptionPane.showMessageDialog(null,
                     "Ya existe un paciente con este documento",
@@ -456,7 +451,6 @@ if (pacienteDAO.guardarPaciente(nuevoPaciente)) {
                 return;
             }
 
-            // Crear paciente actualizado
             Paciente pacienteActualizado = new Paciente(
                 documento,
                 nombres,
