@@ -783,6 +783,7 @@ java.awt.Window parentWindow = SwingUtilities.getWindowAncestor(this);
        OrdenMedica ordenmedica = getOrdenMedica();
    if (citaSeleccionada != null) {
         citaSeleccionada.setEstado(Cita.EstadoCita.COMPLETADA);
+        ControllerCitas.getInstance().actualizarCita(citaSeleccionada);
         
         // Actualizar cita en controlador / DAO para persistir
         ControllerCitas controllerCitas = ControllerCitas.getInstance();

@@ -50,5 +50,9 @@ public class Sede {
     public void setHorarioFuncionamiento(String horarioFuncionamiento) {
         this.horarioFuncionamiento = horarioFuncionamiento;
     }
+@Override
+public String toString() {
+    return nombreSede; 
+}
 
 }

@@ -1399,5 +1399,32 @@
     "motivo": "Sede Principal",
     "sede": "Enfermedad Cronica",
     "estado": "PROGRAMADA"
+  },
+  {
+    "idCita": "Med.006",
+    "nombre": "ines",
+    "apellido": "viena",
+    "email": "ine@gmail.com",
+    "altura": "1.67",
+    "peso": "80",
+    "fechaNacimiento": "18/05/2017",
+    "tipoSangre": "B-",
+    "antecedentes": "sufre de rinitis",
+    "celular": "123456789",
+    "sexo": "F",
+    "eps": "Sanistas",
+    "diagnostico": "Enfermedad: Tuberculosis\nSíntomas: Tos con sangre, Sudores nocturnos, Pérdida de peso",
+    "receta": "lopiy",
+    "areamedicamentos": [
+      "Paracetamol"
+    ],
+    "fecha": "2025-11-28",
+    "hora": "09:00",
+    "nombreMedico": "luz",
+    "apellidoMedico": "Crespo",
+    "especialidadMedico": "terapeusta",
+    "motivo": "Sede Principal",
+    "sede": "Sintomas Agudos",
+    "estado": "PROGRAMADA"
   }
 ]

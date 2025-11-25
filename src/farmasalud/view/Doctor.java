@@ -14,6 +14,8 @@ import dao.PacienteDAO;
 import java.time.ZoneId;
 import java.text.SimpleDateFormat;
 import java.awt.Color;
+import javax.swing.RowFilter;
+import javax.swing.RowFilter.Entry;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
@@ -26,6 +28,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import model.Cita;
 import model.Medicamento;
 import model.Medico;
@@ -61,8 +64,7 @@ public class Doctor extends javax.swing.JFrame {
     
          popupMenu = new JPopupMenu();
 
-        itemHistorial = new JMenuItem("Historial Clinico");
-        popupMenu.add(itemHistorial);
+        
          
          
         itemAtender = new JMenuItem("Atender cita");  
@@ -74,29 +76,7 @@ public class Doctor extends javax.swing.JFrame {
          popupMenu.add(itemNoAsistio);
        actualizarInterfaz();  
        
-      itemHistorial.addActionListener(evt -> {
-    int fila = tableCitasPorMedico.getSelectedRow();
-    if (fila == -1) {
-        JOptionPane.showMessageDialog(this, "Seleccione una cita para ver el historial clínico.");
-        return;
-    }
-    // Obtener documento del paciente (columna 0 según tu modelo)
-    Object docObj = tableCitasPorMedico.getValueAt(fila, 0);
-    String documentoPaciente = docObj != null ? docObj.toString().trim() : "";
-
-    if (documentoPaciente.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "No se encontró documento del paciente en la fila seleccionada.");
-        return;
-    }
-
-    // Crear diálogo y pasar documento para que cargue el historial
-    DialogHistorial dialog = new DialogHistorial(new javax.swing.JFrame(), true);
- //   dialog.setDocumentoPaciente(documentoPaciente);
-    //   dialog.cargarHistorialPorDocumento(documentoPaciente); // <- aquí usamos el método nuevo
     
-    dialog.setLocationRelativeTo(tableCitasPorMedico);
-    dialog.setVisible(true);
-});
 
        
         itemAtender.addActionListener(evt -> {
@@ -143,7 +123,6 @@ cita.setPaciente(paciente);
             dialog.setMedicamento("");
             dialog.setMedicoSeleccionado(medicoLogueado);
             dialog.setFechaYHora(fecha, hora, idCita, estado, sede, motivo, documento);
-            dialog.setLocationRelativeTo(tableCitasPorMedico);
             dialog.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "La fila seleccionada no contiene hora o fecha válida.");
@@ -265,6 +244,59 @@ cita.setPaciente(paciente);
 
     private void actualizarInterfaz() {
     }
+    private void filtrarCitasPorFecha(Date fechaSeleccionada) {
+    try {
+        // Formatear la fecha seleccionada para comparación (mismo formato que en la tabla)
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String fechaSeleccionadaStr = sdf.format(fechaSeleccionada);
+        
+        System.out.println("Buscando fecha: " + fechaSeleccionadaStr); // Debug
+        
+        // Obtener el modelo de la tabla
+        DefaultTableModel model = (DefaultTableModel) tableCitasPorMedico.getModel();
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        tableCitasPorMedico.setRowSorter(sorter);
+
+        // Crear filtro para mostrar solo las citas del día seleccionado
+        sorter.setRowFilter(new RowFilter<DefaultTableModel, Integer>() {
+            @Override
+            public boolean include(Entry<? extends DefaultTableModel, ? extends Integer> entry) {
+                try {
+                    // Usar columna 8 que es "Fecha Cita"
+                    Object fechaValue = entry.getValue(8);
+                    
+                    if (fechaValue != null) {
+                        String fechaCitaStr = fechaValue.toString().trim();
+                        System.out.println("Comparando: " + fechaCitaStr + " con " + fechaSeleccionadaStr); // Debug
+                        
+                        // Comparar las fechas como strings
+                        boolean coincide = fechaCitaStr.equals(fechaSeleccionadaStr);
+                        System.out.println("Resultado: " + coincide); // Debug
+                        return coincide;
+                    }
+                    return false;
+                } catch (Exception e) {
+                    System.out.println("Error en filtro: " + e.getMessage());
+                    return false;
+                }
+            }
+        });
+        
+        // Mostrar resultado del filtrado
+        int filasVisibles = 0;
+        for (int i = 0; i < model.getRowCount(); i++) {
+            if (sorter.convertRowIndexToView(i) >= 0) {
+                filasVisibles++;
+            }
+        }
+        System.out.println("Filas visibles después del filtro: " + filasVisibles);
+        
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(this, "Error al filtrar citas: " + ex.getMessage(), 
+                                    "Error", JOptionPane.ERROR_MESSAGE);
+        ex.printStackTrace();
+    }
+}
   
  private void mostrarDialogSiFilaSeleccionada(MouseEvent e) {
         int fila = tableCitasPorMedico.rowAtPoint(e.getPoint());
@@ -314,8 +346,6 @@ cita.setPaciente(paciente);
         lblIconRecepcion = new javax.swing.JLabel();
         Diagnostico = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        Agenda = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -379,47 +409,12 @@ cita.setPaciente(paciente);
         });
         Diagnostico.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 27)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Diagnostico");
         Diagnostico.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 50));
 
-        jPanel2.add(Diagnostico, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 260, 70));
-
-        Agenda.setBackground(new java.awt.Color(28, 43, 110));
-        Agenda.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AgendaMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                AgendaMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                AgendaMouseExited(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Agenda Medica");
-
-        javax.swing.GroupLayout AgendaLayout = new javax.swing.GroupLayout(Agenda);
-        Agenda.setLayout(AgendaLayout);
-        AgendaLayout.setHorizontalGroup(
-            AgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AgendaLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel6)
-                .addContainerGap(49, Short.MAX_VALUE))
-        );
-        AgendaLayout.setVerticalGroup(
-            AgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AgendaLayout.createSequentialGroup()
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel2.add(Agenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 387, 260, 70));
+        jPanel2.add(Diagnostico, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 260, 70));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 630));
 
@@ -536,56 +531,48 @@ cita.setPaciente(paciente);
 
     }//GEN-LAST:event_DiagnosticoMouseExited
 
-    private void AgendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgendaMouseClicked
-        // TODO add your handling code here:
-        jTabbedPane1.setSelectedIndex(1); 
-    }//GEN-LAST:event_AgendaMouseClicked
-
-    private void AgendaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgendaMouseEntered
-        // TODO add your handling code here:
-                Agenda.setBackground(new Color(10, 92, 184)); 
-
-       
-    }//GEN-LAST:event_AgendaMouseEntered
-
-    private void AgendaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgendaMouseExited
-        // TODO add your handling code here:
-                                Agenda.setBackground(new Color(28,43,110)); 
-
-    }//GEN-LAST:event_AgendaMouseExited
-
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     private void dateChooserFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateChooserFechaActionPerformed
      Date fecha = dateChooserF.getDate();
-        if (fecha == null) {
-            JOptionPane.showMessageDialog(this, "Seleccione una fecha.", "Advertencia", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        Date fechaSeleccionada = dateChooserF.getDate();
+    
+    // Validación de fecha seleccionada
+    if (fecha == null) {
+        JOptionPane.showMessageDialog(this, "Seleccione una fecha.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+    
+    Date fechaSeleccionada = dateChooserF.getDate();
 
-        Calendar calHoy = Calendar.getInstance();
-calHoy.set(Calendar.HOUR_OF_DAY, 0);
-calHoy.set(Calendar.MINUTE, 0);
-calHoy.set(Calendar.SECOND, 0);
-calHoy.set(Calendar.MILLISECOND, 0);
-Date hoySinHora = calHoy.getTime();
+    // Validación de fecha pasada
+    Calendar calHoy = Calendar.getInstance();
+    calHoy.set(Calendar.HOUR_OF_DAY, 0);
+    calHoy.set(Calendar.MINUTE, 0);
+    calHoy.set(Calendar.SECOND, 0);
+    calHoy.set(Calendar.MILLISECOND, 0);
+    Date hoySinHora = calHoy.getTime();
 
-if (fechaSeleccionada.before(hoySinHora)) {
-    JOptionPane.showMessageDialog(this, "No puede seleccionar fechas pasadas.", "Error", JOptionPane.ERROR_MESSAGE);
-    dateChooserF.setDate(null);
-    return;
-}
-        dateChooserF.setDateFormatString("dd/MM/yyyy"); 
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(fechaSeleccionada);
-        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-        if (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY) {
-            JOptionPane.showMessageDialog(this, "Seleccione un día entre lunes y viernes.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+    if (fechaSeleccionada.before(hoySinHora)) {
+        JOptionPane.showMessageDialog(this, "No puede seleccionar fechas pasadas.", "Error", JOptionPane.ERROR_MESSAGE);
+        dateChooserF.setDate(null);
+        return;
+    }
+    
+    dateChooserF.setDateFormatString("dd/MM/yyyy"); 
+    
+    // Validación de día de semana (lunes a viernes)
+    Calendar calendar = Calendar.getInstance();
+    calendar.setTime(fechaSeleccionada);
+    int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+    if (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY) {
+        JOptionPane.showMessageDialog(this, "Seleccione un día entre lunes y viernes.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    
+    // 🔥 Filtrar citas por la fecha seleccionada
+    filtrarCitasPorFecha(fechaSeleccionada);
     }//GEN-LAST:event_dateChooserFechaActionPerformed
 
     private void btnCredencialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCredencialesActionPerformed
@@ -628,7 +615,6 @@ if (fechaSeleccionada.before(hoySinHora)) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Agenda;
     private javax.swing.JPanel Diagnostico;
     private javax.swing.JPanel PanelDiagnostico;
     private javax.swing.JScrollPane YY;
@@ -641,7 +627,6 @@ if (fechaSeleccionada.before(hoySinHora)) {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
