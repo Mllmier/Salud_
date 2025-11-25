@@ -79,6 +79,8 @@ public void setCita(Cita cita) {
             lblSexo.setText(ordenMedica.getSexo());
             lblTipoSangre.setText(ordenMedica.getTipoSangre());
             lblTelefono.setText(ordenMedica.getCelular());
+            textAreaExamenes.setText(String.join("\n", ordenMedica.getExamen()));
+
             
             
             
@@ -151,6 +153,9 @@ public void setCita(Cita cita) {
         lblAreaAntecendetes = new javax.swing.JTextArea();
         jLabel18 = new javax.swing.JLabel();
         btnDescargar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        textAreaExamenes = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -223,35 +228,35 @@ public void setCita(Cita cita) {
 
         lbMedicamentos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbMedicamentos.setText("Medicamento");
-        jPanel1.add(lbMedicamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
+        jPanel1.add(lbMedicamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
 
         txtAreaMedicamento.setEditable(false);
         txtAreaMedicamento.setColumns(20);
         txtAreaMedicamento.setRows(5);
         jScrollPane1.setViewportView(txtAreaMedicamento);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, -1, 100));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 140, 80));
 
         lblReceta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblReceta.setText("receta");
-        jPanel1.add(lblReceta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, -1, -1));
+        jPanel1.add(lblReceta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, -1, -1));
 
         txtAReceta.setEditable(false);
         txtAReceta.setColumns(20);
         txtAReceta.setRows(5);
         jScrollPane2.setViewportView(txtAReceta);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 536, -1, 80));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, 190, 80));
 
         jLabel14.setText("Diagnostico");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, -1, 20));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 470, -1, 20));
 
         txtAreaDiagnostico.setEditable(false);
         txtAreaDiagnostico.setColumns(20);
         txtAreaDiagnostico.setRows(5);
         jScrollPane3.setViewportView(txtAreaDiagnostico);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 536, -1, 80));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 500, 210, 80));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 360, 10));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -276,10 +281,10 @@ public void setCita(Cita cita) {
         lblAreaAntecendetes.setRows(5);
         jScrollPane4.setViewportView(lblAreaAntecendetes);
 
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, -1, 80));
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 190, 80));
 
         jLabel18.setText("Antecedentes");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, -1, -1));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, -1, 20));
 
         btnDescargar.setText("Descargar");
         btnDescargar.addActionListener(new java.awt.event.ActionListener() {
@@ -288,6 +293,15 @@ public void setCita(Cita cita) {
             }
         });
         jPanel1.add(btnDescargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, -1, -1));
+
+        jLabel6.setText("Examenes");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 350, -1, -1));
+
+        textAreaExamenes.setColumns(20);
+        textAreaExamenes.setRows(5);
+        jScrollPane5.setViewportView(textAreaExamenes);
+
+        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(384, 376, 150, 80));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 640));
 
@@ -354,6 +368,7 @@ public void setCita(Cita cita) {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -362,6 +377,7 @@ public void setCita(Cita cita) {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
@@ -393,6 +409,7 @@ public void setCita(Cita cita) {
     private javax.swing.JLabel lblSexo;
     private javax.swing.JLabel lblTelefono;
     private javax.swing.JLabel lblTipoSangre;
+    private javax.swing.JTextArea textAreaExamenes;
     private javax.swing.JTextArea txtAReceta;
     private javax.swing.JTextArea txtAreaDiagnostico;
     private javax.swing.JTextArea txtAreaMedicamento;

@@ -757,7 +757,7 @@ public void verificarDisponibilidadHoraActualizacion() {
         jLabel77.setText("CITAS ");
         jPanel9.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 530, 40));
 
-        jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 1000, 130));
+        jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 1000, 100));
 
         TabbetCitas.setBackground(new java.awt.Color(255, 255, 255));
 
