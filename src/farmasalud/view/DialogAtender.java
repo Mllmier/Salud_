@@ -773,11 +773,7 @@ java.awt.Window parentWindow = SwingUtilities.getWindowAncestor(this);
         txtMedicamento.requestFocus();
         return;
     }
-     if (txtExamenes.getText().trim().isEmpty()) {
-        JOptionPane.showMessageDialog(this, "El examen no puede estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
-        txtExamenes.requestFocus();
-        return;
-    }
+    
     if (areaDiagnostico.getText().trim().isEmpty()) {
         JOptionPane.showMessageDialog(this, "El diagnóstico no puede estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
         areaDiagnostico.requestFocus();
