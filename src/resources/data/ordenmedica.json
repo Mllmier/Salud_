@@ -1564,5 +1564,61 @@
     "motivo": "Sede Principal",
     "sede": "Sintomas Agudos",
     "estado": "COMPLETADA"
+  },
+  {
+    "idCita": "Med.002",
+    "nombre": "karen",
+    "apellido": "mier",
+    "email": "karen@gmail.com",
+    "altura": "1.68",
+    "peso": "40.0",
+    "fechaNacimiento": "21/05/2025",
+    "tipoSangre": "A+",
+    "antecedentes": "alergica a las hormigas",
+    "celular": "234567890",
+    "sexo": "M",
+    "eps": "Coosalud",
+    "diagnostico": "Enfermedad: Malaria\nSíntomas: Fiebre alta, Escalofríos, Dolor muscular",
+    "receta": "lop",
+    "examen": "",
+    "areamedicamentos": [
+      "Salbutamol"
+    ],
+    "fecha": "2025-11-20",
+    "hora": "07:30",
+    "nombreMedico": "luz",
+    "apellidoMedico": "Crespo",
+    "especialidadMedico": "terapeusta",
+    "motivo": "Sede Principal",
+    "sede": "Sintomas Agudos",
+    "estado": "COMPLETADA"
+  },
+  {
+    "idCita": "Med.002",
+    "nombre": "karen",
+    "apellido": "mier",
+    "email": "karen@gmail.com",
+    "altura": "1.68",
+    "peso": "40",
+    "fechaNacimiento": "21/05/2025",
+    "tipoSangre": "A+",
+    "antecedentes": "alergica a las hormigas",
+    "celular": "234567890",
+    "sexo": "M",
+    "eps": "Coosalud",
+    "diagnostico": "Enfermedad: Malaria\nSíntomas: Fiebre alta, Escalofríos, Dolor muscular",
+    "receta": "lop",
+    "examen": "",
+    "areamedicamentos": [
+      "Salbutamol"
+    ],
+    "fecha": "2025-11-20",
+    "hora": "07:30",
+    "nombreMedico": "luz",
+    "apellidoMedico": "Crespo",
+    "especialidadMedico": "terapeusta",
+    "motivo": "Sede Principal",
+    "sede": "Sintomas Agudos",
+    "estado": "COMPLETADA"
   }
 ]
