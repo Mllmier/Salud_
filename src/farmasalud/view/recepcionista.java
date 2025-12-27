@@ -558,7 +558,6 @@ public void verificarDisponibilidadHoraActualizacion() {
         jScrollPane2 = new javax.swing.JScrollPane();
         tablePaciente = new javax.swing.JTable();
         jLabel22 = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
 
         jPopupMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -755,7 +754,7 @@ public void verificarDisponibilidadHoraActualizacion() {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 710, 160, -1));
+        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 740, 100, 20));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 770));
 
@@ -765,7 +764,7 @@ public void verificarDisponibilidadHoraActualizacion() {
         jLabel77.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel77.setForeground(new java.awt.Color(255, 255, 255));
         jLabel77.setText("CITAS ");
-        jPanel9.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 530, 40));
+        jPanel9.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 530, 70));
 
         jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 1000, 120));
 
@@ -794,8 +793,6 @@ public void verificarDisponibilidadHoraActualizacion() {
         jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel27.setText("Citas Completadas");
         panelInicio.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 310, -1, -1));
-
-        jLabel19.setIcon(new javax.swing.ImageIcon("C:\\Users\\HP\\OneDrive\\Desktop\\Imagen de WhatsApp 2025-11-25 a las 07.52.27_c077e10c.jpg")); // NOI18N
         panelInicio.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 630, 450));
 
         TabbetCitas.addTab("Inicio", panelInicio);
@@ -1689,10 +1686,6 @@ public void verificarDisponibilidadHoraActualizacion() {
         jLabel22.setText("Farma Salud");
         jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 210, 80));
 
-        jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel37.setText("\"Tu bienestar, nuestra prioridad.\"  ");
-        jPanel1.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 30, 410, 50));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -2200,7 +2193,6 @@ TabbetCitas.setSelectedIndex(4);       // TODO add your handling code here:
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel41;

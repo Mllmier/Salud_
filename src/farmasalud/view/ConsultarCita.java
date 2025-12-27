@@ -237,7 +237,6 @@ itemVerOrden.addActionListener(new ActionListener() {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableCitas = new javax.swing.JTable();
         btnRefrescar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -299,13 +298,6 @@ itemVerOrden.addActionListener(new ActionListener() {
             }
         });
 
-        jButton1.setText("generar pdf");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -321,8 +313,6 @@ itemVerOrden.addActionListener(new ActionListener() {
                 .addContainerGap(19, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(34, 34, 34)
                 .addComponent(btnRefrescar)
                 .addGap(62, 62, 62))
         );
@@ -335,9 +325,7 @@ itemVerOrden.addActionListener(new ActionListener() {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRefrescar)
-                    .addComponent(jButton1))
+                .addComponent(btnRefrescar)
                 .addGap(20, 20, 20))
         );
 
@@ -351,10 +339,6 @@ controllerCitasPaciente.buscarCitasPorFecha();
     private void btnRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefrescarActionPerformed
  controllerCitasPaciente.cargarCitasPorPaciente(documentoPaciente);        // TODO add your handling code here:
     }//GEN-LAST:event_btnRefrescarActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -402,7 +386,6 @@ controllerCitasPaciente.buscarCitasPorFecha();
     private javax.swing.JButton btnBuscarCita;
     private javax.swing.JButton btnRefrescar;
     private com.toedter.calendar.JDateChooser dateCita;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

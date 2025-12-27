@@ -135,7 +135,6 @@ public class Paciente extends javax.swing.JFrame {
         });
         jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 530, -1, 48));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\HP\\OneDrive\\Desktop\\Imagen de WhatsApp 2025-11-25 a las 07.52.27_c077e10c.jpg")); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 600, 340));
 
@@ -144,8 +143,7 @@ public class Paciente extends javax.swing.JFrame {
         jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel4.setText("\"Tu bienestar, nuestra prioridad.\"  ");
-        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, -1, -1));
+        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, -1, -1));
 
         getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1100, 680));
 
